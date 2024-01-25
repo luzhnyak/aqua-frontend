@@ -1,0 +1,10 @@
+.monthPicker{
+    display: flex;
+}
+.btn-previous{
+display: block;
+}
+
+.btn-next{
+display: block;
+}
