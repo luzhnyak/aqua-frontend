@@ -8,6 +8,7 @@ import { WelcomePage } from './WelcomePage';
 
 export const App = () => {
   return (
+
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -28,5 +29,6 @@ export const App = () => {
         </Route>
       </Routes>
     </>
+
   );
 };

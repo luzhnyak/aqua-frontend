@@ -1,15 +1,32 @@
 @import-normalize; /* bring in normalize.css styles */
 
+:root {
+  --primary-color-white: #ffffff;
+  --primary-color-black: #2f2f2f;
+  --primary-color-blue: #407bff;
+  --secondary-color-red: #ef5050;
+  --secondary-color-orange: #ff9d43;
+  --secondary-color-blue-1: #ecf2ff;
+  --secondary-color-blue-2: #d7e3ff;
+  --secondary-color-blue-3: #9ebbff;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
