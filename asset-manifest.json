@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/aqua-frontend/static/css/main.7acaea2f.css",
+    "main.js": "/aqua-frontend/static/js/main.e0811d55.js",
+    "index.html": "/aqua-frontend/index.html",
+    "main.7acaea2f.css.map": "/aqua-frontend/static/css/main.7acaea2f.css.map",
+    "main.e0811d55.js.map": "/aqua-frontend/static/js/main.e0811d55.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.e0811d55.js"
+  ]
+}
