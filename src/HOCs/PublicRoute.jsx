@@ -4,5 +4,5 @@ import { Navigate } from 'react-router-dom';
 
 export const PrivateRoute = ({ children }) => {
   const token = useSelector(selectToken);
-  return token ? children : <Navigate to="/login" />;
+  return token ? children : <Navigate to="/welcome" />;
 };
