@@ -1,0 +1,112 @@
+.container {
+  max-width: 280px;
+  height: 48px;
+  margin: 0 auto;
+  padding: 8px 20px 0;
+
+  outline: 2px solid red;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 704px;
+    padding: 16px 32px 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1024px;
+    padding: 12px 112px 0;
+  }
+}
+
+.nav {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  margin-right: auto;
+}
+
+.logoText {
+  margin-left: 4px;
+  width: 58px;
+  color: var(--primary-color-blue);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.logoContainer {
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+  text-decoration: none;
+}
+
+.signIn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.IconUser {
+  width: 28px;
+  height: 28px;
+}
+
+.signInText {
+  color: var(--primary-color-blue);
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.signInText:hover {
+  color: var(--secondary-color-orange);
+}
+
+@media only screen and (min-width: 768px) {
+  .signInText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.userNameText {
+  color: var(--primary-color-black);
+  text-align: right;
+  font-size: 16px;
+  line-height: 1.25;
+  width: 66px;
+}
+
+@media only screen and (min-width: 768px) {
+  .userNameText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.IconChevron {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
