@@ -1,27 +1,11 @@
-.container {
-  max-width: 280px;
-  height: 48px;
-  margin: 0 auto;
-  padding: 8px 20px 0;
-
-  outline: 2px solid red;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 704px;
-    padding: 16px 32px 0;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1024px;
-    padding: 12px 112px 0;
-  }
+* {
+  box-sizing: border-box;
 }
 
 .nav {
+  position: relative;
+
+  outline: 2px solid red;
   display: flex;
   height: 48px;
   align-items: center;
@@ -96,6 +80,7 @@
   width: 16px;
   height: 16px;
   margin-left: 4px;
+  fill: var(--primary-color-blue);
 }
 
 .avatar {
@@ -105,8 +90,72 @@
   margin-left: 8px;
 }
 
-.userMenu {
+.noAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-left: 8px;
+  background-color: var(--secondary-color-blue-1);
+}
+
+.dropDownMenu {
   display: flex;
   align-items: center;
   text-decoration: none;
+}
+
+.dropDownMenuContent {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 118px;
+  height: 88px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+
+  border-radius: 10px;
+  background: var(--primary-color-white);
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
+}
+
+@media only screen and (min-width: 1440px) {
+  .dropDownMenuContent {
+    top: 44px;
+  }
+}
+
+.settingsBtn,
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+
+  color: var(--primary-color-blue);
+  background-color: transparent;
+  border: transparent;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.settingsBtn:hover,
+.logoutBtn:hover {
+  color: var(--secondary-color-orange);
+}
+
+.iconSettings,
+.iconLogout {
+  stroke: var(--primary-color-blue);
+}
+
+.iconSettings:hover,
+.iconLogout:hover {
+  stroke: var(--secondary-color-orange);
 }
