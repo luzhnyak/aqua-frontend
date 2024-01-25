@@ -25,8 +25,7 @@ export const requestUserLogin = async formData => {
 };
 
 export const requestUserLogout = async () => {
-  const { data } = await axios.post('/users/logout');
-  return data;
+  await axios.post('/users/logout');
 };
 
 export const refreshCurrentUser = async () => {
