@@ -1,3 +1,12 @@
+.calendar-container{
+    max-width: 592px;
+    max-height: 332px;
+    background-color: #ECF2FF;
+}
+
+.calendar-header{
+    display: flex;
+}
 .monthPicker{
     display: flex;
 }
@@ -7,4 +16,23 @@ display: block;
 
 .btn-next{
 display: block;
+}
+
+
+.calendar-table{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 22px;
+}
+
+.day{
+font-size: 16px;
+display: flex;
+width: 34px;
+height: 34px;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+background: #fff
 }
