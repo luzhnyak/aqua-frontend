@@ -4,6 +4,10 @@
 
     max-width: 320px;
     padding: 8px 20px;
+    background-image: url('../../images/mobile-background-element-home-screen.svg');
+    background-position: left 70% top 165%;
+    background-repeat: no-repeat;
+    background-size: 320px 1328px;
   }
 }
 
