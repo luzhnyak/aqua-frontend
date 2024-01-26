@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
-import { signUpThunk } from '../../redux/auth/operations';
+import { loginThunk } from '../../redux/auth/operations';
 import css from './SigninPage.module.css';
 
 const SigninPage = () => {
@@ -26,7 +26,7 @@ const SigninPage = () => {
   });
 
   const onSubmit = (values, { resetForm }) => {
-    dispatch(signUpThunk(values));
+    dispatch(loginThunk(values));
     resetForm();
   };
 
