@@ -1,57 +1,93 @@
-.calendar-container{
+@media only screen and (min-width: 768px) {
+}
+@media only screen and (min-width: 1440px) {
+}
+
+@media only screen and (min-width: 1440px) {
+  .calendar-container {
     max-width: 592px;
-    height: 332px;
-    background-color: #ECF2FF;
+  }
 }
 
-.calendar-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
-.title{
-    margin: 0;
+
+.title {
+  margin: 0;
+  font-size: 24px;
 }
-.monthPicker{
-    display: flex;
-    align-items: center;
-justify-content: space-between;
-    width: 155px;
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 26px;
+  }
 }
-.btn-arrow{
-    display: block;
-    width: 14px;
-height: 14px;
-background-color: transparent;
-border: none;
-color: var(--Primery-Color-Blue, #407BFF);
+
+.monthPicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 155px;
 }
-.title-month{
-    margin: 0;
-    color: var(--Primery-Color-Blue, #407BFF);
-text-align: center;
-font-size: 16px;
-font-weight: 400;
-line-height: 20px;
+
+.btn-arrow {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: transparent;
+  border: none;
+  color: var(--Primery-Color-Blue, #407bff);
 }
 
 
+.title-month {
+  margin: 0;
+  color: var(--Primery-Color-Blue, #407bff);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
 
-.calendar-table{
+.calendar-table {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 20px;
-    column-gap: 22px;
+    row-gap: 16px;
+    column-gap: 26px;
+  }
+
+@media only screen and (min-width: 768px) {
+    .calendar-table {
+        row-gap: 20px;
+        column-gap: 34px;
+      }
 }
 
-.day{
-font-size: 16px;
-display: flex;
-width: 34px;
-height: 34px;
-justify-content: center;
-align-items: center;
-border-radius: 50%;
-background: #fff
+@media only screen and (min-width: 1440px) {
+    .calendar-table {
+        row-gap: 20px;
+        column-gap: 22px;
+      }
+}
+
+.day {
+  font-size: 14px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #fff;
+}
+@media only screen and (min-width: 768px) {
+    .day {
+        font-size: 16px;
+        width: 34px;
+        height: 34px;
+      }
 }
