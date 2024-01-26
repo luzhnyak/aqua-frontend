@@ -102,7 +102,7 @@ export const updateUserInfoThunk = createAsyncThunk(
 );
 
 export const updateWaterNormaThunk = createAsyncThunk(
-  'auth/updateWaterNorma',
+  'auth/updateWaterRate',
   async (newWaterRate, thunkApi) => {
     try {
       const response = await updateWaterNorma(newWaterRate);
