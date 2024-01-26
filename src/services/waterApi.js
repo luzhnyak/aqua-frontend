@@ -10,7 +10,7 @@ export const clearToken = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-//-----authorization-----
+//==========================Authorization
 
 export const requestUserSignUp = async formData => {
   const { data } = await axios.post('/users/signup', formData);
@@ -33,4 +33,30 @@ export const refreshCurrentUser = async () => {
   return data;
 };
 
-//--------waterData---------
+export const updateUserAvatar = async newAvatar => {
+  const formData = new FormData();
+  formData.append('avatar', newAvatar);
+  const { data } = await axios.patch('users/avatars', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return data.avatarURL;
+};
+
+export const updateUserInfo = async formData => {
+  const { data } = await axios.patch('/users/current', formData);
+  // {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // });
+  return data;
+};
+
+//TODO: change route
+
+export const updateWaterNorma = async newWaterRate => {
+  const { data } = await axios.patch('/users/current', newWaterRate);
+  return data;
+};
+
+//==========================WaterData

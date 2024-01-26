@@ -7,6 +7,9 @@ import {
   requestUserLogin,
   requestUserLogout,
   refreshCurrentUser,
+  updateUserAvatar,
+  updateUserInfo,
+  updateWaterNorma,
 } from 'services/waterApi';
 
 //TODO: add notifications
@@ -71,5 +74,41 @@ export const refreshCurrentUserThunk = createAsyncThunk(
       }
       return true;
     },
+  }
+);
+
+export const updateAvatarThunk = createAsyncThunk(
+  'auth/avatar',
+  async (newPhoto, thunkApi) => {
+    try {
+      const avatarURL = await updateUserAvatar(newPhoto);
+      return avatarURL;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserInfoThunk = createAsyncThunk(
+  'auth/edituserinfo',
+  async (formData, thunkApi) => {
+    try {
+      const response = await updateUserInfo(formData);
+      return response;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateWaterNormaThunk = createAsyncThunk(
+  'auth/updateWaterNorma',
+  async (newWaterRate, thunkApi) => {
+    try {
+      const response = await updateWaterNorma(newWaterRate);
+      return response;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 );
