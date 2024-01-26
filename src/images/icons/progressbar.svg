@@ -1,0 +1,17 @@
+ <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="256"
+              height="14"
+              viewBox="0 0 256 14"
+              fill="none"
+            >
+              <rect
+                x="256"
+                y="3"
+                width="8.00001"
+                height="256"
+                rx="4.00001"
+                transform="rotate(90 256 3)"
+                fill="#D7E3FF"
+              />
+            </svg>

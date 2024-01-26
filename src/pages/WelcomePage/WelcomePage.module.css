@@ -1,6 +1,6 @@
 /* Phone styles and > */
 .container {
-  background-image: url("../../images/mobile-background-main-page.svg");
+  background-image: url('../../images/mobile-background-main-page.svg');
   background-repeat: no-repeat;
   background-position: bottom;
 }
@@ -24,7 +24,7 @@
     justify-content: center;
     align-items: center;
 
-    background-image: url("../../images/tablet-background-main-page.svg");
+    background-image: url('../../images/tablet-background-main-page.svg');
     background-position: bottom;
     background-repeat: no-repeat;
   }
@@ -40,13 +40,12 @@
 @media screen and (min-width: 1440px) {
   .container {
     height: 100vh;
-    background-image: url("../../images/desktop-background-element-main-page.svg"),
-      url("../../images/desktop-background-main-page.svg");
+    background-image: url('../../images/desktop-background-element-main-page.svg'),
+      url('../../images/desktop-background-main-page.svg');
     /* background-position: center calc(-50% + 50vh), center bottom; */
     background-position: center center, center bottom;
     background-repeat: no-repeat;
   }
-
 
   .dataContainer {
     max-width: 1404px;
@@ -65,7 +64,7 @@
   margin-bottom: 16px;
   margin-top: 31px;
 
-  color: var(--Primery-Color-Black, #2F2F2F);
+  color: var(--Primery-Color-Black, #2f2f2f);
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
@@ -89,7 +88,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.25;
-
 }
 
 @media screen and (min-width: 768px) {
@@ -102,9 +100,7 @@
   .subtitle {
     font-size: 26px;
     line-height: 1.23;
-
   }
-
 }
 
 .benefitsTitle {
@@ -124,7 +120,6 @@
 
   gap: 16px;
 }
-
 
 @media screen and (min-width: 768px) {
   .benefilsList {
@@ -172,16 +167,15 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.25;
-  color: var(--Primery-Color-White, #FFFFFF);
+  color: var(--Primery-Color-White, #ffffff);
   text-decoration: none;
 
   border: none;
 
   border-radius: 10px;
-  background: var(--Primery-Color-Blue, #407BFF);
+  background: var(--Primery-Color-Blue, #407bff);
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 }
-
 
 @media screen and (min-width: 768px) {
   .tryTrackerBtn {
@@ -198,19 +192,19 @@
   .tryTrackerBtn:hover,
   .tryTrackerBtn:focus {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: url('../../images/icons/hover-cursor.svg'), auto;
   }
 
   .tryTrackerBtn:active {
-    background: var(--Primery-Color-Blue, #407BFF);
+    background: var(--Primery-Color-Blue, #407bff);
+    cursor: url('../../images/icons/focus-cursor.svg'), auto;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .tryTrackerBtn {
     min-width: 384px;
-
   }
-
 }
 
 .link {
@@ -223,8 +217,8 @@
   max-width: 240px;
 
   border-radius: 10px;
-  background: var(--Secondary-color-2, #ECF2FF);
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
+  background: var(--Secondary-color-2, #ecf2ff);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
 }
 
 @media screen and (min-width: 768px) {
@@ -235,10 +229,9 @@
     max-height: 332px;
 
     border-radius: 10px;
-    background: var(--Secondary-color-2, #ECF2FF);
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
+    background: var(--Secondary-color-2, #ecf2ff);
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   }
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -249,10 +242,9 @@
     max-height: 332px;
 
     border-radius: 10px;
-    background: var(--Secondary-color-2, #ECF2FF);
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
+    background: var(--Secondary-color-2, #ecf2ff);
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   }
-
 }
 
 .whyTitle {
@@ -284,7 +276,7 @@
   display: inline-block;
   width: 8px;
   height: 8px;
-  fill: #407BFF;
+  fill: #407bff;
   content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Ccircle cx="4" cy="4" r="4" fill="%23407BFF"%3E%3C/circle%3E%3C/svg%3E');
   margin-right: 8px;
 }

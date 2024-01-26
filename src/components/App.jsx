@@ -1,5 +1,5 @@
-import { PrivateRoute } from 'HOCs/PrivateRoute';
-import { PublicRoute } from 'HOCs/PublicRoute';
+// import { PrivateRoute } from 'HOCs/PrivateRoute';
+// import { PublicRoute } from 'HOCs/PublicRoute';
 
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
