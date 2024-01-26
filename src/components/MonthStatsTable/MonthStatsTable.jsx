@@ -52,14 +52,17 @@ export const MonthStatsTable = () => {
       const isSelected = sDate && date.toDateString() === sDate.toDateString();
 
       allDays.push(
-        <div
-          key={`d-${d}`}
+<div key={`d-${d}`}>
+<div
+          
           className={css.day}
         //   className={`box ${isSelected ? 'selected' : ''}`}
           onClick={() => handleDateClick(date)}
         >
           {d}
         </div>
+        <p className={css.percent}> 100%</p>
+</div>
       );
     }
 

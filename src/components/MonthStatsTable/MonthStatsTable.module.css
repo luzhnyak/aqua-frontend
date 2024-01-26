@@ -43,7 +43,6 @@
   color: var(--Primery-Color-Blue, #407bff);
 }
 
-
 .title-month {
   margin: 0;
   color: var(--Primery-Color-Blue, #407bff);
@@ -54,24 +53,24 @@
 }
 
 .calendar-table {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 16px;
-    column-gap: 26px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 16px;
+  column-gap: 26px;
+}
 
 @media only screen and (min-width: 768px) {
-    .calendar-table {
-        row-gap: 20px;
-        column-gap: 34px;
-      }
+  .calendar-table {
+    row-gap: 20px;
+    column-gap: 34px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .calendar-table {
-        row-gap: 20px;
-        column-gap: 22px;
-      }
+  .calendar-table {
+    row-gap: 20px;
+    column-gap: 22px;
+  }
 }
 
 .day {
@@ -85,9 +84,29 @@
   background: #fff;
 }
 @media only screen and (min-width: 768px) {
-    .day {
-        font-size: 16px;
-        width: 34px;
-        height: 34px;
-      }
+  .day {
+    font-size: 16px;
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.percent {
+    text-align: center;
+  color: var(--Secondary-color-4, #9ebbff);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+@media only screen and (min-width: 768px) {
+    .percent {
+      font-size: 13px;
+
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .percent {
+      font-size: 12px;
+
+    }
 }
