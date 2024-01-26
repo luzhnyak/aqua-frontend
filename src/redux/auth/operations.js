@@ -8,6 +8,7 @@ import {
   requestUserLogout,
   refreshCurrentUser,
   updateUserAvatar,
+  updateUserInfo,
 } from 'services/waterApi';
 
 //TODO: add notifications
@@ -81,6 +82,18 @@ export const updateAvatarThunk = createAsyncThunk(
     try {
       const avatarURL = await updateUserAvatar(newPhoto);
       return avatarURL;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserInfoThunk = createAsyncThunk(
+  'auth/edituserinfo',
+  async (formData, thunkApi) => {
+    try {
+      const response = await updateUserInfo(formData);
+      return response;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

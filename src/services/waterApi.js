@@ -42,4 +42,14 @@ export const updateUserAvatar = async newAvatar => {
   return data.avatarURL;
 };
 
+export const updateUserInfo = async formData => {
+  const { data } = await axios.patch('/users/current', formData);
+  // {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // });
+  return data;
+};
+
 //==========================WaterData
