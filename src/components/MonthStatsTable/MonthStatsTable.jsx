@@ -47,19 +47,22 @@ export const MonthStatsTable = () => {
     // }
 
     // Show actual days
-    for (let d = 1; d <= mDays; d++) {
+    for (let d = 1; d <= mDays; d+=1) {
       const date = new Date(y, m, d);
       const isSelected = sDate && date.toDateString() === sDate.toDateString();
 
       allDays.push(
-        <div
-          key={`d-${d}`}
+<div key={`d-${d}`}>
+<div
+          
           className={css.day}
         //   className={`box ${isSelected ? 'selected' : ''}`}
           onClick={() => handleDateClick(date)}
         >
           {d}
         </div>
+        <p className={css.percent}> 100%</p>
+</div>
       );
     }
 
@@ -69,16 +72,16 @@ export const MonthStatsTable = () => {
   return (
     <div className={css['calendar-container']}>
       <div className={css['calendar-header']}>
-        <h2>Month</h2>
+        <h2 className={css.title}>Month</h2>
         <div className={css.monthPicker}>
-          <button className={css['btn-previous']} onClick={changeToPrevMonth}> {previous} </button>
-          <h2>
-            {sDate.toLocaleString('default', {
+          <button className={css['btn-arrow']} onClick={changeToPrevMonth}>{previous}</button>
+          <h2 className={css['title-month']}>
+            {sDate.toLocaleString('en-US', {
               month: 'long',
               year: 'numeric',
             })}
           </h2>
-          <button className={css['btn-next']} onClick={changeToNextMonth}> {next} </button>
+          <button className={css['btn-arrow']} onClick={changeToNextMonth}> {next} </button>
         </div>
       </div>
       <div className={css['calendar-table']}>{showCalendar()} </div>
