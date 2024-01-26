@@ -5,6 +5,7 @@ import {
   loginThunk,
   logoutThunk,
   refreshCurrentUserThunk,
+  updateAvatarThunk,
 } from './operations';
 
 const authInitialState = {
@@ -12,6 +13,9 @@ const authInitialState = {
   user: {
     name: null,
     email: null,
+    avatarURL: null,
+    waterNorma: null,
+    gender: null,
   },
   isLoggedIn: false,
   isRefreshing: false,
@@ -56,12 +60,16 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
+      .addCase(updateAvatarThunk.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           signUpThunk.pending,
           loginThunk.pending,
           logoutThunk.pending,
-          refreshCurrentUserThunk.pending
+          refreshCurrentUserThunk.pending,
+          updateAvatarThunk.pending
         ),
         handlePending
       )
@@ -70,7 +78,8 @@ const authSlice = createSlice({
           signUpThunk.rejected,
           loginThunk.rejected,
           logoutThunk.rejected,
-          refreshCurrentUserThunk.rejected
+          refreshCurrentUserThunk.rejected,
+          updateAvatarThunk.rejected
         ),
         handleRejected
       ),

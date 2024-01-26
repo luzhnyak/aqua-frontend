@@ -20,7 +20,7 @@ const authConfig = {
   whitelist: ['token'],
 };
 
-//TODO: add reducers
+//TODO: add water reducer
 const rootReducer = combineReducers({
   auth: persistReducer(authConfig, authReducer),
 });
