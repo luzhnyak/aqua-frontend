@@ -16,7 +16,7 @@ const authInitialState = {
     name: null,
     email: null,
     avatarURL: null,
-    waterNorma: null,
+    waterRate: null,
     gender: null,
   },
   isLoggedIn: false,
@@ -69,7 +69,7 @@ const authSlice = createSlice({
         state.user = { ...state.user, ...action.payload };
       })
       .addCase(updateWaterNormaThunk.fulfilled, (state, action) => {
-        state.user.waterNorma = action.payload;
+        state.user.waterRate = action.payload;
       })
       .addMatcher(
         isAnyOf(

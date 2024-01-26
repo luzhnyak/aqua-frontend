@@ -13,7 +13,7 @@ export const clearToken = () => {
 //==========================Authorization
 
 export const requestUserSignUp = async formData => {
-  const { data } = await axios.post('/users/signup', formData);
+  const { data } = await axios.post('/users/register', formData);
   setToken(data.token);
   return data;
 };
