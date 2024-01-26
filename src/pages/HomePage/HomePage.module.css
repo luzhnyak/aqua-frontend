@@ -4,6 +4,7 @@
 
 @media only screen and (min-width: 1440px) {
 .container-progress{
+box-sizing: border-box;
 max-width: 592px;
 padding: 32px 24px;
 flex-direction: column;
