@@ -52,4 +52,11 @@ export const updateUserInfo = async formData => {
   return data;
 };
 
+//TODO: change route
+
+export const updateWaterNorma = async newWaterRate => {
+  const { data } = await axios.patch('/users/current', newWaterRate);
+  return data;
+};
+
 //==========================WaterData

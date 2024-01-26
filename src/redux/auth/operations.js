@@ -9,6 +9,7 @@ import {
   refreshCurrentUser,
   updateUserAvatar,
   updateUserInfo,
+  updateWaterNorma,
 } from 'services/waterApi';
 
 //TODO: add notifications
@@ -93,6 +94,18 @@ export const updateUserInfoThunk = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const response = await updateUserInfo(formData);
+      return response;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateWaterNormaThunk = createAsyncThunk(
+  'auth/updateWaterNorma',
+  async (newWaterRate, thunkApi) => {
+    try {
+      const response = await updateWaterNorma(newWaterRate);
       return response;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

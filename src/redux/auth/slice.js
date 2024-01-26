@@ -7,6 +7,7 @@ import {
   refreshCurrentUserThunk,
   updateAvatarThunk,
   updateUserInfoThunk,
+  updateWaterNormaThunk,
 } from './operations';
 
 const authInitialState = {
@@ -67,6 +68,9 @@ const authSlice = createSlice({
       .addCase(updateUserInfoThunk.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload };
       })
+      .addCase(updateWaterNormaThunk.fulfilled, (state, action) => {
+        state.user.waterNorma = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           signUpThunk.pending,
@@ -74,7 +78,8 @@ const authSlice = createSlice({
           logoutThunk.pending,
           refreshCurrentUserThunk.pending,
           updateAvatarThunk.pending,
-          updateUserInfoThunk.pending
+          updateUserInfoThunk.pending,
+          updateWaterNormaThunk.pending
         ),
         handlePending
       )
@@ -85,7 +90,8 @@ const authSlice = createSlice({
           logoutThunk.rejected,
           refreshCurrentUserThunk.rejected,
           updateAvatarThunk.rejected,
-          updateUserInfoThunk.rejected
+          updateUserInfoThunk.rejected,
+          updateWaterNormaThunk.rejected
         ),
         handleRejected
       ),
