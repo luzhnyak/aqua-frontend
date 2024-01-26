@@ -1,0 +1,319 @@
+@media only screen and (min-width: 320px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+
+  /* today */
+
+  .today {
+    display: block;
+    margin-bottom: 8px;
+    color: #407bff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  /* Custom input range */
+
+  .range {
+    height: 12px;
+    width: 256px;
+    margin-bottom: 6px;
+    background-color: #d7e3ff;
+    border-radius: 4rem;
+  }
+
+  .rangeContent {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: start;
+  }
+
+  .rangeSlider {
+    width: 100%;
+    height: 14px;
+    background-color: transparent;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .rangeSliderLine {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    width: 0;
+  }
+
+  .rangeInput {
+    appearance: none;
+    width: 100%;
+    height: 16px;
+    position: absolute;
+    opacity: 0;
+  }
+
+  .rangeInput::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+  }
+
+  .rangeInput::-webkit-slider-thumb:hover {
+    cursor: pointer;
+  }
+
+  .rangeThumb {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #407bff;
+    position: absolute;
+    top: -10%;
+  }
+
+  /* Lines and nubmers */
+
+  .decorativeLines {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .line {
+    width: 1px;
+    height: 8px;
+    background: #d7e3ff;
+  }
+
+  .percentages {
+    display: flex;
+    position: relative;
+    min-height: 20px;
+    color: #407bff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  .number1 {
+    position: absolute;
+    left: -3%;
+  }
+
+  .number2 {
+    position: absolute;
+    left: 47%;
+  }
+
+  .number3 {
+    position: absolute;
+    right: -3%;
+  }
+
+  .active {
+    color: #407bff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  /* Button */
+  .addButton {
+    display: inline-flex;
+    width: 280px;
+    height: 36px;
+    padding: 6px 76px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+    background: #407bff;
+    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  }
+
+  .addButton:hover,
+  .addButton:focus {
+    cursor: url('../../images/icons/hover-cursor.svg'), auto;
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+
+  .addButton:active {
+    cursor: url('../../images/icons/focus-cursor.svg'), auto;
+    box-shadow: none;
+  }
+
+  .addButtonText {
+    display: block;
+    width: 94px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .plusCircle {
+    fill: #fff;
+    stroke: #fff;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .mainContainer {
+    position: relative;
+    gap: 12px;
+    flex-direction: row;
+    height: 50px;
+    justify-items: center;
+  }
+
+  .panel {
+    display: block;
+    width: 356px;
+    height: 50px;
+    /* padding-top: 40px; */
+  }
+
+  .today {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  /* Custom input range */
+
+  .range {
+    height: 8px;
+    width: 325px;
+    margin-bottom: 4px;
+  }
+
+  .rangeSlider {
+    height: 8px;
+  }
+
+  .rangeInput::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+  }
+
+  .rangeInput::-webkit-slider-thumb:hover {
+    cursor: pointer;
+  }
+
+  .rangeThumb {
+    top: -40%;
+  }
+
+  /* Lines and nubmers */
+
+  .decorativeLines {
+    width: 325px;
+  }
+
+  .line {
+    width: 1px;
+    height: 8px;
+    background: #d7e3ff;
+  }
+
+  .percentages {
+    width: 325px;
+  }
+
+  .number3 {
+    position: absolute;
+    right: -5%;
+  }
+
+  /* Button */
+  .addButton {
+    position: absolute;
+    top: -35%;
+    left: 50%;
+    width: 336px;
+    height: 44px;
+    padding: 10px 104px;
+  }
+
+  .addButtonText {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .mainContainer {
+    height: 50px;
+  }
+
+  .panel {
+    display: block;
+    width: 391px;
+  }
+
+  /* Custom input range */
+
+  .range {
+    width: 360px;
+  }
+
+  .rangeInput::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+  }
+
+  .rangeInput::-webkit-slider-thumb:hover {
+    cursor: pointer;
+  }
+
+  /* Lines and nubmers */
+
+  .decorativeLines {
+    width: 360px;
+  }
+
+  .line {
+    width: 1px;
+    height: 8px;
+    background: #d7e3ff;
+  }
+
+  .percentages {
+    width: 360px;
+  }
+
+  .number3 {
+    position: absolute;
+    right: -5%;
+  }
+
+  /* Button */
+  .addButton {
+    top: -35%;
+    left: 30%;
+    width: 178px;
+    display: inline-flex;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .addButtonText {
+    font-size: 17px;
+  }
+}
