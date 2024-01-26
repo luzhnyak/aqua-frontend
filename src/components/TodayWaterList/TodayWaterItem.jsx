@@ -1,4 +1,4 @@
-import { cardActionAreaClasses } from '@mui/material'
+
 import css from './TodayWaterItem.module.css'
 
 export const TodayWaterItem = ({entry}) => {
