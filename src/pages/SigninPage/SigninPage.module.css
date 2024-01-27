@@ -50,10 +50,8 @@
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .container {
-        .mainstr {
-            justify-content: flex-end;
-        }
+    .mainstr {
+        justify-content: flex-end;
     }
 }
 
@@ -147,6 +145,21 @@
     outline: none;
     border: none;
     padding: 0;
+    width: 280px;
+}
+
+/* Tablet and > */
+@media screen and (min-width: 768px) {
+    .inputpassword {
+        width: 336px;
+    }
+}
+
+/* Desktop and > */
+@media screen and (min-width: 1440px) {
+    .inputpassword {
+        width: 384px;
+    }
 }
 
 .input::placeholder {
@@ -185,7 +198,21 @@
     }
 }
 
+
 .errormessage {
     color: var(--secondary-color-red);
     font-size: 14px;
+}
+
+.errorBorder {
+    border: 2px solid var(--secondary-color-red);
+}
+
+
+.errorInput {
+    color: var(--secondary-color-red);
+}
+
+.errorInput::placeholder {
+    color: var(--secondary-color-red);
 }
