@@ -48,7 +48,7 @@ export const updateUserInfo = async formData => {
 };
 
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.patch('/users/water-rate', newWaterRate);
+  const { data } = await axios.put('/users/water-rate', newWaterRate);
   return data;
 };
 
