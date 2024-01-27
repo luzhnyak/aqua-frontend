@@ -57,6 +57,7 @@
   flex-wrap: wrap;
   row-gap: 16px;
   column-gap: 26px;
+  position: relative;
 }
 
 @media only screen and (min-width: 768px) {
@@ -70,7 +71,7 @@
   .calendar-table {
     row-gap: 20px;
     column-gap: 22px;
-    position: relative;
+    
   }
 }
 
@@ -83,6 +84,7 @@
   align-items: center;
   border-radius: 50%;
   background: #fff;
+  
 }
 @media only screen and (min-width: 768px) {
   .day {
@@ -127,7 +129,8 @@ box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.30);
 
 
 position: absolute;
-
+top: -204px;
+left: -8px;
 }
 
 @media only screen and (min-width: 768px) {
