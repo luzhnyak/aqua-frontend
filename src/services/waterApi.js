@@ -44,11 +44,6 @@ export const updateUserAvatar = async newAvatar => {
 
 export const updateUserInfo = async formData => {
   const { data } = await axios.patch('/users/update-user', formData);
-  // {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // });
   return data;
 };
 
@@ -58,3 +53,8 @@ export const updateWaterNorma = async newWaterRate => {
 };
 
 //==========================WaterData
+
+export const addWater = async newWater => {
+  const { data } = await axios.post('/water', newWater);
+  return data;
+};
