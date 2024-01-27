@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import css from './WaterRatioPanel.module.css';
 
 const WaterRatioPanel = () => {
   return (
-    <>
+    <div>
       <h2 className={css.today}>Today</h2>
       <div className={css.mainContainer}>
         <div className={css.panel}>
@@ -49,7 +49,7 @@ const WaterRatioPanel = () => {
           <span className={css.addButtonText}>Add Water</span>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

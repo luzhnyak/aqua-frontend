@@ -13,6 +13,7 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
+import { waterReducer } from './waterConsumption/slice';
 
 const authConfig = {
   key: 'auth',
@@ -20,9 +21,9 @@ const authConfig = {
   whitelist: ['token'],
 };
 
-//TODO: add water reducer
 const rootReducer = combineReducers({
   auth: persistReducer(authConfig, authReducer),
+  water: waterReducer,
 });
 
 const ignoredPersistenceActions = [

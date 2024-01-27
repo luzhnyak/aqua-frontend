@@ -57,6 +57,7 @@
   flex-wrap: wrap;
   row-gap: 16px;
   column-gap: 26px;
+  position: relative;
 }
 
 @media only screen and (min-width: 768px) {
@@ -70,7 +71,15 @@
   .calendar-table {
     row-gap: 20px;
     column-gap: 22px;
+    
   }
+}
+.day-cell{
+display: flex;
+flex-direction: column;
+gap: 4px;
+align-items: center;
+justify-content: center;
 }
 
 .day {
@@ -80,8 +89,11 @@
   height: 32px;
   justify-content: center;
   align-items: center;
+  border: none;
   border-radius: 50%;
-  background: #fff;
+  background: #fff;  
+
+  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .day {
@@ -92,7 +104,7 @@
 }
 
 .percent {
-    text-align: center;
+  text-align: center;
   color: var(--Secondary-color-4, #9ebbff);
   font-size: 10px;
   font-weight: 400;
@@ -109,4 +121,50 @@
       font-size: 12px;
 
     }
+}
+
+/* POP UP */
+
+.popUp{
+  width: 280px;
+  height: 188px;
+  padding: 24px 13px;
+  border-radius: 10px;
+  display: flex;
+flex-direction: column;
+gap: 16px;
+background: var(--Primery-Color-White, #FFF);
+box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.30);
+
+
+position: absolute;
+top: -204px;
+left: -8px;
+}
+
+@media only screen and (min-width: 768px) {
+  .popUp{
+    width: 292px;
+    padding: 24px 16px;
+
+  
+  }
+}
+
+.popup-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup-date{
+  color: var(--Primery-Color-Blue, #407BFF);
+font-size: 16px;
+font-weight: 400;
+line-height: 20px;
+}
+
+.popup-close{
+  width: 16px;
+height: 16px;
 }

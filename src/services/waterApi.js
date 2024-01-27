@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://127.0.0.1:3000';
+axios.defaults.baseURL = 'https://aqua-backend-ieu7.onrender.com';
 
 export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -36,27 +36,25 @@ export const refreshCurrentUser = async () => {
 export const updateUserAvatar = async newAvatar => {
   const formData = new FormData();
   formData.append('avatar', newAvatar);
-  const { data } = await axios.patch('users/avatars', formData, {
+  const { data } = await axios.patch('users/avatar', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
   return data.avatarURL;
 };
 
 export const updateUserInfo = async formData => {
-  const { data } = await axios.patch('/users/current', formData);
-  // {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // });
+  const { data } = await axios.patch('/users/update-user', formData);
   return data;
 };
 
-//TODO: change route
-
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.patch('/users/current', newWaterRate);
+  const { data } = await axios.patch('/users/water-rate', newWaterRate);
   return data;
 };
 
 //==========================WaterData
+
+export const addWater = async newWater => {
+  const { data } = await axios.post('/water', newWater);
+  return data;
+};
