@@ -58,3 +58,8 @@ export const addWater = async newWater => {
   const { data } = await axios.post('/water', newWater);
   return data;
 };
+
+export const deleteWaterById = async entryId => {
+  const { data } = await axios.delete(`/contacts/${entryId}`);
+  return data;
+};
