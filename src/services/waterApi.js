@@ -36,7 +36,7 @@ export const refreshCurrentUser = async () => {
 export const updateUserAvatar = async newAvatar => {
   const formData = new FormData();
   formData.append('avatar', newAvatar);
-  const { data } = await axios.patch('users/avatars', formData, {
+  const { data } = await axios.patch('users/avatar', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
   return data.avatarURL;
