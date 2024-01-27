@@ -43,7 +43,7 @@ export const updateUserAvatar = async newAvatar => {
 };
 
 export const updateUserInfo = async formData => {
-  const { data } = await axios.patch('/users/current', formData);
+  const { data } = await axios.patch('/users/update-user', formData);
   // {
   //   headers: {
   //     'Content-Type': 'application/json',
@@ -52,10 +52,8 @@ export const updateUserInfo = async formData => {
   return data;
 };
 
-//TODO: change route
-
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.patch('/users/current', newWaterRate);
+  const { data } = await axios.patch('/users/water-rate', newWaterRate);
   return data;
 };
 
