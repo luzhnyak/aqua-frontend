@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.3e43386f.css",
-    "main.js": "/aqua-frontend/static/js/main.85d6d963.js",
-    "static/css/367.6d63a78a.chunk.css": "/aqua-frontend/static/css/367.6d63a78a.chunk.css",
-    "static/js/367.b78c1fca.chunk.js": "/aqua-frontend/static/js/367.b78c1fca.chunk.js",
+    "main.js": "/aqua-frontend/static/js/main.161b3011.js",
+    "static/css/681.ff1e9e8f.chunk.css": "/aqua-frontend/static/css/681.ff1e9e8f.chunk.css",
+    "static/js/681.b0f633e3.chunk.js": "/aqua-frontend/static/js/681.b0f633e3.chunk.js",
     "static/css/735.fa51e695.chunk.css": "/aqua-frontend/static/css/735.fa51e695.chunk.css",
     "static/js/735.da7f15b4.chunk.js": "/aqua-frontend/static/js/735.da7f15b4.chunk.js",
     "static/css/539.6256e10d.chunk.css": "/aqua-frontend/static/css/539.6256e10d.chunk.css",
@@ -22,6 +22,7 @@
     "static/media/desktop-bottle-sign-in.svg": "/aqua-frontend/static/media/desktop-bottle-sign-in.d33cdb48aba0327c5e36.svg",
     "static/media/mobile-bottle-home-screen.svg": "/aqua-frontend/static/media/mobile-bottle-home-screen.14e6cef441aeeca81730.svg",
     "static/media/mobile-bottle-sign-in.svg": "/aqua-frontend/static/media/mobile-bottle-sign-in.3e681eb35cc7e1f92c31.svg",
+    "static/media/glass.svg": "/aqua-frontend/static/media/glass.b3a23e2ec2154f5da4db2481c284ba3f.svg",
     "static/media/desktop-background-element-main-page.svg": "/aqua-frontend/static/media/desktop-background-element-main-page.68611ca8e47c8bcd12b2.svg",
     "static/media/mobile-background-main-page.svg": "/aqua-frontend/static/media/mobile-background-main-page.38bb18c071744abd6604.svg",
     "static/media/mobile-background-element-home-screen.svg": "/aqua-frontend/static/media/mobile-background-element-home-screen.cda48ada2e0d7bf38ef9.svg",
@@ -33,17 +34,20 @@
     "static/media/user.svg": "/aqua-frontend/static/media/user.7e9142ea9fe6914dec8884aeca1aee4e.svg",
     "index.html": "/aqua-frontend/index.html",
     "static/media/eye-slash.svg": "/aqua-frontend/static/media/eye-slash.f1b7d1d45d2eb7e9e7561bdab1df6d2d.svg",
+    "static/media/trash.svg": "/aqua-frontend/static/media/trash.4d013bd3da32d51c2f1910bc5c9799b8.svg",
     "static/media/chevron-double-up.svg": "/aqua-frontend/static/media/chevron-double-up.144e3b207dddaf594f18fa3f37599509.svg",
     "static/media/eye.svg": "/aqua-frontend/static/media/eye.9244f813c5e70365264f3bc19485d693.svg",
+    "static/media/pencil-square.svg": "/aqua-frontend/static/media/pencil-square.867b14f76301336c718e94622f3f2d68.svg",
     "static/media/progressbar-plus.svg": "/aqua-frontend/static/media/progressbar-plus.c6e2021a484b91614488ed9278eda557.svg",
     "static/media/presentation-chart-bar.svg": "/aqua-frontend/static/media/presentation-chart-bar.8cfec11a5c739ea320477bba603d1a57.svg",
     "static/media/arrow-right-on-rectangle.svg": "/aqua-frontend/static/media/arrow-right-on-rectangle.02cb487a75ecb89135ef1a7de29c8136.svg",
     "static/media/x-mark-outline.svg": "/aqua-frontend/static/media/x-mark-outline.f886433bf069993bbd8c306277703c56.svg",
     "static/media/hover-cursor.svg": "/aqua-frontend/static/media/hover-cursor.2c9754f882937ceb1841.svg",
+    "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.3130ad66492b11b8f0b847cad36697e0.svg",
     "main.3e43386f.css.map": "/aqua-frontend/static/css/main.3e43386f.css.map",
-    "main.85d6d963.js.map": "/aqua-frontend/static/js/main.85d6d963.js.map",
-    "367.6d63a78a.chunk.css.map": "/aqua-frontend/static/css/367.6d63a78a.chunk.css.map",
-    "367.b78c1fca.chunk.js.map": "/aqua-frontend/static/js/367.b78c1fca.chunk.js.map",
+    "main.161b3011.js.map": "/aqua-frontend/static/js/main.161b3011.js.map",
+    "681.ff1e9e8f.chunk.css.map": "/aqua-frontend/static/css/681.ff1e9e8f.chunk.css.map",
+    "681.b0f633e3.chunk.js.map": "/aqua-frontend/static/js/681.b0f633e3.chunk.js.map",
     "735.fa51e695.chunk.css.map": "/aqua-frontend/static/css/735.fa51e695.chunk.css.map",
     "735.da7f15b4.chunk.js.map": "/aqua-frontend/static/js/735.da7f15b4.chunk.js.map",
     "539.6256e10d.chunk.css.map": "/aqua-frontend/static/css/539.6256e10d.chunk.css.map",
@@ -55,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.3e43386f.css",
-    "static/js/main.85d6d963.js"
+    "static/js/main.161b3011.js"
   ]
 }
