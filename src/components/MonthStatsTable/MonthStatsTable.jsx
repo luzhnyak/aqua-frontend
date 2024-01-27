@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 export const MonthStatsTable = () => {
   const [sDate, setsDate] = useState(new Date());
+  const [popUp, setsPopup] = useState(false);
+  
   const previous = '\u003C';
   const next = '\u003E';
   const findMonthDays = (y, m) => {
@@ -12,6 +14,26 @@ export const MonthStatsTable = () => {
   // const findFirstDay = (y, m) => {
   //   return new Date(y, m, 1).getDay();
   // };
+//   const showPopup = () => {
+//     const showPopUp = []
+// showPopUp.push(
+// <div>
+//  <div className={css.popUp}>
+// {`${sDate.toLocaleDateString('en-US', {
+//         day: 'numeric',
+//       })},  
+//        ${sDate.toLocaleDateString('en-US', {
+//         month: 'long',
+//       })}`}
+//       <button className={css['popup-close']} onClick={handleCloseClick}></button>
+//       <p>Daily norma:</p>
+//       <p>Fulfillment of the daily norm:</p>
+//       <p>How many servings of water:</p>
+//     </div>
+//     </div>
+//  )
+//  return showPopUp
+//   }
 
   const changeToPrevMonth = () => {
     setsDate(pDate => {
@@ -31,7 +53,12 @@ export const MonthStatsTable = () => {
 
   const handleDateClick = date => {
     setsDate(date);
+    setsPopup(true);
+
   };
+  const handleCloseClick = () => {
+setsPopup(false)
+  }
 
   const showCalendar = () => {
     // const currDate = new Date();
@@ -57,6 +84,7 @@ export const MonthStatsTable = () => {
             className={css.day}
             //   className={`box ${isSelected ? 'selected' : ''}`}
             onClick={() => handleDateClick(date)}
+          
           >
             {d}
           </div>
@@ -77,10 +105,12 @@ export const MonthStatsTable = () => {
             {previous}
           </button>
           <h2 className={css['title-month']}>
-            {sDate.toLocaleString('en-US', {
+{            `${sDate.toLocaleString('en-US', {
               month: 'long',
+            })}, 
+            ${sDate.toLocaleString('en-US', {
               year: 'numeric',
-            })}
+            })}`}
           </h2>
           <button className={css['btn-arrow']} onClick={changeToNextMonth}>
             {' '}
@@ -88,8 +118,27 @@ export const MonthStatsTable = () => {
           </button>
         </div>
       </div>
-      <div className={css['calendar-table']}>{showCalendar()} </div>
-      {sDate && <div>Selected Date: {sDate.toLocaleDateString()}</div>}
+      <div className={css['calendar-table']}>
+      {popUp && (
+        <div className={css.popUp}>
+<div className={css['popup-header']}>
+<p className={css['popup-date']}>
+{`${sDate.toLocaleDateString('en-US', {
+            day: 'numeric',
+          })},  
+           ${sDate.toLocaleDateString('en-US', {
+            month: 'long',
+          })}`}
+</p>
+          <button className={css['popup-close']} onClick={handleCloseClick}></button>
+</div>
+          <p>Daily norma:</p>
+          <p>Fulfillment of the daily norm:</p>
+          <p>How many servings of water:</p>
+        </div>
+      )}
+         {showCalendar()} </div>
+      
     </div>
   );
 };
