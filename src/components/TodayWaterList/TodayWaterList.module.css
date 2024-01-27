@@ -1,3 +1,27 @@
 .title{
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+.entryList{
+    padding-bottom: 24px;
+}
+
+.btn-add{
+    padding: 0px;
+    margin-top: 12px;
+height: 20px;
+background-color: transparent;
+border: none;
+color: var(--Primery-Color-Blue, #407BFF);
+font-size: 18px;
+font-weight: 500;
+line-height: 24px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.plus{
+    width: 16px;
+    height: 16px;
+stroke: var(--Primery-Color-Blue, #407BFF);
 }

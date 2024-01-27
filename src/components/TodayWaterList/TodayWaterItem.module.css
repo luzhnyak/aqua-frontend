@@ -1,0 +1,24 @@
+.entry-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0px;
+    height: 26px;
+    border-bottom: 1px solid #D7E3FF;
+}
+
+.glass{
+    width: 26px;
+height: 26px;
+}
+
+.edit{
+width: 16px;
+height: 16px;
+stroke: #9EBBFF;
+}
+
+.delete{
+width: 16px;
+height: 16px;
+}
