@@ -80,15 +80,15 @@ setsPopup(false)
       // const isSelected = sDate && date.toDateString() === sDate.toDateString();
 
       allDays.push(
-        <div key={`d-${d}`}>
-          <div
+        <div className={css['day-cell']} key={`d-${d}`}>
+          <button
             className={css.day}
             //   className={`box ${isSelected ? 'selected' : ''}`}
             onClick={() => handleDateClick(date)}
           
           >
             {d}
-          </div>
+            </button>
           <p className={css.percent}> 100%</p>
         </div>
       );

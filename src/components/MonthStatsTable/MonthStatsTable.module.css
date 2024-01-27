@@ -74,6 +74,13 @@
     
   }
 }
+.day-cell{
+display: flex;
+flex-direction: column;
+gap: 4px;
+align-items: center;
+justify-content: center;
+}
 
 .day {
   font-size: 14px;
@@ -82,9 +89,11 @@
   height: 32px;
   justify-content: center;
   align-items: center;
+  border: none;
   border-radius: 50%;
-  background: #fff;
-  
+  background: #fff;  
+
+  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .day {
@@ -95,7 +104,7 @@
 }
 
 .percent {
-    text-align: center;
+  text-align: center;
   color: var(--Secondary-color-4, #9ebbff);
   font-size: 10px;
   font-weight: 400;
