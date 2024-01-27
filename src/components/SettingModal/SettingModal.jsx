@@ -1,10 +1,12 @@
 import React from 'react';
 import css from './Setting.module.css';
+
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import { Link } from 'react-router-dom';
 import { ReactComponent as IconUploadPhoto } from '../../images/icons/arrow-up-tray.svg';
 import RadioButtons from './RadioButtons';
+import FormUser from './FormUser';
 
 const SettingModal = () => {
   const user = useSelector(selectUser);
@@ -38,6 +40,7 @@ const SettingModal = () => {
       <h4 className={css.titleContentTwelve}>Your gender identity</h4>
 
       <RadioButtons />
+      <FormUser />
     </div>
   );
 };
