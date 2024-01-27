@@ -2,9 +2,11 @@
 // import { PublicRoute } from 'HOCs/PublicRoute';
 
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
+import { refreshCurrentUserThunk } from '../redux/auth/operations';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -13,6 +15,12 @@ const SignupPage = lazy(() => import('../pages/SignupPage/SignupPage'));
 const NotFound = lazy(() => import('./NotFound/NotFound'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshCurrentUserThunk());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
