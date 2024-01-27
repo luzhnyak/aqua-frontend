@@ -1,26 +1,56 @@
-.container{
-    display: flex;
-    justify-content: space-between;
+/* My daily norma and progressbar */
+
+.container {
+  display: block;
+  min-height: 1328px;
+}
+.firstSection {
+  display: grid;
+  grid-template-rows: 290px 134px;
+  row-gap: 16px;
+  padding: 20px 0 40px 0;
+  background-image: url('../../images/mobile-bottle-home-screen.svg');
+  background-repeat: no-repeat;
+  background-position: left -0% top 35%;
+  background-size: 280px 208px;
 }
 
-.container-progress{
-box-sizing: border-box;
-max-width: 100%;
-background: var(--Secondary-color-2, #ECF2FF);
-box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
-border-radius: 10px;
-padding: 24px 8px;
+.onlyToCheck {
+  display: inline-flex;
+  padding: 8px 20px;
+  width: 164px;
+  height: 74px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--Secondary-color-2, #ecf2ff);
+  background: var(--Primery-Color-White, #fff);
+  box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
+}
+
+.bottleField {
+}
+
+/* Calendar */
+
+.container-progress {
+  box-sizing: border-box;
+  max-width: 100%;
+  background: var(--Secondary-color-2, #ecf2ff);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  border-radius: 10px;
+  padding: 24px 8px;
 }
 
 @media only screen and (min-width: 768px) {
-    .container-progress{
+  .container-progress {
     padding: 32px 24px;
-    }
-    }
-
+  }
+}
 
 @media only screen and (min-width: 1440px) {
-.container-progress{
-max-width: 592px;
-}
+  .container-progress {
+    max-width: 592px;
+  }
 }
