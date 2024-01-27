@@ -1,11 +1,13 @@
 import css from './MonthStatsTable.module.css';
-import { ReactComponent as IconClose } from '../../images/icons/x-mark-outline.svg';
+// import { ReactComponent as IconClose } from '../../images/icons/x-mark-outline.svg';
 import { useState } from 'react';
+import PopUpDay from './PopUpDay';
 
 export const MonthStatsTable = () => {
   const [sDate, setsDate] = useState(new Date());
+  const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
-  
+
   const previous = '\u003C';
   const next = '\u003E';
   const findMonthDays = (y, m) => {
@@ -15,26 +17,26 @@ export const MonthStatsTable = () => {
   // const findFirstDay = (y, m) => {
   //   return new Date(y, m, 1).getDay();
   // };
-//   const showPopup = () => {
-//     const showPopUp = []
-// showPopUp.push(
-// <div>
-//  <div className={css.popUp}>
-// {`${sDate.toLocaleDateString('en-US', {
-//         day: 'numeric',
-//       })},  
-//        ${sDate.toLocaleDateString('en-US', {
-//         month: 'long',
-//       })}`}
-//       <button className={css['popup-close']} onClick={handleCloseClick}></button>
-//       <p>Daily norma:</p>
-//       <p>Fulfillment of the daily norm:</p>
-//       <p>How many servings of water:</p>
-//     </div>
-//     </div>
-//  )
-//  return showPopUp
-//   }
+  //   const showPopup = () => {
+  //     const showPopUp = []
+  // showPopUp.push(
+  // <div>
+  //  <div className={css.popUp}>
+  // {`${sDate.toLocaleDateString('en-US', {
+  //         day: 'numeric',
+  //       })},
+  //        ${sDate.toLocaleDateString('en-US', {
+  //         month: 'long',
+  //       })}`}
+  //       <button className={css['popup-close']} onClick={handleCloseClick}></button>
+  //       <p>Daily norma:</p>
+  //       <p>Fulfillment of the daily norm:</p>
+  //       <p>How many servings of water:</p>
+  //     </div>
+  //     </div>
+  //  )
+  //  return showPopUp
+  //   }
 
   const changeToPrevMonth = () => {
     setsDate(pDate => {
@@ -52,14 +54,14 @@ export const MonthStatsTable = () => {
     });
   };
 
-  const handleDateClick = date => {
+  const handleDateClick = (day, date) => {
     setsDate(date);
+    setsDay(day);
     setsPopup(true);
-
   };
   const handleCloseClick = () => {
-setsPopup(false)
-  }
+    setsPopup(false);
+  };
 
   const showCalendar = () => {
     // const currDate = new Date();
@@ -79,19 +81,20 @@ setsPopup(false)
       const date = new Date(y, m, d);
       // const isSelected = sDate && date.toDateString() === sDate.toDateString();
 
-      allDays.push(
-        <div className={css['day-cell']} key={`d-${d}`}>
-          <button
-            className={css.day}
-            //   className={`box ${isSelected ? 'selected' : ''}`}
-            onClick={() => handleDateClick(date)}
-          
-          >
-            {d}
-            </button>
-          <p className={css.percent}> 100%</p>
-        </div>
-      );
+      allDays.push({ day: d, date: date, value: 100 });
+
+      // allDays.push(
+      //   <div className={css['day-cell']} key={`d-${d}`}>
+      //     <button
+      //       className={css.day}
+      //       //   className={`box ${isSelected ? 'selected' : ''}`}
+      //       onClick={() => handleDateClick(date)}
+      //     >
+      //       {d}
+      //     </button>
+      //     <p className={css.percent}> 100%</p>
+      //   </div>
+      // );
     }
 
     return allDays;
@@ -106,7 +109,7 @@ setsPopup(false)
             {previous}
           </button>
           <h2 className={css['title-month']}>
-{            `${sDate.toLocaleString('en-US', {
+            {`${sDate.toLocaleString('en-US', {
               month: 'long',
             })}, 
             ${sDate.toLocaleString('en-US', {
@@ -120,26 +123,24 @@ setsPopup(false)
         </div>
       </div>
       <div className={css['calendar-table']}>
-      {popUp && (
-        <div className={css.popUp}>
-<div className={css['popup-header']}>
-<p className={css['popup-date']}>
-{`${sDate.toLocaleDateString('en-US', {
-            day: 'numeric',
-          })},  
-           ${sDate.toLocaleDateString('en-US', {
-            month: 'long',
-          })}`}
-</p>
-<IconClose className={css['popup-close']} onClick={handleCloseClick}/>
-</div>
-          <p>Daily norma:</p>
-          <p>Fulfillment of the daily norm:</p>
-          <p>How many servings of water:</p>
-        </div>
-      )}
-         {showCalendar()} </div>
-      
+        {showCalendar().map(item => {
+          return (
+            <div className={css['day-cell']} key={`d-${item.day}`}>
+              <button
+                className={css.day}
+                //   className={`box ${isSelected ? 'selected' : ''}`}
+                onClick={() => handleDateClick(item.day, item.date)}
+              >
+                {item.day}
+              </button>
+              <p className={css.percent}> 100%</p>
+              {popUp && sDay === item.day && (
+                <PopUpDay handleCloseClick={handleCloseClick} sDate={sDate} />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
