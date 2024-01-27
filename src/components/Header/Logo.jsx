@@ -9,7 +9,8 @@ const Logo = () => {
   const autorized = useSelector(selectIsLoggedIn);
 
   return (
-    <Link to={!autorized ? '/' : '/home'} className={css.logoContainer}>
+    <Link to={autorized ? '/' : '/home'} className={css.logoContainer}>
+      {/* !autorized */}
       <Iconlogo />
       <p className={css.logoText}>Tracker of water</p>
     </Link>

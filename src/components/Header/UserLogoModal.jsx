@@ -3,8 +3,9 @@ import { ReactComponent as IconSettings } from '../../images/icons/cog-6-tooth.s
 import { ReactComponent as IconLogout } from '../../images/icons/arrow-right-on-rectangle.svg';
 
 import css from './Header.module.css';
-import SettingModal from './SettingModal';
+import SettingModal from '../SettingModal/SettingModal';
 import UserLogoutModal from './UserLogoutModal';
+import Modal from 'components/Modal/Modal';
 
 const UserLogoModal = () => {
   const [isOpenUserInfoModal, setOpenUserInfoModal] = useState(false);
@@ -25,7 +26,7 @@ const UserLogoModal = () => {
   const closeUserLogoutModal = () => {
     setOpenUserLogoutModal(false);
   };
-
+  console.log(isOpenUserInfoModal);
   return (
     <>
       <div className={css.dropDownMenuContent}>
@@ -40,11 +41,17 @@ const UserLogoModal = () => {
       </div>
 
       {/* Модальне вікно для settings */}
-      {isOpenUserInfoModal ?? <SettingModal onClose={closeUserInfoModal} />}
+      {isOpenUserInfoModal && !isOpenUserLogoutModal && (
+        <Modal title="Setting" onClose={closeUserInfoModal}>
+          <SettingModal />
+        </Modal>
+      )}
 
       {/* Модальне вікно для logout */}
-      {isOpenUserLogoutModal ?? (
-        <UserLogoutModal onClose={closeUserLogoutModal} />
+      {isOpenUserLogoutModal && !isOpenUserInfoModal && (
+        <Modal title="Logout" onClose={closeUserLogoutModal}>
+          <UserLogoutModal />
+        </Modal>
       )}
     </>
   );

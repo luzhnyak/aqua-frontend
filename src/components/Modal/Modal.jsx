@@ -24,7 +24,7 @@ const Modal = ({ title, children, onClose }) => {
   return createPortal(
     <div onClick={handleClose} className={css.backdrop}>
       <div className={css.modal} onClick={event => event.stopPropagation()}>
-        {title && <h3>{title}</h3>}
+        {title && <h3 className={css.title}>{title}</h3>}
         <button className={css.btnClose} onClick={handleClose}>
           <img src={closeIcon} width={24} alt="Close" />
         </button>

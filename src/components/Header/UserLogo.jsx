@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 import css from './Header.module.css';
 import { ReactComponent as IconChevron } from '../../images/icons/chevron-double-up.svg';
 import UserLogoModal from './UserLogoModal';
-import avatar from './Ellipse 1.jpg';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
 
 const UserLogo = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  // const user = useSelector(selectUser);
-  // const userName = user.name;
-  // const email = user.email;
+  const user = useSelector(selectUser);
+  //   const userName = user.name;
+  //   const email = user.email;
+  const avatar = user.avatarURL;
   const userName = 'kate';
   // const userName = '';
   const email = 'email@mail.com';
