@@ -1,4 +1,5 @@
 import css from './MonthStatsTable.module.css';
+import { ReactComponent as IconClose } from '../../images/icons/x-mark-outline.svg';
 import { useState } from 'react';
 
 export const MonthStatsTable = () => {
@@ -130,7 +131,7 @@ setsPopup(false)
             month: 'long',
           })}`}
 </p>
-          <button className={css['popup-close']} onClick={handleCloseClick}></button>
+<IconClose className={css['popup-close']} onClick={handleCloseClick}/>
 </div>
           <p>Daily norma:</p>
           <p>Fulfillment of the daily norm:</p>
