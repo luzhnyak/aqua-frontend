@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.3e43386f.css",
-    "main.js": "/aqua-frontend/static/js/main.222425ed.js",
-    "static/css/681.ff1e9e8f.chunk.css": "/aqua-frontend/static/css/681.ff1e9e8f.chunk.css",
-    "static/js/681.b0f633e3.chunk.js": "/aqua-frontend/static/js/681.b0f633e3.chunk.js",
+    "main.js": "/aqua-frontend/static/js/main.344bf45d.js",
+    "static/css/681.c1ccc74b.chunk.css": "/aqua-frontend/static/css/681.c1ccc74b.chunk.css",
+    "static/js/681.766c4aea.chunk.js": "/aqua-frontend/static/js/681.766c4aea.chunk.js",
     "static/css/735.fa51e695.chunk.css": "/aqua-frontend/static/css/735.fa51e695.chunk.css",
     "static/js/735.da7f15b4.chunk.js": "/aqua-frontend/static/js/735.da7f15b4.chunk.js",
     "static/css/539.6256e10d.chunk.css": "/aqua-frontend/static/css/539.6256e10d.chunk.css",
@@ -45,9 +45,9 @@
     "static/media/hover-cursor.svg": "/aqua-frontend/static/media/hover-cursor.2c9754f882937ceb1841.svg",
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.3130ad66492b11b8f0b847cad36697e0.svg",
     "main.3e43386f.css.map": "/aqua-frontend/static/css/main.3e43386f.css.map",
-    "main.222425ed.js.map": "/aqua-frontend/static/js/main.222425ed.js.map",
-    "681.ff1e9e8f.chunk.css.map": "/aqua-frontend/static/css/681.ff1e9e8f.chunk.css.map",
-    "681.b0f633e3.chunk.js.map": "/aqua-frontend/static/js/681.b0f633e3.chunk.js.map",
+    "main.344bf45d.js.map": "/aqua-frontend/static/js/main.344bf45d.js.map",
+    "681.c1ccc74b.chunk.css.map": "/aqua-frontend/static/css/681.c1ccc74b.chunk.css.map",
+    "681.766c4aea.chunk.js.map": "/aqua-frontend/static/js/681.766c4aea.chunk.js.map",
     "735.fa51e695.chunk.css.map": "/aqua-frontend/static/css/735.fa51e695.chunk.css.map",
     "735.da7f15b4.chunk.js.map": "/aqua-frontend/static/js/735.da7f15b4.chunk.js.map",
     "539.6256e10d.chunk.css.map": "/aqua-frontend/static/css/539.6256e10d.chunk.css.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.3e43386f.css",
-    "static/js/main.222425ed.js"
+    "static/js/main.344bf45d.js"
   ]
 }
