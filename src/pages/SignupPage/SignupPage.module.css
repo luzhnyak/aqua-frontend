@@ -7,46 +7,52 @@
 
 /* Mobile and <*/
 @media screen and (max-width: 767px) {
-  .container {
-    background-image: url('../../images/mobile-background-element-sign-in.svg'),
-      url('../../images/mobile-bottle-sign-in.svg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: center, bottom;
-  }
+
+    .container {
+        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg"); */
+        background-repeat: no-repeat, no-repeat;
+        background-position: center, bottom;
+    }
+
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-  .container {
-    background-image: url('../../images/mobile-background-element-sign-in.svg'),
-      url('../../images/tablet-bottle-sign-in.svg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: top, right;
-  }
+
+    .container {
+        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg"); */
+        background-repeat: no-repeat, no-repeat;
+        background-position: top, right;
+    }
+
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-  .container {
-    background-image: url('../../images/mobile-background-element-sign-in.svg'),
-      url('../../images/desktop-bottle-sign-in.svg');
-    background-repeat: repeat, no-repeat;
-    background-position: center center, left;
-  }
+
+    .container {
+        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg"); */
+        background-repeat: repeat, no-repeat;
+        background-position: center center, left;
+    }
 }
 
 .mainstr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-  .mainstr {
-    justify-content: flex-start;
-  }
+
+    .mainstr {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
 }
 
 /* Desktop and > */
@@ -54,8 +60,33 @@
 
     .mainstr {
         justify-content: flex-end;
+        align-items: center;
+    }
+
+}
+
+
+.form {
+    margin-top: 24px;
+}
+
+/* Tablet and > */
+@media screen and (min-width: 768px) {
+    .form {
+        margin-top: 40px;
+        margin-left: 32px;
     }
 }
+
+/* Desktop and > */
+@media screen and (min-width: 1440px) {
+    .form {
+
+        margin-right: 198px;
+    }
+
+}
+
 
 .formControl {
   display: flex;
@@ -155,7 +186,7 @@
 }
 
 .iconeye {
-  color: var(--secondary-color-blue-3);
+    stroke: var(--primary-color-blue);
 }
 
 .inputpassword {
@@ -180,11 +211,11 @@
 }
 
 .input::placeholder {
-  color: var(--secondary-color-blue-3);
+    color: var(--secondary-color-blue-3);
 }
 
 .inputpassword::placeholder {
-  color: var(--secondary-color-blue-3);
+    color: var(--secondary-color-blue-3);
 }
 
 .button {
@@ -223,7 +254,6 @@
     border: 2px solid var(--secondary-color-red);
 }
 
-
 .errorInput {
     color: var(--secondary-color-red);
 }
@@ -231,3 +261,11 @@
 .errorInput::placeholder {
     color: var(--secondary-color-red);
 }
+
+.signin {
+    color: var(--primary-color-blue);
+    text-decoration-line: none;
+    display: block;
+    margin-right: auto;
+}
+
