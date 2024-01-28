@@ -51,9 +51,10 @@
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-  .mainstr {
-    justify-content: flex-end;
-  }
+
+    .mainstr {
+        justify-content: flex-end;
+    }
 }
 
 .formControl {
@@ -128,14 +129,54 @@
   }
 }
 
+.inputBoxRep {
+    display: flex;
+    align-items: center;
+    justify-Content: space-between;
+    padding: 6px 10px;
+    width: 280px;
+    border: 2px solid var(--secondary-color-blue-3);
+    border-radius: 6px;
+    outline: none;
+}
+
+/* Tablet and > */
+@media screen and (min-width: 768px) {
+    .inputBoxRep {
+        width: 336px;
+    }
+}
+
+/* Desktop and > */
+@media screen and (min-width: 1440px) {
+    .inputBoxRep {
+        width: 384px;
+    }
+}
+
 .iconeye {
   color: var(--secondary-color-blue-3);
 }
 
 .inputpassword {
-  outline: none;
-  border: none;
-  padding: 0;
+    outline: none;
+    border: none;
+    padding: 0;
+    width: 280px;
+}
+
+/* Tablet and > */
+@media screen and (min-width: 768px) {
+    .inputpassword {
+        width: 336px;
+    }
+}
+
+/* Desktop and > */
+@media screen and (min-width: 1440px) {
+    .inputpassword {
+        width: 384px;
+    }
 }
 
 .input::placeholder {
@@ -173,6 +214,20 @@
 }
 
 .errormessage {
-  color: var(--secondary-color-red);
-  font-size: 14px;
+
+    color: var(--secondary-color-red);
+    font-size: 14px;
+}
+
+.errorBorder {
+    border: 2px solid var(--secondary-color-red);
+}
+
+
+.errorInput {
+    color: var(--secondary-color-red);
+}
+
+.errorInput::placeholder {
+    color: var(--secondary-color-red);
 }
