@@ -9,6 +9,8 @@
   --secondary-color-blue-1: #ecf2ff;
   --secondary-color-blue-2: #d7e3ff;
   --secondary-color-blue-3: #9ebbff;
+
+  --backdrop-color-black: rgba(0, 0, 0, 0.8);
 }
 
 body {
@@ -43,4 +45,8 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.body-scroll-lock {
+  overflow: hidden;
 }

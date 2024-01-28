@@ -1,16 +1,11 @@
+/* Container */
+
 @media only screen and (min-width: 320px) {
   .container {
     margin: 0 auto;
 
     max-width: 320px;
     padding: 8px 20px;
-  }
-
-  .backgroundHomePage {
-    background-image: url('../../images/mobile-background-element-home-screen.svg');
-    background-position: left 70% top 165%;
-    background-repeat: no-repeat;
-    background-size: 320px 1328px;
   }
 }
 
@@ -27,3 +22,89 @@
     padding: 12px 112px;
   }
 }
+
+/* backgroundHomePage */
+
+@media only screen and (min-width: 320px) {
+  .backgroundHomePage {
+    background: url('../../images/mobile-background-element-home-screen.svg')
+        left 70% top 165% / 320px 1328px no-repeat,
+      url('../../images/mobile-bottle-home-screen.svg') left 50% top 13% / 280px
+        208px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .backgroundHomePage {
+    background: url('../../images/tablet-bottle-home-screen.svg') left 50% top
+        10% / 518px 386px no-repeat,
+      url('../../images/tablet-background-element-home-screen.svg') left 0% top
+        105% / 768px 1280px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .backgroundHomePage {
+    background: url('../../images/desktop-background-element-main-page.svg ')
+        left 20% top 60% / 1404px 582px no-repeat,
+      url('../../images/desktop-bottle-home-screen.svg') left 7% top 35% / 738px
+        548px no-repeat;
+  }
+}
+
+/* backgroundWelcomePage */
+
+@media only screen and (min-width: 320px) {
+  .backgroundWelcomePage {
+    background: url('../../images/mobile-background-main-page.svg') left 0% top -5% /
+      320px 1000px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .backgroundWelcomePage {
+    background: url('../../images/tablet-background-main-page.svg') left 0% top
+      0% / 768px 800px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .backgroundWelcomePage {
+    background: url('../../images/desktop-background-main-page.svg') left 0% top
+      100% / 1440px 432px no-repeat;
+  }
+}
+
+/* backgroundSigninPage */
+
+/* @media only screen and (min-width: 320px) {
+  .backgroundSigninPage {
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .backgroundSigninPage {
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .backgroundSigninPage {
+  }
+} */
+
+/* backgroundSignupPage */
+
+/* @media only screen and (min-width: 320px) {
+  .backgroundSignupPage {
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .backgroundSignupPage {
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .backgroundSignupPage {
+  }
+} */

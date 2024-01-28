@@ -1,40 +1,37 @@
 import css from './MonthStatsTable.module.css';
-import { ReactComponent as IconClose } from '../../images/icons/x-mark-outline.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import PopUpDay from './PopUpDay';
+
 
 export const MonthStatsTable = () => {
   const [sDate, setsDate] = useState(new Date());
+  const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
-  
+  const [disabledYear, setsDisabledYear] = useState(false);
   const previous = '\u003C';
   const next = '\u003E';
+
+  const disabled = () => {
+    const currentDate = new Date();
+    const month = Number(
+      sDate.toLocaleString('en-US', {
+        month: 'numeric',
+      })
+    );
+
+    const currentMonth = currentDate.getMonth() + 1;
+
+    if (month === currentMonth) {
+      setsDisabledYear(true);
+    }
+  };
+  useEffect(() => {
+    disabled();
+  });
+
   const findMonthDays = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
   };
-
-  // const findFirstDay = (y, m) => {
-  //   return new Date(y, m, 1).getDay();
-  // };
-//   const showPopup = () => {
-//     const showPopUp = []
-// showPopUp.push(
-// <div>
-//  <div className={css.popUp}>
-// {`${sDate.toLocaleDateString('en-US', {
-//         day: 'numeric',
-//       })},  
-//        ${sDate.toLocaleDateString('en-US', {
-//         month: 'long',
-//       })}`}
-//       <button className={css['popup-close']} onClick={handleCloseClick}></button>
-//       <p>Daily norma:</p>
-//       <p>Fulfillment of the daily norm:</p>
-//       <p>How many servings of water:</p>
-//     </div>
-//     </div>
-//  )
-//  return showPopUp
-//   }
 
   const changeToPrevMonth = () => {
     setsDate(pDate => {
@@ -42,6 +39,7 @@ export const MonthStatsTable = () => {
       const pYear = pDate.getFullYear();
       return new Date(pYear, pMonth);
     });
+    setsDisabledYear(false);
   };
 
   const changeToNextMonth = () => {
@@ -52,46 +50,38 @@ export const MonthStatsTable = () => {
     });
   };
 
-  const handleDateClick = date => {
+  const handleDateClick = (day, date) => {
     setsDate(date);
+    setsDay(day);
     setsPopup(true);
-
   };
   const handleCloseClick = () => {
-setsPopup(false)
-  }
+    setsPopup(false);
+  };
 
   const showCalendar = () => {
-    // const currDate = new Date();
     const y = sDate.getFullYear();
     const m = sDate.getMonth();
     const mDays = findMonthDays(y, m);
-    // const fDay = findFirstDay(y, m);
     const allDays = [];
 
-    // For empty cells
-    // for (let p = 0; p < fDay; p++) {
-    //   allDays.push(<div key={`em-${p}`} className="box empty"></div>);
-    // }
-
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const currentMonth = currentDate.getMonth()
     // Show actual days
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
-      // const isSelected = sDate && date.toDateString() === sDate.toDateString();
 
-      allDays.push(
-        <div className={css['day-cell']} key={`d-${d}`}>
-          <button
-            className={css.day}
-            //   className={`box ${isSelected ? 'selected' : ''}`}
-            onClick={() => handleDateClick(date)}
-          
-          >
-            {d}
-            </button>
-          <p className={css.percent}> 100%</p>
-        </div>
-      );
+if(m === currentMonth){
+  if (d <= currentDay) {
+    allDays.push({ day: d, date: date, value: 100, disabled: false });
+  } else {
+    allDays.push({ day: d, date: date, value: 100, disabled: true });
+  }
+}
+else{
+  allDays.push({ day: d, date: date, value: 100, disabled: false });
+}
     }
 
     return allDays;
@@ -106,40 +96,56 @@ setsPopup(false)
             {previous}
           </button>
           <h2 className={css['title-month']}>
-{            `${sDate.toLocaleString('en-US', {
+            {`${sDate.toLocaleString('en-US', {
               month: 'long',
             })}, 
             ${sDate.toLocaleString('en-US', {
               year: 'numeric',
             })}`}
           </h2>
-          <button className={css['btn-arrow']} onClick={changeToNextMonth}>
-            {' '}
-            {next}{' '}
-          </button>
+
+          {disabledYear ? (
+            <button className={css['btn-arrow']} disabled>
+              {next}
+            </button>
+          ) : (
+            <button className={css['btn-arrow']} onClick={changeToNextMonth}>
+              {next}
+            </button>
+          )}
         </div>
       </div>
       <div className={css['calendar-table']}>
-      {popUp && (
-        <div className={css.popUp}>
-<div className={css['popup-header']}>
-<p className={css['popup-date']}>
-{`${sDate.toLocaleDateString('en-US', {
-            day: 'numeric',
-          })},  
-           ${sDate.toLocaleDateString('en-US', {
-            month: 'long',
-          })}`}
-</p>
-<IconClose className={css['popup-close']} onClick={handleCloseClick}/>
-</div>
-          <p>Daily norma:</p>
-          <p>Fulfillment of the daily norm:</p>
-          <p>How many servings of water:</p>
-        </div>
-      )}
-         {showCalendar()} </div>
-      
+        {showCalendar().map(item => {
+          return (
+            <div key={`d-${item.day}`}>
+              {!item.disabled ? (
+                <div className={css['day-cell']} >
+
+                    <button
+                      className={css.day}
+                      onClick={() => handleDateClick(item.day, item.date)}
+                    >
+                      {item.day}
+                    </button>
+                    <p className={css.percent}> 100%</p>
+
+                  {popUp && sDay === item.day && (
+                    <PopUpDay
+                      handleCloseClick={handleCloseClick}
+                      sDate={sDate}
+                    />
+                  )}
+                </div>
+              ) : (
+                <button className={css['disabled-day']} disabled>
+                  {item.day}
+                </button>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

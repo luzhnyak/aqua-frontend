@@ -7,6 +7,7 @@ export const TodayWaterList = () => {
 <div className={css.entryList}>
     <h2 className={css.title}>Today</h2>
 <ul >
+    <p></p>
     <TodayWaterItem/>
    </ul>
    <button className={css['btn-add']}> <Plus className={css.plus}/> Add water</button>

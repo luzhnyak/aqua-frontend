@@ -1,18 +1,19 @@
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--backdrop-color-black);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: auto;
 }
 
 .modal {
   position: absolute;
-  min-width: 200px;
+  min-width: 280px;
   min-height: 100px;
   padding: 32px 24px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--primary-color-white);
   border-radius: 8px;
   top: 50%;
   left: 50%;
@@ -22,20 +23,38 @@
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .modal {
+    width: 704px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .modal {
+    width: 592px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .settingModal {
+    width: 1008px;
+  }
+}
+
 .btnClose {
   position: absolute;
   display: flex;
   padding: 0;
   justify-content: center;
   align-items: center;
-  top: 32px;
+  top: 36px;
   right: 24px;
   width: 24px;
   height: 24px;
   border: none;
   background-color: transparent;
   :hover {
-    color: white;
+    color: var(--primary-color-white);
     /* border: 1px solid #fff; */
   }
 
@@ -46,10 +65,10 @@
 
 .title {
   height: 32px;
-  color: var(--primery-color-black);
+  color: var(--primary-color-black);
   font-size: 26px;
   font-weight: 500;
-  line-height: 32px; /* 123.077% */
+  line-height: 1.23;
 }
 
 .content {

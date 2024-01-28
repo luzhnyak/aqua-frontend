@@ -1,31 +1,35 @@
 /* SigninPage.module.css */
 
-
 .container {
-    border: 1px solid;
-    width: 100%;
+  border: 1px solid;
+  width: 100%;
 }
 
 /* Mobile and <*/
 @media screen and (max-width: 767px) {
+
     .container {
         /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg"); */
         background-repeat: no-repeat, no-repeat;
         background-position: center, bottom;
     }
+
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
+
     .container {
         /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg"); */
         background-repeat: no-repeat, no-repeat;
         background-position: top, right;
     }
+
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
+
     .container {
         /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg"); */
         background-repeat: repeat, no-repeat;
@@ -38,14 +42,17 @@
     justify-content: center;
     align-items: flex-start;
     height: 100vh;
+
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
+
     .mainstr {
         justify-content: flex-start;
         align-items: flex-start;
     }
+
 }
 
 /* Desktop and > */
@@ -57,6 +64,7 @@
     }
 
 }
+
 
 .form {
     margin-top: 24px;
@@ -79,81 +87,77 @@
 
 }
 
+
 .formControl {
-
-    display: flex;
-    align-items: center;
-    justify-Content: space-between;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 10px;
-    gap: 16px;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 10px;
+  gap: 16px;
 }
 
 .formTitle {
-    padding-left: 10px;
-    font-size: 26px;
+  padding-left: 10px;
+  font-size: 26px;
 }
 
 .formLabel {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
-
 
 .stack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-
-
 .input {
-    padding: 12px 10px;
-    width: 280px;
-    border: 2px solid var(--secondary-color-blue-3);
-    border-radius: 6px;
-    outline: none;
+  padding: 12px 10px;
+  width: 280px;
+  border: 2px solid var(--secondary-color-blue-3);
+  border-radius: 6px;
+  outline: none;
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-    .input {
-        width: 336px;
-    }
+  .input {
+    width: 336px;
+  }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .input {
-        width: 384px;
-    }
+  .input {
+    width: 384px;
+  }
 }
 
 .inputBox {
-    display: flex;
-    align-items: center;
-    justify-Content: space-between;
-    padding: 6px 10px;
-    width: 280px;
-    border: 2px solid var(--secondary-color-blue-3);
-    border-radius: 6px;
-    outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  width: 280px;
+  border: 2px solid var(--secondary-color-blue-3);
+  border-radius: 6px;
+  outline: none;
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-    .inputBox {
-        width: 336px;
-    }
+  .inputBox {
+    width: 336px;
+  }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .inputBox {
-        width: 384px;
-    }
+  .inputBox {
+    width: 384px;
+  }
 }
 
 .inputBoxRep {
@@ -215,32 +219,33 @@
 }
 
 .button {
-    background-color: var(--primary-color-blue);
-    color: var(--primary-color-white);
-    padding: 10px 30px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 280px;
-    height: 36px;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  padding: 10px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 280px;
+  height: 36px;
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-    .button {
-        width: 336px;
-        height: 44px;
-    }
+  .button {
+    width: 336px;
+    height: 44px;
+  }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .button {
-        width: 384px;
-    }
+  .button {
+    width: 384px;
+  }
 }
 
 .errormessage {
+
     color: var(--secondary-color-red);
     font-size: 14px;
 }
@@ -263,3 +268,4 @@
     display: block;
     margin-right: auto;
 }
+
