@@ -45,6 +45,8 @@
 
 @media only screen and (min-width: 768px) {
   .logoutBtn {
+    font-size: 18px;
+
     display: inline;
     width: 160px;
     height: 44px;
@@ -52,6 +54,8 @@
   }
 
   .cancelBtn {
+    font-size: 18px;
+
     display: inline;
     width: 160px;
     height: 44px;

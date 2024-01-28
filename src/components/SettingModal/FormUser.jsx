@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import css from './FormUser.module.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { signUpThunk } from '../../redux/auth/operations';
+import { updateUserInfoThunk } from '../../redux/auth/operations';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
@@ -41,7 +41,7 @@ const FormUser = () => {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    dispatch(signUpThunk(values));
+    dispatch(updateUserInfoThunk(values));
     resetForm();
   };
 

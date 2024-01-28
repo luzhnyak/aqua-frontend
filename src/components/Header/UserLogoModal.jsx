@@ -52,7 +52,7 @@ const UserLogoModal = () => {
       {/* Модальне вікно для logout */}
       {isOpenUserLogoutModal && !isOpenUserInfoModal && (
         <Modal title="Logout" onClose={closeUserLogoutModal}>
-          <UserLogoutModal />
+          <UserLogoutModal onClose={closeUserLogoutModal} />
         </Modal>
       )}
     </>
