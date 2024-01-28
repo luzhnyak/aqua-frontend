@@ -106,9 +106,12 @@ const SigninPage = () => {
                   Sign In
                 </button>
 
-                <Link to="/google-signup" className={css.googleLogin}>
+                <a
+                  href="https://aqua-backend-ieu7.onrender.com/auth/google"
+                  className={css.googleLogin}
+                >
                   <p className={css.googleText}>Enter with Google</p>
-                </Link>
+                </a>
                 <div className={css.wraplink}>
                   <Link to="/signup" className={css.signup}>
                     <p className={css.signupText}>Sign up</p>
