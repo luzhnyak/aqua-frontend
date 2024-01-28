@@ -42,6 +42,10 @@
   border: none;
   color: var(--Primery-Color-Blue, #407bff);
 }
+.btn-arrow:disabled {
+  color: var(--Primery-Color-Blue, #407cff63);
+}
+
 
 .title-month {
   margin: 0;

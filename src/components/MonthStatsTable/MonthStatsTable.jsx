@@ -1,14 +1,31 @@
 import css from './MonthStatsTable.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PopUpDay from './PopUpDay';
+import clsx from 'clsx';
 
 export const MonthStatsTable = () => {
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
-
+  const [disabledYear, setsDisabledYear] = useState(false);
+  const [disabledDay, setsDisabledDay] = useState(false)
   const previous = '\u003C';
   const next = '\u003E';
+  
+const disabled = () =>{
+  const date = Number(sDate.toLocaleString('en-US', {
+    month: 'numeric',
+  }))
+  const currentDate = new Date()
+  const currentMonth = currentDate.getMonth() + 1
+if(date===currentMonth){
+setsDisabledYear(true)
+}
+}
+useEffect(()=>{
+  disabled()
+})
+
   const findMonthDays = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
   };
@@ -24,9 +41,9 @@ export const MonthStatsTable = () => {
 
   const changeToNextMonth = () => {
     setsDate(pDate => {
-      const nMonth = pDate.getMonth() + 1;
-      const nYear = pDate.getFullYear();
-      return new Date(nYear, nMonth);
+  const nMonth = pDate.getMonth() + 1;
+  const nYear = pDate.getFullYear();
+  return new Date(nYear, nMonth);
     });
   };
 
@@ -52,11 +69,12 @@ export const MonthStatsTable = () => {
       allDays.push({ day: d, date: date, value: 100 });
 
     }
-
+    
     return allDays;
   };
 
   return (
+    
     <div className={css['calendar-container']}>
       <div className={css['calendar-header']}>
         <h2 className={css.title}>Month</h2>
@@ -72,10 +90,11 @@ export const MonthStatsTable = () => {
               year: 'numeric',
             })}`}
           </h2>
-          <button className={css['btn-arrow']} onClick={changeToNextMonth}>
-            {' '}
-            {next}{' '}
-          </button>
+
+          {disabledYear?<button className={css['btn-arrow']} disabled>{next}</button> :<button className={css['btn-arrow']} onClick={changeToNextMonth}>
+          
+            {next}
+          </button>}
         </div>
       </div>
       <div className={css['calendar-table']}>
