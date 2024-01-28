@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.6bcba86e.css",
-    "main.js": "/aqua-frontend/static/js/main.3254d923.js",
-    "static/css/223.89dd190e.chunk.css": "/aqua-frontend/static/css/223.89dd190e.chunk.css",
-    "static/js/223.a14cb986.chunk.js": "/aqua-frontend/static/js/223.a14cb986.chunk.js",
+    "main.js": "/aqua-frontend/static/js/main.86bbcbab.js",
+    "static/css/223.bf6d8422.chunk.css": "/aqua-frontend/static/css/223.bf6d8422.chunk.css",
+    "static/js/223.94633880.chunk.js": "/aqua-frontend/static/js/223.94633880.chunk.js",
     "static/css/735.aeb4fdfc.chunk.css": "/aqua-frontend/static/css/735.aeb4fdfc.chunk.css",
     "static/js/735.4a3bb0d1.chunk.js": "/aqua-frontend/static/js/735.4a3bb0d1.chunk.js",
     "static/css/539.6256e10d.chunk.css": "/aqua-frontend/static/css/539.6256e10d.chunk.css",
@@ -40,10 +40,10 @@
     "static/media/user.svg": "/aqua-frontend/static/media/user.7e9142ea9fe6914dec8884aeca1aee4e.svg",
     "index.html": "/aqua-frontend/index.html",
     "static/media/eye-slash.svg": "/aqua-frontend/static/media/eye-slash.fd2ff5744dd66a8abdd3edc8792182c5.svg",
-    "static/media/trash.svg": "/aqua-frontend/static/media/trash.4d013bd3da32d51c2f1910bc5c9799b8.svg",
     "static/media/chevron-double-up.svg": "/aqua-frontend/static/media/chevron-double-up.144e3b207dddaf594f18fa3f37599509.svg",
+    "static/media/trash.svg": "/aqua-frontend/static/media/trash.ae18aa60328fa917051fb84cb18b92be.svg",
+    "static/media/pencil-square.svg": "/aqua-frontend/static/media/pencil-square.ccc0713def310a8c66c0786bd39c69e5.svg",
     "static/media/eye.svg": "/aqua-frontend/static/media/eye.367757680b862a3dcd219e543e59d6f5.svg",
-    "static/media/pencil-square.svg": "/aqua-frontend/static/media/pencil-square.867b14f76301336c718e94622f3f2d68.svg",
     "static/media/progressbar-plus.svg": "/aqua-frontend/static/media/progressbar-plus.c6e2021a484b91614488ed9278eda557.svg",
     "static/media/presentation-chart-bar.svg": "/aqua-frontend/static/media/presentation-chart-bar.8cfec11a5c739ea320477bba603d1a57.svg",
     "static/media/arrow-right-on-rectangle.svg": "/aqua-frontend/static/media/arrow-right-on-rectangle.02cb487a75ecb89135ef1a7de29c8136.svg",
@@ -52,12 +52,12 @@
     "static/media/x-mark-outline.svg": "/aqua-frontend/static/media/x-mark-outline.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/x-mark.svg": "/aqua-frontend/static/media/x-mark.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/radio-button.svg": "/aqua-frontend/static/media/radio-button.c19e6c6e8679819727a73a68546dfaf3.svg",
-    "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.3130ad66492b11b8f0b847cad36697e0.svg",
+    "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.3a5305120bec98a9c977eccfd5b62a0d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b01531941d1db5.svg",
     "main.6bcba86e.css.map": "/aqua-frontend/static/css/main.6bcba86e.css.map",
-    "main.3254d923.js.map": "/aqua-frontend/static/js/main.3254d923.js.map",
-    "223.89dd190e.chunk.css.map": "/aqua-frontend/static/css/223.89dd190e.chunk.css.map",
-    "223.a14cb986.chunk.js.map": "/aqua-frontend/static/js/223.a14cb986.chunk.js.map",
+    "main.86bbcbab.js.map": "/aqua-frontend/static/js/main.86bbcbab.js.map",
+    "223.bf6d8422.chunk.css.map": "/aqua-frontend/static/css/223.bf6d8422.chunk.css.map",
+    "223.94633880.chunk.js.map": "/aqua-frontend/static/js/223.94633880.chunk.js.map",
     "735.aeb4fdfc.chunk.css.map": "/aqua-frontend/static/css/735.aeb4fdfc.chunk.css.map",
     "735.4a3bb0d1.chunk.js.map": "/aqua-frontend/static/js/735.4a3bb0d1.chunk.js.map",
     "539.6256e10d.chunk.css.map": "/aqua-frontend/static/css/539.6256e10d.chunk.css.map",
@@ -72,6 +72,6 @@
   },
   "entrypoints": [
     "static/css/main.6bcba86e.css",
-    "static/js/main.3254d923.js"
+    "static/js/main.86bbcbab.js"
   ]
 }
