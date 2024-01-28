@@ -74,12 +74,17 @@
   }
 }
 .day-cell {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+   .day-cell{
+    position: relative;
+  }
 }
 
 .day {
@@ -143,6 +148,8 @@
   .popUp {
     width: 292px;
     padding: 24px 16px;
+    top: -188px;
+    left: -275px;
   }
 }
 
