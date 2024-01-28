@@ -1,24 +1,43 @@
-.entry-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.entry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0px;
+  height: 26px;
+  border-bottom: 1px solid #d7e3ff;
+}
+
+@media only screen and (min-width: 768px) {
+  .entry-item {
     padding: 12px 0px;
-    height: 26px;
-    border-bottom: 1px solid #D7E3FF;
+    height: 36px;
+  }
 }
 
-.glass{
-    width: 26px;
-height: 26px;
+.glass {
+  width: 26px;
+  height: 26px;
 }
 
-.edit{
-width: 16px;
-height: 16px;
-stroke: #9EBBFF;
+@media only screen and (min-width: 768px) {
+    .glass {
+        width: 36px;
+        height: 36px;
+      }
 }
 
-.delete{
-width: 16px;
-height: 16px;
+.icons{
+    display: flex;
+    gap: 18px;
+}
+
+.edit {
+  width: 16px;
+  height: 16px;
+  stroke: #9ebbff;
+}
+
+.delete {
+  width: 16px;
+  height: 16px;
 }
