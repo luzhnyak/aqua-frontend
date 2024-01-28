@@ -6,11 +6,13 @@ import css from './SharedLayout.module.css';
 
 export const SharedLayout = () => {
   const location = useLocation();
+  const home = location.pathname.includes('/home');
+  const welcome = location.pathname.includes('/welcome');
 
   return (
     <div
-      className={`${css.container} ${
-        location.pathname.includes('/home') ? css.backgroundHomePage : ''
+      className={`${css.container} ${home ? css.backgroundHomePage : ''} ${
+        welcome ? css.backgroundWelcomePage : ''
       }`}
     >
       <Header />

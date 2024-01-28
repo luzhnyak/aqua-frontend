@@ -3,7 +3,6 @@ import css from './WelcomePage.module.css';
 import { Link } from 'react-router-dom';
 
 const WelcomePage = () => {
-
   return (
     <div className={css.container}>
       <div className={css.dataContainer}>
@@ -17,8 +16,8 @@ const WelcomePage = () => {
               <img
                 src={require('../../images/icons/calendar-days.svg').default}
                 alt="Habit drive icon"
-                width="40"
-                height="40"
+                width="32"
+                height="32"
               />
               Habit drive
             </li>
@@ -29,8 +28,8 @@ const WelcomePage = () => {
                     .default
                 }
                 alt="Habit drive icon"
-                width="40"
-                height="40"
+                width="32"
+                height="32"
               />
               View statistics
             </li>
@@ -40,8 +39,8 @@ const WelcomePage = () => {
                   require('../../images/icons/wrench-screwdriver.svg').default
                 }
                 alt="Habit drive icon"
-                width="40"
-                height="40"
+                width="32"
+                height="32"
               />
               Personal rate setting
             </li>
