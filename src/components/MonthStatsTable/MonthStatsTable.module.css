@@ -90,6 +90,19 @@
     position: relative;
   }
 }
+.disabled-day{
+  font-size: 14px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  cursor: default;
+  color: #4f4c4c43;
+}
 
 .day {
   font-size: 14px;
@@ -102,7 +115,6 @@
   border-radius: 50%;
   background: #fff;
 
-  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .day {
@@ -111,6 +123,7 @@
     height: 34px;
   }
 }
+
 
 .percent {
   text-align: center;

@@ -1,35 +1,37 @@
 import css from './MonthStatsTable.module.css';
 import { useEffect, useState } from 'react';
 import PopUpDay from './PopUpDay';
-import clsx from 'clsx';
+
 
 export const MonthStatsTable = () => {
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
   const [disabledYear, setsDisabledYear] = useState(false);
-  const [disabledDay, setsDisabledDay] = useState(false)
   const previous = '\u003C';
   const next = '\u003E';
-  
-const disabled = () =>{
-  const date = Number(sDate.toLocaleString('en-US', {
-    month: 'numeric',
-  }))
-  const currentDate = new Date()
-  const currentMonth = currentDate.getMonth() + 1
-if(date===currentMonth){
-setsDisabledYear(true)
-}
-}
-useEffect(()=>{
-  disabled()
-})
+
+  const disabled = () => {
+    const currentDate = new Date();
+    const month = Number(
+      sDate.toLocaleString('en-US', {
+        month: 'numeric',
+      })
+    );
+
+    const currentMonth = currentDate.getMonth() + 1;
+
+    if (month === currentMonth) {
+      setsDisabledYear(true);
+    }
+  };
+  useEffect(() => {
+    disabled();
+  });
 
   const findMonthDays = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
   };
-
 
   const changeToPrevMonth = () => {
     setsDate(pDate => {
@@ -37,13 +39,14 @@ useEffect(()=>{
       const pYear = pDate.getFullYear();
       return new Date(pYear, pMonth);
     });
+    setsDisabledYear(false);
   };
 
   const changeToNextMonth = () => {
     setsDate(pDate => {
-  const nMonth = pDate.getMonth() + 1;
-  const nYear = pDate.getFullYear();
-  return new Date(nYear, nMonth);
+      const nMonth = pDate.getMonth() + 1;
+      const nYear = pDate.getFullYear();
+      return new Date(nYear, nMonth);
     });
   };
 
@@ -62,19 +65,24 @@ useEffect(()=>{
     const mDays = findMonthDays(y, m);
     const allDays = [];
 
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+
     // Show actual days
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
 
-      allDays.push({ day: d, date: date, value: 100 });
-
+      if (d <= currentDay) {
+        allDays.push({ day: d, date: date, value: 100, disabled: false });
+      } else {
+        allDays.push({ day: d, date: date, value: 100, disabled: true });
+      }
     }
-    
+
     return allDays;
   };
 
   return (
-    
     <div className={css['calendar-container']}>
       <div className={css['calendar-header']}>
         <h2 className={css.title}>Month</h2>
@@ -91,25 +99,43 @@ useEffect(()=>{
             })}`}
           </h2>
 
-          {disabledYear?<button className={css['btn-arrow']} disabled>{next}</button> :<button className={css['btn-arrow']} onClick={changeToNextMonth}>
-          
-            {next}
-          </button>}
+          {disabledYear ? (
+            <button className={css['btn-arrow']} disabled>
+              {next}
+            </button>
+          ) : (
+            <button className={css['btn-arrow']} onClick={changeToNextMonth}>
+              {next}
+            </button>
+          )}
         </div>
       </div>
       <div className={css['calendar-table']}>
         {showCalendar().map(item => {
           return (
-            <div className={css['day-cell']} key={`d-${item.day}`}>
-              <button
-                className={css.day}
-                onClick={() => handleDateClick(item.day, item.date)}
-              >
-                {item.day}
-              </button>
-              <p className={css.percent}> 100%</p>
-              {popUp && sDay === item.day && (
-                <PopUpDay handleCloseClick={handleCloseClick} sDate={sDate} />
+            <div key={`d-${item.day}`}>
+              {!item.disabled ? (
+                <div className={css['day-cell']} >
+
+                    <button
+                      className={css.day}
+                      onClick={() => handleDateClick(item.day, item.date)}
+                    >
+                      {item.day}
+                    </button>
+                    <p className={css.percent}> 100%</p>
+
+                  {popUp && sDay === item.day && (
+                    <PopUpDay
+                      handleCloseClick={handleCloseClick}
+                      sDate={sDate}
+                    />
+                  )}
+                </div>
+              ) : (
+                <button className={css['disabled-day']} disabled>
+                  {item.day}
+                </button>
               )}
             </div>
           );
