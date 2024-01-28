@@ -143,14 +143,42 @@
   top: -204px;
   left: -8px;
 }
-
+.secondRow{
+  top: -140px;
+}
+.thirdRow{
+  top: -76px;
+}
+.forthRow{
+  top: -12px;
+}
+.fifthRow{
+  top: 52px;
+}
+.sixthRow{
+  top: 116px;
+}
+.seventhRow{
+  top: 180px;
+}
 @media only screen and (min-width: 768px) {
   .popUp {
     width: 292px;
     padding: 24px 16px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+   .left{
+    top: -188px;
+    left: 17px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .right{
     top: -188px;
     left: -275px;
-  }
+ }
 }
 
 .popup-header {
