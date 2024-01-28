@@ -67,16 +67,21 @@ export const MonthStatsTable = () => {
 
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
-
+    const currentMonth = currentDate.getMonth()
     // Show actual days
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
 
-      if (d <= currentDay) {
-        allDays.push({ day: d, date: date, value: 100, disabled: false });
-      } else {
-        allDays.push({ day: d, date: date, value: 100, disabled: true });
-      }
+if(m === currentMonth){
+  if (d <= currentDay) {
+    allDays.push({ day: d, date: date, value: 100, disabled: false });
+  } else {
+    allDays.push({ day: d, date: date, value: 100, disabled: true });
+  }
+}
+else{
+  allDays.push({ day: d, date: date, value: 100, disabled: false });
+}
     }
 
     return allDays;
