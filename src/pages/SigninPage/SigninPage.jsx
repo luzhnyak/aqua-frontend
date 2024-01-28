@@ -106,9 +106,18 @@ const SigninPage = () => {
                   Sign In
                 </button>
 
-                <Link to="/signup" className={css.signup}>
-                  <p className={css.signupText}>Sign up</p>
+                <Link to="/google-signup" className={css.googleLogin}>
+                  <p className={css.googleText}>Enter with Google</p>
                 </Link>
+                <div className={css.wraplink}>
+                  <Link to="/signup" className={css.signup}>
+                    <p className={css.signupText}>Sign up</p>
+                  </Link>
+
+                  <Link to="/forgot-password" className={css.forgotPassword}>
+                    <p className={css.signupText}>Forgot password?</p>
+                  </Link>
+                </div>
               </div>
             </Form>
           )}

@@ -9,7 +9,7 @@
 /* Mobile and <*/
 @media screen and (max-width: 767px) {
     .container {
-        background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg");
+        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg"); */
         background-repeat: no-repeat, no-repeat;
         background-position: center, bottom;
     }
@@ -18,7 +18,7 @@
 /* Tablet and > */
 @media screen and (min-width: 768px) {
     .container {
-        background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg");
+        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg"); */
         background-repeat: no-repeat, no-repeat;
         background-position: top, right;
     }
@@ -27,17 +27,16 @@
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
     .container {
-        background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg");
+        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg"); */
         background-repeat: repeat, no-repeat;
         background-position: center center, left;
     }
 }
 
-
 .mainstr {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
 }
 
@@ -45,18 +44,40 @@
 @media screen and (min-width: 768px) {
     .mainstr {
         justify-content: flex-start;
+        align-items: flex-start;
     }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
+
     .mainstr {
         justify-content: flex-end;
+        align-items: center;
+    }
+
+}
+
+.form {
+    margin-top: 24px;
+}
+
+/* Tablet and > */
+@media screen and (min-width: 768px) {
+    .form {
+        margin-top: 40px;
+        margin-left: 32px;
     }
 }
 
+/* Desktop and > */
+@media screen and (min-width: 1440px) {
+    .form {
 
+        margin-right: 198px;
+    }
 
+}
 
 .formControl {
 
@@ -78,7 +99,6 @@
 .formLabel {
     margin-bottom: 8px;
 }
-
 
 
 .stack {
@@ -110,7 +130,6 @@
         width: 384px;
     }
 }
-
 
 .inputBox {
     display: flex;
@@ -163,9 +182,8 @@
 }
 
 .iconeye {
-    color: var(--secondary-color-blue-3)
+    stroke: var(--primary-color-blue);
 }
-
 
 .inputpassword {
     outline: none;
@@ -190,12 +208,10 @@
 
 .input::placeholder {
     color: var(--secondary-color-blue-3);
-
 }
 
 .inputpassword::placeholder {
     color: var(--secondary-color-blue-3);
-
 }
 
 .button {
@@ -224,7 +240,6 @@
     }
 }
 
-
 .errormessage {
     color: var(--secondary-color-red);
     font-size: 14px;
@@ -234,11 +249,17 @@
     border: 2px solid var(--secondary-color-red);
 }
 
-
 .errorInput {
     color: var(--secondary-color-red);
 }
 
 .errorInput::placeholder {
     color: var(--secondary-color-red);
+}
+
+.signin {
+    color: var(--primary-color-blue);
+    text-decoration-line: none;
+    display: block;
+    margin-right: auto;
 }
