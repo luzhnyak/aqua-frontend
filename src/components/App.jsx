@@ -8,11 +8,16 @@ import { useDispatch } from 'react-redux';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { refreshCurrentUserThunk } from '../redux/auth/operations';
 
+
+
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 const SignupPage = lazy(() => import('../pages/SignupPage/SignupPage'));
 const NotFound = lazy(() => import('./NotFound/NotFound'));
+const RedirectVerifyPage = lazy(() => import('../pages/RedirectVerifyPage/RedirectVerifyPage'));
+const ForgotPasswordPage = lazy(() => import('../pages/ForgotPasswordPage/ForgotPasswordPage'));
+const UpdatetPasswordPage = lazy(() => import('../pages/UpdatePasswordPage/UpdatePasswordPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +38,12 @@ export const App = () => {
           <Route path="signup" element={<SignupPage />}></Route>
 
           <Route path="signin" element={<SigninPage />}></Route>
+
+          <Route path="verify/:token" element={<RedirectVerifyPage />} />
+
+          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+
+          <Route path="update-password/:token" element={<UpdatetPasswordPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>
