@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkaqua_frontend=self.webpackChunkaqua_frontend||[]).push([[788],{8788:function(n,r,t){t.r(r),t.d(r,{default:function(){return u}});var e=t(4387),a="ForgotPasswordPage_container__Z-X75",o=t(9140),s=t(184),u=function(){return(0,s.jsx)("div",{className:a,children:(0,s.jsx)(o.Z,{title:"Forgot password",onSubmit:function(n,r){var t=r.resetForm;(0,e.n)(n),t()}})})}}}]);
+//# sourceMappingURL=788.549c8766.chunk.js.map
