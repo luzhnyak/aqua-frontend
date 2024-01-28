@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import css from './WaterRatioPanel.module.css';
 
+import { useSelector } from 'react-redux';
+import { selectWatersToday } from '../../redux/waterConsumption/selectors';
+
 const WaterRatioPanel = () => {
+  const waterToday = useSelector(selectWatersToday);
+
+  useEffect(() => {
+    const rangeThumb = document.getElementById('range-thumb');
+    const rangeInput = document.getElementById('range-input');
+
+    const thumbPosition = rangeInput.value / rangeInput.max;
+
+    const changeThumbPosition = () => {
+      const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
+      const thumbPositionX = thumbPosition * space;
+      rangeThumb.style.left = `${thumbPositionX}px`;
+    };
+
+    changeThumbPosition();
+
+    const updateProgressBarColor = () => {
+      const space = rangeInput.offsetWidth - 7;
+      const thumbPositionX = thumbPosition * space;
+
+      rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
+    };
+    updateProgressBarColor();
+  }, [waterToday]);
+
   return (
     <div>
       <h2 className={css.today}>Today</h2>
@@ -10,18 +38,19 @@ const WaterRatioPanel = () => {
           <div className={css.range}>
             <div className={css.rangeContent}>
               <div className={css.rangeSlider}>
-                <div className={css.rangeSliderLine} id="rangeLine"></div>
+                <div className={css.rangeSliderLine} id="range-line"></div>
               </div>
               <div className={css.rangeThumb} id="range-thumb"></div>
 
               <input
                 type="range"
                 className={css.rangeInput}
-                id="rangeInput"
+                id="range-input"
                 min="0"
                 max="100"
-                value="0"
+                value="80"
                 step="1"
+                readOnly
               />
             </div>
           </div>
