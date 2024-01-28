@@ -60,6 +60,6 @@ export const addWater = async newWater => {
 };
 
 export const deleteWaterById = async entryId => {
-  const { data } = await axios.delete(`/contacts/${entryId}`);
+  const { data } = await axios.delete(`/water/${entryId}`);
   return data;
 };

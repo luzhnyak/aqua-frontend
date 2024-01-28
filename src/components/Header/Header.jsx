@@ -13,7 +13,7 @@ const Header = () => {
     <header>
       <nav className={css.nav}>
         <Logo />
-        {autorized ? <UserAuth /> : <UserLogo />}
+        {!autorized ? <UserAuth /> : <UserLogo />}
         {/* !autorized */}
       </nav>
     </header>
