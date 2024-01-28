@@ -50,11 +50,19 @@ const waterSlice = createSlice({
         state.items = action.payload.dailyEntries;
       })
       .addMatcher(
-        isAnyOf(addWaterThunk.pending, deleteWaterThunk.pending),
+        isAnyOf(
+          addWaterThunk.pending,
+          deleteWaterThunk.pending,
+          getAllWaterForTodayThunk.pending
+        ),
         handlePending
       )
       .addMatcher(
-        isAnyOf(addWaterThunk.rejected, deleteWaterThunk.rejected),
+        isAnyOf(
+          addWaterThunk.rejected,
+          deleteWaterThunk.rejected,
+          getAllWaterForTodayThunk.rejected
+        ),
         handleRejected
       ),
 });
