@@ -58,3 +58,17 @@ export const addWater = async newWater => {
   const { data } = await axios.post('/water', newWater);
   return data;
 };
+
+//========================= Verify email
+
+export const sendVerify = async token => {
+  const { data } = await axios.get(`/users/verify/${token}`);
+  return data;
+};
+
+//========================= Send email forgot password
+
+export const sendMailForgotPass = async body => {
+  const { data } = await axios.post(`/users/forgot-password`, body);
+  return data;
+};
