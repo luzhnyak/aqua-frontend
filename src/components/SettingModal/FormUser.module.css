@@ -1,17 +1,40 @@
-.form {
+@media only screen and (min-width: 1440px) {
+  .form {
+    display: flex;
+    gap: 24px;
+  }
+}
+
+.formName,
+.formEmail {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
 }
 
+@media only screen and (min-width: 1440px) {
+  .formEmail {
+    margin-bottom: 0;
+  }
+}
+
 .formPassword {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
 }
 
 .subform {
   position: relative;
+  width: 256px;
+}
+
+@media only screen and (min-width: 768px) {
+  .subform {
+    width: 392px;
+  }
 }
 
 .title {
@@ -30,11 +53,18 @@
   margin-bottom: 12px;
 }
 
+@media only screen and (min-width: 1440px) {
+  .titlePassword {
+    margin-bottom: 0;
+  }
+}
+
 .subTitle {
   color: var(--primary-color-black);
   font-size: 16px;
   line-height: 1.25;
   margin-bottom: 8px;
+  margin-top: 12px;
 }
 
 .input {
@@ -42,11 +72,18 @@
   font-size: 16px;
   line-height: 1.25;
 
-  min-width: 256px;
+  width: 256px;
   height: 44px;
   padding: 12px 10px;
+
   border-radius: 6px;
   border: 1px solid var(--secondary-color-blue-2);
+}
+
+@media only screen and (min-width: 768px) {
+  .input {
+    width: 392px;
+  }
 }
 
 .input:focus {
@@ -54,7 +91,7 @@
 }
 
 .input::placeholder {
-  color: var(--primary-color-blue);
+  color: var(--secondary-color-blue-3);
   font-size: 16px;
   line-height: 1.25;
 }
@@ -71,15 +108,17 @@
 
 .button {
   display: block;
-  min-width: 256px;
+  margin-left: auto;
+  width: 256px;
   height: 36px;
   padding: 8px 30px;
+  margin-top: 24px;
 
   color: var(--primary-color-white);
   text-align: center;
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.25; /* 125% */
+  line-height: 1.25;
 
   border: transparent;
   border-radius: 10px;
@@ -87,14 +126,25 @@
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 }
 
+@media only screen and (min-width: 768px) {
+  .button {
+    width: 160px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
 .errormessage {
+  position: absolute;
+  bottom: -17px;
+  left: 0;
   color: var(--secondary-color-red);
   font-size: 14px;
   line-height: 1.28;
 }
 
 .errorinput {
-  color: var(--primary-color-blue);
+  color: var(--secondary-color-red);
   font-size: 16px;
   line-height: 1.25;
 
@@ -103,4 +153,9 @@
   padding: 12px 10px;
   border-radius: 6px;
   border: 1px solid var(--secondary-color-red);
+  outline: var(--secondary-color-blue-2);
+}
+
+.errorinput::placeholder {
+  color: var(--secondary-color-red);
 }

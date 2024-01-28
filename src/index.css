@@ -46,3 +46,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.body-scroll-lock {
+  overflow: hidden;
+}

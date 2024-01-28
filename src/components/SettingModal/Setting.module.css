@@ -1,4 +1,4 @@
-.titleContentEight {
+.title {
   color: var(--primary-color-black);
   font-size: 18px;
   font-weight: 500;
@@ -51,12 +51,4 @@
 
   gap: 8px;
   margin-bottom: 24px;
-}
-
-.titleContentTwelve {
-  color: var(--primary-color-black);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11;
-  margin-bottom: 12px;
 }

@@ -5,21 +5,24 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import { Link } from 'react-router-dom';
 import { ReactComponent as IconUploadPhoto } from '../../images/icons/arrow-up-tray.svg';
-import RadioButtons from './RadioButtons';
 import FormUser from './FormUser';
 
 const SettingModal = () => {
   const user = useSelector(selectUser);
-  //   const userName = user.name;
-  //   const email = user.email;
+  console.log(user);
+  // const userName = user.name;
+  // console.log(userName);
+  // const email = user.email;
+  // console.log(email);
   const avatar = user.avatarURL;
-  const userName = 'kate';
+  console.log(avatar);
+  const userName = 'user';
   // const userName = '';
   const email = 'email@mail.com';
 
   return (
     <div>
-      <h4 className={css.titleContentEight}>Your photo</h4>
+      <h4 className={css.title}>Your photo</h4>
       <div className={css.wrapAvatar}>
         {avatar ? (
           <img srcSet={avatar} className={css.avatar} alt="userAvatar" />
@@ -37,9 +40,7 @@ const SettingModal = () => {
           <p>Upload a photo</p>
         </Link>
       </div>
-      <h4 className={css.titleContentTwelve}>Your gender identity</h4>
 
-      <RadioButtons />
       <FormUser />
     </div>
   );

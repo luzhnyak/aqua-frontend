@@ -5,6 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: auto;
 }
 
 .modal {
@@ -19,6 +20,18 @@
   transform: translate(-50%, -50%);
   @media only screen and (max-width: 767px) {
     padding: 32px 12px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .modal {
+    width: 704px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .modal {
+    width: 1008px;
   }
 }
 

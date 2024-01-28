@@ -1,3 +1,11 @@
+.title {
+  color: var(--primary-color-black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  margin-bottom: 12px;
+}
+
 .radioButtons {
   display: flex;
   align-items: center;
@@ -6,6 +14,12 @@
   margin-bottom: 24px;
 }
 
+@media only screen and (min-width: 1440px) {
+  .radioButtons {
+    gap: 24px;
+    margin-bottom: 52px;
+  }
+}
 .radiobutton {
   display: none;
 }
@@ -18,15 +32,16 @@
 
 .radioDotLeft {
   position: absolute;
-  top: 255px;
+  top: 254px;
   left: 12px;
+  transform: translate(0, 0);
   width: 14px;
   height: 14px;
 }
 
 .radioDotRight {
   position: absolute;
-  top: 255px;
+  top: 254px;
   left: 113px;
   width: 14px;
   height: 14px;
@@ -34,7 +49,7 @@
 
 .customRadioButtonLeft {
   position: absolute;
-  top: 255px;
+  top: 254px;
   left: 12px;
 
   width: 14px;
@@ -43,7 +58,7 @@
 
 .customRadioButtonRight {
   position: absolute;
-  top: 255px;
+  top: 254px;
   left: 113px;
 
   width: 14px;

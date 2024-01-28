@@ -13,6 +13,7 @@ const UserLogoModal = () => {
 
   const openUserInfoModal = () => {
     setOpenUserInfoModal(true);
+    document.body.classList.add('body-scroll-lock');
   };
 
   const openUserLogoutModal = () => {
@@ -21,12 +22,13 @@ const UserLogoModal = () => {
 
   const closeUserInfoModal = () => {
     setOpenUserInfoModal(false);
+    document.body.classList.remove('body-scroll-lock');
   };
 
   const closeUserLogoutModal = () => {
     setOpenUserLogoutModal(false);
   };
-  console.log(isOpenUserInfoModal);
+
   return (
     <>
       <div className={css.dropDownMenuContent}>
