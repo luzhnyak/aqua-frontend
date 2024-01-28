@@ -148,6 +148,19 @@
   line-height: 1.25;
 }
 
+.benefitsItem img {
+  width: 32px;
+  height: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .benefitsItem img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
 .tryTrackerBtn {
   display: block;
   padding: 10px 30px;
