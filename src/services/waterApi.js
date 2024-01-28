@@ -93,3 +93,10 @@ export const sendUpdatePass = async (token, body) => {
   });
   return data;
 };
+
+//========================= Resend verify email
+
+export const resendVerifyToken = async body => {
+  const { data } = await axios.get(`/users/verify`, body);
+  return data;
+};

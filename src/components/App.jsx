@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { refreshCurrentUserThunk } from '../redux/auth/operations';
+import ResendVerifyEmailPage from 'pages/ResendVerifyEmailPage/ResendVerifyEmailPage';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -63,6 +64,8 @@ export const App = () => {
             path="update-password/:token"
             element={<UpdatetPasswordPage />}
           />
+
+          <Route path="resend-verify-email" element={<ResendVerifyEmailPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>
