@@ -5,7 +5,7 @@
 .nav {
   position: relative;
 
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   display: flex;
   height: 48px;
   align-items: center;

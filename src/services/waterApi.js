@@ -48,7 +48,7 @@ export const updateUserInfo = async formData => {
 };
 
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.patch('/users/water-rate', newWaterRate);
+  const { data } = await axios.put('/users/water-rate', newWaterRate);
   return data;
 };
 
@@ -58,6 +58,7 @@ export const addWater = async newWater => {
   const { data } = await axios.post('/water', newWater);
   return data;
 };
+
 
 //========================= Verify email
 
@@ -72,3 +73,9 @@ export const sendMailForgotPass = async body => {
   const { data } = await axios.post(`/users/forgot-password`, body);
   return data;
 };
+
+export const deleteWaterById = async entryId => {
+  const { data } = await axios.delete(`/water/${entryId}`);
+  return data;
+};
+
