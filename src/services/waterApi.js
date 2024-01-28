@@ -74,6 +74,13 @@ export const sendMailForgotPass = async body => {
   return data;
 };
 
+//========================= Send update password
+
+export const sendUpdatePass = async (token, body) => {
+  const { data } = await axios.post(`/users/forgot-password/${token}`, {newPassword: body});
+  return data;
+};
+
 export const deleteWaterById = async entryId => {
   const { data } = await axios.delete(`/water/${entryId}`);
   return data;
