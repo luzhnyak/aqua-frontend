@@ -33,6 +33,8 @@ export const refreshCurrentUser = async () => {
   return data;
 };
 
+//==========================Update User Data
+
 export const updateUserAvatar = async newAvatar => {
   const formData = new FormData();
   formData.append('avatar', newAvatar);
@@ -43,12 +45,12 @@ export const updateUserAvatar = async newAvatar => {
 };
 
 export const updateUserInfo = async formData => {
-  const { data } = await axios.patch('/users/update-user', formData);
+  const { data } = await axios.put('/users/update-user', formData);
   return data;
 };
 
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.put('/users/water-rate', newWaterRate);
+  const { data } = await axios.patch('/users/water-rate', newWaterRate);
   return data;
 };
 
@@ -59,30 +61,35 @@ export const addWater = async newWater => {
   return data;
 };
 
+export const deleteWaterById = async (dayId, entryId) => {
+  const { data } = await axios.delete(`/water/${dayId}/${entryId}`);
+  return data;
+};
+
+export const getAllWaterForToday = async () => {
+  const { data } = await axios.get(`/water`);
+  return data;
+};
 
 //========================= Verify email
-
+//TODO: add to slice
 export const sendVerify = async token => {
   const { data } = await axios.get(`/users/verify/${token}`);
   return data;
 };
 
 //========================= Send email forgot password
-
+//TODO: add to slice
 export const sendMailForgotPass = async body => {
   const { data } = await axios.post(`/users/forgot-password`, body);
   return data;
 };
 
 //========================= Send update password
-
+//TODO: add to slice
 export const sendUpdatePass = async (token, body) => {
-  const { data } = await axios.post(`/users/forgot-password/${token}`, {newPassword: body});
+  const { data } = await axios.post(`/users/forgot-password/${token}`, {
+    newPassword: body,
+  });
   return data;
 };
-
-export const deleteWaterById = async entryId => {
-  const { data } = await axios.delete(`/water/${entryId}`);
-  return data;
-};
-

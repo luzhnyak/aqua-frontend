@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addWaterThunk, deleteWaterThunk } from './operations';
+import {
+  addWaterThunk,
+  deleteWaterThunk,
+  getAllWaterForTodayThunk,
+} from './operations';
 
 const waterInitialState = {
   items: [],
@@ -40,12 +44,25 @@ const waterSlice = createSlice({
         //    );
         //    state.items.splice(index, 1);
       })
+      .addCase(getAllWaterForTodayThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload.dailyEntries;
+      })
       .addMatcher(
-        isAnyOf(addWaterThunk.pending, deleteWaterThunk.pending),
+        isAnyOf(
+          addWaterThunk.pending,
+          deleteWaterThunk.pending,
+          getAllWaterForTodayThunk.pending
+        ),
         handlePending
       )
       .addMatcher(
-        isAnyOf(addWaterThunk.rejected, deleteWaterThunk.rejected),
+        isAnyOf(
+          addWaterThunk.rejected,
+          deleteWaterThunk.rejected,
+          getAllWaterForTodayThunk.rejected
+        ),
         handleRejected
       ),
 });
