@@ -10,7 +10,7 @@
 
 .modal {
   position: absolute;
-  min-width: 200px;
+  min-width: 280px;
   min-height: 100px;
   padding: 32px 24px;
   background-color: var(--primary-color-white);
