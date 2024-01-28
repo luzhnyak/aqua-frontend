@@ -14,10 +14,10 @@ const HomePage = () => {
 
         <WaterRatioPanel />
       </section>
-      <div className={css['container-progress']}>
+      <section className={css['container-progress']}>
         <TodayWaterList />
         <MonthStatsTable />
-      </div>
+      </section>
     </main>
   );
 };
