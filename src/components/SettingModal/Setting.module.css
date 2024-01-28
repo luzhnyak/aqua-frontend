@@ -1,0 +1,54 @@
+.title {
+  color: var(--primary-color-black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.noAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--secondary-color-blue-1);
+}
+
+.letter {
+  font-size: 36px;
+}
+
+.uploadPhoto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--primary-color-blue);
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+}
+
+.iconUploadPhoto {
+  stroke: var(--primary-color-blue);
+}
+
+.wrapAvatar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 8px;
+  margin-bottom: 24px;
+}
