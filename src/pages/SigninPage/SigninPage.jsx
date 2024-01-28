@@ -34,6 +34,7 @@ const SigninPage = () => {
   return (
     <div className={css.container}>
       <div className={css.mainstr}>
+        <div className={css.hidden}></div>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -105,11 +106,10 @@ const SigninPage = () => {
                 <button className={css.button} type="submit">
                   Sign In
                 </button>
-
-                <Link to="/signup" className={css.signup}>
-                  <p className={css.signupText}>Sign up</p>
-                </Link>
               </div>
+              <Link to="/signup" className={css.signup}>
+                <p className={css.signupText}>Sign up</p>
+              </Link>
             </Form>
           )}
         </Formik>

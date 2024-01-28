@@ -57,7 +57,7 @@
 @media only screen and (min-width: 320px) {
   .backgroundWelcomePage {
     background: url('../../images/mobile-background-main-page.svg') left 0% top -5% /
-      320px 1000px no-repeat;
+      320px 980px no-repeat;
   }
 }
 
@@ -77,18 +77,28 @@
 
 /* backgroundSigninPage */
 
-@media only screen and (min-width: 320px) {
+@media screen and (min-width: 320px) {
   .backgroundSigninPage {
+    background: url('../../images/mobile-background-element-sign-in.svg') left
+        0% top -58% / 320px 844px no-repeat,
+      url('../../images/mobile-bottle-sign-in.svg') center bottom 4% / 280px
+        210px no-repeat;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .backgroundSigninPage {
+    background: url('../../images/tablet-bottle-sign-in.svg') left 0% top -15% /
+      768px 680px no-repeat;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .backgroundSigninPage {
+    background: url('../../images/desktop-background-element-main-page.svg ')
+        left 20% top 60% / 1404px 582px no-repeat,
+      url('../../images/desktop-bottle-sign-in.svg') left -15% top 70% / 916px 680px
+        no-repeat;
   }
 }
 
