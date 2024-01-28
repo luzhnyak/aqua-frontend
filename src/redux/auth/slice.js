@@ -46,8 +46,11 @@ const authSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(signUpThunk.fulfilled, () => {
-        return authInitialState;
+      .addCase(signUpThunk.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+        state.error = null;
+        state.isRefreshing = false;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
