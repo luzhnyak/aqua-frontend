@@ -11,7 +11,7 @@ const UserLogo = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const user = useSelector(selectUser);
-  const { name, email, avatarURL } = user.user;
+  const { name, email, avatarURL } = user;
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);

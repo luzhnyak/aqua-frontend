@@ -14,7 +14,7 @@ const SettingModal = ({ onClose }) => {
   // const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
-  const { name, email, avatarURL } = user.user;
+  const { name, email, avatarURL } = user;
 
   const handleSubmit = event => {
     event.preventDefault();
