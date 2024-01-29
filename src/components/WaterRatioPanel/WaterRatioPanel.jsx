@@ -10,6 +10,7 @@ const WaterRatioPanel = () => {
   const waterToday = useSelector(selectWatersToday);
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
+  const [isAddWater, setIsAddWater] = useState(false);
 
   const openModal = () => {
     setAddWaterModalOpen(true);
@@ -17,6 +18,10 @@ const WaterRatioPanel = () => {
 
   const closeModal = () => {
     setAddWaterModalOpen(false);
+  };
+
+  const toggleIsAddWaterState = () => {
+    setIsAddWater(!isAddWater);
   };
 
   useEffect(() => {
@@ -92,7 +97,7 @@ const WaterRatioPanel = () => {
       </div>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          <AddWaterModal isAddWater={true} />
+          <AddWaterModal isAddWater={toggleIsAddWaterState} />
         </Modal>
       )}
     </div>
