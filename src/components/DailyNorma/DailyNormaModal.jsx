@@ -40,21 +40,6 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
       return (weight * 0.03 + activityTime * 0.6).toFixed(1);
     }
   };
-  //   const { name, value } = event.target;
-  //   setUserData(prevData => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-
-  //   if (name === 'weight' || name === 'activityTime') {
-  //     const calculatedWaterAmount = calculateWaterAmount(
-  //       userData.gender,
-  //       name === 'weight' ? value : userData.weight,
-  //       name === 'activityTime' ? value : userData.activityTime
-  //     );
-  //     setNeededWaterAmount(calculatedWaterAmount);
-  //   }
-  // };
 
   const onSubmit = (values, { resetForm }) => {
     //   event.preventDefault();
