@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import css from './FormUser.module.css';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUserInfoThunk } from '../../redux/auth/operations';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
+import { selectUser } from '../../redux/auth/selectors';
+import { Bounce, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const FormUser = () => {
+const FormUser = ({ onClose }) => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const { name, email, avatarURL, gender } = user.user;
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -17,32 +22,71 @@ const FormUser = () => {
 
   const validationSchema = Yup.object({
     name: Yup.string().max(32, 'Enter no more than 32 characters.'),
-    email: Yup.string().required('Email is required.'),
-    outdatedPassword: Yup.string()
-      .required('Password is required.')
+    email: Yup.string(),
+    password: Yup.string()
       .min(8, 'Password must be at least 8 characters.')
       .max(64, 'Enter no more than 64 characters.'),
     newPassword: Yup.string()
-      .required('Password is required.')
       .min(8, 'Password must be at least 8 characters.')
       .max(64, 'Enter no more than 64 characters.'),
     repeatPassword: Yup.string()
-      .required('Password is required.')
       .min(8, 'Password must be at least 8 characters.')
       .max(64, 'Enter no more than 64 characters.'),
   });
 
   const initialValues = {
-    name: '',
-    email: '',
-    outdatedPassword: '',
+    gender: gender,
+    name: name || '',
+    email: email || '',
+    password: '',
     newPassword: '',
     repeatPassword: '',
   };
 
   const onSubmit = (values, { resetForm }) => {
-    dispatch(updateUserInfoThunk(values));
-    resetForm();
+    // if (response.status === '200') {
+    //   onClose();
+    // }
+
+    if (values.newPassword !== values.repeatPassword) {
+      return toast.error('Your passwords are difference', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      });
+    }
+
+    if (values.password !== '') {
+      console.log(1);
+      dispatch(
+        updateUserInfoThunk({
+          gender: values.gender,
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          newPassword: values.newPassword,
+        })
+      );
+    }
+
+    if (values.password === '') {
+      console.log(2);
+      dispatch(
+        updateUserInfoThunk({
+          gender: values.gender,
+          name: values.name,
+          email: values.email,
+        })
+      );
+    }
+
+    resetForm({ password: values.password, newPassword: values.newPassword });
   };
 
   return (
@@ -103,18 +147,18 @@ const FormUser = () => {
                 <div className={css.formPassword}>
                   <h4 className={css.titlePassword}>Password</h4>
 
-                  <label className={css.subTitle} htmlFor="outdatedPassword">
+                  <label className={css.subTitle} htmlFor="password">
                     Outdated password:
                   </label>
                   <div className={css.subform}>
                     <Field
-                      id="outdatedPassword"
+                      id="password"
                       className={`${css.input}  ${
                         errors.outdatedPassword && touched.outdatedPassword
                           ? css.errorinput
                           : ''
                       }`}
-                      name="outdatedPassword"
+                      name="password"
                       type={showOutdatedPassword ? 'text' : 'password'}
                       placeholder="Password"
                     />
@@ -131,7 +175,7 @@ const FormUser = () => {
                     </div>
                   </div>
                   <ErrorMessage
-                    name="outdatedPassword"
+                    name="password"
                     component="div"
                     className={css.errormessage}
                   />

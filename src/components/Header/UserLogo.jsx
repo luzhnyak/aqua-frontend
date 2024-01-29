@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import css from './Header.module.css';
@@ -11,35 +11,58 @@ const UserLogo = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const user = useSelector(selectUser);
-  //   const userName = user.name;
-  //   const email = user.email;
-  const avatar = user.avatarURL;
-  const userName = 'kate';
-  // const userName = '';
-  const email = 'email@mail.com';
+  const { name, email, avatarURL } = user.user;
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const onCloseMenu = () => {
+    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    // const handleOutsideClick = event => {
+    //   if () {
+    //     setMenuOpen(false);
+    //   }
+    // };
+
+    window.addEventListener('keydown', handleKeyDown);
+    // window.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      // window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isMenuOpen, setMenuOpen]);
+
   return (
     <>
-      <Link className={css.dropDownMenu} onClick={toggleMenu}>
-        <p className={css.userNameText}>{userName ? userName : ''}</p>
-        {avatar ? (
-          <img srcSet={avatar} className={css.avatar} alt="userAvatar" />
-        ) : (
-          <div className={css.noAvatar}>
-            <span>
-              {userName
-                ? userName.charAt(0).toUpperCase()
-                : email.charAt(0).toUpperCase()}
-            </span>
-          </div>
-        )}
-        <IconChevron className={css.IconChevron} />
-      </Link>
-      {isMenuOpen && <UserLogoModal />}
+      {user && (
+        <Link className={css.dropDownMenu} onClick={toggleMenu}>
+          <p className={css.userNameText}>{name ? name : ''}</p>
+          {avatarURL ? (
+            <img srcSet={avatarURL} className={css.avatar} alt="userAvatar" />
+          ) : (
+            <div className={css.noAvatar}>
+              <span>
+                {name
+                  ? name.charAt(0).toUpperCase()
+                  : email.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
+          <IconChevron className={css.IconChevron} />
+        </Link>
+      )}
+      {isMenuOpen && <UserLogoModal onClose={onCloseMenu} />}
     </>
   );
 };
