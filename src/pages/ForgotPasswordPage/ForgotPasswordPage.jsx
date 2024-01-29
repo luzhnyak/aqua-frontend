@@ -1,11 +1,22 @@
 import { sendMailForgotPass } from 'services/waterApi';
 import css from './ForgotPasswordPage.module.css';
 import FormSendEmail from 'components/FormSendEmail/FormSendEmail';
+import { toast } from 'react-toastify';
 
 const ForgotPasswordPage = () => {
   
   const handleSubmit = (values, { resetForm }) => {
-    sendMailForgotPass(values);
+    try {
+
+      sendMailForgotPass(values);
+      toast.success("The operation was successful, check your email")
+
+    } catch (error) {
+
+      toast.error("Something went wrong, try again")
+      
+    }
+    
     resetForm();
   };
 
