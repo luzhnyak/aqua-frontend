@@ -2,7 +2,7 @@
    width: 100%;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
    .container {
      background-image: url('../../images/mobile-background-element-sign-in.svg'),
        url('../../images/mobile-bottle-sign-in.svg');
@@ -27,7 +27,7 @@
      background-repeat: repeat, no-repeat;
      background-position: center center, left;
    }
- }
+ } */
 
  .mainstr {
   display: flex;

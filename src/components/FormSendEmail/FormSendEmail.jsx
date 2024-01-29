@@ -38,7 +38,7 @@ const FormSendEmail = ({title, onSubmit}) => {
                   <ErrorMessage name="email" component="div" className={css.errormessage}/>
                 </div>
                 <button type="submit" className={css.button}>Send</button>
-                <Link to="/signin">
+                <Link to="/signin" className={css.signin}>
                   <p>Sign in</p>
                 </Link>
               </div>
