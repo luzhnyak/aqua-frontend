@@ -32,7 +32,7 @@ const SettingModal = ({ onClose }) => {
 
   const handleButtonClick = () => {
     // Викликаємо клік на прихованому інпуті, коли натискана кнопка
-    fileInputRef.current.click();
+    // fileInputRef.current.click();
   };
 
   return (
@@ -53,14 +53,17 @@ const SettingModal = ({ onClose }) => {
 
         <form onSubmit={handleSubmit}>
           <input
+            id="inputFile"
             type="file"
             onChange={handleChange}
             className={css.input}
-            ref={fileInputRef}
+            // ref={fileInputRef}
           />
+          <label htmlFor="inputFile">
+            <IconUploadPhoto className={css.iconUploadPhoto} />
+          </label>
 
           <button className={css.uploadPhoto} onClick={handleButtonClick}>
-            <IconUploadPhoto className={css.iconUploadPhoto} />
             Upload a photo
           </button>
         </form>
