@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import css from './RadioButtons.module.css';
 import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
 import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
+import { Field } from 'formik';
 
 const RadioButtons = () => {
-  const [selectedGender, setSelectedGender] = useState('Woman');
+  const [selectedGender, setSelectedGender] = useState('female');
 
   const handleOptionChange = event => {
     setSelectedGender(event.target.value);
@@ -15,14 +16,14 @@ const RadioButtons = () => {
       <h4 className={css.title}>Your gender identity</h4>
       <div className={css.radioButtons}>
         <label>
-          <input
+          <Field
             className={css.radiobutton}
             type="radio"
-            value="Woman"
-            checked={selectedGender === 'Woman'}
+            value="female"
+            checked={selectedGender === 'female'}
             onChange={handleOptionChange}
           />
-          {!(selectedGender === 'Woman') ? (
+          {!(selectedGender === 'female') ? (
             <IconRadioButtonCircle className={css.radioDotLeft} />
           ) : (
             <IconRadioButton className={css.customRadioButtonLeft} />
@@ -31,14 +32,14 @@ const RadioButtons = () => {
         </label>
 
         <label>
-          <input
+          <Field
             className={css.radiobutton}
             type="radio"
-            value="Man"
-            checked={selectedGender === 'Man'}
+            value="male"
+            checked={selectedGender === 'male'}
             onChange={handleOptionChange}
           />
-          {!(selectedGender === 'Man') ? (
+          {!(selectedGender === 'male') ? (
             <IconRadioButtonCircle className={css.radioDotRight} />
           ) : (
             <IconRadioButton className={css.customRadioButtonRight} />

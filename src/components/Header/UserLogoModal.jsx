@@ -45,7 +45,7 @@ const UserLogoModal = () => {
       {/* Модальне вікно для settings */}
       {isOpenUserInfoModal && !isOpenUserLogoutModal && (
         <Modal title="Setting" onClose={closeUserInfoModal}>
-          <SettingModal />
+          <SettingModal onClose={closeUserInfoModal} />
         </Modal>
       )}
 

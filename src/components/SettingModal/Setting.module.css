@@ -52,3 +52,7 @@
   gap: 8px;
   margin-bottom: 24px;
 }
+
+.input {
+  display: none;
+}
