@@ -11,12 +11,9 @@ const UserLogo = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const user = useSelector(selectUser);
-  //   const userName = user.name;
-  //   const email = user.email;
-  const avatar = user.avatarURL;
-  const userName = 'kate';
-  // const userName = '';
-  const email = 'email@mail.com';
+  console.log(user);
+  const { name, email, avatarURL } = user || {};
+  console.log(name, email, avatarURL);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -24,21 +21,23 @@ const UserLogo = () => {
 
   return (
     <>
-      <Link className={css.dropDownMenu} onClick={toggleMenu}>
-        <p className={css.userNameText}>{userName ? userName : ''}</p>
-        {avatar ? (
-          <img srcSet={avatar} className={css.avatar} alt="userAvatar" />
-        ) : (
-          <div className={css.noAvatar}>
-            <span>
-              {userName
-                ? userName.charAt(0).toUpperCase()
-                : email.charAt(0).toUpperCase()}
-            </span>
-          </div>
-        )}
-        <IconChevron className={css.IconChevron} />
-      </Link>
+      {user && (
+        <Link className={css.dropDownMenu} onClick={toggleMenu}>
+          <p className={css.userNameText}>{name ? name : ''}</p>
+          {avatarURL ? (
+            <img srcSet={avatarURL} className={css.avatar} alt="userAvatar" />
+          ) : (
+            <div className={css.noAvatar}>
+              <span>
+                {name
+                  ? name.charAt(0).toUpperCase()
+                  : email.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
+          <IconChevron className={css.IconChevron} />
+        </Link>
+      )}
       {isMenuOpen && <UserLogoModal />}
     </>
   );
