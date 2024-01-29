@@ -50,8 +50,11 @@ export const updateUserInfo = async formData => {
 };
 
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.patch('/users/water-rate', newWaterRate);
-  return data;
+  const dataWaterRate = {
+    waterRate: newWaterRate,
+  };
+  const { data } = await axios.patch('/users/water-rate', dataWaterRate);
+  return data.waterRate;
 };
 
 //==========================WaterData
