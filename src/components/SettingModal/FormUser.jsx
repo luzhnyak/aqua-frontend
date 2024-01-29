@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const FormUser = ({ onClose }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const { name, email, avatarURL, gender } = user;
+  const { name, email, gender } = user;
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
