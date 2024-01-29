@@ -40,13 +40,12 @@ const SettingModal = ({ onClose }) => {
             </span>
           </div>
         )}
-        <Link className={css.uploadPhoto}>
-          <IconUploadPhoto className={css.iconUploadPhoto} />
-          <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleChange} />
-            {/* Upload a photo</input> */}
-          </form>
-        </Link>
+        <IconUploadPhoto className={css.iconUploadPhoto} />
+        <form onSubmit={handleSubmit}>
+          <input type="file" onChange={handleChange} />
+          {/* Upload a photo</input> */}
+        </form>
+        <Link className={css.uploadPhoto}></Link>
       </div>
 
       <FormUser onClose={onClose} />
