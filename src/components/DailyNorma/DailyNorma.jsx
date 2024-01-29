@@ -7,10 +7,8 @@ import { selectWaterRate } from '../../redux/auth/selectors';
 
 const DailyNorma = () => {
   const [visible, setVisible] = useState(false);
-//   const [waterAmount, setWaterAmount] = useState(2.0); 
-//   const dispatch = useDispatch();
 
-  let waterRate = useSelector(selectWaterRate) || 2.0;
+  let waterRate = useSelector(selectWaterRate)/1000 || 2.0;
 
 
   const toggleModal = () => {
@@ -19,8 +17,6 @@ const DailyNorma = () => {
 
 
   const handleWaterAmountSave = (amount) => {
-    // Update the state with the waterAmount value
-    // setWaterAmount(amount);
     waterRate = amount;
   };
 
