@@ -17,13 +17,13 @@ const handleDelete = () => dispatch(deleteWaterThunk(id))
   
     return (
         <div>
-          <h4 className={css.title}>Do you really want to leave?</h4>
+          <h4 className={css.title}>Are you sure you want to delete the entry?</h4>
           <div className={css.buttons}>
-            <button className={css.logoutBtn} type="button" onClick={handleDelete}>
-              Log out
-            </button>
             <button className={css.cancelBtn} type="button" onClick={handleClose}>
               Cancel
+            </button>
+            <button className={css.logoutBtn} type="button" onClick={handleDelete}>
+              Delete
             </button>
           </div>
         </div>

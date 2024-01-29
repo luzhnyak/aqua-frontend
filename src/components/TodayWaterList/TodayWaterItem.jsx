@@ -4,6 +4,7 @@ import { ReactComponent as Trash } from '../../images/icons/trash.svg';
 import { ReactComponent as Glass } from '../../images/icons/glass.svg';
 import { useState } from 'react';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
+import Modal from 'components/Modal/Modal';
 
 
 const TodayWaterItem = ({ id  }) => {
@@ -27,7 +28,10 @@ const closeModal = () =>{
         <EditTool className={css.edit} />
         <Trash className={css.delete} onClick={openModal}/>
       </div>
-      {isModal && <ConfirmDeleteModal onClose={closeModal} id={id}/>}
+      {isModal && <Modal title="Delete entry" onClose={closeModal}>
+        <ConfirmDeleteModal id={id}/>
+      </Modal>}
+      
     </li>
   );
 };
