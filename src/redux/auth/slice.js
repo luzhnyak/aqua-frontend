@@ -38,14 +38,19 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: authInitialState,
 
+  reducers: {
+    setToken(state, action) {
+      return (state = { ...state, token: action.payload });
+    },
+  },
+
   extraReducers: builder =>
     builder
       .addCase(signUpThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.user = action.payload.user;
-        state.isLoggedIn = true;
-        state.isRefreshing = false;
         state.error = null;
+        state.isRefreshing = false;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
@@ -97,4 +102,5 @@ const authSlice = createSlice({
       ),
 });
 
+export const { setToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

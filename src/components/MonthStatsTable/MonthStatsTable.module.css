@@ -42,6 +42,10 @@
   border: none;
   color: var(--Primery-Color-Blue, #407bff);
 }
+.btn-arrow:disabled {
+  color: var(--Primery-Color-Blue, #407cff63);
+}
+
 
 .title-month {
   margin: 0;
@@ -74,12 +78,30 @@
   }
 }
 .day-cell {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+   .day-cell{
+    position: relative;
+  }
+}
+.disabled-day{
+  font-size: 14px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  cursor: default;
+  color: #4f4c4c43;
 }
 
 .day {
@@ -93,7 +115,6 @@
   border-radius: 50%;
   background: #fff;
 
-  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .day {
@@ -102,6 +123,7 @@
     height: 34px;
   }
 }
+
 
 .percent {
   text-align: center;
@@ -138,12 +160,42 @@
   top: -204px;
   left: -8px;
 }
-
+.secondRow{
+  top: -140px;
+}
+.thirdRow{
+  top: -76px;
+}
+.forthRow{
+  top: -12px;
+}
+.fifthRow{
+  top: 52px;
+}
+.sixthRow{
+  top: 116px;
+}
+.seventhRow{
+  top: 180px;
+}
 @media only screen and (min-width: 768px) {
   .popUp {
     width: 292px;
     padding: 24px 16px;
   }
+}
+
+@media only screen and (min-width: 768px) {
+   .left{
+    top: -188px;
+    left: 17px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .right{
+    top: -188px;
+    left: -275px;
+ }
 }
 
 .popup-header {

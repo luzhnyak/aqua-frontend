@@ -1,0 +1,38 @@
+.container {
+   width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+   .container {
+     background-image: url('../../images/mobile-background-element-sign-in.svg'),
+       url('../../images/mobile-bottle-sign-in.svg');
+     background-repeat: no-repeat, no-repeat;
+     background-position: center, bottom;
+   }
+ }
+ 
+ @media screen and (min-width: 768px) {
+   .container {
+     background-image: url('../../images/mobile-background-element-sign-in.svg'),
+       url('../../images/tablet-bottle-sign-in.svg');
+     background-repeat: no-repeat, no-repeat;
+     background-position: top, right;
+   }
+ }
+ 
+ @media screen and (min-width: 1440px) {
+   .container {
+     background-image: url('../../images/mobile-background-element-sign-in.svg'),
+       url('../../images/desktop-bottle-sign-in.svg');
+     background-repeat: repeat, no-repeat;
+     background-position: center center, left;
+   }
+ }
+
+ .mainstr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+

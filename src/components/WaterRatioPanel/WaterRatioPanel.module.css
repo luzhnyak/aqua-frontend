@@ -12,7 +12,7 @@
   .today {
     display: block;
     margin-bottom: 8px;
-    color: #407bff;
+    color: var(--primary-color-blue);
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -25,7 +25,7 @@
     height: 12px;
     width: 256px;
     margin-bottom: 6px;
-    background-color: #d7e3ff;
+    background-color: var(--secondary-color-blue-2);
     border-radius: 4rem;
   }
 
@@ -53,10 +53,12 @@
 
   .rangeInput {
     appearance: none;
-    width: 100%;
-    height: 16px;
     position: absolute;
-    opacity: 0;
+    opacity: 1;
+    height: 12px;
+    width: 256px;
+    background-color: var(--secondary-color-blue-2);
+    border-radius: 4rem;
   }
 
   .rangeInput::-webkit-slider-thumb {
@@ -72,10 +74,11 @@
   .rangeThumb {
     width: 14px;
     height: 14px;
-    background-color: white;
+    background-color: var(--primary-color-white);
     border-radius: 50%;
-    border: 1px solid #407bff;
+    border: 1px solid var(--primary-color-blue);
     position: absolute;
+    z-index: 1000;
     top: -10%;
   }
 
@@ -90,14 +93,14 @@
   .line {
     width: 1px;
     height: 8px;
-    background: #d7e3ff;
+    background-color: var(--secondary-color-blue-2);
   }
 
   .percentages {
     display: flex;
     position: relative;
     min-height: 20px;
-    color: #407bff;
+    color: var(--primary-color-blue);
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
@@ -119,7 +122,7 @@
   }
 
   .active {
-    color: #407bff;
+    color: var(--primary-color-blue);
     text-align: center;
     font-size: 16px;
     font-weight: 500;
@@ -137,7 +140,7 @@
     gap: 10px;
     border-radius: 10px;
     border-color: transparent;
-    background: #407bff;
+    background: var(--primary-color-blue);
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   }
 
@@ -199,18 +202,14 @@
     margin-bottom: 4px;
   }
 
+  .rangeInput {
+    height: 8px;
+    width: 325px;
+    margin-bottom: 4px;
+  }
+
   .rangeSlider {
     height: 8px;
-  }
-
-  .rangeInput::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-  }
-
-  .rangeInput::-webkit-slider-thumb:hover {
-    cursor: pointer;
   }
 
   .rangeThumb {
@@ -226,7 +225,7 @@
   .line {
     width: 1px;
     height: 8px;
-    background: #d7e3ff;
+    background: var(--secondary-color-blue-2);
   }
 
   .percentages {
@@ -271,14 +270,8 @@
     width: 360px;
   }
 
-  .rangeInput::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-  }
-
-  .rangeInput::-webkit-slider-thumb:hover {
-    cursor: pointer;
+  .rangeInput {
+    width: 360px;
   }
 
   /* Lines and nubmers */
@@ -290,7 +283,7 @@
   .line {
     width: 1px;
     height: 8px;
-    background: #d7e3ff;
+    background: var(--secondary-color-blue-2);
   }
 
   .percentages {
