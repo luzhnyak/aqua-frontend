@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import css from './Header.module.css';
@@ -11,13 +11,37 @@ const UserLogo = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const user = useSelector(selectUser);
-  console.log(user);
-  const { name, email, avatarURL } = user || {};
-  console.log(name, email, avatarURL);
+  const { name, email, avatarURL } = user.user;
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+
+  const onCloseMenu = () => {
+    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    // const handleOutsideClick = event => {
+    //   if () {
+    //     setMenuOpen(false);
+    //   }
+    // };
+
+    window.addEventListener('keydown', handleKeyDown);
+    // window.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      // window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isMenuOpen, setMenuOpen]);
 
   return (
     <>
@@ -38,7 +62,7 @@ const UserLogo = () => {
           <IconChevron className={css.IconChevron} />
         </Link>
       )}
-      {isMenuOpen && <UserLogoModal />}
+      {isMenuOpen && <UserLogoModal onClose={onCloseMenu} />}
     </>
   );
 };
