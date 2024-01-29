@@ -71,6 +71,11 @@ export const getAllWaterForToday = async () => {
   return data;
 };
 
+export const updateWaterById = async (dayId, entryId, body) => {
+  const { data } = await axios.put(`/water/${dayId}/${entryId}`, body);
+  return data;
+};
+
 //========================= Verify email
 //TODO: add to slice
 export const sendVerify = async token => {
