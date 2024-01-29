@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import css from './Setting.module.css';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
-import { Link } from 'react-router-dom';
 import { ReactComponent as IconUploadPhoto } from '../../images/icons/arrow-up-tray.svg';
 import FormUser from './FormUser';
-// import { updateAvatarThunk } from '../../redux/auth/operations';
+import { updateAvatarThunk } from '../../redux/auth/operations';
 
 const SettingModal = ({ onClose }) => {
+  const fileInputRef = useRef(null);
+
   const [file, setFile] = useState();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
   const { name, email, avatarURL } = user;
 
   const handleSubmit = event => {
     event.preventDefault();
-    // dispatch(updateAvatarThunk(file));
+    if (file) {
+      dispatch(updateAvatarThunk(file));
+      // Скидання значень інпуту
+      fileInputRef.current.value = null;
+    }
   };
 
   const handleChange = event => {
     setFile(event.target.files[0]);
+  };
+
+  const handleButtonClick = () => {
+    // Викликаємо клік на прихованому інпуті, коли натискана кнопка
+    fileInputRef.current.click();
   };
 
   return (
@@ -40,13 +50,20 @@ const SettingModal = ({ onClose }) => {
             </span>
           </div>
         )}
-        <Link className={css.uploadPhoto}>
-          <IconUploadPhoto className={css.iconUploadPhoto} />
-          <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleChange} />
-            {/* Upload a photo</input> */}
-          </form>
-        </Link>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="file"
+            onChange={handleChange}
+            className={css.input}
+            ref={fileInputRef}
+          />
+
+          <button className={css.uploadPhoto} onClick={handleButtonClick}>
+            <IconUploadPhoto className={css.iconUploadPhoto} />
+            Upload a photo
+          </button>
+        </form>
       </div>
 
       <FormUser onClose={onClose} />

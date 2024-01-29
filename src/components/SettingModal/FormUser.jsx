@@ -44,10 +44,6 @@ const FormUser = ({ onClose }) => {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    // if (response.status === '200') {
-    //   onClose();
-    // }
-
     if (values.newPassword !== values.repeatPassword) {
       return toast.error('Your passwords are difference', {
         position: 'top-center',
@@ -57,7 +53,7 @@ const FormUser = ({ onClose }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'light',
+        theme: 'color',
         transition: Bounce,
       });
     }
@@ -87,6 +83,7 @@ const FormUser = ({ onClose }) => {
     }
 
     resetForm({ password: values.password, newPassword: values.newPassword });
+    onClose();
   };
 
   return (

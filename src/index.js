@@ -5,10 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
+import { ToastContainer } from 'react-toastify';
 
 import './index.css';
 import './fonts.css';
-import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
