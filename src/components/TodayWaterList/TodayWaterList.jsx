@@ -1,5 +1,6 @@
-import { TodayWaterItem } from './TodayWaterItem'
+
 import { ReactComponent as Plus } from '../../images/icons/plus-small.svg';
+import TodayWaterItem from './TodayWaterItem';
 import css from './TodayWaterList.module.css'
 
 export const TodayWaterList = () => {
