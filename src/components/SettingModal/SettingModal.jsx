@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Setting.module.css';
 
 import { useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import FormUser from './FormUser';
 // import { updateAvatarThunk } from '../../redux/auth/operations';
 
 const SettingModal = ({ onClose }) => {
-  // const [file, setFile] = useState();
+  const [file, setFile] = useState();
 
   // const dispatch = useDispatch();
 
@@ -21,9 +21,9 @@ const SettingModal = ({ onClose }) => {
     // dispatch(updateAvatarThunk(file));
   };
 
-  // const handleChange = event => {
-  //   setFile(event.target.files[0]);
-  // };
+  const handleChange = event => {
+    setFile(event.target.files[0]);
+  };
 
   return (
     <div>
@@ -43,10 +43,7 @@ const SettingModal = ({ onClose }) => {
         <Link className={css.uploadPhoto}>
           <IconUploadPhoto className={css.iconUploadPhoto} />
           <form onSubmit={handleSubmit}>
-            <input
-              type="file"
-              // onChange={handleChange}
-            />
+            <input type="file" onChange={handleChange} />
             {/* Upload a photo</input> */}
           </form>
         </Link>
