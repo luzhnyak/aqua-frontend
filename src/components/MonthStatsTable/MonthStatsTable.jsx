@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import PopUpDay from './PopUpDay';
 
 
-export const MonthStatsTable = () => {
+export const MonthStatsTable = ({popUpOpen}) => {
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
@@ -27,7 +27,11 @@ export const MonthStatsTable = () => {
   };
   useEffect(() => {
     disabled();
-  });
+    if(popUpOpen){
+  
+      handleCloseClick()
+    }
+  },[popUpOpen]);
 
   const findMonthDays = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
@@ -40,6 +44,7 @@ export const MonthStatsTable = () => {
       return new Date(pYear, pMonth);
     });
     setsDisabledYear(false);
+    setsPopup(false)
   };
 
   const changeToNextMonth = () => {
@@ -48,16 +53,33 @@ export const MonthStatsTable = () => {
       const nYear = pDate.getFullYear();
       return new Date(nYear, nMonth);
     });
+    setsPopup(false)
   };
 
   const handleDateClick = (day, date) => {
+    if(!popUp){
+      setsPopup(true);
+    }
+    if(popUp && date.getDate()===sDate.getDate()){
+      setsPopup(false)
+    }
+
+    if(popUp && date.getDate()!==sDate.getDate()){
+      setsPopup(false)    
+      setsPopup(true)    
+    }
+
     setsDate(date);
     setsDay(day);
-    setsPopup(true);
+    
   };
+
+
   const handleCloseClick = () => {
     setsPopup(false);
   };
+
+
 
   const showCalendar = () => {
     const y = sDate.getFullYear();
@@ -88,7 +110,7 @@ else{
   };
 
   return (
-    <div className={css['calendar-container']}>
+    <div className={css['calendar-container']} >
       <div className={css['calendar-header']}>
         <h2 className={css.title}>Month</h2>
         <div className={css.monthPicker}>

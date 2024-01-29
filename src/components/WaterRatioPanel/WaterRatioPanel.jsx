@@ -1,11 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './WaterRatioPanel.module.css';
 
 import { useSelector } from 'react-redux';
 import { selectWatersToday } from '../../redux/waterConsumption/selectors';
+import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
+import Modal from 'components/Modal/Modal';
 
 const WaterRatioPanel = () => {
   const waterToday = useSelector(selectWatersToday);
+
+  const [isOpen, setAddWaterModalOpen] = useState(false);
+
+  const openModal = () => {
+    setAddWaterModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setAddWaterModalOpen(false);
+  };
 
   useEffect(() => {
     const rangeThumb = document.getElementById('range-thumb');
@@ -40,7 +52,6 @@ const WaterRatioPanel = () => {
               <div className={css.rangeSlider}>
                 <div className={css.rangeSliderLine} id="range-line"></div>
               </div>
-              <div className={css.rangeThumb} id="range-thumb"></div>
 
               <input
                 type="range"
@@ -52,6 +63,7 @@ const WaterRatioPanel = () => {
                 step="1"
                 readOnly
               />
+              <div className={css.rangeThumb} id="range-thumb"></div>
             </div>
           </div>
 
@@ -67,7 +79,7 @@ const WaterRatioPanel = () => {
             <span className={css.number3}>100%</span>
           </div>
         </div>
-        <button type="button" className={css.addButton}>
+        <button type="button" className={css.addButton} onClick={openModal}>
           <img
             className={css.plusCircle}
             src={require('../../images/icons/progressbar-plus.svg').default}
@@ -78,6 +90,11 @@ const WaterRatioPanel = () => {
           <span className={css.addButtonText}>Add Water</span>
         </button>
       </div>
+      {isOpen && (
+        <Modal title="Add Water" onClose={closeModal}>
+          <AddWaterModal isAddWater={true} />
+        </Modal>
+      )}
     </div>
   );
 };

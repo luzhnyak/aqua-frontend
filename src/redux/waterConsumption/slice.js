@@ -3,10 +3,12 @@ import {
   addWaterThunk,
   deleteWaterThunk,
   getAllWaterForTodayThunk,
+  updateWaterByIdThunk,
 } from './operations';
 
 const waterInitialState = {
   items: [],
+  itemsPerDay: [],
   itemsPerMonth: [],
   isLoading: false,
   error: null,
@@ -47,13 +49,19 @@ const waterSlice = createSlice({
       .addCase(getAllWaterForTodayThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload.dailyEntries;
+        state.itemsPerDay = action.payload;
+      })
+      .addCase(updateWaterByIdThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
       })
       .addMatcher(
         isAnyOf(
           addWaterThunk.pending,
           deleteWaterThunk.pending,
-          getAllWaterForTodayThunk.pending
+          getAllWaterForTodayThunk.pending,
+          updateWaterByIdThunk.pending
         ),
         handlePending
       )
@@ -61,7 +69,8 @@ const waterSlice = createSlice({
         isAnyOf(
           addWaterThunk.rejected,
           deleteWaterThunk.rejected,
-          getAllWaterForTodayThunk.rejected
+          getAllWaterForTodayThunk.rejected,
+          updateWaterByIdThunk.rejected
         ),
         handleRejected
       ),

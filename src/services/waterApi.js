@@ -50,8 +50,11 @@ export const updateUserInfo = async formData => {
 };
 
 export const updateWaterNorma = async newWaterRate => {
-  const { data } = await axios.patch('/users/water-rate', newWaterRate);
-  return data;
+  const dataWaterRate = {
+    waterRate: newWaterRate,
+  };
+  const { data } = await axios.patch('/users/water-rate', dataWaterRate);
+  return data.waterRate;
 };
 
 //==========================WaterData
@@ -68,6 +71,11 @@ export const deleteWaterById = async (dayId, entryId) => {
 
 export const getAllWaterForToday = async () => {
   const { data } = await axios.get(`/water`);
+  return data;
+};
+
+export const updateWaterById = async (dayId, entryId, body) => {
+  const { data } = await axios.put(`/water/${dayId}/${entryId}`, body);
   return data;
 };
 

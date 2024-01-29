@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import css from './DailyNormaModal.module.css';
+import { useDispatch } from 'react-redux';
+import { updateWaterNormaThunk } from '../../redux/auth/operations';
 
 const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
+    const dispatch = useDispatch();
+
+
   const [userData, setUserData] = useState({
     gender: 'female',
     weight: '',
@@ -33,7 +38,10 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
         name === 'activityTime' ? value : userData.activityTime,
       );
       setNeededWaterAmount(calculatedWaterAmount);
+      
     }
+
+   
   };
 
   const onSubmit = event => {
@@ -54,7 +62,12 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
 
     setNeededWaterAmount(calculatedWaterAmount);
 
+    // Dispatch the action to update the water rate in Redux
+    dispatch(updateWaterNormaThunk(parseFloat(waterAmount)));
+
     onWaterAmountSave(parseFloat(waterAmount));
+
+    dispatch(updateWaterNormaThunk(waterAmount));
 
     setVisible(false);
   };
