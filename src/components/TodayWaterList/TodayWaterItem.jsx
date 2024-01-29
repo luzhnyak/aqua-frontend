@@ -7,7 +7,7 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 import Modal from 'components/Modal/Modal';
 
 
-const TodayWaterItem = ({ id  }) => {
+const TodayWaterItem = ({ id }) => {
 const [isModal, setIsModal] = useState(false)
 
 const openModal = () =>{
