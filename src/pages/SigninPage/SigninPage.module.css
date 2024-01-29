@@ -1,98 +1,70 @@
 /* SigninPage.module.css */
+.hidden {
+  opacity: 0;
+}
 
 .container {
-  border: 1px solid;
-  width: 100%;
-}
-
-/* Mobile and <*/
-@media screen and (max-width: 767px) {
-  .container {
-    /* background-image: url('../../images/mobile-background-element-sign-in.svg'),
-      url('../../images/mobile-bottle-sign-in.svg'); */
-    background-repeat: no-repeat, no-repeat;
-    background-position: center, bottom;
-  }
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .container {
-    /* background-image: url('../../images/mobile-background-element-sign-in.svg'),
-      url('../../images/tablet-bottle-sign-in.svg'); */
-    background-repeat: no-repeat, no-repeat;
-    background-position: top, right;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .container {
-    /* background-image: url('../../images/mobile-background-element-sign-in.svg'),
-      url('../../images/desktop-bottle-sign-in.svg'); */
-    background-repeat: repeat, no-repeat;
-    background-position: center center, left;
-  }
+  display: block;
+  padding: 24px 0 0 0;
+  min-height: 605px;
 }
 
 .mainstr {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .mainstr {
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-
-  .mainstr {
-    justify-content: flex-end;
-    align-items: center;
-  }
-
 }
 
 .form {
-  margin-top: 24px;
+  max-width: 280px;
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
+  .container {
+    padding: 40px 0 0 0;
+    min-height: 704px;
+  }
+
   .form {
-    margin-top: 40px;
-    margin-left: 32px;
+    max-width: 680px;
+  }
+
+  .mainstr {
+    justify-content: flex-start;
   }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-  .form {
-
-    margin-right: 198px;
+  .container {
+    padding: 49px 0 0 0;
+    min-height: 740px;
   }
 
+  .form {
+    max-width: 1216px;
+    margin-top: 113px;
+  }
+
+  .mainstr {
+    display: grid;
+    grid-template-columns: 742px 384px 90px;
+    justify-content: flex-end;
+  }
 }
 
 .formControl {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  /* margin: 0 auto; */
-  padding: 10px;
+  margin-bottom: 16px;
   gap: 16px;
 }
 
 .formTitle {
-  padding-left: 10px;
   font-size: 26px;
+  margin-bottom: 16px;
 }
 
 .formLabel {
@@ -153,11 +125,10 @@
 }
 
 .iconeye {
-  stroke: var(--primary-color-blue);
+  color: var(--secondary-color-blue-3);
 }
 
 .inputpassword {
-
   outline: none;
   border: none;
   padding: 0;
@@ -176,7 +147,6 @@
   .inputpassword {
     width: 384px;
   }
-
 }
 
 .input::placeholder {
@@ -190,21 +160,35 @@
 .button {
   background-color: var(--primary-color-blue);
   color: var(--primary-color-white);
-  padding: 10px 30px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   width: 280px;
-  height: 36px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 20px;
 }
-
-
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
   .button {
     width: 336px;
     height: 44px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .googleText {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .googleText {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
@@ -212,31 +196,37 @@
 @media screen and (min-width: 1440px) {
   .button {
     width: 384px;
+    height: 44px;
+
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 
-
-
 .googleLogin {
-  background-color: var(--primary-color-white);
-  color: var(--primary-color-blue);
-  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   width: 280px;
-  height: 34px;
+  height: 44px;
   text-decoration-line: none;
   text-align: center;
-  box-shadow: 0 6px 8px rgba(54, 47, 192, 0.3), 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-
+.googleText {
+  font-size: 18px;
+  line-height: 24px;
+}
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
   .googleLogin {
     width: 336px;
-
   }
 }
 
@@ -247,9 +237,7 @@
   }
 }
 
-
 .errormessage {
-
   color: var(--secondary-color-red);
   font-size: 14px;
 }
@@ -257,7 +245,6 @@
 .errorBorder {
   border: 2px solid var(--secondary-color-red);
 }
-
 
 .errorInput {
   color: var(--secondary-color-red);
@@ -274,7 +261,6 @@
   margin-right: auto;
 }
 
-
 .forgotPassword {
   color: var(--primary-color-blue);
   text-decoration-line: none;
@@ -284,6 +270,7 @@
 
 .wraplink {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }

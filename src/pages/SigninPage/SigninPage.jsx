@@ -34,6 +34,7 @@ const SigninPage = () => {
   return (
     <div className={css.container}>
       <div className={css.mainstr}>
+        <div className={css.hidden}></div>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
