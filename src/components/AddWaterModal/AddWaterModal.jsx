@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import css from './AddWaterModal.module.css';
+import { useDispatch } from 'react-redux';
 
-import { Formik, Form, Field } from 'formik';
+// import { Formik, Form, Field } from 'formik';
 // import { object, number, date } from 'yup';
 
 import { ReactComponent as IconPlus } from '../../images/icons/plus-small.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus-small.svg';
+import { addWaterThunk } from '../../redux/waterConsumption/operations';
 
 const AddWaterModal = ({ isAddWater, isEditWater }) => {
   const [cleanStatus, setCleanStatus] = useState({
@@ -13,14 +15,17 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     isEditWater: true,
   });
 
-  const [waterValue, setWaterValue] = useState(0);
+  const [waterVolume, setWaterVolume] = useState(0);
   const [time, setTime] = useState(0);
+
+  const dispatch = useDispatch();
 
   const getCurrentTime = () => {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = Math.floor(now.getMinutes());
+    const minutes = Math.floor(now.getMinutes() / 5) * 5;
     const formattedMinutes = minutes.toString().padStart(2, '0');
+    console.log(formattedMinutes);
     return `${hours}:${formattedMinutes}`;
   };
 
@@ -45,92 +50,88 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     return options;
   };
 
-  const initialValues = {
-    waterValue: 0,
-    // recordingTime: time,
-    waterUsed: 0,
-  };
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log('time', time);
+    dispatch(addWaterThunk({ time, waterVolume }));
 
-  const handleSubmit = () => {
     setCleanStatus({
       isAddWater: !cleanStatus.isAddWater,
       isEditWater: !cleanStatus.isEditWater,
     });
   };
 
-  const setPreviousAmount = e => {
-    const trimmedValue = e.target.value.trim();
-    if (trimmedValue === '') {
-      setWaterValue(waterValue);
-    }
-  };
+  // const setPreviousAmount = e => {
+  //   const trimmedValue = e.target.value.trim();
+  //   if (trimmedValue === '') {
+  //     setWaterVolume(waterVolume);
+  //   }
+  // };
 
   const addAmountOfWater = () => {
-    setWaterValue(Number.parseInt(waterValue) + 1);
+    setWaterVolume(Number.parseInt(waterVolume) + 1);
   };
 
   const minusAmountOfWater = () => {
-    if (waterValue > 0) {
-      setWaterValue(Number.parseInt(waterValue) - 1);
+    if (waterVolume > 0) {
+      setWaterVolume(Number.parseInt(waterVolume) - 1);
     }
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      {({ handleBlur, setFieldValue, values }) => (
-        <Form autoComplete="off">
-          {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
-          <p className={css.paragraphs}>Amount of water:</p>
+    <>
+      <p className={css.paragraphs}>Amount of water:</p>
+      <div>
+        <button type="button" onClick={minusAmountOfWater}>
+          <IconMinus />
+        </button>
+        <input min="0" type="number" value={waterVolume} readOnly />
+        <button type="button" onClick={addAmountOfWater}>
+          <IconPlus />
+        </button>
+      </div>
+
+      <form autoComplete="off" onSubmit={handleSubmit}>
+        {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
+
+        <div>
+          <p className={css.paragraphs}>Recording time:</p>
           <div>
-            <button type="button" onClick={minusAmountOfWater}>
-              <IconMinus />
-            </button>
-            <Field
-              min="0"
-              type="number"
-              name="waterValue"
-              onBlur={handleBlur}
-              value={waterValue}
-              readOnly
-            />
-            <button type="button" onClick={addAmountOfWater}>
-              <IconPlus />
-            </button>
-          </div>
-          <div>
-            <p className={css.paragraphs}>Recording time:</p>
-            <div>
-              {time}
-              {/* {generateTimeOptions().map(option => (
+            {time}
+            {/* {generateTimeOptions().map(option => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))} */}
-            </div>
+            <select
+              name="recordingTime"
+              value={time}
+              onChange={event => {
+                setTime(event.target.value);
+              }}
+            >
+              {generateTimeOptions().map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
-          <h2 className={css.headlines}>Enter the value of the water used:</h2>
-          <Field
-            min="0"
-            type="number"
-            name="waterEditValue"
-            onBlur={setPreviousAmount}
-            value={waterValue}
-            onChange={e => {
-              const newValue = e.target.value;
-              setWaterValue(newValue);
-            }}
-            onClick={e => {
-              const newValue = e.target.value === '0' ? '' : e.target.value;
-              if (newValue >= 0) {
-                setFieldValue('waterValue', newValue);
-                setWaterValue(newValue);
-              }
-            }}
-          />
-          <button type="submit">Save</button>
-        </Form>
-      )}
-    </Formik>
+        </div>
+        <h2 className={css.headlines}>Enter the value of the water used:</h2>
+        <input
+          min="0"
+          type="number"
+          name="waterValue"
+          // onBlur={setPreviousAmount}
+          value={waterVolume}
+          onChange={e => {
+            setWaterVolume(e.target.value);
+          }}
+        />
+        <button type="submit">Save</button>
+      </form>
+    </>
   );
 };
 
