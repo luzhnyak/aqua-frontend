@@ -11,68 +11,84 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     isEditWater: true,
   });
 
-  const toggleStatus = () => {
+  const [waterValue, setWaterValue] = useState(0);
+
+  const initialValues = {
+    waterValue: 0,
+    recordingTime: new Date(),
+    waterUsed: 0,
+  };
+
+  const handleSubmit = () => {
     setCleanStatus({
       isAddWater: !cleanStatus.isAddWater,
       isEditWater: !cleanStatus.isEditWater,
     });
   };
 
-  const initialValues = isAddWater
-    ? { waterValue: 50, recordingTime: new Date(), waterUsed: 0 }
-    : { correctedValue: '', correctedTime: '', waterUsed: '' };
-
-  const handleSubmit = () => {
-    console.log(initialValues.waterValue);
-    console.log(initialValues.recordingTime);
-    console.log(initialValues.waterUsed);
+  const addAmountOfWater = () => {
+    setWaterValue(waterValue + 1);
   };
 
-  const addAmountOfWater = () => {};
-  const minusAmountOfWater = () => {};
+  const minusAmountOfWater = () => {
+    if (waterValue > 0) {
+      setWaterValue(waterValue - 1);
+    }
+  };
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      {({ values, actions }) => (
+      {({ handleBlur, setFieldValue, values }) => (
         <Form autoComplete="off">
           {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
           <p className={css.paragraphs}>Amount of water:</p>
           <div>
-            <button type="button" onClick={addAmountOfWater}>
+            <button type="button" onClick={minusAmountOfWater}>
               <IconMinus />
             </button>
-            <Field type="number" name="waterValue" />
-            <button type="button" onClick={minusAmountOfWater}>
+            <Field
+              type="number"
+              name="waterValue"
+              onBlur={handleBlur}
+              value={waterValue}
+              onChange={e => setWaterValue(e.target.value)}
+            />
+            <button type="button" onClick={addAmountOfWater}>
               <IconPlus />
             </button>
           </div>
-          <button type="submit" toggleStatus={toggleStatus}>
-            Save
-          </button>
+
+          <h2 className={css.headlines}>Enter the value of the water used:</h2>
+          <Field
+            type="number"
+            name="waterEditValue"
+            onBlur={handleBlur}
+            value={waterValue}
+            onChange={e => setWaterValue(e.target.value)}
+          />
+          <button type="submit">Save</button>
         </Form>
-
-        //   {isEditWater && (
-        //     <div>
-        //       <div>
-        //         <span>Value</span>
-        //         <span>Time</span>
-        //       </div>
-        //       <h2 className={css.headlines}>Correct entered data:</h2>
-        //     </div>
-        //   )}
-        //
-        //   <button type="button">Minus</button>
-        //   <Field type="number" name="waterValue" />
-        //   <button type="button">Add</button>
-        //   <p className={css.paragraphs}>Recording time:</p>
-        //   <Field type="time" name="recordingTime" />
-
-        //   <h2 className={css.headlines}>Enter the value of the water used:</h2>
-        //   <Field type="number" name="waterValue" />
-        //   <div>value</div>
       )}
     </Formik>
   );
 };
 
 export default AddWaterModal;
+
+// {isEditWater && (
+//   <div>
+//     <div>
+//       <span>Value</span>
+//       <span>Time</span>
+//     </div>
+//     <h2 className={css.headlines}>Correct entered data:</h2>
+//   </div>
+// )}
+
+// <button type="button">Minus</button>
+// <Field type="number" name="waterValue" />
+// <button type="button">Add</button>
+// <p className={css.paragraphs}>Recording time:</p>
+// <Field type="time" name="recordingTime" />
+
+// <div>value</div>
