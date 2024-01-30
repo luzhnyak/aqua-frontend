@@ -11,6 +11,7 @@
   --secondary-color-blue-3: #9ebbff;
 
   --backdrop-color-black: rgba(0, 0, 0, 0.8);
+  --backdrop-color-loader: rgba(0, 0, 0, 0.5);
 }
 
 body {
