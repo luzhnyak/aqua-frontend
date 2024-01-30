@@ -8,7 +8,7 @@ import {
 } from './operations';
 
 const waterInitialState = {
-  items: [],
+  today: { dailyEntries: [] },
   itemsPerMonth: [],
   isLoading: false,
   error: null,
@@ -33,12 +33,12 @@ const waterSlice = createSlice({
       .addCase(addWaterThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items.push(action.payload);
+        state.today.dailyEntries.push(action.payload);
       })
       .addCase(deleteWaterThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = state.items.filter(
+        state.today.dailyEntries = state.today.dailyEntries.filter(
           entry => entry._id !== action.payload._id
         );
         //    const index = state.items.findIndex(
@@ -49,12 +49,16 @@ const waterSlice = createSlice({
       .addCase(getAllWaterForTodayThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.today.dailyEntries = action.payload;
       })
       .addCase(updateWaterByIdThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        const array = state.today.dailyWaterList;
+        const idx = array.findIndex(item => item._id === action.payload._id);
+        if (idx !== -1) {
+          array[idx] = action.payload;
+        }
       })
       .addCase(getAllWaterForMonthThunk.fulfilled, (state, action) => {
         state.isLoading = false;
