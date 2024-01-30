@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import css from './AddWaterModal.module.css';
 import { useDispatch } from 'react-redux';
 
-// import { Formik, Form, Field } from 'formik';
-// import { object, number, date } from 'yup';
-
 import { ReactComponent as IconPlus } from '../../images/icons/plus-small.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus-small.svg';
 import { addWaterThunk } from '../../redux/waterConsumption/operations';
@@ -16,9 +13,15 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   });
 
   const [waterVolume, setWaterVolume] = useState(0);
+  const [finalValue, setFinalValue] = useState(0);
+
   const [time, setTime] = useState(0);
 
   const dispatch = useDispatch();
+
+  const handleBlur = () => {
+    setFinalValue(waterVolume);
+  };
 
   const getCurrentTime = () => {
     const now = new Date();
@@ -61,20 +64,15 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     });
   };
 
-  // const setPreviousAmount = e => {
-  //   const trimmedValue = e.target.value.trim();
-  //   if (trimmedValue === '') {
-  //     setWaterVolume(waterVolume);
-  //   }
-  // };
-
   const addAmountOfWater = () => {
     setWaterVolume(Number.parseInt(waterVolume) + 1);
+    setFinalValue(Number.parseInt(waterVolume) + 1);
   };
 
   const minusAmountOfWater = () => {
     if (waterVolume > 0) {
       setWaterVolume(Number.parseInt(waterVolume) - 1);
+      setFinalValue(Number.parseInt(waterVolume) - 1);
     }
   };
 
@@ -85,7 +83,13 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
         <button type="button" onClick={minusAmountOfWater}>
           <IconMinus />
         </button>
-        <input min="0" type="number" value={waterVolume} readOnly />
+        <input
+          min="0"
+          type="number"
+          value={finalValue}
+          readOnly
+          onBlur={handleBlur}
+        />
         <button type="button" onClick={addAmountOfWater}>
           <IconPlus />
         </button>
@@ -97,15 +101,9 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
         <div>
           <p className={css.paragraphs}>Recording time:</p>
           <div>
-            {time}
-            {/* {generateTimeOptions().map(option => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))} */}
             <select
               name="recordingTime"
-              value={time}
+              defaultValue={time}
               onChange={event => {
                 setTime(event.target.value);
               }}
@@ -123,8 +121,8 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           min="0"
           type="number"
           name="waterValue"
-          // onBlur={setPreviousAmount}
           value={waterVolume}
+          onBlur={handleBlur}
           onChange={e => {
             setWaterVolume(e.target.value);
           }}
