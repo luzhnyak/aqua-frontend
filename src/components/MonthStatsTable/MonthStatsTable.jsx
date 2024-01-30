@@ -2,8 +2,7 @@ import css from './MonthStatsTable.module.css';
 import { useEffect, useState } from 'react';
 import PopUpDay from './PopUpDay';
 
-
-export const MonthStatsTable = ({popUpOpen}) => {
+export const MonthStatsTable = ({ popUpOpen }) => {
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
@@ -11,27 +10,27 @@ export const MonthStatsTable = ({popUpOpen}) => {
   const previous = '\u003C';
   const next = '\u003E';
 
-  const disabled = () => {
-    const currentDate = new Date();
-    const month = Number(
-      sDate.toLocaleString('en-US', {
-        month: 'numeric',
-      })
-    );
-
-    const currentMonth = currentDate.getMonth() + 1;
-
-    if (month === currentMonth) {
-      setsDisabledYear(true);
-    }
-  };
   useEffect(() => {
+    const disabled = () => {
+      const currentDate = new Date();
+      const month = Number(
+        sDate.toLocaleString('en-US', {
+          month: 'numeric',
+        })
+      );
+
+      const currentMonth = currentDate.getMonth() + 1;
+
+      if (month === currentMonth) {
+        setsDisabledYear(true);
+      }
+    };
+
     disabled();
-    if(popUpOpen){
-  
-      handleCloseClick()
+    if (popUpOpen) {
+      handleCloseClick();
     }
-  },[popUpOpen]);
+  }, [popUpOpen, sDate]);
 
   const findMonthDays = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
@@ -44,7 +43,7 @@ export const MonthStatsTable = ({popUpOpen}) => {
       return new Date(pYear, pMonth);
     });
     setsDisabledYear(false);
-    setsPopup(false)
+    setsPopup(false);
   };
 
   const changeToNextMonth = () => {
@@ -53,33 +52,29 @@ export const MonthStatsTable = ({popUpOpen}) => {
       const nYear = pDate.getFullYear();
       return new Date(nYear, nMonth);
     });
-    setsPopup(false)
+    setsPopup(false);
   };
 
   const handleDateClick = (day, date) => {
-    if(!popUp){
+    if (!popUp) {
       setsPopup(true);
     }
-    if(popUp && date.getDate()===sDate.getDate()){
-      setsPopup(false)
+    if (popUp && date.getDate() === sDate.getDate()) {
+      setsPopup(false);
     }
 
-    if(popUp && date.getDate()!==sDate.getDate()){
-      setsPopup(false)    
-      setsPopup(true)    
+    if (popUp && date.getDate() !== sDate.getDate()) {
+      setsPopup(false);
+      setsPopup(true);
     }
 
     setsDate(date);
     setsDay(day);
-    
   };
-
 
   const handleCloseClick = () => {
     setsPopup(false);
   };
-
-
 
   const showCalendar = () => {
     const y = sDate.getFullYear();
@@ -89,28 +84,27 @@ export const MonthStatsTable = ({popUpOpen}) => {
 
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
-    const currentMonth = currentDate.getMonth()
+    const currentMonth = currentDate.getMonth();
     // Show actual days
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
 
-if(m === currentMonth){
-  if (d <= currentDay) {
-    allDays.push({ day: d, date: date, value: 100, disabled: false });
-  } else {
-    allDays.push({ day: d, date: date, value: 100, disabled: true });
-  }
-}
-else{
-  allDays.push({ day: d, date: date, value: 100, disabled: false });
-}
+      if (m === currentMonth) {
+        if (d <= currentDay) {
+          allDays.push({ day: d, date: date, value: 100, disabled: false });
+        } else {
+          allDays.push({ day: d, date: date, value: 100, disabled: true });
+        }
+      } else {
+        allDays.push({ day: d, date: date, value: 100, disabled: false });
+      }
     }
 
     return allDays;
   };
 
   return (
-    <div className={css['calendar-container']} >
+    <div className={css['calendar-container']}>
       <div className={css['calendar-header']}>
         <h2 className={css.title}>Month</h2>
         <div className={css.monthPicker}>
@@ -142,15 +136,14 @@ else{
           return (
             <div key={`d-${item.day}`}>
               {!item.disabled ? (
-                <div className={css['day-cell']} >
-
-                    <button
-                      className={css.day}
-                      onClick={() => handleDateClick(item.day, item.date)}
-                    >
-                      {item.day}
-                    </button>
-                    <p className={css.percent}> 100%</p>
+                <div className={css['day-cell']}>
+                  <button
+                    className={css.day}
+                    onClick={() => handleDateClick(item.day, item.date)}
+                  >
+                    {item.day}
+                  </button>
+                  <p className={css.percent}> 100%</p>
 
                   {popUp && sDay === item.day && (
                     <PopUpDay
