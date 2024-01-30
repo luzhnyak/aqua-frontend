@@ -8,15 +8,13 @@ import { selectWaterRate } from '../../redux/auth/selectors';
 const DailyNorma = () => {
   const [visible, setVisible] = useState(false);
 
-  let waterRate = useSelector(selectWaterRate)/1000 || 2.0;
-
+  let waterRate = useSelector(selectWaterRate) / 1000 || 2.0;
 
   const toggleModal = () => {
     setVisible(!visible);
   };
 
-
-  const handleWaterAmountSave = (amount) => {
+  const handleWaterAmountSave = amount => {
     waterRate = amount;
   };
 
@@ -25,12 +23,18 @@ const DailyNorma = () => {
       <h3 className={css.normaTitle}>My daily norma</h3>
 
       <div className={css.secondLineBlock}>
-      <p className={css.normaLiters}>{waterRate} L</p>
-
+        <p className={css.normaLiters}>{waterRate} L</p>
 
         {visible && (
-          <Modal setVisible={toggleModal} title="My daily norma" onClose={toggleModal}>
-            <DailyNormaModal setVisible={setVisible} onWaterAmountSave={handleWaterAmountSave}/>
+          <Modal
+            setVisible={toggleModal}
+            title="My daily norma"
+            onClose={toggleModal}
+          >
+            <DailyNormaModal
+              setVisible={setVisible}
+              onWaterAmountSave={handleWaterAmountSave}
+            />
           </Modal>
         )}
         <button className={css.editButton} type="button" onClick={toggleModal}>
