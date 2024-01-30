@@ -14,3 +14,7 @@
   font-weight: 400;
   line-height: 20px;
 }
+
+.timeField {
+  appearance: none;
+}
