@@ -24,7 +24,8 @@ export const SharedLayout = () => {
         { [css.backgroundHomePage]: home },
         { [css.backgroundWelcomePage]: welcome },
         { [css.backgroundSigninPage]: signin },
-        { [css.backgroundSignupPage]: signup }
+        { [css.backgroundSigninPage]: signup },
+        { [css.backgroundSigninPage]: !(home || welcome || signup) }
       )}
     >
       <Header />
