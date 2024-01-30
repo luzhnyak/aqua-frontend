@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './AddWaterModal.module.css';
 
 import { Formik, Form, Field } from 'formik';
-import { object, number, date } from 'yup';
+// import { object, number, date } from 'yup';
 
 import { ReactComponent as IconPlus } from '../../images/icons/plus-small.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus-small.svg';
-
-import { TimeOptionsModal } from './TimeOptionsModal';
 
 const AddWaterModal = ({ isAddWater, isEditWater }) => {
   const [cleanStatus, setCleanStatus] = useState({
@@ -16,17 +14,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   });
 
   const [waterValue, setWaterValue] = useState(0);
-  const [previousValue, setPreviousValue] = useState(
-    waterValue ? waterValue : 0
-  );
-
-  let userSchema = object({
-    waterValue: number().required().positive().integer(),
-    recordingTime: date()
-      .required()
-      .default(() => new Date()),
-    waterUsed: number().positive().integer(),
-  });
+  const [time, setTime] = useState(0);
 
   const getCurrentTime = () => {
     const now = new Date();
@@ -36,9 +24,30 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     return `${hours}:${formattedMinutes}`;
   };
 
+  useEffect(() => {
+    const now = getCurrentTime();
+    setTime(now);
+  }, [setTime, time]);
+
+  const generateTimeOptions = () => {
+    const options = [];
+
+    for (let hours = 0; hours < 24; hours++) {
+      for (let minutes = 0; minutes < 60; minutes += 5) {
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        options.push({
+          value: `${formattedHours}:${formattedMinutes}`,
+          label: `${formattedHours}:${formattedMinutes}`,
+        });
+      }
+    }
+    return options;
+  };
+
   const initialValues = {
     waterValue: 0,
-    recordingTime: getCurrentTime(),
+    // recordingTime: time,
     waterUsed: 0,
   };
 
@@ -52,7 +61,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   const setPreviousAmount = e => {
     const trimmedValue = e.target.value.trim();
     if (trimmedValue === '') {
-      setWaterValue(previousValue);
+      setWaterValue(waterValue);
     }
   };
 
@@ -90,7 +99,14 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           </div>
           <div>
             <p className={css.paragraphs}>Recording time:</p>
-            <Field type="select" name="recordingTime" />
+            <div>
+              {time}
+              {/* {generateTimeOptions().map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))} */}
+            </div>
           </div>
           <h2 className={css.headlines}>Enter the value of the water used:</h2>
           <Field
@@ -101,10 +117,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
             value={waterValue}
             onChange={e => {
               const newValue = e.target.value;
-              // if (newValue >= 0) {
-              // setFieldValue('waterValue', newValue);
               setWaterValue(newValue);
-              // }
             }}
             onClick={e => {
               const newValue = e.target.value === '0' ? '' : e.target.value;
@@ -132,9 +145,3 @@ export default AddWaterModal;
 //     <h2 className={css.headlines}>Correct entered data:</h2>
 //   </div>
 // )}
-
-// <button type="button">Minus</button>
-// <Field type="number" name="waterValue" />
-// <button type="button">Add</button>
-
-// <div>value</div>
