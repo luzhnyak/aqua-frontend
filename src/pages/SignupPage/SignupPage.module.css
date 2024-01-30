@@ -1,30 +1,37 @@
 /* SigninPage.module.css */
 
 .container {
+
   /* border: 1px solid; */
+
   width: 100%;
 }
 
 /* Mobile and <*/
 @media screen and (max-width: 767px) {
+
   .container {
     /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg"); */
     background-repeat: no-repeat, no-repeat;
     background-position: center, bottom;
   }
+
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
+
   .container {
     /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg"); */
     background-repeat: no-repeat, no-repeat;
     background-position: top, right;
   }
+
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
+
   .container {
     /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg"); */
     background-repeat: repeat, no-repeat;
@@ -70,8 +77,11 @@
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
   .form {
+
+
     margin-right: 198px;
   }
+
 }
 
 .formControl {
@@ -81,7 +91,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 10px;
-  gap: 16px;
+  gap: 20px;
 }
 
 .formTitle {
@@ -94,15 +104,18 @@
 }
 
 .stack {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .input {
+  font-size: 16px;
+  color: var(--primary-color-blue);
   padding: 12px 10px;
   width: 280px;
-  border: 2px solid var(--secondary-color-blue-3);
+  border: 1px solid var(--secondary-color-blue-3);
   border-radius: 6px;
   outline: none;
 }
@@ -122,12 +135,15 @@
 }
 
 .inputBox {
+
+  font-size: 16px;
+  color: var(--primary-color-blue);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 10px;
+  padding: 12px 10px;
   width: 280px;
-  border: 2px solid var(--secondary-color-blue-3);
+  border: 1px solid var(--secondary-color-blue-3);
   border-radius: 6px;
   outline: none;
 }
@@ -147,12 +163,14 @@
 }
 
 .inputBoxRep {
+  color: var(--primary-color-blue);
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 10px;
+  padding: 12px 10px;
   width: 280px;
-  border: 2px solid var(--secondary-color-blue-3);
+  border: 1px solid var(--secondary-color-blue-3);
   border-radius: 6px;
   outline: none;
 }
@@ -173,13 +191,21 @@
 
 .iconeye {
   stroke: var(--primary-color-blue);
+
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
 }
 
 .inputpassword {
+  color: var(--primary-color-blue);
+
   outline: none;
   border: none;
   padding: 0;
   width: 280px;
+  font-size: 16px;
 }
 
 /* Tablet and > */
@@ -231,12 +257,16 @@
 }
 
 .errormessage {
+
+  position: absolute;
+  bottom: -18px;
+  left: 0;
   color: var(--secondary-color-red);
   font-size: 14px;
 }
 
 .errorBorder {
-  border: 2px solid var(--secondary-color-red);
+  border: 1px solid var(--secondary-color-red);
 }
 
 .errorInput {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import { signUpThunk } from '../../redux/auth/operations';
@@ -24,8 +25,8 @@ const SignupPage = () => {
     email: Yup.string().email().required('Email is required.'),
     password: Yup.string()
       .required('Password is required.')
-      .min(7, 'Password must be at least 8 characters.')
-      .max(55, 'Password must be less than 55 characters.'),
+      .min(8, 'Password must be at least 8 characters.')
+      .max(64, 'Password must be less than 64 characters.'),
     repeatPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
       .required('Repeat password is required.'),
@@ -33,8 +34,15 @@ const SignupPage = () => {
 
   const onSubmit = (values, { resetForm }) => {
     const { repeatPassword, ...newObject } = values;
-    dispatch(signUpThunk(newObject));
-    resetForm();
+    try {
+      dispatch(signUpThunk(newObject));
+      console.log('successful');
+      toast.success('Registration successful! Please sign in.');
+      resetForm();
+    } catch (error) {
+      console.error('Registration failed:', error);
+      toast.error('Registration failed. Please try again.');
+    }
   };
 
   return (

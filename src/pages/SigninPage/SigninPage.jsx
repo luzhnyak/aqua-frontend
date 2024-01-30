@@ -22,8 +22,8 @@ const SigninPage = () => {
     email: Yup.string().email().required('Email is required.'),
     password: Yup.string()
       .required('Password is required.')
-      .min(7, 'Password must be at least 8 characters.')
-      .max(55, 'Password must be less than 55 characters.'),
+      .min(8, 'Password must be at least 8 characters.')
+      .max(64, 'Password must be less than 64 characters.'),
   });
 
   const onSubmit = (values, { resetForm }) => {
