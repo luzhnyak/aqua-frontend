@@ -27,12 +27,12 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   };
 
   const addAmountOfWater = () => {
-    setWaterValue(waterValue + 1);
+    setWaterValue(Number(waterValue) + 1);
   };
 
   const minusAmountOfWater = () => {
     if (waterValue > 0) {
-      setWaterValue(waterValue - 1);
+      setWaterValue(Number(waterValue) - 1);
     }
   };
 
@@ -51,7 +51,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
               name="waterValue"
               onBlur={handleBlur}
               value={waterValue}
-              onChange={e => setWaterValue(e.target.value)}
+              readOnly
             />
             <button type="button" onClick={addAmountOfWater}>
               <IconPlus />
