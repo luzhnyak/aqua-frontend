@@ -112,7 +112,8 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       const date = new Date(y, m, d);
       let progress
       if(waterPerMonth.length !== 0 ){
-        progress = (waterPerMonth.totalVolume[d] / waterPerMonth.waterRate[d]) * 100;
+        progress = waterPerMonth.progress
+        // (waterPerMonth.totalVolume[d] / waterPerMonth.waterRate[d]) * 100;
       }
       else{ progress = 0}
       if (m === currentMonth) {
@@ -173,6 +174,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
 
                   {popUp && sDay === item.day && (
                     <PopUpDay
+                      dayId={item.id}
                       handleCloseClick={handleCloseClick}
                       sDate={sDate}
                     />
