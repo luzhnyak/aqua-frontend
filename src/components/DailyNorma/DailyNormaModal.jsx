@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './DailyNormaModal.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateWaterNormaThunk } from '../../redux/auth/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { selectWaterRate } from '../../redux/auth/selectors';
 
 const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
   const dispatch = useDispatch();
+
+  let waterRate = useSelector(selectWaterRate) / 1000 || 2.0;
 
   const [userData, setUserData] = useState({
     gender: 'female',
@@ -19,12 +22,16 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
     gender: 'female',
     weight: '',
     activityTime: '',
-    waterAmount: '0',
+    waterAmount: waterRate.toString(),
   };
 
   const validationSchema = Yup.object({
-    weight: Yup.number().required('Weight is required.').min(1, 'Min weight amount is 1'),
-    activityTime: Yup.number().required('ActivityTime is required.').min(0, 'Min weight amount is 0'),
+    weight: Yup.number()
+      .required('Weight is required.')
+      .min(1, 'Min weight amount is 1'),
+    activityTime: Yup.number()
+      .required('ActivityTime is required.')
+      .min(0, 'Min weight amount is 0'),
     waterAmount: Yup.number()
       .required('WaterAmount is required.')
       .min(0, 'Min water amount is 0 L')
@@ -32,6 +39,24 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
   });
 
   const [neededWaterAmount, setNeededWaterAmount] = useState(2.0);
+
+  useEffect(() => {
+    // Set the initial value for waterAmount when the component mounts
+    setUserData(prevData => ({
+      ...prevData,
+      waterAmount: waterRate.toString(),
+    }));
+  }, [waterRate]);
+
+   // Recalculate neededWaterAmount when gender changes
+   useEffect(() => {
+    const calculatedWaterAmount = calculateWaterAmount(
+      userData.gender,
+      userData.weight,
+      userData.activityTime
+    );
+    setNeededWaterAmount(calculatedWaterAmount);
+  }, [userData.gender, userData.weight, userData.activityTime]);
 
   const calculateWaterAmount = (gender, weight, activityTime) => {
     if (gender === 'female') {
@@ -42,8 +67,6 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    //   event.preventDefault();
-
     setUserData(prevData => ({
       ...prevData,
       waterAmount: values.waterAmount,
@@ -58,9 +81,6 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
     );
 
     setNeededWaterAmount(calculatedWaterAmount);
-
-    // Dispatch the action to update the water rate in Redux
-    dispatch(updateWaterNormaThunk(parseFloat(waterAmount)));
 
     onWaterAmountSave(parseFloat(waterAmount) * 1000);
 
@@ -107,6 +127,14 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
                   name="gender"
                   value="female"
                   checked={values.gender === 'female'}
+                  onChange={event => {
+                    setFieldValue('gender', event.target.value);
+                    const { name, value } = event.target;
+                    setUserData(prevData => ({
+                      ...prevData,
+                      [name]: value,
+                    }));
+                  }}
                 />
                 For woman
               </label>
@@ -118,6 +146,14 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
                   name="gender"
                   value="male"
                   checked={values.gender === 'male'}
+                  onChange={event => {
+                    setFieldValue('gender', event.target.value);
+                    const { name, value } = event.target;
+                    setUserData(prevData => ({
+                      ...prevData,
+                      [name]: value,
+                    }));
+                  }}
                 />
                 For man
               </label>
@@ -237,6 +273,9 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
                 type="text"
                 name="waterAmount"
                 value={values.waterAmount}
+                onChange={event => {
+                  setFieldValue('waterAmount', event.target.value);
+                }}
               />
               <ErrorMessage
                 name="waterAmount"
