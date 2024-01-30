@@ -7,11 +7,14 @@ import { useParams } from 'react-router-dom';
 import { sendUpdatePass } from 'services/waterApi';
 import css from './UpdatePasswordPage.module.css';
 import { toast } from 'react-toastify';
+import Backdrop from 'components/Backdrop/Backdrop';
+import Loader from 'components/Loader/Loader';
 
 const UpdatetPasswordPage = () => {
   const { token } = useParams();
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const initialValues = {
     newPassword: '',
@@ -30,11 +33,12 @@ const UpdatetPasswordPage = () => {
 
   const onSubmit = async (values, { resetForm }) => {
     const { newPassword, repeatNewPassword } = values;
+    
 
     if (newPassword !== repeatNewPassword) {
       return;
     }
-
+    setLoader(true)
     try {
       
       await sendUpdatePass(token, repeatNewPassword);
@@ -45,9 +49,11 @@ const UpdatetPasswordPage = () => {
       }, 3000)
 
     } catch (error) {
-
+      setLoader(false)
       toast.error("Something went wrong, try again later")
       
+    } finally {
+      setLoader(false)
     }
 
     resetForm();
@@ -147,6 +153,10 @@ const UpdatetPasswordPage = () => {
           )}
         </Formik>
       </div>
+      {loader && 
+       <Backdrop>
+         <Loader />
+       </Backdrop>}
     </div>
   );
 };
