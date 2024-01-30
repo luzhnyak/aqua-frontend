@@ -1,11 +1,15 @@
+.calendar-container {
+  height: 506px;
+}
 @media only screen and (min-width: 768px) {
+  .calendar-container {
+    height: 340px;
+  }
 }
-@media only screen and (min-width: 1440px) {
-}
-
 @media only screen and (min-width: 1440px) {
   .calendar-container {
     max-width: 592px;
+    height: 332px;
   }
 }
 
