@@ -8,6 +8,8 @@
   overflow: auto;
 }
 
+
+
 .modal {
   position: absolute;
   min-width: 280px;
@@ -18,6 +20,7 @@
   padding: 32px 24px;
   background-color: var(--primary-color-white);
   border-radius: 8px;
+
   @media only screen and (max-width: 767px) {
     padding: 32px 12px;
   }
@@ -26,6 +29,10 @@
 @media only screen and (min-width: 768px) {
   .modal {
     width: 704px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -53,6 +60,7 @@
   height: 24px;
   border: none;
   background-color: transparent;
+
   :hover {
     color: var(--primary-color-white);
     /* border: 1px solid #fff; */
