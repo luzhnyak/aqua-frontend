@@ -1,6 +1,6 @@
 export const selectWatersToday = state => state.water.items;
 
-export const selectWatersperDay = state => state.water.itemsPerDay;
+export const selectWatersPerMonth = state => state.water.itemsPerMonth;
 
 export const selectLoading = state => state.water.loading;
 
