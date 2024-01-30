@@ -47,7 +47,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   useEffect(() => {
     const now = getCurrentTime();
     setTime(now);
-  }, [setTime, time]);
+  }, [setTime]);
 
   const generateTimeOptions = () => {
     const options = [];
@@ -117,6 +117,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
               name="recordingTime"
               value={time}
               onChange={event => {
+                console.log(event.target.value);
                 setTime(event.target.value);
               }}
             >
