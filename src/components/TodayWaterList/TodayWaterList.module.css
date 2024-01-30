@@ -8,8 +8,30 @@
     font-size: 26px;
   }
 }
-.entryList{
+.entries-container{
     padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.empty{
+color: var(--Primery-Color-Blue, #407BFF);
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+}
+.entries{
+    max-height: 258px;
+}
+@media only screen and (min-width: 768px) {
+    .entries{
+        max-height: 260px;
+    }
+}
+
+
+.list-entry{
+
 }
 
 .btn-add{
