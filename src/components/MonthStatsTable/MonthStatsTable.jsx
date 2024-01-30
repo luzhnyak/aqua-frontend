@@ -1,8 +1,15 @@
 import css from './MonthStatsTable.module.css';
 import { useEffect, useState } from 'react';
 import PopUpDay from './PopUpDay';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectWatersPerMonth } from '../../redux/waterConsumption/selectors';
+import { getAllWaterForMonthThunk } from '../../redux/waterConsumption/operations';
 
 export const MonthStatsTable = ({ popUpOpen }) => {
+  const dispatch = useDispatch();
+
+  const waterPerMonth = useSelector(selectWatersPerMonth);
+
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
@@ -11,6 +18,14 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   const next = '\u003E';
 
   useEffect(() => {
+    const getMonthWater = () => {
+      const y = sDate.getFullYear();
+      const m = sDate.getMonth();
+      const chosenMonth = { year: y, month: m };
+      dispatch(getAllWaterForMonthThunk(chosenMonth));
+    };
+    getMonthWater();
+
     const disabled = () => {
       const currentDate = new Date();
       const month = Number(
@@ -18,19 +33,24 @@ export const MonthStatsTable = ({ popUpOpen }) => {
           month: 'numeric',
         })
       );
-
+      const year = Number(
+        sDate.toLocaleString('en-US', {
+          year: 'numeric',
+        })
+      );
+      const currentYear = currentDate.getFullYear();
       const currentMonth = currentDate.getMonth() + 1;
-
-      if (month === currentMonth) {
+      if (month === currentMonth && year === currentYear) {
         setsDisabledYear(true);
       }
     };
 
     disabled();
+
     if (popUpOpen) {
       handleCloseClick();
     }
-  }, [popUpOpen, sDate]);
+  }, [popUpOpen, sDate, dispatch]);
 
   const findMonthDays = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
@@ -42,6 +62,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       const pYear = pDate.getFullYear();
       return new Date(pYear, pMonth);
     });
+
     setsDisabledYear(false);
     setsPopup(false);
   };
@@ -86,17 +107,23 @@ export const MonthStatsTable = ({ popUpOpen }) => {
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
     // Show actual days
+    
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
-
+      let progress
+      if(waterPerMonth.length !== 0 ){
+        progress = waterPerMonth.progress
+        // (waterPerMonth.totalVolume[d] / waterPerMonth.waterRate[d]) * 100;
+      }
+      else{ progress = 0}
       if (m === currentMonth) {
         if (d <= currentDay) {
-          allDays.push({ day: d, date: date, value: 100, disabled: false });
+          allDays.push({ day: d, date: date, value: progress, disabled: false });
         } else {
-          allDays.push({ day: d, date: date, value: 100, disabled: true });
+          allDays.push({ day: d, date: date, value: progress, disabled: true });
         }
       } else {
-        allDays.push({ day: d, date: date, value: 100, disabled: false });
+        allDays.push({ day: d, date: date, value: progress, disabled: false });
       }
     }
 
@@ -143,10 +170,11 @@ export const MonthStatsTable = ({ popUpOpen }) => {
                   >
                     {item.day}
                   </button>
-                  <p className={css.percent}> 100%</p>
+                  <p className={css.percent}> {item.value}%</p>
 
                   {popUp && sDay === item.day && (
                     <PopUpDay
+                      dayId={item.id}
                       handleCloseClick={handleCloseClick}
                       sDate={sDate}
                     />
