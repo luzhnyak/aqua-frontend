@@ -1,89 +1,88 @@
 /* SigninPage.module.css */
 
 .container {
-  border: 1px solid;
   width: 100%;
 }
 
 /* Mobile and <*/
 @media screen and (max-width: 767px) {
 
-    .container {
-        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg"); */
-        background-repeat: no-repeat, no-repeat;
-        background-position: center, bottom;
-    }
+  .container {
+    /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/mobile-bottle-sign-in.svg"); */
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, bottom;
+  }
 
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
 
-    .container {
-        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg"); */
-        background-repeat: no-repeat, no-repeat;
-        background-position: top, right;
-    }
+  .container {
+    /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/tablet-bottle-sign-in.svg"); */
+    background-repeat: no-repeat, no-repeat;
+    background-position: top, right;
+  }
 
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
 
-    .container {
-        /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg"); */
-        background-repeat: repeat, no-repeat;
-        background-position: center center, left;
-    }
+  .container {
+    /* background-image: url("../../images/mobile-background-element-sign-in.svg"), url("../../images/desktop-bottle-sign-in.svg"); */
+    background-repeat: repeat, no-repeat;
+    background-position: center center, left;
+  }
 }
 
 .mainstr {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
 
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
 
-    .mainstr {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
+  .mainstr {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
 
-    .mainstr {
-        justify-content: flex-end;
-        align-items: center;
-    }
+  .mainstr {
+    justify-content: flex-end;
+    align-items: center;
+  }
 
 }
 
 
 .form {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-    .form {
-        margin-top: 40px;
-        margin-left: 32px;
-    }
+  .form {
+    margin-top: 40px;
+    margin-left: 32px;
+  }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .form {
+  .form {
 
-        margin-right: 198px;
-    }
+    margin-right: 198px;
+  }
 
 }
 
@@ -95,7 +94,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 10px;
-  gap: 16px;
+  gap: 20px;
 }
 
 .formTitle {
@@ -108,15 +107,18 @@
 }
 
 .stack {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .input {
+  font-size: 16px;
+  color: var(--primary-color-blue);
   padding: 12px 10px;
   width: 280px;
-  border: 2px solid var(--secondary-color-blue-3);
+  border: 1px solid var(--secondary-color-blue-3);
   border-radius: 6px;
   outline: none;
 }
@@ -136,12 +138,15 @@
 }
 
 .inputBox {
+
+  font-size: 16px;
+  color: var(--primary-color-blue);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 10px;
+  padding: 12px 10px;
   width: 280px;
-  border: 2px solid var(--secondary-color-blue-3);
+  border: 1px solid var(--secondary-color-blue-3);
   border-radius: 6px;
   outline: none;
 }
@@ -161,61 +166,71 @@
 }
 
 .inputBoxRep {
-    display: flex;
-    align-items: center;
-    justify-Content: space-between;
-    padding: 6px 10px;
-    width: 280px;
-    border: 2px solid var(--secondary-color-blue-3);
-    border-radius: 6px;
-    outline: none;
+  color: var(--primary-color-blue);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+  width: 280px;
+  border: 1px solid var(--secondary-color-blue-3);
+  border-radius: 6px;
+  outline: none;
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-    .inputBoxRep {
-        width: 336px;
-    }
+  .inputBoxRep {
+    width: 336px;
+  }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .inputBoxRep {
-        width: 384px;
-    }
+  .inputBoxRep {
+    width: 384px;
+  }
 }
 
 .iconeye {
-    stroke: var(--primary-color-blue);
+  stroke: var(--primary-color-blue);
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
 }
 
 .inputpassword {
-    outline: none;
-    border: none;
-    padding: 0;
-    width: 280px;
+  color: var(--primary-color-blue);
+  outline: none;
+  border: none;
+  padding: 0;
+  width: 280px;
+  font-size: 16px;
+
+
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-    .inputpassword {
-        width: 336px;
-    }
+  .inputpassword {
+    width: 336px;
+  }
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-    .inputpassword {
-        width: 384px;
-    }
+  .inputpassword {
+    width: 384px;
+  }
 }
 
 .input::placeholder {
-    color: var(--secondary-color-blue-3);
+  color: var(--secondary-color-blue-3);
 }
 
 .inputpassword::placeholder {
-    color: var(--secondary-color-blue-3);
+  color: var(--secondary-color-blue-3);
 }
 
 .button {
@@ -245,27 +260,28 @@
 }
 
 .errormessage {
-
-    color: var(--secondary-color-red);
-    font-size: 14px;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  color: var(--secondary-color-red);
+  font-size: 14px;
 }
 
 .errorBorder {
-    border: 2px solid var(--secondary-color-red);
+  border: 1px solid var(--secondary-color-red);
 }
 
 .errorInput {
-    color: var(--secondary-color-red);
+  color: var(--secondary-color-red);
 }
 
 .errorInput::placeholder {
-    color: var(--secondary-color-red);
+  color: var(--secondary-color-red);
 }
 
 .signin {
-    color: var(--primary-color-blue);
-    text-decoration-line: none;
-    display: block;
-    margin-right: auto;
+  color: var(--primary-color-blue);
+  text-decoration-line: none;
+  display: block;
+  margin-right: auto;
 }
-
