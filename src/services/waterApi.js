@@ -46,7 +46,7 @@ export const updateUserAvatar = async newAvatar => {
 
 export const updateUserInfo = async formData => {
   const { data } = await axios.put('/users/update-user', formData);
-  return data;
+  return data.user;
 };
 
 export const updateWaterNorma = async newWaterRate => {
