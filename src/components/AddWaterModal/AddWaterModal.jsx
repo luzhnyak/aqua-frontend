@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import css from './AddWaterModal.module.css';
+
 import { Formik, Form, Field } from 'formik';
+import { object, number, date } from 'yup';
 
 import { ReactComponent as IconPlus } from '../../images/icons/plus-small.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus-small.svg';
+
+import { TimeOptionsModal } from './TimeOptionsModal';
 
 const AddWaterModal = ({ isAddWater, isEditWater }) => {
   const [cleanStatus, setCleanStatus] = useState({
@@ -12,10 +16,29 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   });
 
   const [waterValue, setWaterValue] = useState(0);
+  const [previousValue, setPreviousValue] = useState(
+    waterValue ? waterValue : 0
+  );
+
+  let userSchema = object({
+    waterValue: number().required().positive().integer(),
+    recordingTime: date()
+      .required()
+      .default(() => new Date()),
+    waterUsed: number().positive().integer(),
+  });
+
+  const getCurrentTime = () => {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = Math.floor(now.getMinutes());
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    return `${hours}:${formattedMinutes}`;
+  };
 
   const initialValues = {
     waterValue: 0,
-    recordingTime: new Date(),
+    recordingTime: getCurrentTime(),
     waterUsed: 0,
   };
 
@@ -26,13 +49,20 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     });
   };
 
+  const setPreviousAmount = e => {
+    const trimmedValue = e.target.value.trim();
+    if (trimmedValue === '') {
+      setWaterValue(previousValue);
+    }
+  };
+
   const addAmountOfWater = () => {
-    setWaterValue(Number(waterValue) + 1);
+    setWaterValue(Number.parseInt(waterValue) + 1);
   };
 
   const minusAmountOfWater = () => {
     if (waterValue > 0) {
-      setWaterValue(Number(waterValue) - 1);
+      setWaterValue(Number.parseInt(waterValue) - 1);
     }
   };
 
@@ -47,6 +77,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
               <IconMinus />
             </button>
             <Field
+              min="0"
               type="number"
               name="waterValue"
               onBlur={handleBlur}
@@ -57,14 +88,31 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
               <IconPlus />
             </button>
           </div>
-
+          <div>
+            <p className={css.paragraphs}>Recording time:</p>
+            <Field type="select" name="recordingTime" />
+          </div>
           <h2 className={css.headlines}>Enter the value of the water used:</h2>
           <Field
+            min="0"
             type="number"
             name="waterEditValue"
-            onBlur={handleBlur}
+            onBlur={setPreviousAmount}
             value={waterValue}
-            onChange={e => setWaterValue(e.target.value)}
+            onChange={e => {
+              const newValue = e.target.value;
+              // if (newValue >= 0) {
+              // setFieldValue('waterValue', newValue);
+              setWaterValue(newValue);
+              // }
+            }}
+            onClick={e => {
+              const newValue = e.target.value === '0' ? '' : e.target.value;
+              if (newValue >= 0) {
+                setFieldValue('waterValue', newValue);
+                setWaterValue(newValue);
+              }
+            }}
           />
           <button type="submit">Save</button>
         </Form>
@@ -88,7 +136,5 @@ export default AddWaterModal;
 // <button type="button">Minus</button>
 // <Field type="number" name="waterValue" />
 // <button type="button">Add</button>
-// <p className={css.paragraphs}>Recording time:</p>
-// <Field type="time" name="recordingTime" />
 
 // <div>value</div>

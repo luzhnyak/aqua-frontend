@@ -9,6 +9,7 @@ import clsx from 'clsx';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const SharedLayout = () => {
   const location = useLocation();
