@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './DailyNormaModal.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateWaterNormaThunk } from '../../redux/auth/operations';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { selectWaterRate } from '../../redux/auth/selectors';
 
 const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
+  const dispatch = useDispatch();
+
+  let waterRate = useSelector(selectWaterRate) / 1000 || 2.0;
+
   const [userData, setUserData] = useState({
     gender: 'female',
     weight: '',
@@ -9,7 +18,45 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
     waterAmount: '',
   });
 
+  const initialValues = {
+    gender: 'female',
+    weight: '',
+    activityTime: '',
+    waterAmount: waterRate.toString(),
+  };
+
+  const validationSchema = Yup.object({
+    weight: Yup.number()
+      .required('Weight is required.')
+      .min(1, 'Min weight amount is 1'),
+    activityTime: Yup.number()
+      .required('ActivityTime is required.')
+      .min(0, 'Min weight amount is 0'),
+    waterAmount: Yup.number()
+      .required('WaterAmount is required.')
+      .min(0, 'Min water amount is 0 L')
+      .max(15, 'Max water amount is 15 L  '),
+  });
+
   const [neededWaterAmount, setNeededWaterAmount] = useState(2.0);
+
+  useEffect(() => {
+    // Set the initial value for waterAmount when the component mounts
+    setUserData(prevData => ({
+      ...prevData,
+      waterAmount: waterRate.toString(),
+    }));
+  }, [waterRate]);
+
+   // Recalculate neededWaterAmount when gender changes
+   useEffect(() => {
+    const calculatedWaterAmount = calculateWaterAmount(
+      userData.gender,
+      userData.weight,
+      userData.activityTime
+    );
+    setNeededWaterAmount(calculatedWaterAmount);
+  }, [userData.gender, userData.weight, userData.activityTime]);
 
   const calculateWaterAmount = (gender, weight, activityTime) => {
     if (gender === 'female') {
@@ -19,45 +66,29 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
     }
   };
 
-  const onChange = event => {
-    const { name, value } = event.target;
+  const onSubmit = (values, { resetForm }) => {
     setUserData(prevData => ({
       ...prevData,
-      [name]: value,
+      waterAmount: values.waterAmount,
     }));
 
-    if (name === 'weight' || name === 'activityTime') {
-      const calculatedWaterAmount = calculateWaterAmount(
-        userData.gender,
-        name === 'weight' ? value : userData.weight,
-        name === 'activityTime' ? value : userData.activityTime,
-      );
-      setNeededWaterAmount(calculatedWaterAmount);
-    }
-  };
-
-  const onSubmit = event => {
-    event.preventDefault();
-
-    setUserData(prevData => ({
-      ...prevData,
-      waterAmount: event.target.elements.waterAmount.value,
-    }));
-
-    const waterAmount = event.target.elements.waterAmount.value;
+    const waterAmount = values.waterAmount;
 
     const calculatedWaterAmount = calculateWaterAmount(
-      userData.gender,
-      userData.weight,
-      userData.activityTime
+      values.gender,
+      values.weight,
+      values.activityTime
     );
 
     setNeededWaterAmount(calculatedWaterAmount);
 
-    onWaterAmountSave(parseFloat(waterAmount));
+    onWaterAmountSave(parseFloat(waterAmount) * 1000);
+
+    dispatch(updateWaterNormaThunk(waterAmount * 1000));
 
     setVisible(false);
   };
+
   return (
     <div className={css.container}>
       <div className={css.formTitle}>
@@ -80,74 +111,185 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
         </p>
       </div>
 
-      <form action="" onSubmit={onSubmit}>
-        <h3 className={css.formName}>Calculate your rate:</h3>
-        <div className={css.chooseGender}>
-          <label className={css.radioLabel}>
-            <input
-              className={css.formRadioInput}
-              type="radio"
-              name="gender"
-              value="female"
-              defaultChecked
-            />
-            For woman
-          </label>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {({ values, errors, touched, setFieldValue }) => (
+          <Form>
+            <h3 className={css.formName}>Calculate your rate:</h3>
+            <div className={css.chooseGender}>
+              <label className={css.radioLabel}>
+                <Field
+                  className={css.formRadioInput}
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={values.gender === 'female'}
+                  onChange={event => {
+                    setFieldValue('gender', event.target.value);
+                    const { name, value } = event.target;
+                    setUserData(prevData => ({
+                      ...prevData,
+                      [name]: value,
+                    }));
+                  }}
+                />
+                For woman
+              </label>
 
-          <label className={css.radioLabel}>
-            <input
-              className={css.formRadioInput}
-              type="radio"
-              name="gender"
-              value="male"
-            />
-            For man
-          </label>
-        </div>
+              <label className={css.radioLabel}>
+                <Field
+                  className={css.formRadioInput}
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={values.gender === 'male'}
+                  onChange={event => {
+                    setFieldValue('gender', event.target.value);
+                    const { name, value } = event.target;
+                    setUserData(prevData => ({
+                      ...prevData,
+                      [name]: value,
+                    }));
+                  }}
+                />
+                For man
+              </label>
+            </div>
 
-        <div className={css.questionContainer}>
-          <label className={css.questionLabel}>
-            <span className={css.questionText}>Your weight in kilograms:</span>
-            <input
-              className={css.questionInput}
-              type="text"
-              name="weight"
-              onChange={onChange}
-            />
-          </label>
+            <div className={css.questionContainer}>
+              <label className={css.questionLabel}>
+                <span className={css.questionText}>
+                  Your weight in kilograms:
+                </span>
+                <Field
+                  className={`${css.questionInput}
+                ${errors.weight && touched.weight ? css.errorBorder : ''} ${
+                    errors.weight && touched.weight ? css.errorInput : ''
+                  }
+                `}
+                  type="text"
+                  name="weight"
+                  value={values.weight}
+                  onChange={event => {
+                    setFieldValue('weight', event.target.value);
+                    const { name, value } = event.target;
+                    setUserData(prevData => ({
+                      ...prevData,
+                      [name]: value,
+                    }));
 
-          <label className={css.questionLabel}>
-            <span className={css.questionText}>
-              The time of active participation in sports or other activities
-              with a high physical. load in hours:
-            </span>
-            <input
-              className={css.questionInput}
-              type="text"
-              name="activityTime"
-              onChange={onChange}
-            />
-          </label>
-        </div>
+                    if (name === 'weight' || name === 'activityTime') {
+                      const calculatedWaterAmount = calculateWaterAmount(
+                        userData.gender,
+                        name === 'weight' ? value : userData.weight,
+                        name === 'activityTime' ? value : userData.activityTime
+                      );
+                      setNeededWaterAmount(calculatedWaterAmount);
+                    }
+                  }}
+                />
 
-        <div className={css.requiredAmountContainer}>
-          <p className={css.requiredAmountText}>
-            The required amount of water in liters per day:
-          </p>
-          <p id="neededWaterAmount" className={css.requiredAmountValue}>
-            {neededWaterAmount} L
-          </p>
-        </div>
+                <ErrorMessage
+                  name="weight"
+                  component="div"
+                  className={css.errormessage}
+                />
+              </label>
 
-        <label className={css.questionLabel}>
-          <span className={css.howMuchText}>
-            Write down how much water you will drink:
-          </span>
-          <input className={css.questionInput} type="text" name="waterAmount" />
-        </label>
+              <label className={css.questionLabel}>
+                <span className={css.questionText}>
+                  The time of active participation in sports or other activities
+                  with a high physical. load in hours:
+                </span>
+                <Field
+                  className={`${css.questionInput}
+                ${
+                  errors.activityTime && touched.activityTime
+                    ? css.errorBorder
+                    : ''
+                } ${
+                    errors.activityTime && touched.activityTime
+                      ? css.errorInput
+                      : ''
+                  }
+                `}
+                  type="text"
+                  name="activityTime"
+                  value={values.activityTime}
+                  onChange={event => {
+                    setFieldValue('activityTime', event.target.value);
+                    const { name, value } = event.target;
+                    setUserData(prevData => ({
+                      ...prevData,
+                      [name]: value,
+                    }));
 
-        <button className={css.submitButton}>Save</button>
-      </form>
+                    if (name === 'weight' || name === 'activityTime') {
+                      const calculatedWaterAmount = calculateWaterAmount(
+                        userData.gender,
+                        name === 'weight' ? value : userData.weight,
+                        name === 'activityTime' ? value : userData.activityTime
+                      );
+                      setNeededWaterAmount(calculatedWaterAmount);
+                    }
+                  }}
+                />
+                <ErrorMessage
+                  name="activityTime"
+                  component="div"
+                  className={css.errormessage}
+                />
+              </label>
+            </div>
+
+            <div className={css.requiredAmountContainer}>
+              <p className={css.requiredAmountText}>
+                The required amount of water in liters per day:
+              </p>
+              <p id="neededWaterAmount" className={css.requiredAmountValue}>
+                {neededWaterAmount} L
+              </p>
+            </div>
+
+            <label className={css.questionLabel}>
+              <span className={css.howMuchText}>
+                Write down how much water you will drink:
+              </span>
+              <Field
+                className={`${css.questionInput}
+                ${
+                  errors.waterAmount && touched.waterAmount
+                    ? css.errorBorder
+                    : ''
+                } ${
+                  errors.waterAmount && touched.waterAmount
+                    ? css.errorInput
+                    : ''
+                }
+                `}
+                type="text"
+                name="waterAmount"
+                value={values.waterAmount}
+                onChange={event => {
+                  setFieldValue('waterAmount', event.target.value);
+                }}
+              />
+              <ErrorMessage
+                name="waterAmount"
+                component="div"
+                className={css.errormessage}
+              />
+            </label>
+
+            <button type="submit" className={css.submitButton}>
+              Save
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

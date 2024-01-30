@@ -1,58 +1,85 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import css from './Setting.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
-import { Link } from 'react-router-dom';
 import { ReactComponent as IconUploadPhoto } from '../../images/icons/arrow-up-tray.svg';
 import FormUser from './FormUser';
 import { updateAvatarThunk } from '../../redux/auth/operations';
 
-const SettingModal = () => {
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
-  // console.log(user);
-  // const userName = user.name;
-  // console.log(userName);
-  // const email = user.email;
-  // console.log(email);
-  const avatar = user.avatarURL;
-  // console.log(avatar);
-  const userName = 'user';
-  // const userName = '';
-  const email = 'email@mail.com';
+const SettingModal = ({ onClose }) => {
+  const fileInputRef = useRef(null);
 
-  const handleUploadPhoto = newPhoto => {
-    dispatch(updateAvatarThunk(newPhoto));
+  const [file, setFile] = useState();
+
+  const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+  const { name, email, avatarURL } = user;
+
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   if (file) {
+  //     dispatch(updateAvatarThunk(file));
+  //     // Скидання значень інпуту
+  //     fileInputRef.current.value = null;
+  //   }
+  // };
+
+  const handleChange = event => {
+    setFile(event.target.files[0]);
   };
+
+  useEffect(() => {
+    if (file) {
+      dispatch(updateAvatarThunk(file));
+      // Скидання значень інпуту
+      fileInputRef.current.value = null;
+    }
+  }, [file, dispatch]);
+
+  // const handleButtonClick = () => {
+  //   // Викликаємо клік на прихованому інпуті, коли натискана кнопка
+  //   // fileInputRef.current.click();
+  // };
 
   return (
     <div>
       <h4 className={css.title}>Your photo</h4>
       <div className={css.wrapAvatar}>
-        {avatar ? (
-          <img srcSet={avatar} className={css.avatar} alt="userAvatar" />
+        {avatarURL ? (
+          <img srcSet={avatarURL} className={css.avatar} alt="userAvatar" />
         ) : (
           <div className={css.noAvatar}>
             <span className={css.letter}>
-              {userName
-                ? userName.charAt(0).toUpperCase()
+              {name
+                ? name.charAt(0).toUpperCase()
                 : email.charAt(0).toUpperCase()}
             </span>
           </div>
         )}
-        <Link
-          className={css.uploadPhoto}
-          onClick={newPhoto => {
-            handleUploadPhoto(newPhoto);
-          }}
-        >
-          <IconUploadPhoto className={css.iconUploadPhoto} />
-          <p>Upload a photo</p>
-        </Link>
+
+        <form>
+          <input
+            id="inputFile"
+            type="file"
+            onChange={handleChange}
+            className={css.input}
+            ref={fileInputRef}
+          />
+          <label htmlFor="inputFile">
+            <IconUploadPhoto className={css.iconUploadPhoto} />
+            Upload a photo
+          </label>
+
+          {/* <button
+            className={css.uploadPhoto}
+            onClick={handleButtonClick}
+          ></button> */}
+        </form>
       </div>
 
-      <FormUser />
+      <FormUser onClose={onClose} />
     </div>
   );
 };

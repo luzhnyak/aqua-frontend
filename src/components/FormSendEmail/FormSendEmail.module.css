@@ -1,107 +1,121 @@
-
 .mainstr {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  @media screen and (min-width: 768px) {
-    .mainstr {
-      justify-content: flex-start;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-
-    .mainstr {
-        justify-content: flex-end;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-  
-  .formControl {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 10px;
-    gap: 16px;
+
+@media screen and (min-width: 768px) {
+  .mainstr {
+    justify-content: flex-start;
   }
-  
-  .formTitle {
-    padding-left: 10px;
-    font-size: 26px;
+}
+
+@media screen and (min-width: 1440px) {
+  .mainstr {
+    justify-content: flex-end;
+    margin-right: 104px;
   }
-  
-  .formLabel {
-    margin-bottom: 8px;
-  }
-  
-  .stack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
+}
+
+.formControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 10px;
+  gap: 16px;
+}
+
+.formTitle {
+  padding-left: 10px;
+  font-size: 26px;
+}
+
+.formLabel {
+  margin-bottom: 8px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input {
+  font-size: 16px;
+  padding: 12px 10px;
+  width: 280px;
+  border: 2px solid var(--secondary-color-blue-3);
+  border-radius: 6px;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
   .input {
-    padding: 12px 10px;
-    width: 280px;
-    border: 2px solid var(--secondary-color-blue-3);
-    border-radius: 6px;
-    outline: none;
+    width: 336px;
   }
+}
 
-  @media screen and (min-width: 768px) {
-    .input {
-      width: 336px;
-    }
+@media screen and (min-width: 1440px) {
+  .input {
+    width: 384px;
   }
+}
 
-  @media screen and (min-width: 1440px) {
-    .input {
-      width: 384px;
-    }
-  }
+.button {
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 280px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 20px;
+}
 
+@media screen and (min-width: 768px) {
   .button {
-    background-color: var(--primary-color-blue);
-    color: var(--primary-color-white);
-    padding: 10px 30px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 280px;
-    height: 36px;
+    width: 336px;
+    height: 44px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
   }
+}
 
-  @media screen and (min-width: 768px) {
-    .button {
-      width: 336px;
-      height: 44px;
-    }
+@media screen and (min-width: 1440px) {
+  .button {
+    width: 384px;
+    height: 44px;
+
+    font-size: 18px;
+    line-height: 24px;
   }
+}
 
-  @media screen and (min-width: 1440px) {
-    .button {
-      width: 384px;
-    }
-  }
-
-  .errormessage {
-    color: var(--secondary-color-red);
-    font-size: 14px;
+.errormessage {
+  color: var(--secondary-color-red);
+  font-size: 14px;
 }
 
 .errorBorder {
-    border: 2px solid var(--secondary-color-red);
+  border: 2px solid var(--secondary-color-red);
 }
 
-
 .errorInput {
-    color: var(--secondary-color-red);
+  color: var(--secondary-color-red);
 }
 
 .errorInput::placeholder {
-    color: var(--secondary-color-red);
+  color: var(--secondary-color-red);
+}
+
+.signin {
+  color: var(--primary-color-blue);
+  text-decoration-line: none;
+  display: block;
+  margin-right: auto;
 }

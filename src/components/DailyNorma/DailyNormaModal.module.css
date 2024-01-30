@@ -207,6 +207,23 @@
   }
 }
 
+.errormessage {
 
+  color: var(--secondary-color-red);
+  font-size: 14px;
+}
+
+.errorBorder {
+  border: 2px solid var(--secondary-color-red);
+}
+
+
+.errorInput {
+  color: var(--secondary-color-red);
+}
+
+.errorInput::placeholder {
+  color: var(--secondary-color-red);
+}
 
 

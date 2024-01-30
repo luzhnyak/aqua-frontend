@@ -2,7 +2,7 @@
 
 .dataContainer {
   max-width: 280px;
-  min-height: 1228px;
+  min-height: 900px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -159,7 +159,6 @@
     height: 40px;
   }
 }
-
 
 .tryTrackerBtn {
   display: block;

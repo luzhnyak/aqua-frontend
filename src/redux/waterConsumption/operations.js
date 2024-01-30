@@ -4,6 +4,8 @@ import {
   addWater,
   deleteWaterById,
   getAllWaterForToday,
+  updateWaterById,
+  getAllWaterForMonth,
 } from 'services/waterApi';
 
 export const addWaterThunk = createAsyncThunk(
@@ -20,9 +22,21 @@ export const addWaterThunk = createAsyncThunk(
 
 export const deleteWaterThunk = createAsyncThunk(
   'water/deleteWater',
-  async (entryId, thunkApi) => {
+  async ({ dayId, entryId }, thunkApi) => {
     try {
-      const response = await deleteWaterById(entryId);
+      const response = await deleteWaterById(dayId, entryId);
+      return response;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateWaterByIdThunk = createAsyncThunk(
+  'water/updateEntryWater',
+  async ({ dayId, entryId, body }, thunkApi) => {
+    try {
+      const response = await updateWaterById(dayId, entryId, body);
       return response;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -35,6 +49,18 @@ export const getAllWaterForTodayThunk = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await getAllWaterForToday();
+      return response;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllWaterForMonthThunk = createAsyncThunk(
+  'water/getMonthWater',
+  async ({ year, month }, thunkApi) => {
+    try {
+      const response = await getAllWaterForMonth(year, month);
       return response;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

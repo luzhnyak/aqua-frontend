@@ -1,6 +1,9 @@
 /* SigninPage.module.css */
 
 .container {
+
+  /* border: 1px solid; */
+
   width: 100%;
 }
 
@@ -41,29 +44,23 @@
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
-
 }
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
-
   .mainstr {
     justify-content: flex-start;
     align-items: flex-start;
   }
-
 }
 
 /* Desktop and > */
 @media screen and (min-width: 1440px) {
-
   .mainstr {
     justify-content: flex-end;
     align-items: center;
   }
-
 }
-
 
 .form {
   margin-top: 24px;
@@ -81,11 +78,11 @@
 @media screen and (min-width: 1440px) {
   .form {
 
+
     margin-right: 198px;
   }
 
 }
-
 
 .formControl {
   display: flex;
@@ -194,6 +191,7 @@
 
 .iconeye {
   stroke: var(--primary-color-blue);
+
   display: flex;
   align-items: center;
   width: 16px;
@@ -202,13 +200,12 @@
 
 .inputpassword {
   color: var(--primary-color-blue);
+
   outline: none;
   border: none;
   padding: 0;
   width: 280px;
   font-size: 16px;
-
-
 }
 
 /* Tablet and > */
@@ -260,6 +257,7 @@
 }
 
 .errormessage {
+
   position: absolute;
   bottom: -18px;
   left: 0;

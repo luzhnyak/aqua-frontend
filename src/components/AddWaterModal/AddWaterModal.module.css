@@ -1,0 +1,20 @@
+.headlines {
+  color: #2f2f2f;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.paragraphs {
+  color: #2f2f2f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.timeField {
+  appearance: none;
+}

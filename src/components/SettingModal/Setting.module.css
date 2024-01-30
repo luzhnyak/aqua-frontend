@@ -10,6 +10,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  border-color: var(--secondary-color-blue-1);
 }
 
 .noAvatar {
@@ -31,8 +32,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 0;
 
   color: var(--primary-color-blue);
+  background-color: transparent;
+  border: none;
   text-decoration: none;
 
   font-size: 14px;
@@ -40,8 +44,16 @@
   line-height: 1.29;
 }
 
+.uploadPhoto:hover {
+  color: var(--secondary-color-red);
+}
+
 .iconUploadPhoto {
   stroke: var(--primary-color-blue);
+}
+
+.iconUploadPhoto:hover {
+  stroke: var(--secondary-color-red);
 }
 
 .wrapAvatar {
@@ -51,4 +63,8 @@
 
   gap: 8px;
   margin-bottom: 24px;
+}
+
+.input {
+  display: none;
 }

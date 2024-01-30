@@ -78,7 +78,6 @@
     border-radius: 50%;
     border: 1px solid var(--primary-color-blue);
     position: absolute;
-    z-index: 1000;
     top: -10%;
   }
 

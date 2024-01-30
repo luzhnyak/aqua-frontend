@@ -6,11 +6,15 @@ import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import { useParams } from 'react-router-dom';
 import { sendUpdatePass } from 'services/waterApi';
 import css from './UpdatePasswordPage.module.css';
+import { toast } from 'react-toastify';
+import Backdrop from 'components/Backdrop/Backdrop';
+import Loader from 'components/Loader/Loader';
 
 const UpdatetPasswordPage = () => {
   const { token } = useParams();
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const initialValues = {
     newPassword: '',
@@ -29,12 +33,28 @@ const UpdatetPasswordPage = () => {
 
   const onSubmit = async (values, { resetForm }) => {
     const { newPassword, repeatNewPassword } = values;
+    
 
     if (newPassword !== repeatNewPassword) {
       return;
     }
+    setLoader(true)
+    try {
+      
+      await sendUpdatePass(token, repeatNewPassword);
+      toast.success("Password changed successfully")
 
-    await sendUpdatePass(token, repeatNewPassword);
+      setTimeout(()=> {
+        return window.location.replace('/aqua-frontend/signin');
+      }, 3000)
+
+    } catch (error) {
+      setLoader(false)
+      toast.error("Something went wrong, try again later")
+      
+    } finally {
+      setLoader(false)
+    }
 
     resetForm();
   };
@@ -53,7 +73,7 @@ const UpdatetPasswordPage = () => {
               <div className={css.formControl}>
               <div className={css.stack}>
                   <label className={css.formLabel} htmlFor="update-password-id1">
-                    Enter your password
+                    Enter your new password
                   </label>
                   <div
                     className={`${css.inputBox} ${
@@ -91,7 +111,7 @@ const UpdatetPasswordPage = () => {
                 </div>
                 <div className={css.stack}>
                   <label className={css.formLabel} htmlFor="update-password-id2">
-                    Enter your password
+                    Repeat your new password
                   </label>
                   <div
                     className={`${css.inputBox} ${
@@ -107,7 +127,7 @@ const UpdatetPasswordPage = () => {
                       }`}
                       name="repeatNewPassword"
                       type={showRepeatNewPassword ? 'text' : 'password'}
-                      placeholder="Enter repeat new password"
+                      placeholder="Repeat new password"
                     />
                     <div
                       className={css.iconeye}
@@ -133,6 +153,10 @@ const UpdatetPasswordPage = () => {
           )}
         </Formik>
       </div>
+      {loader && 
+       <Backdrop>
+         <Loader />
+       </Backdrop>}
     </div>
   );
 };
