@@ -15,20 +15,39 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   const [waterVolume, setWaterVolume] = useState(0);
   const [finalValue, setFinalValue] = useState(0);
 
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState('');
 
   const dispatch = useDispatch();
 
-  const handleBlur = () => {
+  const handleBlur = e => {
     setFinalValue(waterVolume);
+    if (e.target.value.trim() === '') {
+      setWaterVolume(0);
+      setFinalValue(0);
+    }
+  };
+
+  const handleChange = e => {
+    setWaterVolume(e.target.value);
+
+    if (e.target.value.trim() === '') {
+      setFinalValue(0);
+    }
   };
 
   const getCurrentTime = () => {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
+    console.log(`this is hours ${hours}`);
+
+    const inMinutes = Math.floor(now.getMinutes());
+    console.log(`this is initial minutes ${inMinutes}`);
+
     const minutes = Math.floor(now.getMinutes() / 5) * 5;
+    console.log(`this is minutes ${minutes}`);
+
     const formattedMinutes = minutes.toString().padStart(2, '0');
-    console.log(formattedMinutes);
+    console.log(`this is formattedMinutes ${formattedMinutes}`);
     return `${hours}:${formattedMinutes}`;
   };
 
@@ -65,14 +84,14 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   };
 
   const addAmountOfWater = () => {
-    setWaterVolume(Number.parseInt(waterVolume) + 1);
-    setFinalValue(Number.parseInt(waterVolume) + 1);
+    setWaterVolume(Number.parseInt(waterVolume) + 50);
+    setFinalValue(Number.parseInt(waterVolume) + 50);
   };
 
   const minusAmountOfWater = () => {
     if (waterVolume > 0) {
-      setWaterVolume(Number.parseInt(waterVolume) - 1);
-      setFinalValue(Number.parseInt(waterVolume) - 1);
+      setWaterVolume(Number.parseInt(waterVolume) - 50);
+      setFinalValue(Number.parseInt(waterVolume) - 50);
     }
   };
 
@@ -123,11 +142,12 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           name="waterValue"
           value={waterVolume}
           onBlur={handleBlur}
-          onChange={e => {
-            setWaterVolume(e.target.value);
-          }}
+          onChange={handleChange}
         />
-        <button type="submit">Save</button>
+        <div>
+          <span>{finalValue}</span>
+          <button type="submit">Save</button>
+        </div>
       </form>
     </>
   );
