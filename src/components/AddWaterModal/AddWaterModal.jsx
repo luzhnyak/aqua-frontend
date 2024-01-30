@@ -12,8 +12,8 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     isEditWater: true,
   });
 
-  const [waterVolume, setWaterVolume] = useState(0);
-  const [finalValue, setFinalValue] = useState(0);
+  const [waterVolume, setWaterVolume] = useState(50);
+  const [finalValue, setFinalValue] = useState(50);
 
   const [time, setTime] = useState('');
 
@@ -38,14 +38,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
   const getCurrentTime = () => {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
-    console.log(`this is hours ${hours}`);
-
-    const inMinutes = Math.floor(now.getMinutes());
-    console.log(`this is initial minutes ${inMinutes}`);
-
     const minutes = Math.floor(now.getMinutes() / 5) * 5;
-    console.log(`this is minutes ${minutes}`);
-
     const formattedMinutes = minutes.toString().padStart(2, '0');
     console.log(`this is formattedMinutes ${formattedMinutes}`);
     return `${hours}:${formattedMinutes}`;
@@ -122,7 +115,7 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           <div>
             <select
               name="recordingTime"
-              defaultValue={time}
+              value={time}
               onChange={event => {
                 setTime(event.target.value);
               }}
