@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkaqua_frontend=self.webpackChunkaqua_frontend||[]).push([[788],{8788:function(e,n,r){r.r(n),r.d(n,{default:function(){return u}});var t=r(4387),a="ForgotPasswordPage_container__Z-X75",o=r(9140),s=r(5985),c=r(184),u=function(){return(0,c.jsx)("div",{className:a,children:(0,c.jsx)(o.Z,{title:"Forgot password",onSubmit:function(e,n){var r=n.resetForm;try{(0,t.n)(e),s.Am.success("The operation was successful, check your email")}catch(a){s.Am.error("Something went wrong, try again")}r()}})})}}}]);
+//# sourceMappingURL=788.b596fee5.chunk.js.map
