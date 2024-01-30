@@ -74,27 +74,32 @@ export const getAllWaterForToday = async () => {
   return data;
 };
 
+export const getAllWaterForMonth = async (year, month) => {
+  const { data } = await axios.get(`/water/month?year=${year}&month=${month}`);
+  return data;
+};
+
 export const updateWaterById = async (dayId, entryId, body) => {
   const { data } = await axios.put(`/water/${dayId}/${entryId}`, body);
   return data;
 };
 
 //========================= Verify email
-//TODO: add to slice
+
 export const sendVerify = async token => {
   const { data } = await axios.get(`/users/verify/${token}`);
   return data;
 };
 
 //========================= Send email forgot password
-//TODO: add to slice
+
 export const sendMailForgotPass = async body => {
   const { data } = await axios.post(`/users/forgot-password`, body);
   return data;
 };
 
 //========================= Send update password
-//TODO: add to slice
+
 export const sendUpdatePass = async (token, body) => {
   const { data } = await axios.post(`/users/forgot-password/${token}`, {
     newPassword: body,
