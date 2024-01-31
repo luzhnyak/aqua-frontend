@@ -22,6 +22,7 @@ line-height: 24px;
 }
 .entries{
     max-height: 258px;
+    overflow: scroll;
 }
 @media only screen and (min-width: 768px) {
     .entries{
