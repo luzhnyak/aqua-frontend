@@ -17,10 +17,12 @@ const WaterRatioPanel = () => {
 
   const openModal = () => {
     setAddWaterModalOpen(true);
+    document.body.classList.add('body-scroll-lock');
   };
 
   const closeModal = () => {
     setAddWaterModalOpen(false);
+    document.body.classList.remove('body-scroll-lock');
   };
 
   const toggleIsAddWaterState = () => {
@@ -100,7 +102,10 @@ const WaterRatioPanel = () => {
       </div>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          <AddWaterModal isAddWater={toggleIsAddWaterState} />
+          <AddWaterModal
+            isAddWater={toggleIsAddWaterState}
+            onClose={closeModal}
+          />
         </Modal>
       )}
     </div>

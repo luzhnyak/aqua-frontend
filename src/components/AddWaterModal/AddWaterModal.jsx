@@ -6,7 +6,7 @@ import { ReactComponent as IconPlus } from '../../images/icons/plus-small.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus-small.svg';
 import { addWaterThunk } from '../../redux/waterConsumption/operations';
 
-const AddWaterModal = ({ isAddWater, isEditWater }) => {
+const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
   const [cleanStatus, setCleanStatus] = useState({
     isAddWater: true,
     isEditWater: true,
@@ -29,10 +29,6 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
 
   const handleChange = e => {
     setWaterVolume(e.target.value);
-
-    if (e.target.value.trim() === '') {
-      setFinalValue(0);
-    }
   };
 
   const getCurrentTime = () => {
@@ -72,6 +68,8 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
       isAddWater: !cleanStatus.isAddWater,
       isEditWater: !cleanStatus.isEditWater,
     });
+
+    onClose();
   };
 
   const addAmountOfWater = () => {
@@ -100,51 +98,55 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
       <div>
         {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
         <p className={css.paragraphs}>Amount of water:</p>
-        <button
-          type="button"
-          onClick={minusAmountOfWater}
-          className={css.counterButtons}
-        >
-          <IconMinus />
-        </button>
-        <input
-          min="0"
-          type="number"
-          value={finalValue}
-          readOnly
-          onBlur={handleBlur}
-        />
-        <button
-          type="button"
-          onClick={addAmountOfWater}
-          className={css.counterButtons}
-        >
-          <IconPlus />
-        </button>
+        <div className={css.counterLayout}>
+          <button
+            type="button"
+            onClick={minusAmountOfWater}
+            className={css.counterButtons}
+          >
+            <IconMinus width={24} height={24} />
+          </button>
+          <div className={css.valuePlusMinus}>
+            <input
+              className={css.hidden}
+              min="0"
+              type="number"
+              value={finalValue}
+              readOnly
+              onBlur={handleBlur}
+            />
+            <span>{finalValue}ml</span>
+          </div>
+          <button
+            type="button"
+            onClick={addAmountOfWater}
+            className={css.counterButtons}
+          >
+            <IconPlus width={24} height={24} />
+          </button>
+        </div>
       </div>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <div>
-          <p className={css.paragraphs}>Recording time:</p>
-          <div>
-            <select
-              name="recordingTime"
-              value={time}
-              onChange={event => {
-                console.log(event.target.value);
-                setTime(event.target.value);
-              }}
-            >
-              {generateTimeOptions().map(option => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        <p className={css.paragraphs}>Recording time:</p>
+        <select
+          className={css.inputStyle}
+          name="recordingTime"
+          value={time}
+          onChange={event => {
+            console.log(event.target.value);
+            setTime(event.target.value);
+          }}
+        >
+          {generateTimeOptions().map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
         <h2 className={css.headlines}>Enter the value of the water used:</h2>
         <input
+          className={css.inputStyle}
           min="0"
           type="number"
           name="waterValue"
@@ -152,9 +154,11 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           onBlur={handleBlur}
           onChange={handleChange}
         />
-        <div>
-          <span>{finalValue}</span>
-          <button type="submit">Save</button>
+        <div className={css.saveAreaLayout}>
+          <span className={css.finalValue}>{finalValue} ml</span>
+          <button type="submit" className={css.saveButton}>
+            Save
+          </button>
         </div>
       </form>
     </>
