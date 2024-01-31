@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import css from './WaterRatioPanel.module.css';
 
 import { useSelector } from 'react-redux';
@@ -7,18 +7,22 @@ import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
 import Modal from 'components/Modal/Modal';
 
 const WaterRatioPanel = () => {
-  const waterToday = useSelector(selectWatersToday) || { progress: 0 };
-  const progressValue = Number(parseInt(waterToday.progress)) || 0;
-
+  const waterToday = useSelector(selectWatersToday) || 0;
+  const progressValue = useMemo(
+    () => Number(parseInt(waterToday?.progress) || 0),
+    [waterToday]
+  );
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [isAddWater, setIsAddWater] = useState(false);
 
   const openModal = () => {
     setAddWaterModalOpen(true);
+    document.body.classList.add('body-scroll-lock');
   };
 
   const closeModal = () => {
     setAddWaterModalOpen(false);
+    document.body.classList.remove('body-scroll-lock');
   };
 
   const toggleIsAddWaterState = () => {
@@ -98,7 +102,10 @@ const WaterRatioPanel = () => {
       </div>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          <AddWaterModal isAddWater={toggleIsAddWaterState} />
+          <AddWaterModal
+            isAddWater={toggleIsAddWaterState}
+            onClose={closeModal}
+          />
         </Modal>
       )}
     </div>
