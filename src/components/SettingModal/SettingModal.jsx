@@ -17,15 +17,6 @@ const SettingModal = ({ onClose }) => {
   const user = useSelector(selectUser);
   const { name, email, avatarURL } = user;
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   if (file) {
-  //     dispatch(updateAvatarThunk(file));
-  //     // Скидання значень інпуту
-  //     fileInputRef.current.value = null;
-  //   }
-  // };
-
   const handleChange = event => {
     setFile(event.target.files[0]);
   };
@@ -37,11 +28,6 @@ const SettingModal = ({ onClose }) => {
       fileInputRef.current.value = null;
     }
   }, [file, dispatch]);
-
-  // const handleButtonClick = () => {
-  //   // Викликаємо клік на прихованому інпуті, коли натискана кнопка
-  //   // fileInputRef.current.click();
-  // };
 
   return (
     <div>
@@ -67,15 +53,10 @@ const SettingModal = ({ onClose }) => {
             className={css.input}
             ref={fileInputRef}
           />
-          <label htmlFor="inputFile">
+          <label htmlFor="inputFile" className={css.uploadPhoto}>
             <IconUploadPhoto className={css.iconUploadPhoto} />
             Upload a photo
           </label>
-
-          {/* <button
-            className={css.uploadPhoto}
-            onClick={handleButtonClick}
-          ></button> */}
         </form>
       </div>
 

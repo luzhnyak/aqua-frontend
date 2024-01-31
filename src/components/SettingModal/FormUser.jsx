@@ -7,8 +7,10 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
+// import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
+// import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
 import { selectUser } from '../../redux/auth/selectors';
-import { Bounce, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const FormUser = ({ onClose }) => {
@@ -45,21 +47,10 @@ const FormUser = ({ onClose }) => {
 
   const onSubmit = (values, { resetForm }) => {
     if (values.newPassword !== values.repeatPassword) {
-      return toast.error('Your passwords are difference', {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'color',
-        transition: Bounce,
-      });
+      return toast.error('Your passwords are difference');
     }
 
     if (values.password !== '') {
-      console.log(1);
       dispatch(
         updateUserInfoThunk({
           gender: values.gender,
@@ -69,10 +60,11 @@ const FormUser = ({ onClose }) => {
           newPassword: values.newPassword,
         })
       );
+
+      toast.success('You successfully change your data and password');
     }
 
     if (values.password === '') {
-      console.log(2);
       dispatch(
         updateUserInfoThunk({
           gender: values.gender,
@@ -80,9 +72,12 @@ const FormUser = ({ onClose }) => {
           email: values.email,
         })
       );
+
+      toast.success('You successfully change your data');
     }
 
     resetForm({ password: values.password, newPassword: values.newPassword });
+
     onClose();
   };
 
