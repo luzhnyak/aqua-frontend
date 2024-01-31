@@ -13,6 +13,7 @@ export const TodayWaterList = () => {
   console.log(waterToday);
   const entries = [];
 console.log(entries);
+
   if(waterToday !== null && waterToday.length !== 0){
     const mapped = waterToday.dailyEntries.map(e => entries.push(e));
   }

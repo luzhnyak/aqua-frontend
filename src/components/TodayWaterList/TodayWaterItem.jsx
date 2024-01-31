@@ -34,7 +34,7 @@ const closeModalEdit = () =>{
       </div>
       <div className={css.icons}>
         <EditTool className={css.edit} onClick={openModalEdit}/>
-        <Trash className={css.delete} onClick={openModalDelete} id={id}/>
+        <Trash className={css.delete} onClick={openModalDelete}/>
       </div>
 
 {
