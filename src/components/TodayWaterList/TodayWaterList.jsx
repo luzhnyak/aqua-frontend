@@ -14,7 +14,7 @@ export const TodayWaterList = () => {
   const waterToday = useSelector(selectWatersToday);
   const entries = [];
   if(waterToday !== null && waterToday.length !== 0){
-    const mapped = waterToday.dailyEntries.map(e => entries.push(e));
+    waterToday.dailyEntries.map(e => entries.push(e));
   }
 
   const dispatch = useDispatch();

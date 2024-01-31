@@ -9,7 +9,6 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   const dispatch = useDispatch();
 
   const waterPerMonth = useSelector(selectWatersPerMonth);
-
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
@@ -107,26 +106,41 @@ export const MonthStatsTable = ({ popUpOpen }) => {
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
     // Show actual days
-    
+    let progress = 0
+    let waterNorm
+    let quantity
+
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
-      let progress
-      if(waterPerMonth.length !== 0 ){
-        progress = waterPerMonth.progress
-        // (waterPerMonth.totalVolume[d] / waterPerMonth.waterRate[d]) * 100;
-      }
-      else{ progress = 0}
-      if (m === currentMonth) {
-        if (d <= currentDay) {
-          allDays.push({ day: d, date: date, value: progress, disabled: false });
-        } else {
-          allDays.push({ day: d, date: date, value: progress, disabled: true });
-        }
-      } else {
-        allDays.push({ day: d, date: date, value: progress, disabled: false });
-      }
+      let dayInMonth = []
+      waterPerMonth.map(day=>{
+       const dateFormonth = new Date(day.date)
+       dayInMonth.push(Number(dateFormonth.toLocaleString('en-US', {
+               day: 'numeric',
+             })))
+return day
+     })
+
+const percent = waterPerMonth.map(day=>day.progress)
+
+for(let i=0; i<dayInMonth.length; i+=1){
+  if(d===dayInMonth[i]){
+    progress = percent[i]
+  }
+}
+
+  if (m === currentMonth) {
+    if (d <= currentDay) {
+      allDays.push({ day: d, date: date, value: progress, disabled: false });
+    } else {
+      allDays.push({ day: d, date: date, value: progress, disabled: true });
+    }
+  } else {
+    allDays.push({ day: d, date: date, value: progress, disabled: false, norma: waterNorm, quantity});
+  }
     }
 
+    
     return allDays;
   };
 
