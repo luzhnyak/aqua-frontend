@@ -7,8 +7,8 @@ import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
 import Modal from 'components/Modal/Modal';
 
 const WaterRatioPanel = () => {
-  const waterToday = useSelector(selectWatersToday);
-  console.log(waterToday);
+  const waterToday = useSelector(selectWatersToday) || { progress: 0 };
+  const progressValue = Number(parseInt(waterToday.progress)) || 0;
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [isAddWater, setIsAddWater] = useState(false);
@@ -65,7 +65,7 @@ const WaterRatioPanel = () => {
                 id="range-input"
                 min="0"
                 max="100"
-                value="80"
+                value={progressValue}
                 step="1"
                 readOnly
               />
