@@ -8,6 +8,7 @@ import Modal from 'components/Modal/Modal';
 
 const WaterRatioPanel = () => {
   const waterToday = useSelector(selectWatersToday);
+  console.log(waterToday);
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [isAddWater, setIsAddWater] = useState(false);
