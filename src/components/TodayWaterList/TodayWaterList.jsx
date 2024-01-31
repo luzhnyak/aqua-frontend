@@ -11,24 +11,17 @@ import { getAllWaterForTodayThunk } from '../../redux/waterConsumption/operation
 export const TodayWaterList = () => {
   const waterToday = useSelector(selectDailyEntries);
   console.log(waterToday);
-  let dateid
-  const entries = []
+  const entries = [];
+console.log(entries);
+  if(waterToday !== null && waterToday.length !== 0){
+    const mapped = waterToday.dailyEntries.map(e => entries.push(e));
+  }
 
-    const mapped = waterToday.map(e =>
-     { e.dailyEntries.map(e=> entries.push(e))
-      dateid = e._id})
-  
-console.log(dateid);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-
-// useEffect(()=>{
-//   dispatch((getAllWaterForTodayThunk()))
-// // const getEnries = () =>{
-
-// // }
-// // getEnries()
-// }, [dispatch])
+  useEffect(()=>{
+    dispatch((getAllWaterForTodayThunk()))
+  }, [dispatch])
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
 
@@ -47,7 +40,13 @@ console.log(dateid);
         <ul className={css['list-entry']}>
           {entries.length !== 0 &&
             entries.map(entry => (
-              <TodayWaterItem id={entry._id} key={entry._id} amount={entry.waterVolume} time={entry.time} dateid={dateid}/>
+              <TodayWaterItem
+                id={entry._id}
+                key={entry._id}
+                amount={entry.waterVolume}
+                time={entry.time}
+                
+              />
             ))}
         </ul>
       </div>

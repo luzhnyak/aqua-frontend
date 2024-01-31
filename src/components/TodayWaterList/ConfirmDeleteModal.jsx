@@ -4,11 +4,11 @@ import { useDispatch } from 'react-redux';
 
 
 
-const ConfirmDeleteModal = ({onClose, id, dateid}) => {
+const ConfirmDeleteModal = ({onClose, id}) => {
     const dispatch = useDispatch()
 
 
-const handleDelete = () => dispatch(deleteWaterThunk({dayId:dateid, entryId:id}))
+const handleDelete = () => dispatch(deleteWaterThunk(id))
 
     const handleClose = () => {
       onClose(false);
