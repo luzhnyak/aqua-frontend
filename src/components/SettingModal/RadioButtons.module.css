@@ -25,54 +25,23 @@
 }
 
 .labelName {
+  position: relative;
   font-size: 16px;
   line-height: 1.25;
-  margin-left: 22px;
+  margin-left: 0px;
 }
 
-.radioDotLeft {
-  position: absolute;
-  top: 254px;
-  left: 12px;
-  transform: translate(0, 0);
+.radiobutton + .labelName::before {
+  content: '';
+  display: inline-block;
+  margin-right: 8px;
   width: 14px;
   height: 14px;
+  background: url('../../images/icons/radio-button-circle.svg') no-repeat;
 }
 
-.radioDotRight {
-  position: absolute;
-  top: 254px;
-  left: 113px;
+.radiobutton:checked + .labelName::before {
+  background: url('../../images/icons/radio-button.svg') no-repeat;
   width: 14px;
   height: 14px;
-}
-
-.customRadioButtonLeft {
-  position: absolute;
-  top: 254px;
-  left: 12px;
-
-  width: 14px;
-  height: 14px;
-}
-
-.customRadioButtonRight {
-  position: absolute;
-  top: 254px;
-  left: 113px;
-
-  width: 14px;
-  height: 14px;
-}
-
-@media only screen and (min-width: 768px) {
-  .customRadioButtonLeft,
-  .radioDotLeft {
-    left: 24px;
-  }
-
-  .customRadioButtonRight,
-  .radioDotRight {
-    left: 125px;
-  }
 }

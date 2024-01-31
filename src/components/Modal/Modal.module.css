@@ -8,8 +8,6 @@
   overflow: auto;
 }
 
-
-
 .modal {
   position: absolute;
   min-width: 280px;
@@ -30,15 +28,16 @@
   .modal {
     width: 704px;
     position: absolute;
-    top: 50%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .modal {
+    top: 50%;
     width: 592px;
+    transform: translate(-50%, -50%);
   }
 }
 

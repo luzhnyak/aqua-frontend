@@ -1,51 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import css from './RadioButtons.module.css';
-import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
-import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
-import { Field } from 'formik';
 
-const RadioButtons = () => {
-  const [selectedGender, setSelectedGender] = useState('female');
+import { ErrorMessage, Field } from 'formik';
 
-  const handleOptionChange = event => {
-    setSelectedGender(event.target.value);
-  };
-
+const RadioButtons = ({ values, handleOptionChange }) => {
+  // const onChange = e => {
+  //   const { name } = e.target;
+  //   console.log('clicked  ==>', name);
+  // };
   return (
     <div>
       <h4 className={css.title}>Your gender identity</h4>
       <div className={css.radioButtons}>
         <label>
           <Field
-            className={css.radiobutton}
             type="radio"
+            name="gender"
             value="female"
-            checked={selectedGender === 'female'}
-            onChange={handleOptionChange}
+            className={css.radiobutton}
           />
-          {!(selectedGender === 'female') ? (
-            <IconRadioButtonCircle className={css.radioDotLeft} />
-          ) : (
-            <IconRadioButton className={css.customRadioButtonLeft} />
-          )}
+
           <span className={css.labelName}>Woman</span>
         </label>
-
         <label>
           <Field
-            className={css.radiobutton}
             type="radio"
+            name="gender"
             value="male"
-            checked={selectedGender === 'male'}
-            onChange={handleOptionChange}
+            className={css.radiobutton}
           />
-          {!(selectedGender === 'male') ? (
-            <IconRadioButtonCircle className={css.radioDotRight} />
-          ) : (
-            <IconRadioButton className={css.customRadioButtonRight} />
-          )}
+
           <span className={css.labelName}>Man</span>
         </label>
+        <ErrorMessage name="gender" component="div" />
       </div>
     </div>
   );
