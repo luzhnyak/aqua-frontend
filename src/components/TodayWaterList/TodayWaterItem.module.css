@@ -26,6 +26,26 @@
       }
 }
 
+.entry-info{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.amount{
+  color: var(--Primery-Color-Blue, #407BFF);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.time{
+  color: var(--Primery-Color-Black, #2F2F2F);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px
+}
+
 .icons{
     display: flex;
     gap: 18px;

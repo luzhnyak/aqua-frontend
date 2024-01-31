@@ -27,9 +27,9 @@ const closeModalEdit = () =>{
 
   return (
     <li className={css['entry-item']}>
-      <div>
+      <div className={css['entry-info']}>
         <Glass className={css.glass} />
-        <p className={css.amount}>{amount}</p>
+        <p className={css.amount}>{amount} ml</p>
         <p className={css.time}>{time}</p>
       </div>
       <div className={css.icons}>

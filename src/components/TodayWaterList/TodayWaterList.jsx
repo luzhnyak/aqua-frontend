@@ -44,7 +44,7 @@ useEffect(()=>{
         <ul className={css['list-entry']}>
           {entries.length !== 0 &&
             entries.map(entry => (
-              <TodayWaterItem id={entry.id} key={entry.id} amount={entry.waterVolume} time={entry.time}/>
+              <TodayWaterItem id={entry._id} key={entry._id} amount={entry.waterVolume} time={entry.time}/>
             ))}
         </ul>
       </div>
