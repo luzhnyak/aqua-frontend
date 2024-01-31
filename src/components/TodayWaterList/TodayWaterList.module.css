@@ -11,6 +11,7 @@
 .entries-container{
     padding-bottom: 24px;
     display: flex;
+    
     flex-direction: column;
     justify-content: space-between;
 }
@@ -31,9 +32,12 @@ line-height: 24px;
 }
 
 
-.list-entry{
-
-}
+/* .list-entry{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+} */
 
 .btn-add{
     padding: 0px;
