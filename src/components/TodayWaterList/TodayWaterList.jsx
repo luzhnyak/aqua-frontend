@@ -10,22 +10,22 @@ import { getAllWaterForTodayThunk } from '../../redux/waterConsumption/operation
 
 export const TodayWaterList = () => {
   const waterToday = useSelector(selectDailyEntries);
-  console.log(waterToday);
   const entries = []
-  if(waterToday.dailyEntries){
-    const mapped = waterToday.dailyEntries.map(e=> entries.push(e))
-  }
+  console.log(entries);
+
+    const mapped = waterToday.map(e=>e.dailyEntries.map(e=> entries.push(e)))
+  
 
   const dispatch = useDispatch()
 
 
-useEffect(()=>{
-  dispatch((getAllWaterForTodayThunk()))
-// const getEnries = () =>{
+// useEffect(()=>{
+//   dispatch((getAllWaterForTodayThunk()))
+// // const getEnries = () =>{
 
-// }
-// getEnries()
-}, [dispatch])
+// // }
+// // getEnries()
+// }, [dispatch])
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
 
