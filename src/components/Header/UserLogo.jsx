@@ -18,6 +18,8 @@ const UserLogo = () => {
   const user = useSelector(selectUser);
   const { name, email, avatarURL } = user;
 
+  const modalRef = useRef(null);
+
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -26,22 +28,17 @@ const UserLogo = () => {
     setMenuOpen(false);
   };
 
-  const modalRef = useRef(null);
-
   useEffect(() => {
     const handleClickOutside = event => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        // Клік поза модальним вікном, закриваємо його
         setMenuOpen(false);
       }
     };
 
-    // Додаємо обробник подій при відкритті модального вікна
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
-    // Видаляємо обробник подій при закритті модального вікна або розмонтовуємо компонент
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -54,18 +51,10 @@ const UserLogo = () => {
       }
     };
 
-    // const handleOutsideClick = event => {
-    //   if () {
-    //     setMenuOpen(false);
-    //   }
-    // };
-
     window.addEventListener('keydown', handleKeyDown);
-    // window.addEventListener('click', handleOutsideClick);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      // window.removeEventListener('click', handleOutsideClick);
     };
   }, [isMenuOpen, setMenuOpen]);
 

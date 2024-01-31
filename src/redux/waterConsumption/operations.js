@@ -22,9 +22,16 @@ export const addWaterThunk = createAsyncThunk(
 
 export const deleteWaterThunk = createAsyncThunk(
   'water/deleteWater',
-  async ({ dayId, entryId }, thunkApi) => {
+  async (entryId, thunkApi) => {
+    const state = thunkApi.getState();
+    const {
+      water: {
+        today: { _id },
+      },
+    } = state;
+
     try {
-      const response = await deleteWaterById(dayId, entryId);
+      const response = await deleteWaterById(_id, entryId);
       return response;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -34,9 +41,15 @@ export const deleteWaterThunk = createAsyncThunk(
 
 export const updateWaterByIdThunk = createAsyncThunk(
   'water/updateEntryWater',
-  async ({ dayId, entryId, body }, thunkApi) => {
+  async ({ entryId, body }, thunkApi) => {
+    const state = thunkApi.getState();
+    const {
+      water: {
+        today: { _id },
+      },
+    } = state;
     try {
-      const response = await updateWaterById(dayId, entryId, body);
+      const response = await updateWaterById(_id, entryId, body);
       return response;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
