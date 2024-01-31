@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as Plus } from '../../images/icons/plus-small.svg';
 import TodayWaterItem from './TodayWaterItem';
 import css from './TodayWaterList.module.css';
-import { selectDailyEntries } from '../../redux/waterConsumption/selectors';
+import { selectWatersToday } from '../../redux/waterConsumption/selectors';
 import { useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
 
 export const TodayWaterList = () => {
-  const entries = useSelector(selectDailyEntries);
+  const entries = useSelector(selectWatersToday);
   const [isOpen, setAddWaterModalOpen] = useState(false);
 
   const openModal = () => {
