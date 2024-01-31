@@ -8,7 +8,7 @@ import Modal from 'components/Modal/Modal';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
 
 
-const TodayWaterItem = ({ id }) => {
+const TodayWaterItem = ({ id, amount, time }) => {
 const [isModalDelete, setIsModalDelete] = useState(false)
 const [isModalEdit, setIsModalEdit] = useState(false)
 
@@ -29,8 +29,8 @@ const closeModalEdit = () =>{
     <li className={css['entry-item']}>
       <div>
         <Glass className={css.glass} />
-        <p className={css.amount}></p>
-        <p className={css.time}></p>
+        <p className={css.amount}>{amount}</p>
+        <p className={css.time}>{time}</p>
       </div>
       <div className={css.icons}>
         <EditTool className={css.edit} onClick={openModalEdit}/>

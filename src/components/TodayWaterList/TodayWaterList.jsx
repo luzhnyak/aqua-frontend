@@ -1,14 +1,32 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Plus } from '../../images/icons/plus-small.svg';
 import TodayWaterItem from './TodayWaterItem';
 import css from './TodayWaterList.module.css';
 import { selectDailyEntries } from '../../redux/waterConsumption/selectors';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
+import { getAllWaterForTodayThunk } from '../../redux/waterConsumption/operations';
 
 export const TodayWaterList = () => {
-  const entries = useSelector(selectDailyEntries);
+  const waterToday = useSelector(selectDailyEntries);
+  console.log(waterToday);
+  const entries = []
+  if(waterToday.dailyEntries){
+    const mapped = waterToday.dailyEntries.map(e=> entries.push(e))
+  }
+
+  const dispatch = useDispatch()
+
+
+useEffect(()=>{
+  dispatch((getAllWaterForTodayThunk()))
+// const getEnries = () =>{
+
+// }
+// getEnries()
+}, [dispatch])
+
   const [isOpen, setAddWaterModalOpen] = useState(false);
 
   const openModal = () => {
@@ -26,7 +44,7 @@ export const TodayWaterList = () => {
         <ul className={css['list-entry']}>
           {entries.length !== 0 &&
             entries.map(entry => (
-              <TodayWaterItem id={entry.id} key={entry.id} />
+              <TodayWaterItem id={entry.id} key={entry.id} amount={entry.waterVolume} time={entry.time}/>
             ))}
         </ul>
       </div>
