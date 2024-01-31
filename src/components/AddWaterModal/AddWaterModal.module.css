@@ -1,7 +1,6 @@
 .headlines {
   color: #2f2f2f;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
   margin-bottom: 16px;
@@ -10,11 +9,19 @@
 .paragraphs {
   color: #2f2f2f;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  margin-bottom: 12px;
 }
 
-.timeField {
-  appearance: none;
+.counterButtons {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  border: 1px solid #9ebbff;
+  background: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 }

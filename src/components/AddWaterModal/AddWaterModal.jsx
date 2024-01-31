@@ -98,10 +98,14 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           <h2 className={css.headlines}>Correct entered data:</h2>
         </div>
       )}
-      {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
-      <p className={css.paragraphs}>Amount of water:</p>
       <div>
-        <button type="button" onClick={minusAmountOfWater}>
+        {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
+        <p className={css.paragraphs}>Amount of water:</p>
+        <button
+          type="button"
+          onClick={minusAmountOfWater}
+          className={css.counterButtons}
+        >
           <IconMinus />
         </button>
         <input
@@ -111,14 +115,16 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
           readOnly
           onBlur={handleBlur}
         />
-        <button type="button" onClick={addAmountOfWater}>
+        <button
+          type="button"
+          onClick={addAmountOfWater}
+          className={css.counterButtons}
+        >
           <IconPlus />
         </button>
       </div>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
-        {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
-
         <div>
           <p className={css.paragraphs}>Recording time:</p>
           <div>
