@@ -67,7 +67,6 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('time', time);
     dispatch(addWaterThunk({ time, waterVolume }));
 
     setCleanStatus({
@@ -90,6 +89,16 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
 
   return (
     <>
+      {isEditWater && (
+        <div>
+          <div>
+            <span>Value</span>
+            <span>Time</span>
+          </div>
+          <h2 className={css.headlines}>Correct entered data:</h2>
+        </div>
+      )}
+      {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
       <p className={css.paragraphs}>Amount of water:</p>
       <div>
         <button type="button" onClick={minusAmountOfWater}>
@@ -148,13 +157,3 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
 };
 
 export default AddWaterModal;
-
-// {isEditWater && (
-//   <div>
-//     <div>
-//       <span>Value</span>
-//       <span>Time</span>
-//     </div>
-//     <h2 className={css.headlines}>Correct entered data:</h2>
-//   </div>
-// )}
