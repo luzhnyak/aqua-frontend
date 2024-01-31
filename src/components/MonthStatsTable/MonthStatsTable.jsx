@@ -107,8 +107,8 @@ export const MonthStatsTable = ({ popUpOpen }) => {
     const currentMonth = currentDate.getMonth();
     // Show actual days
     let progress = 0
-    let waterNorm
-    let quantity
+    let waterNorm = 0
+    let dailyEntries = 0
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
@@ -122,25 +122,27 @@ return day
      })
 
 const percent = waterPerMonth.map(day=>day.progress)
-
+const dailyNorm = waterPerMonth.map(day=>day.waterRate)
+const entries = waterPerMonth.map(day=>day.dailyEntries)
 for(let i=0; i<dayInMonth.length; i+=1){
   if(d===dayInMonth[i]){
-    progress = percent[i]
-  }
+    progress = Math.round(percent[i])
+    waterNorm =dailyNorm[i]
+    dailyEntries = entries[i]
+  } 
 }
 
   if (m === currentMonth) {
     if (d <= currentDay) {
-      allDays.push({ day: d, date: date, value: progress, disabled: false });
+      allDays.push({ day: d, date: date, value: progress, disabled: false, norm: waterNorm, dailyEntry:dailyEntries });
     } else {
       allDays.push({ day: d, date: date, value: progress, disabled: true });
     }
   } else {
-    allDays.push({ day: d, date: date, value: progress, disabled: false, norma: waterNorm, quantity});
+    allDays.push({ day: d, date: date, value: progress, disabled: false, norm: waterNorm, dailyEntry:dailyEntries});
   }
     }
 
-    
     return allDays;
   };
 
@@ -191,6 +193,9 @@ for(let i=0; i<dayInMonth.length; i+=1){
                       dayId={item.id}
                       handleCloseClick={handleCloseClick}
                       sDate={sDate}
+                      waterRate={item.norm}
+                      dailyEntries={item.dailyEntry}
+                      progress={item.value}
                     />
                   )}
                 </div>
