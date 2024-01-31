@@ -33,10 +33,7 @@ line-height: 24px;
 
 
 /* .list-entry{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 24px;
+
 } */
 
 .btn-add{
@@ -72,3 +69,20 @@ stroke: var(--Primery-Color-Blue, #407BFF);
     height: 24px;
   }
 }
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+    width: 4px;
+    
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-track-piece{
+    background-color: transparent;
+  }
+::-webkit-scrollbar-thumb {
+    background: rgba(158, 187, 255, 1);
+    border-radius: 12px;
+    height: 120px;
+  }
