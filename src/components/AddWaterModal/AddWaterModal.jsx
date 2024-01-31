@@ -40,7 +40,6 @@ const AddWaterModal = ({ isAddWater, isEditWater }) => {
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = Math.floor(now.getMinutes() / 5) * 5;
     const formattedMinutes = minutes.toString().padStart(2, '0');
-    console.log(`this is formattedMinutes ${formattedMinutes}`);
     return `${hours}:${formattedMinutes}`;
   };
 
