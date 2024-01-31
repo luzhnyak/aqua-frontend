@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Plus } from '../../images/icons/plus-small.svg';
 import TodayWaterItem from './TodayWaterItem';
 import css from './TodayWaterList.module.css';
+
 import { selectDailyEntries } from '../../redux/waterConsumption/selectors';
 import { useEffect, useState } from 'react';
+
 import Modal from 'components/Modal/Modal';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
 import { getAllWaterForTodayThunk } from '../../redux/waterConsumption/operations';
 
 export const TodayWaterList = () => {
+
   const waterToday = useSelector(selectDailyEntries);
   console.log(waterToday);
   let dateid
@@ -29,6 +32,7 @@ console.log(dateid);
 // // }
 // // getEnries()
 // }, [dispatch])
+
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
 
