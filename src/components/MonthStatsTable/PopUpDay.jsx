@@ -2,12 +2,10 @@ import React from 'react';
 import css from './MonthStatsTable.module.css';
 import clsx from 'clsx';
 import { ReactComponent as IconClose } from '../../images/icons/x-mark-outline.svg';
-import { useSelector } from 'react-redux';
-import { selectWatersPerMonth } from '../../redux/waterConsumption/selectors';
 
-const PopUpDay = ({ sDate, handleCloseClick, dayId }) => {
-  const waterPerMonth = useSelector(selectWatersPerMonth);
-  const todayData=waterPerMonth.filter(({id})=> id===dayId)
+
+const PopUpDay = ({ sDate, handleCloseClick, dailyEntries, progress, waterRate  }) => {
+
   const day = Number(
     sDate.toLocaleDateString('en-US', {
       day: 'numeric',
@@ -40,9 +38,9 @@ const PopUpDay = ({ sDate, handleCloseClick, dayId }) => {
         </p>
         <IconClose className={css['popup-close']} onClick={handleCloseClick} />
       </div>
-      <p>Daily norma: {todayData.waterRate}</p>
-      <p>Fulfillment of the daily norm: {todayData.progress}%</p>
-      <p>How many servings of water: {todayData.dailyEntries}</p>
+      <p>Daily norma: {waterRate}</p>
+      <p>Fulfillment of the daily norm: {progress}%</p>
+      <p>How many servings of water: {dailyEntries}</p>
     </div>
   );
 };
