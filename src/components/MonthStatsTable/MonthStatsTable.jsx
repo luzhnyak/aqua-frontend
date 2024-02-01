@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectWatersPerMonth } from '../../redux/waterConsumption/selectors';
 import { getAllWaterForMonthThunk } from '../../redux/waterConsumption/operations';
 import { selectUser } from '../../redux/auth/selectors';
+import clsx from 'clsx';
 
 export const MonthStatsTable = ({ popUpOpen }) => {
   const dispatch = useDispatch();
@@ -231,7 +232,9 @@ export const MonthStatsTable = ({ popUpOpen }) => {
               {!item.disabled ? (
                 <div className={css['day-cell']}>
                   <button
-                    className={css.day}
+                    className={clsx(css.day, {
+                      [css['day-incomlete']]:item.value<100
+                    })}
                     onClick={() => handleDateClick(item.day, item.date)}
                   >
                     {item.day}
