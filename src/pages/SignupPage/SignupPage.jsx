@@ -19,7 +19,7 @@ const SignupPage = () => {
     setLoader(true);
     try {
       dispatch(signUpThunk(newObject));
-      toast.success('Registration successful! Please sign in.');
+      // toast.success('Registration successful! Please sign in.');
       resetForm();
       setRedirect(true);
     } catch (error) {

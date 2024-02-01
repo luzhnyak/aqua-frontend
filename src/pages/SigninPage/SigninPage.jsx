@@ -15,7 +15,7 @@ const SignInPage = () => {
     setLoader(true);
     try {
       dispatch(loginThunk(values));
-      toast.success('Sign in successful!');
+      // toast.success('Sign in successful!');
       resetForm();
     } catch (error) {
       setLoader(false);
