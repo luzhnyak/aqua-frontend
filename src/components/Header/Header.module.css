@@ -143,6 +143,7 @@
   border: transparent;
   font-size: 16px;
   line-height: 1.25;
+  transition: color 0.3s;
 }
 
 .settingsBtn:hover,
@@ -150,12 +151,15 @@
   color: var(--secondary-color-orange);
 }
 
+.settingsBtn:hover .iconSettings,
+.logoutBtn:hover .iconLogout {
+  stroke: var(--secondary-color-orange);
+}
+
 .iconSettings,
 .iconLogout {
   stroke: var(--primary-color-blue);
-}
-
-.iconSettings:hover,
-.iconLogout:hover {
-  stroke: var(--secondary-color-orange);
+  transition: stroke 0.3s;
+  width: 16px;
+  height: 16px;
 }

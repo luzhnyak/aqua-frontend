@@ -12,8 +12,13 @@ import RadioButtons from './RadioButtons';
 import { selectAuthError, selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useParams } from 'react-router';
+import { sendUpdatePass } from 'services/waterApi';
+import Loader from 'components/Loader/Loader';
+import Backdrop from 'components/Backdrop/Backdrop';
 
 const FormUser = ({ onClose }) => {
+  const { token } = useParams();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
@@ -23,6 +28,7 @@ const FormUser = ({ onClose }) => {
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const validationSchema = Yup.object({
     name: Yup.string().max(32, 'Enter no more than 32 characters.'),
@@ -48,6 +54,21 @@ const FormUser = ({ onClose }) => {
   };
 
   const onSubmit = async (values, { resetForm }) => {
+    setLoader(true);
+    try {
+      await sendUpdatePass(token, values.password);
+      toast.success('Password changed successfully');
+
+      setTimeout(() => {
+        return window.location.replace('/aqua-frontend/signin');
+      }, 3000);
+    } catch (error) {
+      setLoader(false);
+      toast.error('Something went wrong, try again later');
+    } finally {
+      setLoader(false);
+    }
+
     if (values.email !== '') {
       if (
         values.password === '' &&
@@ -275,6 +296,11 @@ const FormUser = ({ onClose }) => {
           </Form>
         )}
       </Formik>
+      {loader && (
+        <Backdrop>
+          <Loader />
+        </Backdrop>
+      )}
     </div>
   );
 };
