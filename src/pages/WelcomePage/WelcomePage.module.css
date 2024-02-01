@@ -151,6 +151,8 @@
 .tryTrackerBtn {
   display: block;
   padding: 10px 30px;
+  margin: 0 auto;
+  text-align: center;
 
   min-width: 280px;
   height: 36px;
