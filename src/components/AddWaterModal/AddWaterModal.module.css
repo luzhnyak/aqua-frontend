@@ -16,6 +16,15 @@
   }
 }
 
+.headlineEdit {
+  display: block;
+  max-width: 240px;
+  color: #2f2f2f;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
 .paragraphs {
   color: #2f2f2f;
   font-size: 16px;
@@ -183,4 +192,51 @@
     font-size: 18px;
     line-height: 24px;
   }
+}
+
+/* PreviousGlassDiv/////////////////////////////////////////// */
+
+.editContentDiv {
+  padding-top: 24px;
+  margin-bottom: 16px;
+}
+
+.previousGlassDiv {
+  display: flex;
+  width: 256px;
+  margin-bottom: 24px;
+
+  height: 52px;
+  padding: 8px 24px;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--Secondary-color-2, #ecf2ff);
+}
+
+@media only screen and (min-width: 768px) {
+  .previousGlassDiv {
+    width: 254px;
+  }
+}
+
+.glass {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
+
+.editNumber {
+  color: #407bff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-right: 16px;
+}
+.editTime {
+  color: #2f2f2f;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
 }
