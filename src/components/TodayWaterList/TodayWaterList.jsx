@@ -50,8 +50,7 @@ export const TodayWaterList = () => {
         </ul>
       </div>
       <button className={css['btn-add']} onClick={openModal}>
-        {' '}
-        <Plus className={css.plus} /> Add water
+        <span className={css.plus}>+</span> Add water
       </button>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>

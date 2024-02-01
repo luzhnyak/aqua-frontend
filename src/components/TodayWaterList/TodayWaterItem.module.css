@@ -38,7 +38,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
-  width: 60px;
+  width: 68px;
   text-align: center;
 }
 
@@ -52,15 +52,33 @@
 .icons{
     display: flex;
     gap: 18px;
+    width: 50px;
 }
 
 .edit {
+  display: block;
+  background-color: transparent;
+  border: none;
   width: 16px;
   height: 16px;
-  stroke: #9ebbff;
+  padding: 0px;
 }
-
+.edit:hover{
+  stroke: #FF9D43;
+}
+.edit:focus{
+  stroke: #FF9D43;
+}
 .delete {
+  background-color: transparent;
+  border: none;
   width: 16px;
   height: 16px;
+  padding: 0px;
+}
+.delete:hover{
+  stroke: #ea1b1b;
+}
+.delete:focus{
+  stroke: #ea1b1b;
 }

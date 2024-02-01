@@ -32,8 +32,8 @@ const TodayWaterItem = ({ id, amount, time }) => {
         <p className={css.time}>{time}</p>
       </div>
       <div className={css.icons}>
-        <EditTool className={css.edit} onClick={openModalEdit} />
-        <Trash className={css.delete} onClick={openModalDelete} />
+        <button className={css.edit} onClick={openModalEdit}><EditTool className={css.edit} /></button>
+       <button className={css.delete} onClick={openModalDelete} > <Trash className={css.delete} /></button>
       </div>
 
       {isModalEdit && (
@@ -52,7 +52,7 @@ const TodayWaterItem = ({ id, amount, time }) => {
       )}
       {isModalDelete && (
         <Modal title="Delete entry" onClose={closeModalDelete}>
-          <ConfirmDeleteModal id={id} />
+          <ConfirmDeleteModal id={id} onClose={closeModalDelete}/>
         </Modal>
       )}
     </li>

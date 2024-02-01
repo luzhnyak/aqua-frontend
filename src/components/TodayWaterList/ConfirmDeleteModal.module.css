@@ -24,6 +24,13 @@
     font-weight: 500;
     line-height: 1.25;
   }
+
+  .logoutBtn:hover{
+    box-shadow: 0px 4px 14px 0px #7f232397;
+  }
+  .logoutBtn:focus{
+    box-shadow: 0px 4px 14px 0px #7f232397;
+  }
   
   .cancelBtn {
     display: block;
@@ -41,6 +48,12 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
+  }
+  .cancelBtn:hover{
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.34);
+  }
+  .cancelBtn:focus{
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.34);
   }
   
   @media only screen and (min-width: 768px) {
