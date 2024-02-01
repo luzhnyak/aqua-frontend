@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ReactComponent as Plus } from '../../images/icons/plus-small.svg';
+// import { ReactComponent as Plus } from '../../images/icons/plus-small.svg';
 import TodayWaterItem from './TodayWaterItem';
 import css from './TodayWaterList.module.css';
 
@@ -13,15 +13,15 @@ import { getAllWaterForTodayThunk } from '../../redux/waterConsumption/operation
 export const TodayWaterList = () => {
   const waterToday = useSelector(selectWatersToday);
   const entries = [];
-  if(waterToday !== null && waterToday.length !== 0){
+  if (waterToday !== null && waterToday.length !== 0) {
     waterToday.dailyEntries.map(e => entries.push(e));
   }
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch((getAllWaterForTodayThunk()))
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(getAllWaterForTodayThunk());
+  }, [dispatch]);
 
   const [isOpen, setAddWaterModalOpen] = useState(false);
 
@@ -54,7 +54,7 @@ export const TodayWaterList = () => {
       </button>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          <AddWaterModal isAddWater={true} onClose={closeModal}/>
+          <AddWaterModal isAddWater={true} onClose={closeModal} />
         </Modal>
       )}
     </div>

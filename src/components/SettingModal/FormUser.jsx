@@ -9,7 +9,7 @@ import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
 // import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
 // import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
-import { selectAuthError, selectUser } from '../../redux/auth/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,7 +18,7 @@ const FormUser = ({ onClose }) => {
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
 
-  const authError = useSelector(selectAuthError);
+  // const authError = useSelector(selectAuthError);
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
