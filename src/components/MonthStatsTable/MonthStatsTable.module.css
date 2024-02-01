@@ -44,8 +44,13 @@
   height: 14px;
   background-color: transparent;
   border: none;
-  color: var(--Primery-Color-Blue, #407bff);
+  color:  #407bff;
 }
+
+.btn-arrow:hover{
+  color: #ff9e4385;
+}
+
 .btn-arrow:disabled {
   color: var(--Primery-Color-Blue, #407cff63);
 }
@@ -92,6 +97,7 @@
 @media only screen and (min-width: 768px) {
    .day-cell{
     position: relative;
+    height: 58px;
   }
 }
 .disabled-day{
@@ -129,6 +135,13 @@
   background: #fff;
 
 }
+.day:hover{
+  box-shadow: 0px 4px 14px 0px rgba(64, 124, 255, 0.304);
+}
+.day:focus{
+  box-shadow: 0px 4px 14px 0px rgba(64, 124, 255, 0.304);
+}
+
 @media only screen and (min-width: 768px) {
   .day {
     font-size: 16px;
@@ -137,10 +150,19 @@
   }
 }
 
+.day-incomlete{
+  border: 1px solid #FF9D43;
+}
+.day-incomlete:hover{
+  box-shadow: 0px 4px 14px 0px #ff9e4358;
+}
+.day-incomlete:focus{
+  box-shadow: 0px 4px 14px 0px #ff9e4358;
+}
 
 .percent {
   text-align: center;
-  color: var(--Secondary-color-4, #9ebbff);
+  color:  #9ebbff;
   font-size: 10px;
   font-weight: 400;
 }
