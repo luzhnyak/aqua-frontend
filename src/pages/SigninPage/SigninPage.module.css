@@ -1,4 +1,5 @@
 /* SigninPage.module.css */
+
 .hidden {
   opacity: 0;
 }
@@ -14,19 +15,12 @@
   justify-content: center;
 }
 
-.form {
-  max-width: 280px;
-}
 
 /* Tablet and > */
 @media screen and (min-width: 768px) {
   .container {
     padding: 40px 0 0 0;
     min-height: 704px;
-  }
-
-  .form {
-    max-width: 680px;
   }
 
   .mainstr {
@@ -41,255 +35,9 @@
     min-height: 740px;
   }
 
-  .form {
-    max-width: 1216px;
-    margin-top: 113px;
-  }
-
   .mainstr {
     display: grid;
     grid-template-columns: 742px 384px 90px;
     justify-content: flex-end;
   }
-}
-
-.formControl {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-bottom: 16px;
-  gap: 20px;
-}
-
-.formControlWithError {
-  gap: 0px;
-}
-
-.formTitle {
-  font-size: 26px;
-  margin-bottom: 16px;
-}
-
-.formLabel {
-  margin-bottom: 8px;
-}
-
-.stack {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.input {
-  font-size: 16px;
-  padding: 12px 10px;
-  width: 280px;
-  color: var(--primary-color-blue);
-  border: 1px solid var(--secondary-color-blue-3);
-  border-radius: 6px;
-  outline: none;
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .input {
-    width: 336px;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .input {
-    width: 384px;
-  }
-}
-
-.inputBox {
-  font-size: 16px;
-  color: var(--primary-color-blue);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 10px;
-  width: 280px;
-  border: 1px solid var(--secondary-color-blue-3);
-  border-radius: 6px;
-  outline: none;
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .inputBox {
-    width: 336px;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .inputBox {
-    width: 384px;
-  }
-}
-
-.iconeye {
-  stroke: var(--primary-color-blue);
-  display: flex;
-  align-items: center;
-  width: 16px;
-  height: 16px;
-}
-
-.inputpassword {
-  font-size: 16px;
-  color: var(--primary-color-blue);
-  outline: none;
-  border: none;
-  padding: 0;
-  width: 280px;
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .inputpassword {
-    width: 336px;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .inputpassword {
-    width: 384px;
-  }
-}
-
-.input::placeholder {
-  color: var(--secondary-color-blue-3);
-}
-
-.inputpassword::placeholder {
-  color: var(--secondary-color-blue-3);
-}
-
-.button {
-  background-color: var(--primary-color-blue);
-  color: var(--primary-color-white);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 280px;
-  height: 44px;
-  font-size: 16px;
-  line-height: 20px;
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .button {
-    width: 336px;
-    height: 44px;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 24px;
-  }
-
-  .googleText {
-    font-size: 18px;
-    line-height: 24px;
-  }
-}
-
-@media screen and (min-width: 320px) {
-  .googleText {
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .button {
-    width: 384px;
-    height: 44px;
-
-    font-size: 18px;
-    line-height: 24px;
-  }
-}
-
-.googleLogin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-color-blue);
-  color: var(--primary-color-white);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 280px;
-  height: 44px;
-  text-decoration-line: none;
-  text-align: center;
-}
-
-.googleText {
-  font-size: 18px;
-  line-height: 24px;
-}
-
-/* Tablet and > */
-@media screen and (min-width: 768px) {
-  .googleLogin {
-    width: 336px;
-  }
-}
-
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .googleLogin {
-    width: 384px;
-  }
-}
-
-.errormessage {
-  position: absolute;
-  bottom: -18px;
-  left: 0;
-  color: var(--secondary-color-red);
-  font-size: 14px;
-
-}
-
-.errorBorder {
-  border: 1px solid var(--secondary-color-red);
-}
-
-.errorInput {
-  color: var(--secondary-color-red);
-}
-
-.errorInput::placeholder {
-  color: var(--secondary-color-red);
-}
-
-.signup {
-  color: var(--primary-color-blue);
-  text-decoration-line: none;
-  display: block;
-  margin-right: auto;
-}
-
-.forgotPassword {
-  color: var(--primary-color-blue);
-  text-decoration-line: none;
-  display: block;
-  margin-left: auto;
-}
-
-.wraplink {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
 }
