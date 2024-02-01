@@ -1,31 +1,32 @@
 import { ErrorMessage, Field, Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import css from './FormSendEmail.module.css'
+import css from './FormSendEmail.module.css';
 import * as Yup from 'yup';
 
-const FormSendEmail = ({title, onSubmit}) => {
+const FormSendEmail = ({ title, onSubmit }) => {
+  const initialValues = {
+    email: '',
+  };
 
-    const initialValues = {
-        email: '',
-      };
-    
-      const validationSchema = Yup.object({
-        email: Yup.string().email().required('Email is required.'),
-      });
+  const validationSchema = Yup.object({
+    email: Yup.string().email().required('Email is required.'),
+  });
 
-    return(
-        <div className={css.mainstr}>
+  return (
+    <div className={css.mainstr}>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
           {({ errors, touched }) => (
-            <Form>
+            <Form className={css.form}>
               <h1 className={css.formTitle}>{title}</h1>
               <div className={css.formControl}>
                 <div className={css.stack}>
-                  <label htmlFor="forgot-pass-id1" className={css.formLabel}>Enter your email</label>
+                  <label htmlFor="forgot-pass-id1" className={css.formLabel}>
+                    Enter your email
+                  </label>
                   <Field
                     id="forgot-pass-id1"
                     className={`${css.input} ${
@@ -35,9 +36,15 @@ const FormSendEmail = ({title, onSubmit}) => {
                     type="email"
                     placeholder="Email"
                   />
-                  <ErrorMessage name="email" component="div" className={css.errormessage}/>
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className={css.errormessage}
+                  />
                 </div>
-                <button type="submit" className={css.button}>Send</button>
+                <button type="submit" className={css.button}>
+                  Send
+                </button>
                 <Link to="/signin" className={css.signin}>
                   <p>Sign in</p>
                 </Link>
@@ -45,9 +52,8 @@ const FormSendEmail = ({title, onSubmit}) => {
             </Form>
           )}
         </Formik>
-      </div>
-    )
+    </div>
+  );
+};
 
-}
-
-export default FormSendEmail
+export default FormSendEmail;
