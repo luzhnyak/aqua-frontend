@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.529743ac.css",
-    "main.js": "/aqua-frontend/static/js/main.c1d68c56.js",
-    "static/css/775.fb91879a.chunk.css": "/aqua-frontend/static/css/775.fb91879a.chunk.css",
-    "static/js/775.4d68a198.chunk.js": "/aqua-frontend/static/js/775.4d68a198.chunk.js",
+    "main.js": "/aqua-frontend/static/js/main.640e12bc.js",
+    "static/css/775.f61ca13e.chunk.css": "/aqua-frontend/static/css/775.f61ca13e.chunk.css",
+    "static/js/775.5915e1f9.chunk.js": "/aqua-frontend/static/js/775.5915e1f9.chunk.js",
     "static/css/735.caf1881f.chunk.css": "/aqua-frontend/static/css/735.caf1881f.chunk.css",
     "static/js/735.8cd1a457.chunk.js": "/aqua-frontend/static/js/735.8cd1a457.chunk.js",
     "static/css/539.52100498.chunk.css": "/aqua-frontend/static/css/539.52100498.chunk.css",
@@ -57,9 +57,9 @@
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.3a5305120bec98a9c977eccfd5b62a0d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
     "main.529743ac.css.map": "/aqua-frontend/static/css/main.529743ac.css.map",
-    "main.c1d68c56.js.map": "/aqua-frontend/static/js/main.c1d68c56.js.map",
-    "775.fb91879a.chunk.css.map": "/aqua-frontend/static/css/775.fb91879a.chunk.css.map",
-    "775.4d68a198.chunk.js.map": "/aqua-frontend/static/js/775.4d68a198.chunk.js.map",
+    "main.640e12bc.js.map": "/aqua-frontend/static/js/main.640e12bc.js.map",
+    "775.f61ca13e.chunk.css.map": "/aqua-frontend/static/css/775.f61ca13e.chunk.css.map",
+    "775.5915e1f9.chunk.js.map": "/aqua-frontend/static/js/775.5915e1f9.chunk.js.map",
     "735.caf1881f.chunk.css.map": "/aqua-frontend/static/css/735.caf1881f.chunk.css.map",
     "735.8cd1a457.chunk.js.map": "/aqua-frontend/static/js/735.8cd1a457.chunk.js.map",
     "539.52100498.chunk.css.map": "/aqua-frontend/static/css/539.52100498.chunk.css.map",
@@ -75,6 +75,6 @@
   },
   "entrypoints": [
     "static/css/main.529743ac.css",
-    "static/js/main.c1d68c56.js"
+    "static/js/main.640e12bc.js"
   ]
 }
