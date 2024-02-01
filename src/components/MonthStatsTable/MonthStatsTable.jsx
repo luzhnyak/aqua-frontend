@@ -4,17 +4,22 @@ import PopUpDay from './PopUpDay';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectWatersPerMonth } from '../../redux/waterConsumption/selectors';
 import { getAllWaterForMonthThunk } from '../../redux/waterConsumption/operations';
+import { selectUser } from '../../redux/auth/selectors';
 
 export const MonthStatsTable = ({ popUpOpen }) => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const creationDate = new Date(user.createdAt);
 
   const waterPerMonth = useSelector(selectWatersPerMonth);
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
   const [disabledYear, setsDisabledYear] = useState(false);
+  const [disabledForUser, setsDisabledForUser] = useState(false)
   const previous = '\u003C';
   const next = '\u003E';
+
   useEffect(() => {
     const getMonthWater = () => {
       const y = sDate.getFullYear();
@@ -38,9 +43,11 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       );
       const currentYear = currentDate.getFullYear();
       const currentMonth = currentDate.getMonth() + 1;
+      
       if (month === currentMonth && year === currentYear) {
         setsDisabledYear(true);
       }
+
     };
 
     disabled();
@@ -55,11 +62,29 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   };
 
   const changeToPrevMonth = () => {
+      const month = Number(
+        sDate.toLocaleString('en-US', {
+          month: 'numeric',
+        }) - 1
+      );
+      const year = Number(
+        sDate.toLocaleString('en-US', {
+          year: 'numeric',
+        })
+      );
+    const currentUserYear = creationDate.getFullYear();
+    const currentUserMonth = creationDate.getMonth() + 1;
+
+    if (month === currentUserMonth && year === currentUserYear) {
+      setsDisabledForUser(true);
+    }
+
     setsDate(pDate => {
       const pMonth = pDate.getMonth() - 1;
       const pYear = pDate.getFullYear();
       return new Date(pYear, pMonth);
     });
+
 
     setsDisabledYear(false);
     setsPopup(false);
@@ -72,6 +97,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       return new Date(nYear, nMonth);
     });
     setsPopup(false);
+    setsDisabledForUser(false)
   };
 
   const handleDateClick = (day, date) => {
@@ -105,42 +131,60 @@ export const MonthStatsTable = ({ popUpOpen }) => {
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
     // Show actual days
-    let progress = 0
-    let waterNorm = 0
-    let dailyEntries = 0
+    let progress = 0;
+    let waterNorm = 0;
+    let dailyEntries = 0;
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
-      let dayInMonth = []
-      
-      waterPerMonth.map(day=>{
-       const dateFormonth = new Date(day.date)
-       dayInMonth.push(Number(dateFormonth.toLocaleString('en-US', {
-               day: 'numeric',
-             })))
-return day
-     })
+      let dayInMonth = [];
 
-const percent = waterPerMonth.map(day=>day.progress)
-const dailyNorm = waterPerMonth.map(day=>day.waterRate)
-const entries = waterPerMonth.map(day=>day.dailyEntries)
-for(let i=0; i<dayInMonth.length; i+=1){
-  if(d===dayInMonth[i]){
-    progress = Math.round(percent[i])
-    waterNorm =dailyNorm[i]
-    dailyEntries = entries[i]
-  } 
-}
+      waterPerMonth.map(day => {
+        const dateFormonth = new Date(day.date);
+        dayInMonth.push(
+          Number(
+            dateFormonth.toLocaleString('en-US', {
+              day: 'numeric',
+            })
+          )
+        );
+        return day;
+      });
 
-  if (m === currentMonth) {
-    if (d <= currentDay) {
-      allDays.push({ day: d, date: date, value: progress, disabled: false, norm: waterNorm, dailyEntry:dailyEntries });
-    } else {
-      allDays.push({ day: d, date: date, value: 0, disabled: true });
-    }
-  } else {
-    allDays.push({ day: d, date: date, value: progress, disabled: false, norm: waterNorm, dailyEntry:dailyEntries});
-  }
+      const percent = waterPerMonth.map(day => day.progress);
+      const dailyNorm = waterPerMonth.map(day => day.waterRate);
+      const entries = waterPerMonth.map(day => day.dailyEntries);
+      for (let i = 0; i < dayInMonth.length; i += 1) {
+        if (d === dayInMonth[i]) {
+          progress = Math.round(percent[i]);
+          waterNorm = dailyNorm[i];
+          dailyEntries = entries[i];
+        }
+      }
+
+      if (m === currentMonth) {
+        if (d <= currentDay) {
+          allDays.push({
+            day: d,
+            date: date,
+            value: progress,
+            disabled: false,
+            norm: waterNorm,
+            dailyEntry: dailyEntries,
+          });
+        } else {
+          allDays.push({ day: d, date: date, value: 0, disabled: true });
+        }
+      } else {
+        allDays.push({
+          day: d,
+          date: date,
+          value: progress,
+          disabled: false,
+          norm: waterNorm,
+          dailyEntry: dailyEntries,
+        });
+      }
     }
 
     return allDays;
@@ -151,9 +195,15 @@ for(let i=0; i<dayInMonth.length; i+=1){
       <div className={css['calendar-header']}>
         <h2 className={css.title}>Month</h2>
         <div className={css.monthPicker}>
-          <button className={css['btn-arrow']} onClick={changeToPrevMonth}>
-            {previous}
-          </button>
+          {disabledForUser ? (
+            <button className={css['btn-arrow']} disabled>
+              {previous}
+            </button>
+          ) : (
+            <button className={css['btn-arrow']} onClick={changeToPrevMonth}>
+              {previous}
+            </button>
+          )}
           <h2 className={css['title-month']}>
             {`${sDate.toLocaleString('en-US', {
               month: 'long',
@@ -200,12 +250,12 @@ for(let i=0; i<dayInMonth.length; i+=1){
                   )}
                 </div>
               ) : (
-<div className={css['day-cell']}>
-<button className={css['disabled-day']} disabled>
-                  {item.day}
-                </button>
-                <p className={css.percent}> {item.value}%</p>
-</div>
+                <div className={css['day-cell']}>
+                  <button className={css['disabled-day']} disabled>
+                    {item.day}
+                  </button>
+                  <p className={css.percent}> {item.value}%</p>
+                </div>
               )}
             </div>
           );
