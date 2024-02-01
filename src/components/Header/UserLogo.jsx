@@ -83,7 +83,7 @@ const UserLogo = () => {
           <Link className={css.dropDownMenu} onClick={toggleMenu}>
             <p className={css.userNameText}>{name ? name : ''}</p>
             {avatarURL ? (
-              <img srcSet={avatarURL} className={css.avatar} alt="userAvatar" />
+              <img src={avatarURL} className={css.avatar} alt="userAvatar" />
             ) : (
               <div className={css.noAvatar}>
                 <span>
