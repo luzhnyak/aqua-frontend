@@ -23,7 +23,6 @@ line-height: 24px;
 }
 .entries{
     max-height: 258px;
-    overflow: scroll;
 }
 @media only screen and (min-width: 768px) {
     .entries{
@@ -32,9 +31,10 @@ line-height: 24px;
 }
 
 
-/* .list-entry{
-
-} */
+.list-entry{
+    height: 212px;
+    overflow-y: scroll;
+}
 
 .btn-add{
     padding: 0px;
@@ -73,16 +73,17 @@ stroke: var(--Primery-Color-Blue, #407BFF);
 /* scroll bar */
 
 ::-webkit-scrollbar {
-    width: 4px;
-    
-    border-radius: 12px;
-  }
+border-radius: 8px;
 
-  ::-webkit-scrollbar-track-piece{
-    background-color: transparent;
+width: 4px;
+   }
+   ::-webkit-scrollbar-track{
+background-color: #D7E3FF;
+width: 2px;
+border-radius: 8px;
   }
 ::-webkit-scrollbar-thumb {
     background: rgba(158, 187, 255, 1);
     border-radius: 12px;
-    height: 120px;
+    height: 100px;
   }
