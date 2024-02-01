@@ -76,7 +76,7 @@ const AddWaterModal = ({
     } else if (isAddWater) {
       setTime(now);
     }
-  }, [setTime]);
+  }, [setTime, previousTime, isAddWater, isEditWater]);
 
   const generateTimeOptions = () => {
     const options = [];
