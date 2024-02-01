@@ -137,6 +137,9 @@
   }
 }
 
+.day-incomlete{
+  border: 1px solid #FF9D43;
+}
 
 .percent {
   text-align: center;
