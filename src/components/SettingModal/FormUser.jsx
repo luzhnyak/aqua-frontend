@@ -9,7 +9,7 @@ import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
 // import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
 // import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
-import { selectUser } from '../../redux/auth/selectors';
+import { selectAuthError, selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,6 +17,8 @@ const FormUser = ({ onClose }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
+
+  const authError = useSelector(selectAuthError);
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -39,46 +41,74 @@ const FormUser = ({ onClose }) => {
   const initialValues = {
     gender: gender,
     name: name || '',
-    email: email || '',
+    email: email,
     password: '',
     newPassword: '',
     repeatPassword: '',
   };
 
-  const onSubmit = (values, { resetForm }) => {
-    if (values.newPassword !== values.repeatPassword) {
-      return toast.error('Your passwords are difference');
+  const onSubmit = async (values, { resetForm }) => {
+    if (values.email !== '') {
+      if (
+        values.password === '' &&
+        values.newPassword === '' &&
+        values.repeatPassword === ''
+      ) {
+        dispatch(
+          updateUserInfoThunk({
+            gender: values.gender,
+            name: values.name,
+            email: values.email,
+          })
+        );
+        toast.success('You successfully change your data');
+      } else {
+        if (
+          values.password !== '' &&
+          values.newPassword === '' &&
+          (values.repeatPassword !== '' || values.repeatPassword === '')
+        ) {
+          return toast.error('Enter new password');
+        }
+
+        if (
+          values.password !== '' &&
+          values.newPassword !== '' &&
+          values.repeatPassword === ''
+        ) {
+          return toast.error('Repeat your password');
+        }
+
+        if (
+          values.password === '' &&
+          values.newPassword !== '' &&
+          values.repeatPassword !== ''
+        ) {
+          return toast.error('Enter your current password');
+        }
+
+        if (values.newPassword !== values.repeatPassword) {
+          return toast.error('Your passwords are different');
+        }
+
+        dispatch(
+          updateUserInfoThunk({
+            gender: values.gender,
+            name: values.name,
+            email: values.email,
+            password: values.password,
+            newPassword: values.newPassword,
+          })
+        );
+        toast.success('You successfully change your data and password');
+      }
+
+      resetForm({
+        password: values.password,
+        newPassword: values.newPassword,
+      });
+      onClose();
     }
-
-    if (values.password !== '') {
-      dispatch(
-        updateUserInfoThunk({
-          gender: values.gender,
-          name: values.name,
-          email: values.email,
-          password: values.password,
-          newPassword: values.newPassword,
-        })
-      );
-
-      toast.success('You successfully change your data and password');
-    }
-
-    if (values.password === '') {
-      dispatch(
-        updateUserInfoThunk({
-          gender: values.gender,
-          name: values.name,
-          email: values.email,
-        })
-      );
-
-      toast.success('You successfully change your data');
-    }
-
-    resetForm({ password: values.password, newPassword: values.newPassword });
-
-    onClose();
   };
 
   return (
