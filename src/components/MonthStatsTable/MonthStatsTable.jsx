@@ -11,7 +11,9 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const creationDate = new Date(user.createdAt);
-
+  const currentUserYear = creationDate.getFullYear();
+  const currentUserMonth = creationDate.getMonth() + 1;
+  const currentUserDay = creationDate.getDate()
   const waterPerMonth = useSelector(selectWatersPerMonth);
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
@@ -73,8 +75,6 @@ export const MonthStatsTable = ({ popUpOpen }) => {
           year: 'numeric',
         })
       );
-    const currentUserYear = creationDate.getFullYear();
-    const currentUserMonth = creationDate.getMonth() + 1;
 
     if (month === currentUserMonth && year === currentUserYear) {
       setsDisabledForUser(true);
@@ -163,7 +163,19 @@ export const MonthStatsTable = ({ popUpOpen }) => {
         }
       }
 
-      if (m === currentMonth) {
+      // if(m+1=== currentUserMonth){
+      //   if (d < currentUserDay) {
+      //     allDays.push({
+      //       day: d,
+      //       date: date,
+      //       value: progress,
+      //       disabled: true,
+      //       norm: waterNorm,
+      //       dailyEntry: dailyEntries,
+      //     });
+      //   }
+      // }
+    if (m === currentMonth) {
         if (d <= currentDay) {
           allDays.push({
             day: d,
@@ -186,6 +198,11 @@ export const MonthStatsTable = ({ popUpOpen }) => {
           dailyEntry: dailyEntries,
         });
       }
+    }
+
+    if(m+1=== currentUserMonth && y === currentUserYear){
+    const inactive =  allDays.filter(day=> day.day<currentUserDay)
+    inactive.map(day=> day.disabled = true)
     }
 
     return allDays;
