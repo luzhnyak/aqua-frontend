@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.5c6b756b.css",
-    "main.js": "/aqua-frontend/static/js/main.cfce5888.js",
-    "static/css/775.5b13016c.chunk.css": "/aqua-frontend/static/css/775.5b13016c.chunk.css",
-    "static/js/775.99cb6f9a.chunk.js": "/aqua-frontend/static/js/775.99cb6f9a.chunk.js",
+    "main.js": "/aqua-frontend/static/js/main.5ddbadd6.js",
+    "static/css/775.c74dcd62.chunk.css": "/aqua-frontend/static/css/775.c74dcd62.chunk.css",
+    "static/js/775.6feb30a3.chunk.js": "/aqua-frontend/static/js/775.6feb30a3.chunk.js",
     "static/css/735.caf1881f.chunk.css": "/aqua-frontend/static/css/735.caf1881f.chunk.css",
     "static/js/735.8cd1a457.chunk.js": "/aqua-frontend/static/js/735.8cd1a457.chunk.js",
     "static/css/539.52100498.chunk.css": "/aqua-frontend/static/css/539.52100498.chunk.css",
@@ -42,8 +42,8 @@
     "index.html": "/aqua-frontend/index.html",
     "static/media/eye-slash.svg": "/aqua-frontend/static/media/eye-slash.fd2ff5744dd66a8abdd3edc8792182c5.svg",
     "static/media/chevron-double-up.svg": "/aqua-frontend/static/media/chevron-double-up.144e3b207dddaf594f18fa3f37599509.svg",
-    "static/media/trash.svg": "/aqua-frontend/static/media/trash.ae18aa60328fa917051fb84cb18b92be.svg",
-    "static/media/pencil-square.svg": "/aqua-frontend/static/media/pencil-square.ccc0713def310a8c66c0786bd39c69e5.svg",
+    "static/media/trash.svg": "/aqua-frontend/static/media/trash.7e19a0ed3b068d3ce54bb7224868b66d.svg",
+    "static/media/pencil-square.svg": "/aqua-frontend/static/media/pencil-square.f1d442f8442cd9dc1c2203d7840f04cf.svg",
     "static/media/eye.svg": "/aqua-frontend/static/media/eye.367757680b862a3dcd219e543e59d6f5.svg",
     "static/media/progressbar-plus.svg": "/aqua-frontend/static/media/progressbar-plus.c6e2021a484b91614488ed9278eda557.svg",
     "static/media/presentation-chart-bar.svg": "/aqua-frontend/static/media/presentation-chart-bar.8cfec11a5c739ea320477bba603d1a57.svg",
@@ -54,12 +54,12 @@
     "static/media/x-mark-outline.svg": "/aqua-frontend/static/media/x-mark-outline.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/x-mark.svg": "/aqua-frontend/static/media/x-mark.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/radio-button.svg": "/aqua-frontend/static/media/radio-button.c19e6c6e8679819727a7.svg",
-    "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.3a5305120bec98a9c977eccfd5b62a0d.svg",
+    "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
     "main.5c6b756b.css.map": "/aqua-frontend/static/css/main.5c6b756b.css.map",
-    "main.cfce5888.js.map": "/aqua-frontend/static/js/main.cfce5888.js.map",
-    "775.5b13016c.chunk.css.map": "/aqua-frontend/static/css/775.5b13016c.chunk.css.map",
-    "775.99cb6f9a.chunk.js.map": "/aqua-frontend/static/js/775.99cb6f9a.chunk.js.map",
+    "main.5ddbadd6.js.map": "/aqua-frontend/static/js/main.5ddbadd6.js.map",
+    "775.c74dcd62.chunk.css.map": "/aqua-frontend/static/css/775.c74dcd62.chunk.css.map",
+    "775.6feb30a3.chunk.js.map": "/aqua-frontend/static/js/775.6feb30a3.chunk.js.map",
     "735.caf1881f.chunk.css.map": "/aqua-frontend/static/css/735.caf1881f.chunk.css.map",
     "735.8cd1a457.chunk.js.map": "/aqua-frontend/static/js/735.8cd1a457.chunk.js.map",
     "539.52100498.chunk.css.map": "/aqua-frontend/static/css/539.52100498.chunk.css.map",
@@ -75,6 +75,6 @@
   },
   "entrypoints": [
     "static/css/main.5c6b756b.css",
-    "static/js/main.cfce5888.js"
+    "static/js/main.5ddbadd6.js"
   ]
 }
