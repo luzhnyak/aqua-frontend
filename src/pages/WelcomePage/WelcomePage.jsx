@@ -46,7 +46,7 @@ const WelcomePage = () => {
             </li>
           </ul>
           <Link to="/signup" className={css.link}>
-            <button className={css.tryTrackerBtn}>Try tracker</button>
+            <p className={css.tryTrackerBtn}>Try tracker</p>
           </Link>
         </div>
 

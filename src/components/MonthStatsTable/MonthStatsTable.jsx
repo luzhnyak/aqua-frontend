@@ -15,7 +15,6 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   const [disabledYear, setsDisabledYear] = useState(false);
   const previous = '\u003C';
   const next = '\u003E';
-
   useEffect(() => {
     const getMonthWater = () => {
       const y = sDate.getFullYear();
@@ -113,6 +112,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
       let dayInMonth = []
+      
       waterPerMonth.map(day=>{
        const dateFormonth = new Date(day.date)
        dayInMonth.push(Number(dateFormonth.toLocaleString('en-US', {
@@ -136,7 +136,7 @@ for(let i=0; i<dayInMonth.length; i+=1){
     if (d <= currentDay) {
       allDays.push({ day: d, date: date, value: progress, disabled: false, norm: waterNorm, dailyEntry:dailyEntries });
     } else {
-      allDays.push({ day: d, date: date, value: progress, disabled: true });
+      allDays.push({ day: d, date: date, value: 0, disabled: true });
     }
   } else {
     allDays.push({ day: d, date: date, value: progress, disabled: false, norm: waterNorm, dailyEntry:dailyEntries});
@@ -200,9 +200,12 @@ for(let i=0; i<dayInMonth.length; i+=1){
                   )}
                 </div>
               ) : (
-                <button className={css['disabled-day']} disabled>
+<div className={css['day-cell']}>
+<button className={css['disabled-day']} disabled>
                   {item.day}
                 </button>
+                <p className={css.percent}> {item.value}%</p>
+</div>
               )}
             </div>
           );
