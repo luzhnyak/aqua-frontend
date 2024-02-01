@@ -48,14 +48,7 @@ const FormUser = ({ onClose }) => {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    console.log('1', authError);
-
-    // if (values.newPassword !== values.repeatPassword) {
-    //   toast.error('Enter correct password');
-    //   // throw new Error('Enter correct password');
-    // }
-
-    if (authError && values.email !== '') {
+    if (values.email !== '') {
       if (
         values.password === '' &&
         values.newPassword === '' &&
@@ -68,11 +61,12 @@ const FormUser = ({ onClose }) => {
             email: values.email,
           })
         );
+        toast.success('You successfully change your data');
       } else {
         if (
           values.password !== '' &&
           values.newPassword === '' &&
-          values.repeatPassword !== ''
+          (values.repeatPassword !== '' || values.repeatPassword === '')
         ) {
           return toast.error('Enter new password');
         }
@@ -93,14 +87,6 @@ const FormUser = ({ onClose }) => {
           return toast.error('Enter your current password');
         }
 
-        if (
-          values.password !== '' &&
-          values.newPassword === '' &&
-          values.repeatPassword === ''
-        ) {
-          return toast.error('Enter new password');
-        }
-
         if (values.newPassword !== values.repeatPassword) {
           return toast.error('Your passwords are different');
         }
@@ -114,18 +100,14 @@ const FormUser = ({ onClose }) => {
             newPassword: values.newPassword,
           })
         );
+        toast.success('You successfully change your data and password');
       }
 
-      if (!authError) {
-        toast.success('You successfully change your data');
-
-        resetForm({
-          password: values.password,
-          newPassword: values.newPassword,
-        });
-        onClose();
-      }
-      // toast.success('You successfully change your data and password');
+      resetForm({
+        password: values.password,
+        newPassword: values.newPassword,
+      });
+      onClose();
     }
   };
 
