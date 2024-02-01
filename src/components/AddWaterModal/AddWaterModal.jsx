@@ -1,19 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import css from './AddWaterModal.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { ReactComponent as Glass } from '../../images/icons/glass.svg';
 
 import { ReactComponent as IconPlus } from '../../images/icons/plus-small.svg';
 import { ReactComponent as IconMinus } from '../../images/icons/minus-small.svg';
 import { addWaterThunk } from '../../redux/waterConsumption/operations';
+import { updateWaterByIdThunk } from '../../redux/waterConsumption/operations';
+import { selectWatersToday } from '../../redux/waterConsumption/selectors';
 
-const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
+const AddWaterModal = ({
+  isAddWater,
+  isEditWater,
+  onClose,
+  id,
+  previousAmount,
+  previousTime,
+}) => {
+  const waterToday = useSelector(selectWatersToday);
+
+  const getPreviousEntry = () => {
+    const lastEntry =
+      waterToday.dailyEntries[waterToday.dailyEntries.length - 1];
+    const length = waterToday.dailyEntries.length;
+
+    if (length === 0) {
+      return 0;
+    }
+
+    return lastEntry.waterVolume;
+  };
+
   const [cleanStatus, setCleanStatus] = useState({
     isAddWater: true,
     isEditWater: true,
   });
 
-  const [waterVolume, setWaterVolume] = useState(50);
-  const [finalValue, setFinalValue] = useState(50);
+  const [waterVolume, setWaterVolume] = useState(
+    isEditWater ? previousAmount : getPreviousEntry()
+  );
+  const [finalValue, setFinalValue] = useState(
+    isEditWater ? previousAmount : getPreviousEntry()
+  );
 
   const [time, setTime] = useState('');
 
@@ -41,7 +70,12 @@ const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
 
   useEffect(() => {
     const now = getCurrentTime();
-    setTime(now);
+
+    if (isEditWater) {
+      setTime(previousTime);
+    } else if (isAddWater) {
+      setTime(now);
+    }
   }, [setTime]);
 
   const generateTimeOptions = () => {
@@ -62,7 +96,17 @@ const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addWaterThunk({ time, waterVolume }));
+
+    if (isEditWater) {
+      dispatch(
+        updateWaterByIdThunk({
+          entryId: id,
+          body: { time, waterVolume },
+        })
+      );
+    } else if (isAddWater) {
+      dispatch(addWaterThunk({ time, waterVolume }));
+    }
 
     setCleanStatus({
       isAddWater: !cleanStatus.isAddWater,
@@ -87,12 +131,13 @@ const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
   return (
     <>
       {isEditWater && (
-        <div>
-          <div>
-            <span>Value</span>
-            <span>Time</span>
+        <div className={css.editContentDiv}>
+          <div className={css.previousGlassDiv}>
+            <Glass className={css.glass} />
+            <span className={css.editNumber}>{previousAmount} ml</span>
+            <span className={css.editTime}>{previousTime}</span>
           </div>
-          <h2 className={css.headlines}>Correct entered data:</h2>
+          <h2 className={css.headlineEdit}>Correct entered data:</h2>
         </div>
       )}
       <div>
@@ -106,7 +151,7 @@ const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
           >
             <IconMinus width={24} height={24} />
           </button>
-          <div className={css.valuePlusMinus}>
+          <div className={css.valuePlusMinus} id="plusMinusDisplay">
             <input
               className={css.hidden}
               min="0"
@@ -150,7 +195,7 @@ const AddWaterModal = ({ isAddWater, isEditWater, onClose }) => {
           min="0"
           type="number"
           name="waterValue"
-          value={waterVolume}
+          value={waterVolume <= 10000 ? waterVolume : ''}
           onBlur={handleBlur}
           onChange={handleChange}
         />

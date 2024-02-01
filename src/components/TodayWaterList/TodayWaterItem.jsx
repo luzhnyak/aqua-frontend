@@ -7,23 +7,22 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 import Modal from 'components/Modal/Modal';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
 
-
 const TodayWaterItem = ({ id, amount, time }) => {
-const [isModalDelete, setIsModalDelete] = useState(false)
-const [isModalEdit, setIsModalEdit] = useState(false)
+  const [isModalDelete, setIsModalDelete] = useState(false);
+  const [isModalEdit, setIsModalEdit] = useState(false);
 
-const openModalDelete = () =>{
-  setIsModalDelete(true)
-}
-const closeModalDelete = () =>{
-  setIsModalDelete(false)
-}
-const openModalEdit = () =>{
-  setIsModalEdit(true)
-}
-const closeModalEdit = () =>{
-  setIsModalEdit(false)
-}
+  const openModalDelete = () => {
+    setIsModalDelete(true);
+  };
+  const closeModalDelete = () => {
+    setIsModalDelete(false);
+  };
+  const openModalEdit = () => {
+    setIsModalEdit(true);
+  };
+  const closeModalEdit = () => {
+    setIsModalEdit(false);
+  };
 
   return (
     <li className={css['entry-item']}>
@@ -33,22 +32,30 @@ const closeModalEdit = () =>{
         <p className={css.time}>{time}</p>
       </div>
       <div className={css.icons}>
-        <EditTool className={css.edit} onClick={openModalEdit}/>
-        <Trash className={css.delete} onClick={openModalDelete}/>
+        <EditTool className={css.edit} onClick={openModalEdit} />
+        <Trash className={css.delete} onClick={openModalDelete} />
       </div>
 
-{
-  isModalEdit && (
-    <Modal title="Edit the entered amount of water" onClose={closeModalEdit}>
-      <AddWaterModal isEditWater={true} />
-    </Modal>
-  )
-}
-      {isModalDelete && <Modal title="Delete entry" onClose={closeModalDelete}>
-        <ConfirmDeleteModal id={id}/>
-      </Modal>}
-      
+      {isModalEdit && (
+        <Modal
+          title="Edit the entered amount of water"
+          onClose={closeModalEdit}
+        >
+          <AddWaterModal
+            isEditWater={true}
+            id={id}
+            previousAmount={amount}
+            previousTime={time}
+            onClose={closeModalEdit}
+          />
+        </Modal>
+      )}
+      {isModalDelete && (
+        <Modal title="Delete entry" onClose={closeModalDelete}>
+          <ConfirmDeleteModal id={id} />
+        </Modal>
+      )}
     </li>
   );
 };
-export default TodayWaterItem
+export default TodayWaterItem;
