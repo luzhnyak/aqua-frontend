@@ -228,3 +228,9 @@
   width: 16px;
   height: 16px;
 }
+
+.info{
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--Primery-Color-Blue, #407bff);
+}

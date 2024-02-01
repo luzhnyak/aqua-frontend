@@ -38,9 +38,9 @@ const PopUpDay = ({ sDate, handleCloseClick, dailyEntries, progress, waterRate  
         </p>
         <IconClose className={css['popup-close']} onClick={handleCloseClick} />
       </div>
-      <p>Daily norma: {waterRate}</p>
-      <p>Fulfillment of the daily norm: {progress}%</p>
-      <p>How many servings of water: {dailyEntries}</p>
+      <p >Daily norma: <span className={css.info}>{waterRate} L</span></p>
+      <p >Fulfillment of the daily norm: <span className={css.info}>{progress}%</span></p>
+      <p >How many servings of water: <span className={css.info}>{dailyEntries}</span></p>
     </div>
   );
 };
