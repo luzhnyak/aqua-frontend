@@ -22,16 +22,16 @@ const AddWaterModal = ({
 
   const getPreviousEntry = () => {
     if (
-      !waterToday ||
-      !waterToday.dailyEntries ||
-      waterToday.dailyEntries.length === 0
+      waterToday &&
+      waterToday.dailyEntries &&
+      waterToday.dailyEntries.length !== 0
     ) {
-      return 0;
+      const lastEntry =
+        waterToday.dailyEntries[waterToday.dailyEntries.length - 1];
+      return lastEntry.waterVolume;
     }
 
-    const lastEntry =
-      waterToday.dailyEntries[waterToday.dailyEntries.length - 1];
-    return lastEntry.waterVolume;
+    return 0;
   };
 
   const [cleanStatus, setCleanStatus] = useState({
