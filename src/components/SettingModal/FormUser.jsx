@@ -12,7 +12,6 @@ import RadioButtons from './RadioButtons';
 import { selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AnimatedComponent from 'components/AnimatedComponent/AnimatedComponent';
 
 const FormUser = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -113,7 +112,7 @@ const FormUser = ({ onClose }) => {
   };
 
   return (
-    <AnimatedComponent>
+    <div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -276,7 +275,7 @@ const FormUser = ({ onClose }) => {
           </Form>
         )}
       </Formik>
-    </AnimatedComponent>
+    </div>
   );
 };
 
