@@ -6,8 +6,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
-// import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
-// import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
 import { selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
