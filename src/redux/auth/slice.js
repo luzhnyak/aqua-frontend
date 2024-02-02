@@ -32,18 +32,12 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.isRefreshing = false;
   state.error = action.payload;
-  // const { errorMessage, errorCode } = action.payload;
-  // state.error = { message: errorMessage, code: errorCode };
-  // if (errorCode === 401) {
-  //   state.token = null;
-  //   state.user = {
-  //     name: null,
-  //     email: null,
-  //     avatarURL: null,
-  //     waterRate: null,
-  //     gender: null,
-  //   };
-  // }
+
+  const errorCode = action.payload?.errorCode;
+  if (errorCode === 401) {
+    state.isLoggedIn = false;
+    state.token = null;
+  }
 };
 
 const authSlice = createSlice({
