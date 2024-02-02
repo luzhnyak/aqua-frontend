@@ -26,12 +26,8 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
   };
 
   const validationSchema = Yup.object({
-    weight: Yup.number()
-      .required('Weight is required.')
-      .min(1, 'Min weight amount is 1'),
-    activityTime: Yup.number()
-      .required('ActivityTime is required.')
-      .min(0, 'Min weight amount is 0'),
+    weight: Yup.number().min(1, 'Min weight amount is 1'),
+    activityTime: Yup.number().min(0, 'Min weight amount is 0'),
     waterAmount: Yup.number()
       .required('WaterAmount is required.')
       .min(0, 'Min water amount is 0 L')
@@ -39,6 +35,7 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
   });
 
   const [neededWaterAmount, setNeededWaterAmount] = useState(2.0);
+
 
   useEffect(() => {
     // Set the initial value for waterAmount when the component mounts
@@ -48,8 +45,8 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
     }));
   }, [waterRate]);
 
-   // Recalculate neededWaterAmount when gender changes
-   useEffect(() => {
+  // Recalculate neededWaterAmount when gender changes
+  useEffect(() => {
     const calculatedWaterAmount = calculateWaterAmount(
       userData.gender,
       userData.weight,
@@ -64,7 +61,7 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
     } else {
       return (weight * 0.03 + activityTime * 0.6).toFixed(1);
     }
-  };
+  };  
 
   const onSubmit = (values, { resetForm }) => {
     setUserData(prevData => ({
@@ -249,7 +246,20 @@ const DailyNormaModal = ({ setVisible, onWaterAmountSave }) => {
               <p className={css.requiredAmountText}>
                 The required amount of water in liters per day:
               </p>
-              <p id="neededWaterAmount" className={css.requiredAmountValue}>
+              <p
+                id="neededWaterAmount"
+                className={css.requiredAmountValue}
+                onClick={() => {
+                  const newWaterAmount = parseFloat(neededWaterAmount).toFixed(1);
+                  
+                  setFieldValue('waterAmount', newWaterAmount);
+                
+                  setUserData(prevData => ({
+                    ...prevData,
+                    waterAmount: newWaterAmount,
+                  }));
+                }}
+              >
                 {neededWaterAmount} L
               </p>
             </div>
