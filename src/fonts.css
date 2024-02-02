@@ -20,3 +20,25 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* Welcome page background */
+@media only screen and (min-width: 320px) {
+  .body-welcome {
+    background: url('images/mobile-background-main-page.svg') center bottom /
+      cover no-repeat;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .body-welcome {
+    background: url('images/tablet-background-main-page.svg') left bottom /
+      cover no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .body-welcome {
+    background: url('images/desktop-background-main-page.svg') bottom / contain
+      no-repeat;
+  }
+}

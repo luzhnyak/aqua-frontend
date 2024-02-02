@@ -54,7 +54,6 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 24px;
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -67,6 +66,5 @@
 @media only screen and (min-width: 1440px) {
   .container-progress {
     max-width: 592px;
-
   }
 }

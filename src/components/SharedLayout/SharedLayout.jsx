@@ -1,15 +1,14 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
-import Footer from 'components/Footer/Footer';
+// import Footer from 'components/Footer/Footer';
 
 import css from './SharedLayout.module.css';
 import clsx from 'clsx';
 
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const SharedLayout = () => {
@@ -19,12 +18,21 @@ export const SharedLayout = () => {
   const signin = location.pathname.includes('/signin');
   const signup = location.pathname.includes('/signup');
 
+  useEffect(() => {
+    if (welcome) {
+      document.body.classList.add('body-welcome');
+    }
+
+    return () => {
+      document.body.classList.remove('body-welcome');
+    };
+  }, [welcome]);
+
   return (
     <div
       className={clsx(
         css.container,
         { [css.backgroundHomePage]: home },
-        { [css.backgroundWelcomePage]: welcome },
         { [css.backgroundSigninPage]: signin },
         { [css.backgroundSigninPage]: signup },
         { [css.backgroundSigninPage]: !(home || welcome || signup) }
@@ -40,7 +48,7 @@ export const SharedLayout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
