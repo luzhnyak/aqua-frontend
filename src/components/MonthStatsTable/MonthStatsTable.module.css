@@ -155,6 +155,7 @@
 }
 .day-incomlete:hover{
   box-shadow: 0px 4px 14px 0px #ff9e4358;
+  
 }
 .day-incomlete:focus{
   box-shadow: 0px 4px 14px 0px #ff9e4358;
@@ -255,4 +256,26 @@
   font-size: 18px;
   font-weight: 500;
   color: var(--Primery-Color-Blue, #407bff);
+}
+
+/* CHART */
+.title-chart{
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+.btn-chart{
+  border: none;
+  background: none;
+  color: var(--Primery-Color-Blue, #407bff);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.btn-chart:hover{
+color:#FF9D43;
+/* box-shadow: 0px 4px 14px 0px #ff9e4358; */
+
 }
