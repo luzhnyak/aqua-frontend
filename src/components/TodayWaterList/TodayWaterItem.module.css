@@ -7,6 +7,9 @@
   height: 26px;
   border-bottom: 1px solid #d7e3ff;
 }
+.entry-item:last-child{
+  border-bottom: none;
+}
 
 @media only screen and (min-width: 768px) {
   .entry-item {

@@ -60,9 +60,15 @@
   margin: 0;
   color: var(--Primery-Color-Blue, #407bff);
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .title-month{
+    font-size: 16px;
+  }
 }
 
 .calendar-table {
@@ -261,17 +267,35 @@
 /* CHART */
 .title-chart{
   display: flex;
-  gap: 12px;
+  gap: 6px;
   align-items: flex-end;
 }
+
+@media only screen and (min-width: 768px) {
+  .title-chart{
+    gap: 12px;
+  }
+}
+
+
 .btn-chart{
   border: none;
   background: none;
   color: var(--Primery-Color-Blue, #407bff);
   text-align: center;
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 400;
-  line-height: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .btn-chart{
+    border: none;
+    background: none;
+    color: var(--Primery-Color-Blue, #407bff);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+  }
 }
 
 .btn-chart:hover{
