@@ -19,7 +19,7 @@ export const signUpThunk = createAsyncThunk(
       const response = await requestUserSignUp(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -31,7 +31,7 @@ export const loginThunk = createAsyncThunk(
       const response = await requestUserLogin(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -43,7 +43,7 @@ export const logoutThunk = createAsyncThunk(
       await requestUserLogout();
       clearToken();
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -59,7 +59,7 @@ export const refreshCurrentUserThunk = createAsyncThunk(
       const response = await refreshCurrentUser();
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   },
 
@@ -82,7 +82,7 @@ export const updateAvatarThunk = createAsyncThunk(
       const avatarURL = await updateUserAvatar(newPhoto);
       return avatarURL;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -94,7 +94,7 @@ export const updateUserInfoThunk = createAsyncThunk(
       const response = await updateUserInfo(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -106,7 +106,7 @@ export const updateWaterNormaThunk = createAsyncThunk(
       const response = await updateWaterNorma(newWaterRate);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
