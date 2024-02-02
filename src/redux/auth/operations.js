@@ -12,8 +12,6 @@ import {
   updateWaterNorma,
 } from 'services/waterApi';
 
-//TODO: add notifications
-
 export const signUpThunk = createAsyncThunk(
   'auth/register',
   async (formData, thunkApi) => {
