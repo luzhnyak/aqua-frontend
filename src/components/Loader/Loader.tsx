@@ -1,4 +1,4 @@
-import css from './Loader.module.css';
+import css from "./Loader.module.css";
 // import { useSelector } from 'react-redux';
 
 const Loader = () => {

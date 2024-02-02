@@ -173,16 +173,6 @@
   line-height: 1.33;
 }
 
-.requiredAmountValue:hover,
-.requiredAmountValue:focus {
-  cursor: url('../../images/icons/hover-cursor.svg'), auto;
-}
-
-.requiredAmountValue:active {
-  background: var(--Primery-Color-Blue, #407bff);
-  cursor: url('../../images/icons/focus-cursor.svg'), auto;
-}
-
 .howMuchText {
   font-size: 18px;
   font-weight: 500;

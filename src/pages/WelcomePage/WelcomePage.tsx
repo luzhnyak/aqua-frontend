@@ -1,6 +1,6 @@
-import React from 'react';
-import css from './WelcomePage.module.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import css from "./WelcomePage.module.css";
+import { Link } from "react-router-dom";
 
 const WelcomePage = () => {
   return (
@@ -14,7 +14,7 @@ const WelcomePage = () => {
           <ul className={css.benefilsList}>
             <li className={css.benefitsItem}>
               <img
-                src={require('../../images/icons/calendar-days.svg').default}
+                src={require("../../images/icons/calendar-days.svg").default}
                 alt="Habit drive icon"
                 width="32"
                 height="32"
@@ -24,7 +24,7 @@ const WelcomePage = () => {
             <li className={css.benefitsItem}>
               <img
                 src={
-                  require('../../images/icons/presentation-chart-bar.svg')
+                  require("../../images/icons/presentation-chart-bar.svg")
                     .default
                 }
                 alt="Habit drive icon"
@@ -36,7 +36,7 @@ const WelcomePage = () => {
             <li className={css.benefitsItem}>
               <img
                 src={
-                  require('../../images/icons/wrench-screwdriver.svg').default
+                  require("../../images/icons/wrench-screwdriver.svg").default
                 }
                 alt="Habit drive icon"
                 width="32"

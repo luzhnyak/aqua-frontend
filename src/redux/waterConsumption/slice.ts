@@ -1,34 +1,47 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   addWaterThunk,
   deleteWaterThunk,
   getAllWaterForTodayThunk,
   updateWaterByIdThunk,
   getAllWaterForMonthThunk,
-} from './operations';
+} from "./operations";
+import { IWater } from "../../types";
 
-const waterInitialState = {
+export interface IWaterInitialState {
+  today: IWater | null;
+  itemsPerMonth: IWater[];
+  isLoading: boolean;
+  error: Error | any;
+}
+
+const waterInitialState: IWaterInitialState = {
   today: null,
   itemsPerMonth: [],
   isLoading: false,
   error: null,
 };
 
-const handlePending = state => {
-  state.isLoading = true;
-  state.error = null;
-};
+// const handlePending = (state: IWaterInitialState): void => {
+//   state.isLoading = true;
+//   state.error = null;
+// };
 
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
+// const handleRejected = (
+//   state: IWaterInitialState,
+//   action: PayloadAction<any>
+// ): void => {
+//   state.isLoading = false;
+//   state.error = action.payload;
+// };
 
 const waterSlice = createSlice({
-  name: 'water',
+  name: "water",
   initialState: waterInitialState,
-
-  extraReducers: builder =>
+  reducers: {
+    // redusers
+  },
+  extraReducers: (builder) =>
     builder
       .addCase(addWaterThunk.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -68,7 +81,11 @@ const waterSlice = createSlice({
           updateWaterByIdThunk.pending,
           getAllWaterForMonthThunk.pending
         ),
-        handlePending
+        // handlePending
+        (state) => {
+          state.isLoading = true;
+          state.error = null;
+        }
       )
       .addMatcher(
         isAnyOf(
@@ -78,7 +95,11 @@ const waterSlice = createSlice({
           updateWaterByIdThunk.rejected,
           getAllWaterForMonthThunk.rejected
         ),
-        handleRejected
+        // handleRejected
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
       ),
 });
 
