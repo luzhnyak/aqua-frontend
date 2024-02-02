@@ -52,7 +52,8 @@
   stroke: var(--primary-color-blue);
 }
 
-.iconUploadPhoto:hover {
+.uploadPhoto:hover .iconUploadPhoto {
+  color: var(--secondary-color-red);
   stroke: var(--secondary-color-red);
 }
 
