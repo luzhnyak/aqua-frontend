@@ -15,11 +15,10 @@ const SignInPage = () => {
     setLoader(true);
     try {
       dispatch(loginThunk(values));
-      // toast.success('Sign in successful!');
       resetForm();
     } catch (error) {
       setLoader(false);
-      toast.error('Sign in. Please try again.');
+      toast.error('Sign in is failed. Please try again.');
     } finally {
       setLoader(false);
     }
