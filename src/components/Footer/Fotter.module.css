@@ -1,0 +1,44 @@
+.footer {
+    width: 100%;
+    padding: 8px 0;
+    background-color: transparent;
+    margin-top: 8px;
+}
+
+.content {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.footer-text {
+    display: block;
+    color: var(--primary-color-blue);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.footer-span {
+    display: block;
+    cursor: pointer;
+    color: var(--primary-color-blue);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.footer-span:hover,
+.footer-span:focus {
+    color: var(--secondary-color-orange)
+}

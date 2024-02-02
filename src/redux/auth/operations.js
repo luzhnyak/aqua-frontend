@@ -12,8 +12,6 @@ import {
   updateWaterNorma,
 } from 'services/waterApi';
 
-//TODO: add notifications
-
 export const signUpThunk = createAsyncThunk(
   'auth/register',
   async (formData, thunkApi) => {
@@ -21,7 +19,7 @@ export const signUpThunk = createAsyncThunk(
       const response = await requestUserSignUp(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -33,7 +31,7 @@ export const loginThunk = createAsyncThunk(
       const response = await requestUserLogin(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -45,7 +43,7 @@ export const logoutThunk = createAsyncThunk(
       await requestUserLogout();
       clearToken();
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -61,7 +59,7 @@ export const refreshCurrentUserThunk = createAsyncThunk(
       const response = await refreshCurrentUser();
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   },
 
@@ -84,7 +82,7 @@ export const updateAvatarThunk = createAsyncThunk(
       const avatarURL = await updateUserAvatar(newPhoto);
       return avatarURL;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -96,7 +94,7 @@ export const updateUserInfoThunk = createAsyncThunk(
       const response = await updateUserInfo(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -108,7 +106,7 @@ export const updateWaterNormaThunk = createAsyncThunk(
       const response = await updateWaterNorma(newWaterRate);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );

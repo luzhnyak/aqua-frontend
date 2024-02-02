@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 
 import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
+import Footer from 'components/Footer/Footer';
 
 import css from './SharedLayout.module.css';
 import clsx from 'clsx';
@@ -39,6 +40,7 @@ export const SharedLayout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
+      <Footer />
     </div>
   );
 };
