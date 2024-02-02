@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import css from './Modal.module.css';
 import closeIcon from '../../images/icons/x-mark.svg';
 import { createPortal } from 'react-dom';
+import AnimatedComponent from 'components/AnimatedComponent/AnimatedComponent';
 
 const modalRoot = document.querySelector('#root-modal');
 
@@ -30,7 +31,7 @@ const Modal = ({ title, children, onClose }) => {
   }, [onClose]);
 
   return createPortal(
-    <div className={css.backdrop}>
+    <AnimatedComponent css={css.backdrop}>
       <div
         ref={modalRef}
         className={`${css.modal} ${
@@ -44,7 +45,7 @@ const Modal = ({ title, children, onClose }) => {
         </button>
         <div className={css.content}>{children}</div>
       </div>
-    </div>,
+    </AnimatedComponent>,
     modalRoot
   );
 };
