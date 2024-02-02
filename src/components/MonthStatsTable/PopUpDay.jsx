@@ -2,6 +2,7 @@ import React from 'react';
 import css from './MonthStatsTable.module.css';
 import clsx from 'clsx';
 import { ReactComponent as IconClose } from '../../images/icons/x-mark-outline.svg';
+import AnimatedComponent from 'components/AnimatedComponent/AnimatedComponent';
 
 
 const PopUpDay = ({ sDate, handleCloseClick, dailyEntries, progress, waterRate  }) => {
@@ -15,8 +16,8 @@ const PopUpDay = ({ sDate, handleCloseClick, dailyEntries, progress, waterRate  
   const numberForX = [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24, 31];
 
   return (
-    <div
-      className={clsx(css.popUp, {
+    <AnimatedComponent
+      css={clsx(css.popUp, {
         [css.left]: numberForX.includes(day),
         [css.right]: !numberForX.includes(day),
         [css.secondRow]: day > 5,
@@ -41,7 +42,7 @@ const PopUpDay = ({ sDate, handleCloseClick, dailyEntries, progress, waterRate  
       <p >Daily norma: <span className={css.info}>{waterRate} L</span></p>
       <p >Fulfillment of the daily norm: <span className={css.info}>{progress}%</span></p>
       <p >How many servings of water: <span className={css.info}>{dailyEntries}</span></p>
-    </div>
+    </AnimatedComponent>
   );
 };
 
