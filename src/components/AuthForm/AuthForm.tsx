@@ -1,31 +1,47 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
-import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
-import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
-import css from './AuthForm.module.css';
+import React, { FC, useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import * as Yup from "yup";
+import { ReactComponent as OpenEyeIcon } from "../../images/icons/eye-slash.svg";
+import { ReactComponent as ClosedEyeIcon } from "../../images/icons/eye.svg";
+import { ReactComponent as GoogleIcon } from "../../images/icons/google-icon.svg";
+import css from "./AuthForm.module.css";
+import { FormikHelpers } from "formik";
 
-const AuthForm = ({ formTitle, onSubmit }) => {
+export type SubmitValues = {
+  repeatPassword?: string | undefined;
+  email: string;
+  password: string;
+};
+
+interface IProps {
+  formTitle: string;
+  onSubmit: (
+    values: SubmitValues,
+    formikHelpers: FormikHelpers<SubmitValues>
+  ) => void | Promise<any>;
+}
+
+const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepPassword, setShowRepPassword] = useState(false);
 
-  const initialValues = {
-    email: '',
-    password: '',
-    ...(formTitle === 'Sign Up' && { repeatPassword: '' }),
+  const initialValues: SubmitValues = {
+    email: "",
+    password: "",
+    ...(formTitle === "Sign Up" && { repeatPassword: "" }),
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email().required('Email is required.'),
+    email: Yup.string().email().required("Email is required."),
     password: Yup.string()
-      .required('Password is required.')
-      .min(8, 'Password must be at least 8 characters.')
-      .max(64, 'Password must be less than 64 characters.'),
-    ...(formTitle === 'Sign Up' && {
+      .required("Password is required.")
+      .min(8, "Password must be at least 8 characters.")
+      .max(64, "Password must be less than 64 characters."),
+    ...(formTitle === "Sign Up" && {
       repeatPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Repeat password is required.'),
+        .oneOf([Yup.ref("password"), undefined], "Passwords must match")
+        .required("Repeat password is required."),
     }),
   });
 
@@ -46,8 +62,8 @@ const AuthForm = ({ formTitle, onSubmit }) => {
               <Field
                 id="unique-id1"
                 className={`${css.input} ${
-                  errors.email && touched.email ? css.errorBorder : ''
-                } ${errors.email && touched.email ? css.errorInput : ''}`}
+                  errors.email && touched.email ? css.errorBorder : ""
+                } ${errors.email && touched.email ? css.errorInput : ""}`}
                 name="email"
                 type="email"
                 placeholder="Email"
@@ -65,25 +81,25 @@ const AuthForm = ({ formTitle, onSubmit }) => {
               </label>
               <div
                 className={`${css.inputBox} ${
-                  errors.password && touched.password ? css.errorBorder : ''
+                  errors.password && touched.password ? css.errorBorder : ""
                 }`}
               >
                 <Field
                   id="unique-id2"
                   className={`${css.inputpassword}  ${
-                    errors.password && touched.password ? css.errorInput : ''
+                    errors.password && touched.password ? css.errorInput : ""
                   }`}
                   name="password"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                 />
                 <div
                   className={css.iconeye}
                   onClick={() => setShowPassword(!showPassword)}
                   style={{
-                    cursor: 'pointer',
-                    marginTop: 'auto',
-                    marginBottom: 'auto',
+                    cursor: "pointer",
+                    marginTop: "auto",
+                    marginBottom: "auto",
                   }}
                 >
                   {showPassword ? <ClosedEyeIcon /> : <OpenEyeIcon />}
@@ -96,7 +112,7 @@ const AuthForm = ({ formTitle, onSubmit }) => {
               />
             </div>
 
-            {formTitle === 'Sign Up' && (
+            {formTitle === "Sign Up" && (
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="unique-id3">
                   Repeat your password
@@ -105,7 +121,7 @@ const AuthForm = ({ formTitle, onSubmit }) => {
                   className={`${css.inputBoxRep} ${
                     errors.repeatPassword && touched.repeatPassword
                       ? css.errorBorder
-                      : ''
+                      : ""
                   }`}
                 >
                   <Field
@@ -113,19 +129,19 @@ const AuthForm = ({ formTitle, onSubmit }) => {
                     className={`${css.inputpassword}  ${
                       errors.repeatPassword && touched.repeatPassword
                         ? css.errorInput
-                        : ''
+                        : ""
                     }`}
                     name="repeatPassword"
-                    type={showRepPassword ? 'text' : 'password'}
+                    type={showRepPassword ? "text" : "password"}
                     placeholder="Repeat password"
                   />
                   <div
                     className={css.iconeye}
                     onClick={() => setShowRepPassword(!showRepPassword)}
                     style={{
-                      cursor: 'pointer',
-                      marginTop: 'auto',
-                      marginBottom: 'auto',
+                      cursor: "pointer",
+                      marginTop: "auto",
+                      marginBottom: "auto",
                     }}
                   >
                     {showRepPassword ? <ClosedEyeIcon /> : <OpenEyeIcon />}
@@ -140,23 +156,29 @@ const AuthForm = ({ formTitle, onSubmit }) => {
             )}
 
             <button className={css.button} type="submit">
-              {formTitle === 'Sign In' ? 'Sign In' : 'Sign Up'}
+              {formTitle === "Sign In" ? "Sign In" : "Sign Up"}
             </button>
 
-            {formTitle === 'Sign In' && (
+            {formTitle === "Sign In" && (
               <a
                 href="https://aqua-backend-ieu7.onrender.com/auth/google"
                 className={css.googleLogin}
               >
+                <GoogleIcon className={css.googleIcon} />
                 <p className={css.googleText}>Enter with Google</p>
               </a>
             )}
 
             <div className={css.wraplink}>
-              {formTitle === 'Sign In' ? (
-                <Link to="/signup" className={css.signup}>
-                  <p className={css.signupText}>Sign up</p>
-                </Link>
+              {formTitle === "Sign In" ? (
+                <>
+                  <Link to="/signup" className={css.signup}>
+                    <p className={css.signupText}>Sign up</p>
+                  </Link>
+                  <Link to="/forgot-password" className={css.forgotPassword}>
+                    <p className={css.signupText}>Forgot password?</p>
+                  </Link>
+                </>
               ) : (
                 <Link to="/signin" className={css.signin}>
                   <p className={css.signinText}>Sign in</p>

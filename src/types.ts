@@ -27,7 +27,7 @@ export interface IDdailyEntry {
 }
 
 export interface IWater {
-  _id?: string;
+  _id: string;
   date: string;
   waterRate: number;
   totalVolume: string;

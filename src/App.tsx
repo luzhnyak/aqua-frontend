@@ -15,7 +15,7 @@ import { RestrictedRoute } from "./pages/RestrictedRoute";
 
 // const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
-// const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
+const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
 // const SignupPage = lazy(() => import("./pages/SignupPage/SignupPage"));
 // // const NotFound = lazy(() => import('./NotFound/NotFound'));
 // const RedirectVerifyPage = lazy(
@@ -56,13 +56,13 @@ const App = () => {
               <RestrictedRoute component={<WelcomePage />} redirectTo="/home" />
             }
           ></Route>
-        
+
           {/* <Route
             path="signup"
             element={
               <RestrictedRoute component={<SignupPage />} redirectTo="/home" />
             }
-          ></Route>
+          ></Route> */}
 
           <Route
             path="signin"
@@ -71,6 +71,7 @@ const App = () => {
             }
           ></Route>
 
+          {/* 
           <Route
             path="auth"
             element={
@@ -93,7 +94,7 @@ const App = () => {
           <Route
             path="resend-verify-email"
             element={<ResendVerifyEmailPage />}
-          /> 
+          />
 
           <Route path="*" element={<Navigate to="welcome" />} />
         </Route>

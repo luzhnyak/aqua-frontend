@@ -8,7 +8,7 @@ import {
   getAllWaterForMonth,
 } from "../../services/waterApi";
 
-// import { RootState } from "../store";
+import { RootState } from "../store";
 import { IDdailyEntry } from "../../types";
 
 export const addWaterThunk = createAsyncThunk(
@@ -26,12 +26,11 @@ export const addWaterThunk = createAsyncThunk(
 export const deleteWaterThunk = createAsyncThunk(
   "water/deleteWater",
   async (entryId: string, thunkApi) => {
-    // const state = <RootState>thunkApi.getState();
-    // const today = state.water.today;
+    const { water } = thunkApi.getState() as RootState;
 
-    const _id = null;
+    if (water.today === null) return;
 
-    if (!_id) return;
+    const _id: string = water.today._id;
 
     try {
       const response = await deleteWaterById(_id, entryId);
@@ -46,12 +45,12 @@ export const updateWaterByIdThunk = createAsyncThunk(
   "water/updateEntryWater",
   async (data: { entryId: string; body: IDdailyEntry }, thunkApi) => {
     const { entryId, body } = data;
-    // const state = <RootState>thunkApi.getState();
-    // const today = state.water.today;
 
-    const _id = null;
+    const { water } = thunkApi.getState() as RootState;
 
-    if (!_id) return;
+    if (water.today === null) return;
+
+    const _id: string = water.today._id;
 
     try {
       const response = await updateWaterById(_id, entryId, body);

@@ -24,7 +24,7 @@ const SignupPage = () => {
       setRedirect(true);
     } catch (error) {
       setLoader(false);
-      toast.error('Registration failed. Please try again.');
+      toast.error('Registration is failed. Please try again.');
     } finally {
       setLoader(false);
     }
