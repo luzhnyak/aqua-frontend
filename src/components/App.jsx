@@ -5,13 +5,14 @@ import { AuthRoute } from '../pages/AuthRoute';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { refreshCurrentUserThunk } from '../redux/auth/operations';
 import ResendVerifyEmailPage from 'pages/ResendVerifyEmailPage/ResendVerifyEmailPage';
 import { PrivateRoute } from 'pages/PrivateRoute';
 import { RestrictedRoute } from 'pages/RestrictedRoute';
+import { selectWaterError } from '../redux/waterConsumption/selectors';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -30,10 +31,17 @@ const UpdatetPasswordPage = lazy(() =>
 
 export const App = () => {
   const dispatch = useDispatch();
+  const waterError = useSelector(selectWaterError);
 
   useEffect(() => {
     dispatch(refreshCurrentUserThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (waterError?.errorCode === 401) {
+      dispatch(refreshCurrentUserThunk());
+    }
+  }, [dispatch, waterError]);
 
   return (
     <>

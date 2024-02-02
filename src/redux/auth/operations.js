@@ -11,8 +11,7 @@ import {
   updateUserInfo,
   updateWaterNorma,
 } from 'services/waterApi';
-
-//TODO: add notifications
+import { handleApiError } from 'services/handleApiError';
 
 export const signUpThunk = createAsyncThunk(
   'auth/register',
@@ -21,7 +20,8 @@ export const signUpThunk = createAsyncThunk(
       const response = await requestUserSignUp(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   }
 );
@@ -33,7 +33,8 @@ export const loginThunk = createAsyncThunk(
       const response = await requestUserLogin(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   }
 );
@@ -45,7 +46,8 @@ export const logoutThunk = createAsyncThunk(
       await requestUserLogout();
       clearToken();
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   }
 );
@@ -61,7 +63,8 @@ export const refreshCurrentUserThunk = createAsyncThunk(
       const response = await refreshCurrentUser();
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   },
 
@@ -84,7 +87,8 @@ export const updateAvatarThunk = createAsyncThunk(
       const avatarURL = await updateUserAvatar(newPhoto);
       return avatarURL;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   }
 );
@@ -96,7 +100,8 @@ export const updateUserInfoThunk = createAsyncThunk(
       const response = await updateUserInfo(formData);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   }
 );
@@ -108,7 +113,8 @@ export const updateWaterNormaThunk = createAsyncThunk(
       const response = await updateWaterNorma(newWaterRate);
       return response;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      const errorObj = handleApiError(error);
+      return thunkApi.rejectWithValue(errorObj);
     }
   }
 );
