@@ -21,14 +21,16 @@ const AddWaterModal = ({
   const waterToday = useSelector(selectWatersToday);
 
   const getPreviousEntry = () => {
-    const lastEntry =
-      waterToday.dailyEntries[waterToday.dailyEntries.length - 1];
-    const length = waterToday.dailyEntries.length;
-
-    if (length === 0) {
+    if (
+      !waterToday ||
+      !waterToday.dailyEntries ||
+      waterToday.dailyEntries.length === 0
+    ) {
       return 0;
     }
 
+    const lastEntry =
+      waterToday.dailyEntries[waterToday.dailyEntries.length - 1];
     return lastEntry.waterVolume;
   };
 
