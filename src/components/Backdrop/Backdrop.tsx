@@ -1,8 +1,13 @@
 import { createPortal } from 'react-dom';
 import css from './Backdrop.module.css'
+import { ReactNode } from 'react';
 
-const Backdrop = ({ children }) => {
-    const modalRoot = document.querySelector('#root-modal');
+interface IProps {
+  children: ReactNode
+}
+
+const Backdrop: React.FC<IProps> = ({ children }) => {
+    const modalRoot = document.querySelector('#root-modal') as HTMLDivElement;
   
     return createPortal(
       <div className={css.backdrop}>

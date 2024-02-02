@@ -21,12 +21,15 @@ const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 // const RedirectVerifyPage = lazy(
 //   () => import("./pages/RedirectVerifyPage/RedirectVerifyPage")
 // );
-// const ForgotPasswordPage = lazy(
-//   () => import("./pages/ForgotPasswordPage/ForgotPasswordPage")
-// );
-// const UpdatetPasswordPage = lazy(
-//   () => import("./pages/UpdatePasswordPage/UpdatePasswordPage")
-// );
+const ForgotPasswordPage = lazy(
+  () => import("./pages/ForgotPasswordPage/ForgotPasswordPage")
+);
+const UpdatetPasswordPage = lazy(
+  () => import("./pages/UpdatePasswordPage/UpdatePasswordPage")
+);
+const ResendVerifyEmailPage = lazy(
+  () => import("./pages/ResendVerifyEmailPage/ResendVerifyEmailPage")
+);
 
 const App = () => {
   // const dispatch = useDispatch();
@@ -53,8 +56,8 @@ const App = () => {
               <RestrictedRoute component={<WelcomePage />} redirectTo="/home" />
             }
           ></Route>
-          {/* 
-          <Route
+        
+          {/* <Route
             path="signup"
             element={
               <RestrictedRoute component={<SignupPage />} redirectTo="/home" />
@@ -78,7 +81,7 @@ const App = () => {
             }
           />
 
-          <Route path="verify/:token" element={<RedirectVerifyPage />} />
+          <Route path="verify/:token" element={<RedirectVerifyPage />} /> */}
 
           <Route path="forgot-password" element={<ForgotPasswordPage />} />
 
@@ -90,7 +93,7 @@ const App = () => {
           <Route
             path="resend-verify-email"
             element={<ResendVerifyEmailPage />}
-          /> */}
+          /> 
 
           <Route path="*" element={<Navigate to="welcome" />} />
         </Route>

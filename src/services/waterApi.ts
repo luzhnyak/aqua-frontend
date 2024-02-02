@@ -109,9 +109,7 @@ export const sendUpdatePass = async (
   token: string,
   body: { newPassword: string }
 ) => {
-  const { data } = await axios.post(`/users/forgot-password/${token}`, {
-    newPassword: body,
-  });
+  const { data } = await axios.post(`/users/forgot-password/${token}`, body);
   return data;
 };
 

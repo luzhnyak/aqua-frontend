@@ -1,15 +1,20 @@
-import FormSendEmail from 'components/FormSendEmail/FormSendEmail';
+import FormSendEmail from '../../components/FormSendEmail/FormSendEmail';
 import css from './ResendVerifyEmailPage.module.css'
-import { resendVerifyToken } from 'services/waterApi';
+import { resendVerifyToken } from '../../services/waterApi';
 import { toast } from 'react-toastify';
-import Backdrop from 'components/Backdrop/Backdrop';
-import Loader from 'components/Loader/Loader';
+import Backdrop from '../../components/Backdrop/Backdrop';
+import Loader from '../../components/Loader/Loader';
 import { useState } from 'react';
+import { FormikHelpers } from 'formik';
+
+interface Values {
+  email: string,
+} 
 
 const ResendVerifyEmailPage = () => {
   const [loader, setLoader] = useState(false);
   
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (values: Values, { resetForm }: FormikHelpers<Values>) => {
     setLoader(true)
     try {
       
