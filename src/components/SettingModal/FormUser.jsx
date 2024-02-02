@@ -54,81 +54,71 @@ const FormUser = ({ onClose }) => {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    setLoader(true);
-    try {
-      await sendUpdatePass(token, values.password);
-      toast.success('Password changed successfully');
-
-      setTimeout(() => {
-        return window.location.replace('/aqua-frontend/signin');
-      }, 3000);
-    } catch (error) {
-      setLoader(false);
-      toast.error('Something went wrong, try again later');
-    } finally {
-      setLoader(false);
-    }
-
     if (values.email !== '') {
-      if (
-        values.password === '' &&
-        values.newPassword === '' &&
-        values.repeatPassword === ''
-      ) {
-        dispatch(
-          updateUserInfoThunk({
-            gender: values.gender,
-            name: values.name,
-            email: values.email,
-          })
-        );
-        toast.success('You successfully change your data');
-      } else {
-        if (
-          values.password !== '' &&
-          values.newPassword === '' &&
-          (values.repeatPassword !== '' || values.repeatPassword === '')
-        ) {
-          return toast.error('Enter new password');
-        }
-
-        if (
-          values.password !== '' &&
-          values.newPassword !== '' &&
-          values.repeatPassword === ''
-        ) {
-          return toast.error('Repeat your password');
-        }
-
+      try {
         if (
           values.password === '' &&
-          values.newPassword !== '' &&
-          values.repeatPassword !== ''
+          values.newPassword === '' &&
+          values.repeatPassword === ''
         ) {
-          return toast.error('Enter your current password');
+          dispatch(
+            updateUserInfoThunk({
+              gender: values.gender,
+              name: values.name,
+              email: values.email,
+            })
+          );
+          toast.success('You successfully change your data');
+        } else {
+          if (
+            values.password !== '' &&
+            values.newPassword === '' &&
+            (values.repeatPassword !== '' || values.repeatPassword === '')
+          ) {
+            return toast.error('Enter new password');
+          }
+
+          if (
+            values.password !== '' &&
+            values.newPassword !== '' &&
+            values.repeatPassword === ''
+          ) {
+            return toast.error('Repeat your password');
+          }
+
+          if (
+            values.password === '' &&
+            values.newPassword !== '' &&
+            values.repeatPassword !== ''
+          ) {
+            return toast.error('Enter your current password');
+          }
+
+          if (values.newPassword !== values.repeatPassword) {
+            return toast.error('Your passwords are different');
+          }
+
+          dispatch(
+            updateUserInfoThunk({
+              gender: values.gender,
+              name: values.name,
+              email: values.email,
+              password: values.password,
+              newPassword: values.newPassword,
+            })
+          );
+          toast.success('You successfully change your data and password');
         }
 
-        if (values.newPassword !== values.repeatPassword) {
-          return toast.error('Your passwords are different');
-        }
-
-        dispatch(
-          updateUserInfoThunk({
-            gender: values.gender,
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            newPassword: values.newPassword,
-          })
-        );
-        toast.success('You successfully change your data and password');
+        resetForm({
+          password: values.password,
+          newPassword: values.newPassword,
+        });
+        onClose();
+      } catch (error) {
+        console.log(error);
+        toast.error('Something went wrong');
       }
-
-      resetForm({
-        password: values.password,
-        newPassword: values.newPassword,
-      });
-      onClose();
     }
   };
 
