@@ -1,27 +1,23 @@
 import React, { useState } from 'react';
 import css from './FormUser.module.css';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUserInfoThunk } from '../../redux/auth/operations';
+import { useSelector } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
 // import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
 // import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
-import { selectAuthError, selectUser } from '../../redux/auth/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { sendUpdatePass } from 'services/waterApi';
-import Loader from 'components/Loader/Loader';
-import Backdrop from 'components/Backdrop/Backdrop';
+// import Loader from 'components/Loader/Loader';
+// import Backdrop from 'components/Backdrop/Backdrop';
 import { updateUserInfo } from 'services/waterApi';
 
 const FormUser = ({ onClose }) => {
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
-  const authError = useSelector(selectAuthError);
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
