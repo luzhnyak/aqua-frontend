@@ -1,9 +1,18 @@
-import { ErrorMessage, Field, Formik, Form } from 'formik';
+import { ErrorMessage, Field, Formik, Form, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 import css from './FormSendEmail.module.css';
 import * as Yup from 'yup';
 
-const FormSendEmail = ({ title, onSubmit }) => {
+interface Values {
+  email: string,
+} 
+
+interface IProps {
+  title: string,
+  onSubmit: (values: Values, { resetForm }: FormikHelpers<Values>) => void
+}
+
+const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
   const initialValues = {
     email: '',
   };

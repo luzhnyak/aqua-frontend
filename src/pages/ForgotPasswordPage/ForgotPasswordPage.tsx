@@ -1,15 +1,20 @@
-import { sendMailForgotPass } from 'services/waterApi';
+import { sendMailForgotPass } from '../../services/waterApi';
 import css from './ForgotPasswordPage.module.css';
-import FormSendEmail from 'components/FormSendEmail/FormSendEmail';
+import FormSendEmail from '../../components/FormSendEmail/FormSendEmail';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import Loader from 'components/Loader/Loader';
-import Backdrop from 'components/Backdrop/Backdrop';
+import Loader from '../../components/Loader/Loader';
+import Backdrop from '../../components/Backdrop/Backdrop';
+import { FormikHelpers } from 'formik';
+
+interface Values {
+  email: string,
+} 
 
 const ForgotPasswordPage = () => {
   const [loader, setLoader] = useState(false);
   
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (values: Values, { resetForm }: FormikHelpers<Values>) => {
     setLoader(true)
     try {
       await sendMailForgotPass(values);

@@ -1,10 +1,10 @@
-import Loader from 'components/Loader/Loader';
+import Loader from '../../components/Loader/Loader';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { sendVerify } from 'services/waterApi';
+import { sendVerify } from '../../services/waterApi';
 import css from './RedirectVerifyPage.module.css';
 import { toast } from 'react-toastify';
-import Backdrop from 'components/Backdrop/Backdrop';
+import Backdrop from '../../components/Backdrop/Backdrop';
 
 const RedirectVerifyPage = () => {
   const { token } = useParams();
@@ -15,7 +15,7 @@ const RedirectVerifyPage = () => {
     }
   }, [token]);
 
-  const getRequest = async token => {
+  const getRequest = async (token: string) => {
     try {
       await sendVerify(token);
       return window.location.replace('/aqua-frontend/signin');
