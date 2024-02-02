@@ -2,10 +2,11 @@ import css from './MonthStatsTable.module.css';
 import { useEffect, useState } from 'react';
 import PopUpDay from './PopUpDay';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectWatersPerMonth } from '../../redux/waterConsumption/selectors';
+import { selectWatersPerMonth, selectWatersToday } from '../../redux/waterConsumption/selectors';
 import { getAllWaterForMonthThunk } from '../../redux/waterConsumption/operations';
 import { selectUser } from '../../redux/auth/selectors';
 import clsx from 'clsx';
+import WaterMonthChart from 'components/WaterMonthChart/WaterMonthChart';
 
 export const MonthStatsTable = ({ popUpOpen }) => {
   const dispatch = useDispatch();
@@ -22,6 +23,11 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   const [disabledForUser, setsDisabledForUser] = useState(false)
   const previous = '\u003C';
   const next = '\u003E';
+
+
+  // for chart
+  const  labels =[] 
+  const dataPerDay = []
 
   useEffect(() => {
     const getMonthWater = () => {
@@ -138,6 +144,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
+      labels.push(d)
       let dayInMonth = [];
 
       waterPerMonth.map(day => {
@@ -155,6 +162,8 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       const percent = waterPerMonth.map(day => day.progress);
       const dailyNorm = waterPerMonth.map(day => day.waterRate);
       const entries = waterPerMonth.map(day => day.dailyEntries);
+
+
       for (let i = 0; i < dayInMonth.length; i += 1) {
         if (d === dayInMonth[i]) {
           progress = Math.round(percent[i]);
@@ -163,18 +172,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
         }
       }
 
-      // if(m+1=== currentUserMonth){
-      //   if (d < currentUserDay) {
-      //     allDays.push({
-      //       day: d,
-      //       date: date,
-      //       value: progress,
-      //       disabled: true,
-      //       norm: waterNorm,
-      //       dailyEntry: dailyEntries,
-      //     });
-      //   }
-      // }
+
     if (m === currentMonth) {
         if (d <= currentDay) {
           allDays.push({
@@ -204,9 +202,10 @@ export const MonthStatsTable = ({ popUpOpen }) => {
     const inactive =  allDays.filter(day=> day.day<currentUserDay)
     inactive.map(day=> day.disabled = true)
     }
-
+    allDays.map(day=> dataPerDay.push(day.value))
     return allDays;
   };
+
 
   return (
     <div className={css['calendar-container']}>
@@ -281,6 +280,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
           );
         })}
       </div>
+      <WaterMonthChart label={labels} monthlyData={dataPerDay}/>
     </div>
   );
 };
