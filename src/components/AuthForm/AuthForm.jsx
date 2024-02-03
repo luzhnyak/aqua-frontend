@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
+import { ReactComponent as GoogleIcon } from 'images/icons/google-icon.svg';
 import css from './AuthForm.module.css';
 
 const AuthForm = ({ formTitle, onSubmit }) => {
@@ -148,15 +149,21 @@ const AuthForm = ({ formTitle, onSubmit }) => {
                 href="https://aqua-backend-ieu7.onrender.com/auth/google"
                 className={css.googleLogin}
               >
+                <GoogleIcon className={css.googleIcon} />
                 <p className={css.googleText}>Enter with Google</p>
               </a>
             )}
 
             <div className={css.wraplink}>
               {formTitle === 'Sign In' ? (
-                <Link to="/signup" className={css.signup}>
-                  <p className={css.signupText}>Sign up</p>
-                </Link>
+                <>
+                  <Link to="/signup" className={css.signup}>
+                    <p className={css.signupText}>Sign up</p>
+                  </Link>
+                  <Link to="/forgot-password" className={css.forgotPassword}>
+                    <p className={css.signupText}>Forgot password?</p>
+                  </Link>
+                </>
               ) : (
                 <Link to="/signin" className={css.signin}>
                   <p className={css.signinText}>Sign in</p>

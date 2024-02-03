@@ -157,15 +157,27 @@
   color: var(--secondary-color-blue-3);
 }
 
-.button {
-  background-color: var(--primary-color-blue);
-  color: var(--primary-color-white);
-  padding: 10px 30px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 280px;
-  height: 36px;
+
+    background-color: var(--primary-color-blue);
+    color: var(--primary-color-white);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 280px;
+    height: 36px;
+    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+}
+
+.button:hover,
+.button:focus {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: url('../../images/icons/hover-cursor.svg'), auto;
+}
+
+.button:active {
+    background: var(--Primery-Color-Blue, #407bff);
+    cursor: url('../../images/icons/focus-cursor.svg'), auto;
 }
 
 /* Tablet and > */
@@ -203,18 +215,31 @@
 }
 
 .googleLogin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-color-blue);
-  color: var(--primary-color-white);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 280px;
-  height: 44px;
-  text-decoration-line: none;
-  text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color-blue);
+    background-color: var(--primary-color-white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 280px;
+    height: 44px;
+    text-decoration-line: none;
+    text-align: center;
+    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+}
+
+.googleLogin:hover,
+.googleLogin:focus {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: url('../../images/icons/hover-cursor.svg'), auto;
+}
+
+.googleLogin:active {
+    background: var(--Primery-Color-Blue, #407bff);
+    cursor: url('../../images/icons/focus-cursor.svg'), auto;
 }
 
 .googleText {
@@ -263,11 +288,21 @@
   margin-right: auto;
 }
 
+.signupText:hover {
+    color: var(--secondary-color-orange);
+}
+
+
+
 .signin {
   color: var(--primary-color-blue);
   text-decoration-line: none;
   display: block;
   margin-right: auto;
+}
+
+.signinText:hover {
+    color: var(--secondary-color-orange);
 }
 
 .forgotPassword {
@@ -278,8 +313,18 @@
 }
 
 .wraplink {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.googleIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: currentColor;
+    margin-right: 10px;
 }
