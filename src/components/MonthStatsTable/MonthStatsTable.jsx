@@ -6,6 +6,8 @@ import { selectWatersPerMonth } from '../../redux/waterConsumption/selectors';
 import { getAllWaterForMonthThunk } from '../../redux/waterConsumption/operations';
 import { selectUser } from '../../redux/auth/selectors';
 import clsx from 'clsx';
+import WaterMonthChart from 'components/WaterMonthChart/WaterMonthChart';
+import Modal from 'components/Modal/Modal';
 
 export const MonthStatsTable = ({ popUpOpen }) => {
   const dispatch = useDispatch();
@@ -13,15 +15,20 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   const creationDate = new Date(user.createdAt);
   const currentUserYear = creationDate.getFullYear();
   const currentUserMonth = creationDate.getMonth() + 1;
-  const currentUserDay = creationDate.getDate()
+  const currentUserDay = creationDate.getDate();
   const waterPerMonth = useSelector(selectWatersPerMonth);
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState(null);
   const [popUp, setsPopup] = useState(false);
   const [disabledYear, setsDisabledYear] = useState(false);
-  const [disabledForUser, setsDisabledForUser] = useState(false)
+  const [disabledForUser, setsDisabledForUser] = useState(false);
+  const [isOpen, setMonthChartModal] = useState(false);
   const previous = '\u003C';
   const next = '\u003E';
+
+  // for chart
+  const labels = [];
+  const dataPerDay = [];
 
   useEffect(() => {
     const getMonthWater = () => {
@@ -46,11 +53,10 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       );
       const currentYear = currentDate.getFullYear();
       const currentMonth = currentDate.getMonth() + 1;
-      
+
       if (month === currentMonth && year === currentYear) {
         setsDisabledYear(true);
       }
-
     };
 
     disabled();
@@ -65,16 +71,16 @@ export const MonthStatsTable = ({ popUpOpen }) => {
   };
 
   const changeToPrevMonth = () => {
-      const month = Number(
-        sDate.toLocaleString('en-US', {
-          month: 'numeric',
-        }) - 1
-      );
-      const year = Number(
-        sDate.toLocaleString('en-US', {
-          year: 'numeric',
-        })
-      );
+    const month = Number(
+      sDate.toLocaleString('en-US', {
+        month: 'numeric',
+      }) - 1
+    );
+    const year = Number(
+      sDate.toLocaleString('en-US', {
+        year: 'numeric',
+      })
+    );
 
     if (month === currentUserMonth && year === currentUserYear) {
       setsDisabledForUser(true);
@@ -85,7 +91,6 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       const pYear = pDate.getFullYear();
       return new Date(pYear, pMonth);
     });
-
 
     setsDisabledYear(false);
     setsPopup(false);
@@ -98,7 +103,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       return new Date(nYear, nMonth);
     });
     setsPopup(false);
-    setsDisabledForUser(false)
+    setsDisabledForUser(false);
   };
 
   const handleDateClick = (day, date) => {
@@ -138,6 +143,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
+      labels.push(d);
       let dayInMonth = [];
 
       waterPerMonth.map(day => {
@@ -155,6 +161,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       const percent = waterPerMonth.map(day => day.progress);
       const dailyNorm = waterPerMonth.map(day => day.waterRate);
       const entries = waterPerMonth.map(day => day.dailyEntries);
+
       for (let i = 0; i < dayInMonth.length; i += 1) {
         if (d === dayInMonth[i]) {
           progress = Math.round(percent[i]);
@@ -163,19 +170,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
         }
       }
 
-      // if(m+1=== currentUserMonth){
-      //   if (d < currentUserDay) {
-      //     allDays.push({
-      //       day: d,
-      //       date: date,
-      //       value: progress,
-      //       disabled: true,
-      //       norm: waterNorm,
-      //       dailyEntry: dailyEntries,
-      //     });
-      //   }
-      // }
-    if (m === currentMonth) {
+      if (m === currentMonth) {
         if (d <= currentDay) {
           allDays.push({
             day: d,
@@ -200,18 +195,31 @@ export const MonthStatsTable = ({ popUpOpen }) => {
       }
     }
 
-    if(m+1=== currentUserMonth && y === currentUserYear){
-    const inactive =  allDays.filter(day=> day.day<currentUserDay)
-    inactive.map(day=> day.disabled = true)
+    if (m + 1 === currentUserMonth && y === currentUserYear) {
+      const inactive = allDays.filter(day => day.day < currentUserDay);
+      inactive.map(day => (day.disabled = true));
     }
-
+    allDays.map(day => dataPerDay.push(day.value));
     return allDays;
+  };
+  const openModal = () => {
+    setMonthChartModal(true);
+  };
+
+  const closeModal = () => {
+    setMonthChartModal(false);
   };
 
   return (
     <div className={css['calendar-container']}>
       <div className={css['calendar-header']}>
-        <h2 className={css.title}>Month</h2>
+        <div className={css['title-chart']}>
+          {' '}
+          <h2 className={css.title}>Month</h2>
+          <button className={css['btn-chart']} onClick={openModal}>
+            See monthly statistic
+          </button>
+        </div>
         <div className={css.monthPicker}>
           {disabledForUser ? (
             <button className={css['btn-arrow']} disabled>
@@ -250,7 +258,7 @@ export const MonthStatsTable = ({ popUpOpen }) => {
                 <div className={css['day-cell']}>
                   <button
                     className={clsx(css.day, {
-                      [css['day-incomlete']]:item.value<100
+                      [css['day-incomlete']]: item.value < 100,
                     })}
                     onClick={() => handleDateClick(item.day, item.date)}
                   >
@@ -281,6 +289,11 @@ export const MonthStatsTable = ({ popUpOpen }) => {
           );
         })}
       </div>
+      {isOpen && (
+        <Modal onClose={closeModal}>
+          <WaterMonthChart label={labels} monthlyData={dataPerDay} />
+        </Modal>
+      )}
     </div>
   );
 };
