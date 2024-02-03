@@ -3,7 +3,6 @@
     margin: 0 auto;
     max-width: 320px;
     padding: 0px 20px;
-    height: 100vh;
     background-image: url('../../images/mobile-background-element-sign-in.svg'),
       url('../../images/mobile-bottle-sign-in.svg');
     background-repeat: no-repeat, no-repeat;

@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export const SharedLayout = () => {
   return (
     <>
-
       <Header />
       <ToastContainer
         position="top-center"
@@ -22,8 +21,8 @@ export const SharedLayout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-<Footer />
 
+      <Footer />
     </>
   );
 };

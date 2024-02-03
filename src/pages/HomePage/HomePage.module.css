@@ -5,7 +5,6 @@
     margin: 0 auto;
     max-width: 320px;
     padding: 0px 20px;
-    height: 100vh;
   }
 }
 
@@ -37,7 +36,7 @@
 @media only screen and (min-width: 768px) {
   .background {
     background: url('../../images/tablet-background-element-home-screen.svg')
-      left 40% top -5% / 768px 1280px no-repeat;
+      left 50% top -5% / 768px 1280px no-repeat;
   }
 }
 
