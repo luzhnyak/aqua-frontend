@@ -17,6 +17,7 @@ export const addWaterThunk = createAsyncThunk(
   async (newWater: IDdailyEntry, thunkApi) => {
     try {
       const response = await addWater(newWater);
+      // const response = await addWater({ newWater: newWater, date: Date.now() });
       return response;
     } catch (error) {
       const errorObj = handleApiError(error);

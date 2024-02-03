@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import css from './UserLogout.module.css';
-import { useDispatch } from 'react-redux';
-import { logoutThunk } from '../../redux/auth/operations';
-import Backdrop from 'components/Backdrop/Backdrop';
-import Loader from 'components/Loader/Loader';
+import { FC, useState } from "react";
+import css from "./UserLogout.module.css";
+import { useDispatch } from "react-redux";
+import { logoutThunk } from "../../redux/auth/operations";
+import Backdrop from "../../components/Backdrop/Backdrop";
+import Loader from "../../components/Loader/Loader";
+import { AppDispatch } from "../../redux/store";
 
-const UserLogoutModal = ({ onClose }) => {
+interface IProps {
+  onClose: (value: boolean) => void;
+}
+
+const UserLogoutModal: FC<IProps> = ({ onClose }) => {
   const [loader, setLoader] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleLogout = async () => {
     try {

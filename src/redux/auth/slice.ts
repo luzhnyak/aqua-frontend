@@ -19,6 +19,7 @@ export interface IAuthInitialState {
     avatarURL: string | null;
     waterRate: number | null;
     gender: string | null;
+    createdAt: string | null;
   };
   isLoggedIn: boolean;
   isRefreshing: boolean;
@@ -33,6 +34,7 @@ const authInitialState: IAuthInitialState = {
     avatarURL: null,
     waterRate: null,
     gender: null,
+    createdAt: null,
   },
   isLoggedIn: false,
   isRefreshing: false,

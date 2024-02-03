@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import css from './FormUser.module.css';
-import * as Yup from 'yup';
-import { useSelector } from 'react-redux';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
-import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
-import RadioButtons from './RadioButtons';
-import { selectUser } from '../../redux/auth/selectors';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Loader from 'components/Loader/Loader';
-import Backdrop from 'components/Backdrop/Backdrop';
-import { updateUserInfo } from 'services/waterApi';
+import React, { FC, useState } from "react";
+import css from "./FormUser.module.css";
+import * as Yup from "yup";
+import { useSelector } from "react-redux";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ReactComponent as OpenEyeIcon } from "../../images/icons/eye-slash.svg";
+import { ReactComponent as ClosedEyeIcon } from "../../images/icons/eye.svg";
+import RadioButtons from "./RadioButtons";
+import { selectUser } from "../../redux/auth/selectors";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loader from "../../components/Loader/Loader";
+import Backdrop from "../../components/Backdrop/Backdrop";
+import { updateUserInfo } from "../../services/waterApi";
 
-const FormUser = ({ onClose }) => {
+interface IProps {
+  onClose: () => void;
+}
+
+const FormUser: FC<IProps> = ({ onClose }) => {
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
 
@@ -23,41 +27,41 @@ const FormUser = ({ onClose }) => {
   const [loader, setLoader] = useState(false);
 
   const validationSchema = Yup.object({
-    name: Yup.string().max(32, 'Enter no more than 32 characters.'),
+    name: Yup.string().max(32, "Enter no more than 32 characters."),
     email: Yup.string(),
     password: Yup.string()
-      .min(8, 'Password must be at least 8 characters.')
-      .max(64, 'Enter no more than 64 characters.'),
+      .min(8, "Password must be at least 8 characters.")
+      .max(64, "Enter no more than 64 characters."),
     newPassword: Yup.string()
-      .min(8, 'Password must be at least 8 characters.')
-      .max(64, 'Enter no more than 64 characters.'),
+      .min(8, "Password must be at least 8 characters.")
+      .max(64, "Enter no more than 64 characters."),
     repeatPassword: Yup.string()
-      .min(8, 'Password must be at least 8 characters.')
-      .max(64, 'Enter no more than 64 characters.'),
+      .min(8, "Password must be at least 8 characters.")
+      .max(64, "Enter no more than 64 characters."),
   });
 
   const initialValues = {
     gender: gender,
-    name: name || '',
+    name: name || "",
     email: email,
-    password: '',
-    newPassword: '',
-    repeatPassword: '',
+    password: "",
+    newPassword: "",
+    repeatPassword: "",
   };
 
-  const onSubmit = async (values, { resetForm }) => {
+  const onSubmit = async (values: any, { resetForm }: any) => {
     setLoader(true);
     const { gender, email, name, password, newPassword, repeatPassword } =
       values;
-    if (email === '') {
-      return toast.error('Please enter email');
+    if (email === "") {
+      return toast.error("Please enter email");
     }
 
-    if (password === '' && newPassword === '' && repeatPassword === '') {
+    if (password === "" && newPassword === "" && repeatPassword === "") {
       try {
-        if (email !== '') {
+        if (email !== "") {
           await updateUserInfo({ gender, email, name });
-          toast.success('You successfully change your data');
+          toast.success("You successfully change your data");
 
           setLoader(false);
           resetForm({
@@ -68,11 +72,11 @@ const FormUser = ({ onClose }) => {
         }
       } catch (error) {
         setLoader(false);
-        return toast.error('Please enter another email');
+        return toast.error("Please enter another email");
       }
-    } else if (password !== '' && newPassword !== '' && repeatPassword !== '') {
+    } else if (password !== "" && newPassword !== "" && repeatPassword !== "") {
       if (newPassword !== repeatPassword) {
-        return toast.error('Your passwords are different');
+        return toast.error("Your passwords are different");
       }
 
       setLoader(true);
@@ -86,7 +90,7 @@ const FormUser = ({ onClose }) => {
           newPassword,
         });
 
-        toast.success('You successfully change your data and password');
+        toast.success("You successfully change your data and password");
 
         setLoader(false);
 
@@ -96,32 +100,32 @@ const FormUser = ({ onClose }) => {
         });
         onClose();
       } catch (error) {
-        if (error.response.status === 409) {
-          toast.error('Please enter another email');
-          setLoader(false);
-        }
-        if (error.response.status === 400) {
-          toast.error('The wrong password');
-          setLoader(false);
-        }
+        // if (error.response.status === 409) {
+        //   toast.error("Please enter another email");
+        //   setLoader(false);
+        // }
+        // if (error.response.status === 400) {
+        //   toast.error("The wrong password");
+        //   setLoader(false);
+        // }
       }
     } else {
       setLoader(false);
       if (
-        password !== '' &&
-        newPassword === '' &&
-        (repeatPassword !== '' || repeatPassword === '')
+        password !== "" &&
+        newPassword === "" &&
+        (repeatPassword !== "" || repeatPassword === "")
       ) {
-        return toast.error('Enter new password');
+        return toast.error("Enter new password");
       }
 
-      if (password !== '' && newPassword !== '' && repeatPassword === '') {
-        return toast.error('Repeat your password');
+      if (password !== "" && newPassword !== "" && repeatPassword === "") {
+        return toast.error("Repeat your password");
       }
 
-      if (password === '' && newPassword !== '' && repeatPassword !== '') {
+      if (password === "" && newPassword !== "" && repeatPassword !== "") {
         setLoader(false);
-        return toast.error('Enter your current password');
+        return toast.error("Enter your current password");
       }
     }
   };
@@ -146,7 +150,7 @@ const FormUser = ({ onClose }) => {
                   <Field
                     id="name"
                     className={`${css.input}  ${
-                      errors.name && touched.name ? css.errorinput : ''
+                      errors.name && touched.name ? css.errorinput : ""
                     }`}
                     name="name"
                     type="text"
@@ -166,7 +170,7 @@ const FormUser = ({ onClose }) => {
                   <Field
                     id="email"
                     className={`${css.input}  ${
-                      errors.email && touched.email ? css.errorinput : ''
+                      errors.email && touched.email ? css.errorinput : ""
                     }`}
                     name="email"
                     type="email"
@@ -190,13 +194,13 @@ const FormUser = ({ onClose }) => {
                   <div className={css.subform}>
                     <Field
                       id="password"
-                      className={`${css.input}  ${
-                        errors.outdatedPassword && touched.outdatedPassword
-                          ? css.errorinput
-                          : ''
-                      }`}
+                      // className={`${css.input}  ${
+                      //   errors.outdatedPassword && touched.outdatedPassword
+                      //     ? css.errorinput
+                      //     : ""
+                      // }`}
                       name="password"
-                      type={showOutdatedPassword ? 'text' : 'password'}
+                      type={showOutdatedPassword ? "text" : "password"}
                       placeholder="Password"
                     />
                     <div
@@ -228,10 +232,10 @@ const FormUser = ({ onClose }) => {
                       className={`${css.input}  ${
                         errors.newPassword && touched.newPassword
                           ? css.errorinput
-                          : ''
+                          : ""
                       }`}
                       name="newPassword"
-                      type={showNewPassword ? 'text' : 'password'}
+                      type={showNewPassword ? "text" : "password"}
                       placeholder="Password"
                     />
                     <div onClick={() => setShowNewPassword(!showNewPassword)}>
@@ -259,10 +263,10 @@ const FormUser = ({ onClose }) => {
                       className={`${css.input}  ${
                         errors.repeatPassword && touched.repeatPassword
                           ? css.errorinput
-                          : ''
+                          : ""
                       }`}
                       name="repeatPassword"
-                      type={showRepeatPassword ? 'text' : 'password'}
+                      type={showRepeatPassword ? "text" : "password"}
                       placeholder="Password"
                     />
                     <div

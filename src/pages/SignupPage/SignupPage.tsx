@@ -1,20 +1,21 @@
-import { React, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import Loader from 'components/Loader/Loader';
-import Backdrop from 'components/Backdrop/Backdrop';
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Loader from "../../components/Loader/Loader";
+import Backdrop from "../../components/Backdrop/Backdrop";
 
-import AuthForm from '../../components/AuthForm/AuthForm';
-import { signUpThunk } from '../../redux/auth/operations';
-import css from './SignupPage.module.css';
+import AuthForm from "../../components/AuthForm/AuthForm";
+import { signUpThunk } from "../../redux/auth/operations";
+import css from "./SignupPage.module.css";
+import { AppDispatch } from "../../redux/store";
 
 const SignupPage = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const [loader, setLoader] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  const signUpHandler = (values, { resetForm }) => {
+  const signUpHandler = (values: any, { resetForm }: any) => {
     const { repeatPassword, ...newObject } = values;
     setLoader(true);
     try {
@@ -24,7 +25,7 @@ const SignupPage = () => {
       setRedirect(true);
     } catch (error) {
       setLoader(false);
-      toast.error('Registration is failed. Please try again.');
+      toast.error("Registration is failed. Please try again.");
     } finally {
       setLoader(false);
     }

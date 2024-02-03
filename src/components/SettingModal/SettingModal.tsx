@@ -1,31 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react';
-import css from './Setting.module.css';
+import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
+import css from "./Setting.module.css";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
-import { ReactComponent as IconUploadPhoto } from '../../images/icons/arrow-up-tray.svg';
-import FormUser from './FormUser';
-import { updateAvatarThunk } from '../../redux/auth/operations';
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
+import { ReactComponent as IconUploadPhoto } from "../../images/icons/arrow-up-tray.svg";
+import FormUser from "./FormUser";
+import { updateAvatarThunk } from "../../redux/auth/operations";
+import { AppDispatch } from "../../redux/store";
 
-const SettingModal = ({ onClose }) => {
-  const fileInputRef = useRef(null);
+interface IProps {
+  onClose: () => void;
+}
 
-  const [file, setFile] = useState();
+const SettingModal: FC<IProps> = ({ onClose }) => {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const dispatch = useDispatch();
+  const [file, setFile] = useState<File | null>();
+
+  const dispatch: AppDispatch = useDispatch();
 
   const user = useSelector(selectUser);
   const { name, email, avatarURL } = user;
 
-  const handleChange = event => {
-    setFile(event.target.files[0]);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const selected = files[0];
+      setFile(selected);
+    }
   };
 
   useEffect(() => {
     if (file) {
       dispatch(updateAvatarThunk(file));
       // Скидання значень інпуту
-      fileInputRef.current.value = null;
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     }
   }, [file, dispatch]);
 
@@ -40,7 +51,7 @@ const SettingModal = ({ onClose }) => {
             <span className={css.letter}>
               {name
                 ? name.charAt(0).toUpperCase()
-                : email.charAt(0).toUpperCase()}
+                : email?.charAt(0).toUpperCase()}
             </span>
           </div>
         )}

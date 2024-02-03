@@ -1,10 +1,10 @@
-import Loader from '../../components/Loader/Loader';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { sendVerify } from '../../services/waterApi';
-import css from './RedirectVerifyPage.module.css';
-import { toast } from 'react-toastify';
-import Backdrop from '../../components/Backdrop/Backdrop';
+import Loader from "../../components/Loader/Loader";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { sendVerify } from "../../services/waterApi";
+import css from "./RedirectVerifyPage.module.css";
+import { toast } from "react-toastify";
+import Backdrop from "../../components/Backdrop/Backdrop";
 
 const RedirectVerifyPage = () => {
   const { token } = useParams();
@@ -18,23 +18,25 @@ const RedirectVerifyPage = () => {
   const getRequest = async (token: string) => {
     try {
       await sendVerify(token);
-      return window.location.replace('/aqua-frontend/signin');
+      return window.location.replace("/aqua-frontend/signin");
     } catch (error) {
-      toast.error('Something went wrong, try again');
+      toast.error("Something went wrong, try again");
       setTimeout(() => {
-        return window.location.replace('/aqua-frontend/resend-verify-email');
+        return window.location.replace("/aqua-frontend/resend-verify-email");
       }, 3000);
     }
   };
 
   return (
-    <div className={css.container}>
-      <div className={css.mainstr}>
-        <Backdrop>
-          <Loader />
-        </Backdrop>
+    <section>
+      <div className={css.MainContainer}>
+        <div className={css.mainstr}>
+          <Backdrop>
+            <Loader />
+          </Backdrop>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

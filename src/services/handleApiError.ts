@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+// import { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 
 export interface IError {
   errorMessage: string;
@@ -6,9 +6,9 @@ export interface IError {
 }
 
 // Опис типу для конфігурації запиту
-interface MyAxiosRequestConfig extends AxiosRequestConfig {
-  // Додайте власні поля конфігурації, якщо необхідно
-}
+// interface MyAxiosRequestConfig extends AxiosRequestConfig {
+//   // Додайте власні поля конфігурації, якщо необхідно
+// }
 
 // Опис типу для відповіді Axios
 // interface MyAxiosResponse<T> extends AxiosResponse<MyResponse<T>> {}
