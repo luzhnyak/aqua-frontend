@@ -33,7 +33,7 @@ import {
       },
       title: {
         display: true,
-        text: 'Chart.js Line Chart',
+        text: 'Statistic',
       },
     },
   };
@@ -48,7 +48,7 @@ const WaterMonthChart = ({monthlyData, label}) =>{
         datasets: [
           {
             fill: true,
-            label: 'Dataset 2',
+            label: '',
             data: monthlyData,
             borderColor: '#407BFF',
             backgroundColor: 'rgba(158, 187, 255, 1)',
