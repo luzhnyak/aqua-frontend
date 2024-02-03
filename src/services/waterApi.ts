@@ -50,7 +50,7 @@ export const updateUserInfo = async (formData: IUpdateUser) => {
   return data.user;
 };
 
-export const updateWaterNorma = async (newWaterRate: { waterRate: string }) => {
+export const updateWaterNorma = async (newWaterRate: string) => {
   const dataWaterRate = {
     waterRate: newWaterRate,
   };

@@ -19,8 +19,8 @@ const HomePage: FC = () => {
       {/* <div className={css.container} onClick={handleClick}> */}
       <div className={css.container}>
         <div className={css.firstSection}>
-          {/* <DailyNorma />
-          <WaterRatioPanel /> */}
+          <DailyNorma />
+          <WaterRatioPanel />
         </div>
 
         <div className={css.containerProgressWrapper}>

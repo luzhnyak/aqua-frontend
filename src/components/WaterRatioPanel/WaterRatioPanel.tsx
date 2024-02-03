@@ -1,28 +1,30 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import css from './WaterRatioPanel.module.css';
+import React, { useState, useEffect, useMemo } from "react";
+import css from "./WaterRatioPanel.module.css";
 
-import { useSelector } from 'react-redux';
-import { selectWatersToday } from '../../redux/waterConsumption/selectors';
-import AddWaterModal from 'components/AddWaterModal/AddWaterModal';
-import Modal from 'components/Modal/Modal';
+import { useSelector } from "react-redux";
+import { selectWatersToday } from "../../redux/waterConsumption/selectors";
+import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
+import Modal from "../../components/Modal/Modal";
 
 const WaterRatioPanel = () => {
   const waterToday = useSelector(selectWatersToday) || 0;
-  const progressValue = useMemo(
-    () => Number(parseInt(waterToday?.progress) || 0),
-    [waterToday]
-  );
+  const progressValue = useMemo(() => {
+    if (waterToday) {
+      return Number(parseInt(waterToday?.progress));
+    }
+    return 0;
+  }, [waterToday]);
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [isAddWater, setIsAddWater] = useState(false);
 
   const openModal = () => {
     setAddWaterModalOpen(true);
-    document.body.classList.add('body-scroll-lock');
+    document.body.classList.add("body-scroll-lock");
   };
 
   const closeModal = () => {
     setAddWaterModalOpen(false);
-    document.body.classList.remove('body-scroll-lock');
+    document.body.classList.remove("body-scroll-lock");
   };
 
   const toggleIsAddWaterState = () => {
@@ -30,26 +32,26 @@ const WaterRatioPanel = () => {
   };
 
   useEffect(() => {
-    const rangeThumb = document.getElementById('range-thumb');
-    const rangeInput = document.getElementById('range-input');
+    const rangeThumb = document.getElementById("range-thumb");
+    const rangeInput = document.getElementById("range-input");
 
-    const thumbPosition = rangeInput.value / rangeInput.max;
+    // const thumbPosition = rangeInput.value / rangeInput.max;
 
-    const changeThumbPosition = () => {
-      const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
-      const thumbPositionX = thumbPosition * space;
-      rangeThumb.style.left = `${thumbPositionX}px`;
-    };
+    // const changeThumbPosition = () => {
+    //   const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
+    //   const thumbPositionX = thumbPosition * space;
+    //   rangeThumb.style.left = `${thumbPositionX}px`;
+    // };
 
-    changeThumbPosition();
+    // changeThumbPosition();
 
-    const updateProgressBarColor = () => {
-      const space = rangeInput.offsetWidth - 7;
-      const thumbPositionX = thumbPosition * space;
+    // const updateProgressBarColor = () => {
+    //   const space = rangeInput.offsetWidth - 7;
+    //   const thumbPositionX = thumbPosition * space;
 
-      rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
-    };
-    updateProgressBarColor();
+    //   rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
+    // };
+    // updateProgressBarColor();
   }, [waterToday]);
 
   return (
@@ -92,7 +94,7 @@ const WaterRatioPanel = () => {
         <button type="button" className={css.addButton} onClick={openModal}>
           <img
             className={css.plusCircle}
-            src={require('../../images/icons/progressbar-plus.svg').default}
+            src={require("../../images/icons/progressbar-plus.svg").default}
             alt="plus-circle.svg"
             width="24"
             height="24"
@@ -102,10 +104,10 @@ const WaterRatioPanel = () => {
       </div>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          <AddWaterModal
+          {/* <AddWaterModal
             isAddWater={toggleIsAddWaterState}
             onClose={closeModal}
-          />
+          /> */}
         </Modal>
       )}
     </div>

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const WelcomePage = () => {
   return (
-    <div className={css.container}>
-      <div className={css.dataContainer}>
+    <section className={css.background}>
+      <div className={css.container}>
         <div className={css.benefitsBlock}>
           <h1 className={css.title}>Water consumption tracker</h1>
           <h2 className={css.subtitle}>Record daily water intake and track</h2>
@@ -69,7 +69,7 @@ const WelcomePage = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

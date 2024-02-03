@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import Modal from '../Modal/Modal';
-import DailyNormaModal from './DailyNormaModal';
-import css from './DailyNorma.module.css';
-import { useSelector } from 'react-redux';
-import { selectWaterRate } from '../../redux/auth/selectors';
+import React, { useState } from "react";
+import Modal from "../Modal/Modal";
+import DailyNormaModal from "./DailyNormaModal";
+import css from "./DailyNorma.module.css";
+import { useSelector } from "react-redux";
+import { selectWaterRate } from "../../redux/auth/selectors";
 
 const DailyNorma = () => {
   const [visible, setVisible] = useState(false);
 
-  let waterRate = useSelector(selectWaterRate) / 1000 || 2.0;
+  const waterRateMG = useSelector(selectWaterRate);
+  let waterRate = (waterRateMG && waterRateMG / 1000) || 2.0;
 
-  const toggleModal = () => {
+  const toggleModal: () => void = () => {
     setVisible(!visible);
   };
 
-  const handleWaterAmountSave = amount => {
+  const handleWaterAmountSave = (amount: number) => {
     waterRate = amount;
   };
 
@@ -26,15 +27,11 @@ const DailyNorma = () => {
         <p className={css.normaLiters}>{waterRate} L</p>
 
         {visible && (
-          <Modal
-            setVisible={toggleModal}
-            title="My daily norma"
-            onClose={toggleModal}
-          >
-            <DailyNormaModal
+          <Modal title="My daily norma" onClose={toggleModal}>
+            {/* <DailyNormaModal
               setVisible={setVisible}
               onWaterAmountSave={handleWaterAmountSave}
-            />
+            /> */}
           </Modal>
         )}
         <button className={css.editButton} type="button" onClick={toggleModal}>
