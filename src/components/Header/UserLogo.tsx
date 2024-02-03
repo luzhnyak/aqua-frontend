@@ -82,9 +82,11 @@ const UserLogo = () => {
     <>
       <div ref={modalRef}>
         {user && (
-          <div className={css.dropDownMenu} onClick={toggleMenu}>
-            {" "}
-            // зробити через кнопку
+          <button
+            type="button"
+            className={css.dropDownMenu}
+            onClick={toggleMenu}
+          >
             <p className={css.userNameText}>{name ? name : ""}</p>
             {avatarURL ? (
               <img src={avatarURL} className={css.avatar} alt="userAvatar" />
@@ -98,7 +100,7 @@ const UserLogo = () => {
               </div>
             )}
             <IconChevron className={css.IconChevron} />
-          </div>
+          </button>
         )}
         {isMenuOpen && (
           <UserLogoModal
