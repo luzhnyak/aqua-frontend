@@ -1,0 +1,57 @@
+@import-normalize; /* bring in normalize.css styles */
+
+:root {
+  --primary-color-white: #ffffff;
+  --primary-color-black: #2f2f2f;
+  --primary-color-blue: #407bff;
+  --secondary-color-red: #ef5050;
+  --secondary-color-orange: #ff9d43;
+  --secondary-color-blue-1: #ecf2ff;
+  --secondary-color-blue-2: #d7e3ff;
+  --secondary-color-blue-3: #9ebbff;
+
+  --backdrop-color-black: rgba(0, 0, 0, 0.8);
+  --backdrop-color-loader: rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.body-scroll-lock {
+  overflow: hidden;
+}

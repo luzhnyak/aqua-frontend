@@ -1,0 +1,319 @@
+/* Background */
+
+@media only screen and (min-width: 320px) {
+  .background {
+    background: url("../../images/mobile-background-main-page.svg") center
+      bottom / cover no-repeat;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .background {
+    background: url("../../images/tablet-background-main-page.svg") left bottom /
+      cover no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .background {
+    background: url("../../images/desktop-background-main-page.svg") bottom /
+      contain no-repeat;
+  }
+}
+
+/* Container */
+
+@media only screen and (min-width: 320px) {
+  .container {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 0px 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0px 32px;
+    height: 100vh;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    display: flex;
+    gap: 81px;
+
+    max-width: 1440px;
+    padding: 80px 198px;
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  .benefitsBlock {
+    padding: 24px 0 40px 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .benefitsBlock {
+    padding: 24px 0 60px 0;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .benefitsBlock {
+    padding: 0 0;
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  .whyBlockWrapper {
+    padding: 0px 0px 40px 0px;
+  }
+}
+
+.title {
+  margin: 24px 0 16px 0;
+
+  color: var(--Primery-Color-Black, #2f2f2f);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.14;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin: 40px 0 16px 0;
+
+    font-size: 36px;
+    line-height: 1.16;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .title {
+    margin: 0 0 16px 0;
+
+    font-size: 36px;
+    line-height: 1.16;
+  }
+}
+
+.subtitle {
+  margin: 0;
+  margin-bottom: 24px;
+
+  max-width: 197px;
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 768px) {
+  .subtitle {
+    max-width: 404px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .subtitle {
+    font-size: 26px;
+    line-height: 1.23;
+  }
+}
+
+.benefitsTitle {
+  margin: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11;
+}
+
+.benefilsList {
+  margin-bottom: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .benefilsList {
+    margin-bottom: 24px;
+
+    flex-direction: row;
+
+    display: flex;
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .benefilsList {
+    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+  }
+}
+
+.benefitsItem {
+  min-width: 224px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.benefitsItem img {
+  width: 32px;
+  height: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .benefitsItem img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.tryTrackerBtn {
+  display: block;
+  padding: 10px 30px;
+  text-align: center;
+
+  min-width: 280px;
+  height: 36px;
+
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--Primery-Color-White, #ffffff);
+  text-decoration: none;
+
+  border: none;
+
+  border-radius: 10px;
+  background: var(--Primery-Color-Blue, #407bff);
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+}
+
+@media screen and (min-width: 768px) {
+  .tryTrackerBtn {
+    width: 336px;
+    height: 44px;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+
+    border: none;
+  }
+
+  .tryTrackerBtn:hover,
+  .tryTrackerBtn:focus {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: url("../../images/icons/hover-cursor.svg"), auto;
+  }
+
+  .tryTrackerBtn:active {
+    background: var(--Primery-Color-Blue, #407bff);
+    cursor: url("../../images/icons/focus-cursor.svg"), auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tryTrackerBtn {
+    min-width: 384px;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.whyBlock {
+  padding: 24px 16px;
+
+  max-width: 280px;
+
+  border-radius: 10px;
+  background: var(--Secondary-color-2, #ecf2ff);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+}
+
+@media screen and (min-width: 768px) {
+  .whyBlock {
+    padding: 32px 24px;
+
+    max-width: 494px;
+    max-height: 332px;
+
+    border-radius: 10px;
+    background: var(--Secondary-color-2, #ecf2ff);
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .whyBlock {
+    padding: 32px 24px;
+    margin-top: 40px;
+
+    max-width: 494px;
+    max-height: 332px;
+
+    border-radius: 10px;
+    background: var(--Secondary-color-2, #ecf2ff);
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  }
+}
+
+.whyTitle {
+  margin: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11;
+}
+
+.whyList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.whyItem {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.whyItem::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  fill: #407bff;
+  content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none"%3E%3Ccircle cx="4" cy="4" r="4" fill="%23407BFF"%3E%3C/circle%3E%3C/svg%3E');
+  margin-right: 8px;
+}

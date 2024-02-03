@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Container */
+
+@media only screen and (min-width: 320px) {
+  .container {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 8px 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 16px 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    /* min-height: 740px; */
+
+    max-width: 1440px;
+    padding: 12px 112px;
+  }
+}
+
+.nav {
+  position: relative;
+
+  /* outline: 2px solid red; */
+  display: flex;
+  height: 48px;
+  align-items: center;
+  margin-right: auto;
+}
+
+.logoText {
+  margin-left: 4px;
+  width: 58px;
+  color: var(--primary-color-blue);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.logoContainer {
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+  text-decoration: none;
+}
+
+.signIn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.IconUser {
+  width: 28px;
+  height: 28px;
+}
+
+.signInText {
+  color: var(--primary-color-blue);
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.signInText:hover {
+  color: var(--secondary-color-orange);
+}
+
+@media only screen and (min-width: 768px) {
+  .signInText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.userNameText {
+  color: var(--primary-color-black);
+  text-align: right;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@media only screen and (min-width: 768px) {
+  .userNameText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.IconChevron {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  fill: var(--primary-color-blue);
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.noAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-left: 8px;
+  background-color: var(--secondary-color-blue-1);
+}
+
+.dropDownMenu {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.dropDownMenuContent {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 118px;
+  height: 88px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+
+  border-radius: 10px;
+  background: var(--primary-color-white);
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
+}
+
+@media only screen and (min-width: 1440px) {
+  .dropDownMenuContent {
+    top: 44px;
+  }
+}
+
+.settingsBtn,
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+
+  color: var(--primary-color-blue);
+  background-color: transparent;
+  border: transparent;
+  font-size: 16px;
+  line-height: 1.25;
+  transition: color 0.3s;
+}
+
+.settingsBtn:hover,
+.logoutBtn:hover {
+  color: var(--secondary-color-orange);
+}
+
+.settingsBtn:hover .iconSettings,
+.logoutBtn:hover .iconLogout {
+  stroke: var(--secondary-color-orange);
+}
+
+.iconSettings,
+.iconLogout {
+  stroke: var(--primary-color-blue);
+  transition: stroke 0.3s;
+  width: 16px;
+  height: 16px;
+}

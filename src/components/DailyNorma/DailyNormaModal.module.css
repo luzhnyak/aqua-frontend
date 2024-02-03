@@ -1,0 +1,239 @@
+.formTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .formTitle {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.forField {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.formulaField {
+  color: var(--Primery-Color-Blue, #407BFF);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+}
+
+.formulaDescContainer {
+  max-width: 256px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #D7E3FF;
+
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .formulaDescContainer {
+    min-width: 656px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formulaDescContainer {
+    min-width: 544px;
+  }
+}
+
+.formulaDesc {
+  color: #8F8F8F;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.formulaDescSymbol {
+  color: var(--Primery-Color-Blue, #407BFF);
+  font-size: 12px;
+
+  font-weight: 400;
+  line-height: 1.33px;
+}
+
+.formName {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  margin-bottom: 16px;
+}
+
+.chooseGender {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.radioLabel{
+  display: flex;
+  align-items: center;
+}
+
+.formRadioInput {
+  margin-right: 8px;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+
+
+  cursor: pointer;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"%3E%3Ccircle cx="7" cy="7" r="6.5" fill="white" stroke="%23407BFF"%3E%3C/circle%3E%3C/svg%3E');
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.formRadioInput:checked {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"%3E%3Ccircle cx="7" cy="7" r="6.5" fill="white" stroke="%23407BFF"%3E%3C/circle%3E%3Ccircle cx="7" cy="7" r="3" fill="%23407BFF"%3E%3C/circle%3E%3C/svg%3E');
+}
+
+.questionLabel {
+  width: 256px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .questionLabel {
+    width: 656px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .questionLabel {
+    width: 544px;
+  }
+}
+
+.questionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.questionInput {
+  min-width: 256px;
+  padding: 12px 10px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #D7E3FF;
+
+  color: var(--Primery-Color-Blue, #407BFF);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.requiredAmountContainer {
+  max-width: 256px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 26px;
+}
+
+@media screen and (min-width: 768px) {
+  .requiredAmountContainer {
+    max-width: 656px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .requiredAmountContainer {
+    max-width: 544px;
+  }
+}
+
+.requiredAmountText {
+  max-width: 190px;
+}
+
+@media screen and (min-width: 768px) {
+  .requiredAmountText {
+    max-width: 100%;
+  }
+}
+
+.requiredAmountValue {
+  color: var(--Primery-Color-Blue, #407BFF);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33;
+}
+
+.requiredAmountValue:hover,
+.requiredAmountValue:focus {
+  cursor: url('../../images/icons/hover-cursor.svg'), auto;
+}
+
+.requiredAmountValue:active {
+  background: var(--Primery-Color-Blue, #407bff);
+  cursor: url('../../images/icons/focus-cursor.svg'), auto;
+}
+
+.howMuchText {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+}
+
+
+.submitButton {
+  display: block;
+  margin: 0 auto;
+  min-width: 256px;
+  height: 36px;
+  padding: 8px 30px;
+  border: none;
+  border-radius: 10px;
+  background: var(--Primery-Color-Blue, #407BFF);
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  color: var(--Primery-Color-White, #FFF);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 768px) {
+  .submitButton {
+    min-width: 160px;
+    height: 44px;
+    padding: 10px 30px;
+    margin-right: 0;
+  }
+}
+
+.errormessage {
+
+  color: var(--secondary-color-red);
+  font-size: 14px;
+}
+
+.errorBorder {
+  border: 2px solid var(--secondary-color-red);
+}
+
+
+.errorInput {
+  color: var(--secondary-color-red);
+}
+
+.errorInput::placeholder {
+  color: var(--secondary-color-red);
+}
+
+
