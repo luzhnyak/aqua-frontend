@@ -28,10 +28,10 @@ const DailyNorma = () => {
 
         {visible && (
           <Modal title="My daily norma" onClose={toggleModal}>
-            {/* <DailyNormaModal
+            <DailyNormaModal
               setVisible={setVisible}
               onWaterAmountSave={handleWaterAmountSave}
-            /> */}
+            />
           </Modal>
         )}
         <button className={css.editButton} type="button" onClick={toggleModal}>
