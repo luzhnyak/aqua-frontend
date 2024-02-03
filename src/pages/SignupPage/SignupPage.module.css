@@ -6,10 +6,11 @@
   .MainContainer {
     margin: 0 auto;
     max-width: 320px;
+    min-height: 620px;
+
     padding: 24px 20px 0px 20px;
-    height: 100vh;
     background: url('../../images/mobile-background-element-sign-in.svg') left
-        0% top -20% / 320px 844px no-repeat,
+        0% top -10% / 320px 844px no-repeat,
       url('../../images/mobile-bottle-sign-in.svg') center bottom 5% / 280px
         210px no-repeat;
   }
@@ -19,14 +20,16 @@
   .MainContainer {
     max-width: 768px;
     padding: 40px 32px 156px 32px;
-    background: url('../../images/tablet-bottle-sign-in.svg') left 0% top -50% /
-      768px 680px no-repeat;
+    background: url('../../images/tablet-bottle-sign-in.svg') left 0% top 0% /
+      768px 620px no-repeat;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .MainContainer {
     max-width: 1440px;
+    min-height: 740px;
+
     padding: 148px 198px 232px 198px;
     background: url('../../images/desktop-background-element-main-page.svg ')
         left 20% top 0% / 1404px 582px no-repeat,
