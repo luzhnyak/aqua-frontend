@@ -9,7 +9,6 @@
   }
 }
 .entries-container{
-    padding-bottom: 24px;
     display: flex;
     
     flex-direction: column;
@@ -32,7 +31,7 @@ line-height: 24px;
 
 
 .list-entry{
-    height: 200px;
+    height: 180px;
     overflow-y: scroll;
     padding-right: 10px;
     border-bottom: 1px solid #d7e3ff;
