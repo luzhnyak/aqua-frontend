@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import {
   addWater,
@@ -6,17 +6,15 @@ import {
   getAllWaterForToday,
   updateWaterById,
   getAllWaterForMonth,
-} from "../../services/waterApi";
-import { handleApiError } from "../../services/handleApiError";
-
-import { RootState } from "../store";
-import { IDdailyEntry } from "../../types";
+} from 'services/waterApi';
+import { handleApiError } from 'services/handleApiError';
 
 export const addWaterThunk = createAsyncThunk(
-  "water/addWater",
-  async (newWater: IDdailyEntry, thunkApi) => {
+  'water/addWater',
+  async (newWater, thunkApi) => {
     try {
       const response = await addWater(newWater);
+      // const response = await addWater({ newWater: newWater, date: Date.now() });
       return response;
     } catch (error) {
       const errorObj = handleApiError(error);
@@ -26,13 +24,14 @@ export const addWaterThunk = createAsyncThunk(
 );
 
 export const deleteWaterThunk = createAsyncThunk(
-  "water/deleteWater",
-  async (entryId: string, thunkApi) => {
-    const { water } = thunkApi.getState() as RootState;
-
-    if (water.today === null) return;
-
-    const _id: string = water.today._id;
+  'water/deleteWater',
+  async (entryId, thunkApi) => {
+    const state = thunkApi.getState();
+    const {
+      water: {
+        today: { _id },
+      },
+    } = state;
 
     try {
       const response = await deleteWaterById(_id, entryId);
@@ -45,16 +44,14 @@ export const deleteWaterThunk = createAsyncThunk(
 );
 
 export const updateWaterByIdThunk = createAsyncThunk(
-  "water/updateEntryWater",
-  async (data: { entryId: string; body: IDdailyEntry }, thunkApi) => {
-    const { entryId, body } = data;
-
-    const { water } = thunkApi.getState() as RootState;
-
-    if (water.today === null) return;
-
-    const _id: string = water.today._id;
-
+  'water/updateEntryWater',
+  async ({ entryId, body }, thunkApi) => {
+    const state = thunkApi.getState();
+    const {
+      water: {
+        today: { _id },
+      },
+    } = state;
     try {
       const response = await updateWaterById(_id, entryId, body);
       return response;
@@ -66,7 +63,7 @@ export const updateWaterByIdThunk = createAsyncThunk(
 );
 
 export const getAllWaterForTodayThunk = createAsyncThunk(
-  "water/getTodayWater",
+  'water/getTodayWater',
   async (_, thunkApi) => {
     try {
       const response = await getAllWaterForToday();
@@ -79,9 +76,8 @@ export const getAllWaterForTodayThunk = createAsyncThunk(
 );
 
 export const getAllWaterForMonthThunk = createAsyncThunk(
-  "water/getMonthWater",
-  async (data: { year: string; month: string }, thunkApi) => {
-    const { year, month } = data;
+  'water/getMonthWater',
+  async ({ year, month }, thunkApi) => {
     try {
       const response = await getAllWaterForMonth(year, month);
       return response;

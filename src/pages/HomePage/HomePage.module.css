@@ -1,46 +1,96 @@
-/* My daily norma and progressbar */
+/* Container */
 
-.container {
-  display: block;
-  min-height: 1328px;
-}
-.firstSection {
-  display: grid;
-  grid-template-rows: 290px 134px;
-  row-gap: 16px;
-  padding: 20px 0 40px 0;
+@media only screen and (min-width: 320px) {
+  .container {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 0px 20px;
+    height: 100vh;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-  .firstSection {
-    grid-template-rows: 386px 90px;
-    row-gap: 16px;
-    padding: 40px 0px;
-  }
-
   .container {
-    display: block;
-    min-height: 1280px;
+    max-width: 768px;
+    padding: 0px 32px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .container {
-    min-height: 720px;
-    padding: 20px 0px;
-    display: grid;
-    grid-template-columns: 592px 592px;
-    column-gap: 32px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    padding: 0px 112px;
   }
+}
 
+/* background */
+
+@media only screen and (min-width: 320px) {
+  .background {
+    background: url('../../images/mobile-background-element-home-screen.svg')
+      left 50% top -15% / 320px 1328px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .background {
+    background: url('../../images/tablet-background-element-home-screen.svg')
+      left 40% top -5% / 768px 1280px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .background {
+    background: url('../../images/desktop-background-element-main-page.svg ')
+      left 50% top 15%/ 1404px 582px no-repeat;
+  }
+}
+
+/* My daily norma and progressbar */
+
+.firstSection {
+  padding: 24px 0 0px 0;
+  background: url('../../images/mobile-bottle-home-screen.svg') left 50% top 45%/
+    280px 208px no-repeat;
+}
+
+@media only screen and (min-width: 768px) {
   .firstSection {
-    grid-template-rows: 548px 90px;
-    row-gap: 24px;
-    padding: 30px 0 0 0;
+    max-width: 768px;
+    padding: 40px 0 0px 0;
+    background: url('../../images/tablet-bottle-home-screen.svg') left 50% top
+      30% / 518px 386px no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .firstSection {
+    padding: 52px 0 0 0;
+    min-width: 650px;
+    background: url('../../images/desktop-bottle-home-screen.svg') right top 15% /
+      738px 548px no-repeat;
   }
 }
 
 /* Calendar */
+
+.containerProgressWrapper {
+  padding: 40px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .containerProgressWrapper {
+    padding: 44px 0px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .containerProgressWrapper {
+    padding: 20px 0 40px 0;
+  }
+}
 
 .container-progress {
   box-sizing: border-box;
@@ -49,24 +99,23 @@
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   border-radius: 10px;
   padding: 24px 8px;
-  /* height: 836px; */
+  height: 836px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-
+  gap: 10px;
 }
 
 @media only screen and (min-width: 768px) {
   .container-progress {
     padding: 32px 24px;
-    /* height: 688px; */
+    height: 688px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .container-progress {
     max-width: 592px;
-
+    max-height: 680px;
   }
 }

@@ -1,47 +1,34 @@
-import { PayloadAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addWaterThunk,
   deleteWaterThunk,
   getAllWaterForTodayThunk,
   updateWaterByIdThunk,
   getAllWaterForMonthThunk,
-} from "./operations";
-import { IWater } from "../../types";
+} from './operations';
 
-export interface IWaterInitialState {
-  today: IWater | null;
-  itemsPerMonth: IWater[];
-  isLoading: boolean;
-  error: Error | any;
-}
-
-const waterInitialState: IWaterInitialState = {
+const waterInitialState = {
   today: null,
   itemsPerMonth: [],
   isLoading: false,
   error: null,
 };
 
-const handlePending = (state: IWaterInitialState): void => {
+const handlePending = state => {
   state.isLoading = true;
   state.error = null;
 };
 
-const handleRejected = (
-  state: IWaterInitialState,
-  action: PayloadAction<any>
-): void => {
+const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };
 
 const waterSlice = createSlice({
-  name: "water",
+  name: 'water',
   initialState: waterInitialState,
-  reducers: {
-    // redusers
-  },
-  extraReducers: (builder) =>
+
+  extraReducers: builder =>
     builder
       .addCase(addWaterThunk.fulfilled, (state, action) => {
         state.isLoading = false;

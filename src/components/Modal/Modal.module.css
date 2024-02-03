@@ -13,8 +13,8 @@
   min-width: 280px;
   min-height: 100px;
   left: 50%;
-  top: 5%;
-  transform: translate(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   padding: 32px 24px;
   background-color: var(--primary-color-white);
   border-radius: 8px;
@@ -28,14 +28,11 @@
   .modal {
     width: 704px;
     position: absolute;
-    top: 5%;
-    left: 50%;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .modal {
-    top: 50%;
     width: 592px;
     transform: translate(-50%, -50%);
   }
@@ -59,16 +56,16 @@
   height: 24px;
   border: none;
   background-color: transparent;
+}
 
-  :hover {
+/* :hover {
     color: var(--primary-color-white);
-    /* border: 1px solid #fff; */
+    border: 1px solid #fff;
   }
 
   @media only screen and (max-width: 767px) {
     right: 12px;
-  }
-}
+  } */
 
 .title {
   height: 32px;

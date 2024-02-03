@@ -7,4 +7,4 @@ export const selectWatersPerMonth = (state: RootState) =>
 
 export const selectLoading = (state: RootState) => state.water.isLoading;
 
-export const selectError = (state: RootState) => state.water.error;
+export const selectWaterError = (state: RootState) => state.water.error;

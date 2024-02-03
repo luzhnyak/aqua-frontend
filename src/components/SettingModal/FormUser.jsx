@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import css from './FormUser.module.css';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUserInfoThunk } from '../../redux/auth/operations';
+import { useSelector } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from 'images/icons/eye-slash.svg';
 import { ReactComponent as ClosedEyeIcon } from 'images/icons/eye.svg';
 import RadioButtons from './RadioButtons';
-// import { ReactComponent as IconRadioButton } from '../../images/icons/radio-button.svg';
-// import { ReactComponent as IconRadioButtonCircle } from '../../images/icons/radio-button-circle.svg';
 import { selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from 'components/Loader/Loader';
+import Backdrop from 'components/Backdrop/Backdrop';
+import { updateUserInfo } from 'services/waterApi';
 
 const FormUser = ({ onClose }) => {
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
-
-  // const authError = useSelector(selectAuthError);
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const validationSchema = Yup.object({
     name: Yup.string().max(32, 'Enter no more than 32 characters.'),
@@ -48,66 +46,83 @@ const FormUser = ({ onClose }) => {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    if (values.email !== '') {
-      if (
-        values.password === '' &&
-        values.newPassword === '' &&
-        values.repeatPassword === ''
-      ) {
-        dispatch(
-          updateUserInfoThunk({
-            gender: values.gender,
-            name: values.name,
-            email: values.email,
-          })
-        );
-        toast.success('You successfully change your data');
-      } else {
-        if (
-          values.password !== '' &&
-          values.newPassword === '' &&
-          (values.repeatPassword !== '' || values.repeatPassword === '')
-        ) {
-          return toast.error('Enter new password');
-        }
+    setLoader(true);
+    const { gender, email, name, password, newPassword, repeatPassword } =
+      values;
+    if (email === '') {
+      return toast.error('Please enter email');
+    }
 
-        if (
-          values.password !== '' &&
-          values.newPassword !== '' &&
-          values.repeatPassword === ''
-        ) {
-          return toast.error('Repeat your password');
-        }
+    if (password === '' && newPassword === '' && repeatPassword === '') {
+      try {
+        if (email !== '') {
+          await updateUserInfo({ gender, email, name });
+          toast.success('You successfully change your data');
 
-        if (
-          values.password === '' &&
-          values.newPassword !== '' &&
-          values.repeatPassword !== ''
-        ) {
-          return toast.error('Enter your current password');
+          setLoader(false);
+          resetForm({
+            password,
+            newPassword,
+          });
+          onClose();
         }
-
-        if (values.newPassword !== values.repeatPassword) {
-          return toast.error('Your passwords are different');
-        }
-
-        dispatch(
-          updateUserInfoThunk({
-            gender: values.gender,
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            newPassword: values.newPassword,
-          })
-        );
-        toast.success('You successfully change your data and password');
+      } catch (error) {
+        setLoader(false);
+        return toast.error('Please enter another email');
+      }
+    } else if (password !== '' && newPassword !== '' && repeatPassword !== '') {
+      if (newPassword !== repeatPassword) {
+        return toast.error('Your passwords are different');
       }
 
-      resetForm({
-        password: values.password,
-        newPassword: values.newPassword,
-      });
-      onClose();
+      setLoader(true);
+
+      try {
+        await updateUserInfo({
+          gender,
+          email,
+          name,
+          password,
+          newPassword,
+        });
+
+        toast.success('You successfully change your data and password');
+
+        setLoader(false);
+
+        resetForm({
+          password,
+          newPassword,
+        });
+        onClose();
+      } catch (error) {
+        if (error.response.status === 409) {
+          toast.error('Please enter another email');
+          setLoader(false);
+        }
+        if (error.response.status === 400) {
+          toast.error('The wrong password');
+          setLoader(false);
+        }
+      }
+    } else {
+      setLoader(false);
+      if (
+        password !== '' &&
+        newPassword === '' &&
+        (repeatPassword !== '' || repeatPassword === '')
+      ) {
+        return toast.error('Enter new password');
+      }
+
+      if (password !== '' && newPassword !== '' && repeatPassword === '') {
+        return toast.error('Repeat your password');
+      }
+
+      if (password === '' && newPassword !== '' && repeatPassword !== '') {
+        setLoader(false);
+        return toast.error('Enter your current password');
+      }
     }
   };
 
@@ -275,6 +290,11 @@ const FormUser = ({ onClose }) => {
           </Form>
         )}
       </Formik>
+      {loader && (
+        <Backdrop>
+          <Loader />
+        </Backdrop>
+      )}
     </div>
   );
 };

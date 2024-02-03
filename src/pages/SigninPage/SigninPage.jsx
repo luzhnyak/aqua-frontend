@@ -1,44 +1,34 @@
 import { React, useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Loader from 'components/Loader/Loader';
 import Backdrop from 'components/Backdrop/Backdrop';
-
+import { loginThunk } from '../../redux/auth/operations';
 import AuthForm from '../../components/AuthForm/AuthForm';
-import { signUpThunk } from '../../redux/auth/operations';
-import css from './SignupPage.module.css';
+import css from './SigninPage.module.css';
 
-const SignupPage = () => {
+const SignInPage = () => {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
-  const [redirect, setRedirect] = useState(false);
 
-  const signUpHandler = (values, { resetForm }) => {
-    const { repeatPassword, ...newObject } = values;
+  const signInHandler = (values, { resetForm }) => {
     setLoader(true);
     try {
-      dispatch(signUpThunk(newObject));
-      // toast.success('Registration successful! Please sign in.');
+      dispatch(loginThunk(values));
       resetForm();
-      setRedirect(true);
     } catch (error) {
       setLoader(false);
-      toast.error('Registration is failed. Please try again.');
+      toast.error('Sign in is failed. Please try again.');
     } finally {
       setLoader(false);
     }
   };
 
-  if (redirect) {
-    return <Navigate to="/signin" />;
-  }
-
   return (
-    <section className={css.background}>
+    <section>
       <div className={css.MainContainer}>
         <div className={css.mainstr}>
-          <AuthForm formTitle="Sign Up" onSubmit={signUpHandler} />
+          <AuthForm formTitle="Sign In" onSubmit={signInHandler} />
           {loader && (
             <Backdrop>
               <Loader />
@@ -50,4 +40,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default SignInPage;

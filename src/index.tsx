@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import './index.css';
-import './fonts.css';
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { PersistGate } from "redux-persist/integration/react";
-import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
+import { ToastContainer } from "react-toastify";
+
+import "./index.css";
+import "./fonts.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,13 +19,9 @@ root.render(
       <PersistGate persistor={persistor}>
         <BrowserRouter basename="aqua-frontend">
           <App />
+          <ToastContainer />
         </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

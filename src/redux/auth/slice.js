@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
   signUpThunk,
@@ -8,24 +8,9 @@ import {
   updateAvatarThunk,
   updateUserInfoThunk,
   updateWaterNormaThunk,
-} from "./operations";
-import { IError } from "../../services/handleApiError";
+} from './operations';
 
-export interface IAuthInitialState {
-  token: string | null;
-  user: {
-    name: string | null;
-    email: string | null;
-    avatarURL: string | null;
-    waterRate: number | null;
-    gender: string | null;
-  };
-  isLoggedIn: boolean;
-  isRefreshing: boolean;
-  error: IError | null;
-}
-
-const authInitialState: IAuthInitialState = {
+const authInitialState = {
   token: null,
   user: {
     name: null,
@@ -39,15 +24,12 @@ const authInitialState: IAuthInitialState = {
   error: null,
 };
 
-const handlePending = (state: IAuthInitialState) => {
+const handlePending = state => {
   state.isRefreshing = true;
   state.error = null;
 };
 
-const handleRejected = (
-  state: IAuthInitialState,
-  action: PayloadAction<any>
-) => {
+const handleRejected = (state, action) => {
   state.isRefreshing = false;
   state.error = action.payload;
 
@@ -59,16 +41,16 @@ const handleRejected = (
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState: authInitialState,
 
   reducers: {
-    setToken(state: IAuthInitialState, action) {
+    setToken(state, action) {
       return (state = { ...state, token: action.payload });
     },
   },
 
-  extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
       .addCase(signUpThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;

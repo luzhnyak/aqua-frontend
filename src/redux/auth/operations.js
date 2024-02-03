@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import {
   setToken,
@@ -10,14 +10,12 @@ import {
   updateUserAvatar,
   updateUserInfo,
   updateWaterNorma,
-} from "../../services/waterApi";
-import { RootState } from "../store";
-import { IRegisterUser, IUpdateUser } from "../../types";
-import { handleApiError } from "../../services/handleApiError";
+} from 'services/waterApi';
+import { handleApiError } from 'services/handleApiError';
 
 export const signUpThunk = createAsyncThunk(
-  "auth/register",
-  async (formData: IRegisterUser, thunkApi) => {
+  'auth/register',
+  async (formData, thunkApi) => {
     try {
       const response = await requestUserSignUp(formData);
       return response;
@@ -29,8 +27,8 @@ export const signUpThunk = createAsyncThunk(
 );
 
 export const loginThunk = createAsyncThunk(
-  "auth/login",
-  async (formData: IRegisterUser, thunkApi) => {
+  'auth/login',
+  async (formData, thunkApi) => {
     try {
       const response = await requestUserLogin(formData);
       return response;
@@ -42,7 +40,7 @@ export const loginThunk = createAsyncThunk(
 );
 
 export const logoutThunk = createAsyncThunk(
-  "auth/logout",
+  'auth/logout',
   async (_, thunkApi) => {
     try {
       await requestUserLogout();
@@ -55,13 +53,13 @@ export const logoutThunk = createAsyncThunk(
 );
 
 export const refreshCurrentUserThunk = createAsyncThunk(
-  "auth/refresh",
+  'auth/refresh',
   async (_, thunkApi) => {
-    const state = thunkApi.getState() as RootState;
+    const state = thunkApi.getState();
     const token = state.auth.token;
 
     try {
-      token && setToken(token);
+      setToken(token);
       const response = await refreshCurrentUser();
       return response;
     } catch (error) {
@@ -72,15 +70,10 @@ export const refreshCurrentUserThunk = createAsyncThunk(
 
   {
     condition: (_, thunkApi) => {
-      const state = thunkApi.getState() as RootState;
+      const state = thunkApi.getState();
       const token = state.auth.token;
       if (!token) {
-        // const errorObj = {
-        //   errorMessage: "Unable to fetch user",
-        //   errorCode: 401,
-        // };
-        // return thunkApi.rejectWithValue(errorObj);
-        return false;
+        return thunkApi.rejectWithValue('Unable to fetch user');
       }
       return true;
     },
@@ -88,8 +81,8 @@ export const refreshCurrentUserThunk = createAsyncThunk(
 );
 
 export const updateAvatarThunk = createAsyncThunk(
-  "auth/avatar",
-  async (newPhoto: Blob, thunkApi) => {
+  'auth/avatar',
+  async (newPhoto, thunkApi) => {
     try {
       const avatarURL = await updateUserAvatar(newPhoto);
       return avatarURL;
@@ -101,8 +94,8 @@ export const updateAvatarThunk = createAsyncThunk(
 );
 
 export const updateUserInfoThunk = createAsyncThunk(
-  "auth/edituserinfo",
-  async (formData: IUpdateUser, thunkApi) => {
+  'auth/edituserinfo',
+  async (formData, thunkApi) => {
     try {
       const response = await updateUserInfo(formData);
       return response;
@@ -114,8 +107,8 @@ export const updateUserInfoThunk = createAsyncThunk(
 );
 
 export const updateWaterNormaThunk = createAsyncThunk(
-  "auth/updateWaterRate",
-  async (newWaterRate: { waterRate: string }, thunkApi) => {
+  'auth/updateWaterRate',
+  async (newWaterRate, thunkApi) => {
     try {
       const response = await updateWaterNorma(newWaterRate);
       return response;
