@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './UserLogout.module.css';
 import { useDispatch } from 'react-redux';
 import { logoutThunk } from '../../redux/auth/operations';
+import Backdrop from 'components/Backdrop/Backdrop';
+import Loader from 'components/Loader/Loader';
 
 const UserLogoutModal = ({ onClose }) => {
+  const [loader, setLoader] = useState(false);
+
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logoutThunk());
-    onClose(false);
+  const handleLogout = async () => {
+    try {
+      setLoader(true);
+      dispatch(logoutThunk());
+      onClose(false);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoader(false);
+    }
   };
 
   const handleClose = () => {
@@ -26,6 +37,11 @@ const UserLogoutModal = ({ onClose }) => {
           Cancel
         </button>
       </div>
+      {loader && (
+        <Backdrop>
+          <Loader />
+        </Backdrop>
+      )}
     </div>
   );
 };
