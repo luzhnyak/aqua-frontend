@@ -39,11 +39,6 @@ const waterSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.today = action.payload;
-
-        //    const index = state.items.findIndex(
-        //      entry => entry.id === action.payload.id
-        //    );
-        //    state.items.splice(index, 1);
       })
       .addCase(getAllWaterForTodayThunk.fulfilled, (state, action) => {
         state.isLoading = false;

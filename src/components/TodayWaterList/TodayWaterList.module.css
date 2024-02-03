@@ -9,7 +9,6 @@
   }
 }
 .entries-container{
-    padding-bottom: 24px;
     display: flex;
     
     flex-direction: column;
@@ -22,26 +21,25 @@ font-weight: 400;
 line-height: 24px;
 }
 .entries{
-    max-height: 258px;
+    max-height: 275px;
 }
 @media only screen and (min-width: 768px) {
     .entries{
-        max-height: 260px;
+        max-height: 280px;
     }
 }
 
 
 .list-entry{
-    height: 212px;
+    height: 180px;
     overflow-y: scroll;
     padding-right: 10px;
     border-bottom: 1px solid #d7e3ff;
 }
 
 .btn-add{
-padding: 0px;
-margin-top: 14px;
-height: 20px;
+padding: 18px 0px 18px 0px;
+height: 50px;
 background-color: transparent;
 border: none;
 color: var(--Primery-Color-Blue, #407BFF);
@@ -51,6 +49,7 @@ line-height: 24px;
 display: flex;
 align-items: center;
 gap: 8px;
+border-bottom: 1px solid #d7e3ff;
 }
 .btn-add:hover{
     color: #FF9D43;
