@@ -99,15 +99,16 @@ const FormUser: FC<IProps> = ({ onClose }) => {
           newPassword,
         });
         onClose();
-      } catch (error) {
-        // if (error.response.status === 409) {
-        //   toast.error("Please enter another email");
-        //   setLoader(false);
-        // }
-        // if (error.response.status === 400) {
-        //   toast.error("The wrong password");
-        //   setLoader(false);
-        // }
+      } catch (error: any) {
+        setLoader(false);
+        if (error.response && error.response.status === 409) {
+          toast.error("Please enter another email");
+          setLoader(false);
+        }
+        if (error.response && error.response.status === 400) {
+          toast.error("The wrong password");
+          setLoader(false);
+        }
       }
     } else {
       setLoader(false);
@@ -194,11 +195,11 @@ const FormUser: FC<IProps> = ({ onClose }) => {
                   <div className={css.subform}>
                     <Field
                       id="password"
-                      // className={`${css.input}  ${
-                      //   errors.outdatedPassword && touched.outdatedPassword
-                      //     ? css.errorinput
-                      //     : ""
-                      // }`}
+                      className={`${css.input}  ${
+                        errors.password && touched.password
+                          ? css.errorinput
+                          : ""
+                      }`}
                       name="password"
                       type={showOutdatedPassword ? "text" : "password"}
                       placeholder="Password"
