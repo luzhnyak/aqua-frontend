@@ -34,7 +34,7 @@ const SettingModal = ({ onClose }) => {
       <h4 className={css.title}>Your photo</h4>
       <div className={css.wrapAvatar}>
         {avatarURL ? (
-          <img srcSet={avatarURL} className={css.avatar} alt="userAvatar" />
+          <img src={avatarURL} className={css.avatar} alt="userAvatar" />
         ) : (
           <div className={css.noAvatar}>
             <span className={css.letter}>

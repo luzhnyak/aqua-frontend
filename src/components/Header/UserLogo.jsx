@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import SettingModal from 'components/SettingModal/SettingModal';
 import UserLogoutModal from './UserLogoutModal';
-import Backdrop from 'components/Backdrop/Backdrop';
-import Loader from 'components/Loader/Loader';
 
 const UserLogo = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);

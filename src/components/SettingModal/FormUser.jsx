@@ -9,8 +9,8 @@ import RadioButtons from './RadioButtons';
 import { selectUser } from '../../redux/auth/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Loader from 'components/Loader/Loader';
-// import Backdrop from 'components/Backdrop/Backdrop';
+import Loader from 'components/Loader/Loader';
+import Backdrop from 'components/Backdrop/Backdrop';
 import { updateUserInfo } from 'services/waterApi';
 
 const FormUser = ({ onClose }) => {
@@ -20,7 +20,7 @@ const FormUser = ({ onClose }) => {
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-  // const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const validationSchema = Yup.object({
     name: Yup.string().max(32, 'Enter no more than 32 characters.'),
@@ -46,6 +46,7 @@ const FormUser = ({ onClose }) => {
   };
 
   const onSubmit = async (values, { resetForm }) => {
+    setLoader(true);
     const { gender, email, name, password, newPassword, repeatPassword } =
       values;
     if (email === '') {
@@ -57,6 +58,8 @@ const FormUser = ({ onClose }) => {
         if (email !== '') {
           await updateUserInfo({ gender, email, name });
           toast.success('You successfully change your data');
+
+          setLoader(false);
           resetForm({
             password,
             newPassword,
@@ -64,12 +67,15 @@ const FormUser = ({ onClose }) => {
           onClose();
         }
       } catch (error) {
+        setLoader(false);
         return toast.error('Please enter another email');
       }
     } else if (password !== '' && newPassword !== '' && repeatPassword !== '') {
       if (newPassword !== repeatPassword) {
         return toast.error('Your passwords are different');
       }
+
+      setLoader(true);
 
       try {
         await updateUserInfo({
@@ -81,6 +87,9 @@ const FormUser = ({ onClose }) => {
         });
 
         toast.success('You successfully change your data and password');
+
+        setLoader(false);
+
         resetForm({
           password,
           newPassword,
@@ -88,13 +97,16 @@ const FormUser = ({ onClose }) => {
         onClose();
       } catch (error) {
         if (error.response.status === 409) {
-          return toast.error('Please enter another email');
+          toast.error('Please enter another email');
+          setLoader(false);
         }
         if (error.response.status === 400) {
           toast.error('The wrong password');
+          setLoader(false);
         }
       }
     } else {
+      setLoader(false);
       if (
         password !== '' &&
         newPassword === '' &&
@@ -108,6 +120,7 @@ const FormUser = ({ onClose }) => {
       }
 
       if (password === '' && newPassword !== '' && repeatPassword !== '') {
+        setLoader(false);
         return toast.error('Enter your current password');
       }
     }
@@ -277,11 +290,11 @@ const FormUser = ({ onClose }) => {
           </Form>
         )}
       </Formik>
-      {/* {loader && (
+      {loader && (
         <Backdrop>
           <Loader />
         </Backdrop>
-      )} */}
+      )}
     </div>
   );
 };
