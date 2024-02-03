@@ -35,17 +35,18 @@ const SignupPage = () => {
   }
 
   return (
-    <div className={css.container}>
-      <div className={css.mainstr}>
-        <div className={css.hidden}></div>
-        <AuthForm formTitle="Sign Up" onSubmit={signUpHandler} />
-        {loader && (
-          <Backdrop>
-            <Loader />
-          </Backdrop>
-        )}
+    <section className={css.background}>
+      <div className={css.MainContainer}>
+        <div className={css.mainstr}>
+          <AuthForm formTitle="Sign Up" onSubmit={signUpHandler} />
+          {loader && (
+            <Backdrop>
+              <Loader />
+            </Backdrop>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

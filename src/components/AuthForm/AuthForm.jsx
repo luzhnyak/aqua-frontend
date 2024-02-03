@@ -38,8 +38,8 @@ const AuthForm = ({ formTitle, onSubmit }) => {
     >
       {({ errors, touched }) => (
         <Form className={css.form}>
-          <h1 className={css.formTitle}>{formTitle}</h1>
           <div className={css.formControl}>
+            <h1 className={css.formTitle}>{formTitle}</h1>
             <div className={css.stack}>
               <label className={css.formLabel} htmlFor="unique-id1">
                 Enter your email
