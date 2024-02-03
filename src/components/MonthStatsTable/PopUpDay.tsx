@@ -7,9 +7,9 @@ import AnimatedComponent from "../../components/AnimatedComponent/AnimatedCompon
 interface IProps {
   sDate: Date;
   handleCloseClick: () => void;
-  dailyEntries: string;
-  progress: string;
-  waterRate: string;
+  dailyEntries: number;
+  progress: number;
+  waterRate: number;
 }
 
 const PopUpDay: FC<IProps> = ({

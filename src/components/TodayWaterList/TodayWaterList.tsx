@@ -10,7 +10,7 @@ import Modal from "../../components/Modal/Modal";
 import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
 import { getAllWaterForTodayThunk } from "../../redux/waterConsumption/operations";
 import { AppDispatch } from "../../redux/store";
-import { IDdailyEntry, IWater } from "../../types";
+import { IDdailyEntry } from "../../types";
 
 export const TodayWaterList = () => {
   const waterToday = useSelector(selectWatersToday);

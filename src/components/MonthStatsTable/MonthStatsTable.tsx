@@ -32,8 +32,8 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
   const next = "\u003E";
 
   // for chart
-  const labels: string[] = [];
-  const dataPerDay: string[] = [];
+  const labels: number[] = [];
+  const dataPerDay: number[] = [];
 
   useEffect(() => {
     const getMonthWater = () => {
@@ -149,7 +149,7 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
-      labels.push(d.toString());
+      labels.push(d);
       let dayInMonth: number[] = [];
 
       waterPerMonth.map((day) => {
@@ -205,7 +205,7 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
       const inactive = allDays.filter((day) => day.day < currentUserDay);
       inactive.map((day) => (day.disabled = true));
     }
-    allDays.map((day) => dataPerDay.push(day.value.toString()));
+    allDays.map((day) => dataPerDay.push(day.value));
     return allDays;
   };
   const openModal = () => {
@@ -274,16 +274,16 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
                   </button>
                   <p className={css.percent}> {item.value}%</p>
 
-                  {/* {popUp && sDay === item.day.toString() && (
+                  {popUp && sDay === item.day.toString() && (
                     <PopUpDay
                       // dayId={item?.id}
                       handleCloseClick={handleCloseClick}
                       sDate={sDate}
-                      waterRate={item.norm}
-                      dailyEntries={item.dailyEntry.toString()}
-                      progress={item.value.toString()}
+                      waterRate={Number(item.norm)}
+                      dailyEntries={Number(item.dailyEntry)}
+                      progress={item.value}
                     />
-                  )} */}
+                  )}
                 </div>
               ) : (
                 <div className={css["day-cell"]}>
@@ -298,8 +298,8 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
         })}
       </div>
       {isOpen && (
-        <Modal title="" onClose={closeModal}>
-          {/* <WaterMonthChart label={labels} monthlyData={dataPerDay} /> */}
+        <Modal title="Monthly statistic" onClose={closeModal}>
+          <WaterMonthChart label={labels} monthlyData={dataPerDay} />
         </Modal>
       )}
     </div>
