@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const WelcomePage = () => {
   return (
-    <section>
+    <section className={css.background}>
       <div className={css.container}>
         <div className={css.benefitsBlock}>
           <h1 className={css.title}>Water consumption tracker</h1>
