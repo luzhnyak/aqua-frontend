@@ -38,8 +38,13 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
   useEffect(() => {
     const getMonthWater = () => {
       const y = sDate.getFullYear();
-      const m = sDate.getMonth();
-      const chosenMonth = { year: y.toString(), month: m.toString() };
+      // const m = sDate.getMonth();
+      const chosenMonth = {
+        year: y.toString(),
+        month: sDate.toLocaleString("en-US", {
+          month: "long",
+        }),
+      };
       dispatch(getAllWaterForMonthThunk(chosenMonth));
     };
     getMonthWater();

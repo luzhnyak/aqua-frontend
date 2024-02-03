@@ -14,10 +14,15 @@ import { IDdailyEntry } from "../../types";
 
 export const addWaterThunk = createAsyncThunk(
   "water/addWater",
-  async (newWater: IDdailyEntry, thunkApi) => {
+  async (water: IDdailyEntry, thunkApi) => {
     try {
-      const response = await addWater(newWater);
-      // const response = await addWater({ newWater: newWater, date: Date.now() });
+      const newDate = new Date();
+      const response = await addWater({
+        water,
+        date: `${newDate.getDate()} ${newDate.toLocaleString("en", {
+          month: "long",
+        })} ${newDate.getFullYear()}`,
+      });
       return response;
     } catch (error) {
       const errorObj = handleApiError(error);
@@ -70,7 +75,12 @@ export const getAllWaterForTodayThunk = createAsyncThunk(
   "water/getTodayWater",
   async (_, thunkApi) => {
     try {
-      const response = await getAllWaterForToday();
+      const date = new Date();
+      const response = await getAllWaterForToday(
+        `${date.getDate()}-${date.toLocaleString("en", {
+          month: "long",
+        })}-${date.getFullYear()}`
+      );
       return response;
     } catch (error) {
       const errorObj = handleApiError(error);
