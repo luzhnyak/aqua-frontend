@@ -56,7 +56,7 @@ export const TodayWaterList = () => {
       </button>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          {/* <AddWaterModal isAddWater={true} onClose={closeModal} /> */}
+          <AddWaterModal isAddWater={true} onClose={closeModal} />
         </Modal>
       )}
     </div>

@@ -276,7 +276,7 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
 
                   {/* {popUp && sDay === item.day.toString() && (
                     <PopUpDay
-                      dayId={item?.id}
+                      // dayId={item?.id}
                       handleCloseClick={handleCloseClick}
                       sDate={sDate}
                       waterRate={item.norm}

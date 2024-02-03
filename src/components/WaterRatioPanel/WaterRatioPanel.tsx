@@ -104,10 +104,7 @@ const WaterRatioPanel = () => {
       </div>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          {/* <AddWaterModal
-            isAddWater={toggleIsAddWaterState}
-            onClose={closeModal}
-          /> */}
+          <AddWaterModal isAddWater={isAddWater} onClose={closeModal} />
         </Modal>
       )}
     </div>
