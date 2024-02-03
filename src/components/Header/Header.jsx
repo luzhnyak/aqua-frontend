@@ -11,10 +11,12 @@ const Header = () => {
 
   return (
     <header>
-      <nav className={css.nav}>
-        <Logo />
-        {!autorized ? <UserAuth /> : <UserLogo />}
-      </nav>
+      <div className={css.container}>
+        <nav className={css.nav}>
+          <Logo />
+          {!autorized ? <UserAuth /> : <UserLogo />}
+        </nav>
+      </div>
     </header>
   );
 };

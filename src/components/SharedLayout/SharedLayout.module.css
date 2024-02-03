@@ -1,61 +1,6 @@
-/* Container */
-
-@media only screen and (min-width: 320px) {
-  .container {
-    margin: 0 auto;
-    max-width: 320px;
-    padding: 8px 20px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 16px 32px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .container {
-    min-height: 740px;
-
-    max-width: 1440px;
-    padding: 12px 112px;
-  }
-}
-
-/* backgroundHomePage */
-
-@media only screen and (min-width: 320px) {
-  .backgroundHomePage {
-    background: url('../../images/mobile-background-element-home-screen.svg')
-        left 70% top 165% / 320px 1328px no-repeat,
-      url('../../images/mobile-bottle-home-screen.svg') left 50% top 13% / 280px
-        208px no-repeat;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .backgroundHomePage {
-    background: url('../../images/tablet-bottle-home-screen.svg') left 50% top
-        10% / 518px 386px no-repeat,
-      url('../../images/tablet-background-element-home-screen.svg') left 0% top
-        105% / 768px 1280px no-repeat;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .backgroundHomePage {
-    background: url('../../images/desktop-background-element-main-page.svg ')
-        left 20% top 60% / 1404px 582px no-repeat,
-      url('../../images/desktop-bottle-home-screen.svg') left 7% top 35% / 738px
-        548px no-repeat;
-  }
-}
-
 /* backgroundSigninPage */
 
-@media screen and (min-width: 320px) {
+/* @media screen and (min-width: 320px) {
   .backgroundSigninPage {
     background: url('../../images/mobile-background-element-sign-in.svg') left
         0% top -58% / 320px 844px no-repeat,
@@ -78,4 +23,4 @@
       url('../../images/desktop-bottle-sign-in.svg') left -15% top 70% / 916px 680px
         no-repeat;
   }
-}
+} */

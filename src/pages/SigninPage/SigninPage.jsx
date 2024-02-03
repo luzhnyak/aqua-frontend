@@ -26,17 +26,18 @@ const SignInPage = () => {
   };
 
   return (
-    <div className={css.container}>
-      <div className={css.mainstr}>
-        <div className={css.hidden}></div>
-        <AuthForm formTitle="Sign In" onSubmit={signInHandler} />
-        {loader && (
-          <Backdrop>
-            <Loader />
-          </Backdrop>
-        )}
+    <section>
+      <div className={css.MainContainer}>
+        <div className={css.mainstr}>
+          <AuthForm formTitle="Sign In" onSubmit={signInHandler} />
+          {loader && (
+            <Backdrop>
+              <Loader />
+            </Backdrop>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

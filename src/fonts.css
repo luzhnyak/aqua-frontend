@@ -22,7 +22,7 @@
 }
 
 /* Welcome page background */
-@media only screen and (min-width: 320px) {
+/* @media only screen and (min-width: 320px) {
   .body-welcome {
     background: url('images/mobile-background-main-page.svg') center bottom /
       cover no-repeat;
@@ -41,4 +41,4 @@
     background: url('images/desktop-background-main-page.svg') bottom / contain
       no-repeat;
   }
-}
+} */

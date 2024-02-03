@@ -2,6 +2,32 @@
   box-sizing: border-box;
 }
 
+/* Container */
+
+@media only screen and (min-width: 320px) {
+  .container {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 8px 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 16px 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    /* min-height: 740px; */
+
+    max-width: 1440px;
+    padding: 12px 112px;
+  }
+}
+
 .nav {
   position: relative;
 
