@@ -20,27 +20,29 @@ export const SharedLayout = () => {
   const signup = location.pathname.includes('/signup');
 
   return (
-    <div
-      className={clsx(
-        css.container,
-        { [css.backgroundHomePage]: home },
-        { [css.backgroundWelcomePage]: welcome },
-        { [css.backgroundSigninPage]: signin },
-        { [css.backgroundSigninPage]: signup },
-        { [css.backgroundSigninPage]: !(home || welcome || signup) }
-      )}
-    >
-      <Header />
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={true}
-        theme="colored"
-      />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+    <>
+      <div
+        className={clsx(
+          css.container,
+          { [css.backgroundHomePage]: home },
+          { [css.backgroundWelcomePage]: welcome },
+          { [css.backgroundSigninPage]: signin },
+          { [css.backgroundSigninPage]: signup },
+          { [css.backgroundSigninPage]: !(home || welcome || signup) }
+        )}
+      >
+        <Header />
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={true}
+          theme="colored"
+        />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
