@@ -46,7 +46,6 @@ interface IProps {
 
 const WaterMonthChart: FC<IProps> = ({ monthlyData, label }) => {
   const labels = label;
-
   const data = {
     labels,
     datasets: [

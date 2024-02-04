@@ -28,12 +28,15 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
 
   const validationSchema = Yup.object({
     newPassword: Yup.string()
-      .required("Password is required.")
-      .min(7, "Password must be at least 8 characters.")
-      .max(55, "Password must be less than 55 characters."),
+      .required(`${t("authorization.errors.passwordReq")}`)
+      .min(8, `${t("authorization.errors.passwordLeast")}`)
+      .max(64, `${t("authorization.errors.passwordLess")}`),
     repeatNewPassword: Yup.string()
-      .oneOf([Yup.ref("newPassword")], "Passwords must match")
-      .required("Repeat password is required."),
+      .oneOf(
+        [Yup.ref("newPassword")],
+        `${t("authorization.errors.passwordMatch")}`
+      )
+      .required(`${t("authorization.errors.repeatPasswordReq")}`),
   });
 
   return (
@@ -49,7 +52,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
             <div className={css.formControl}>
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="update-password-id1">
-                  {t("signIn.enterNewPass")}
+                  {t("authorization.enterNewPass")}
                 </label>
                 <div
                   className={`${css.inputBox} ${
@@ -67,7 +70,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
                     }`}
                     name="newPassword"
                     type={showNewPassword ? "text" : "password"}
-                    placeholder={t("signIn.enterNewPassText")}
+                    placeholder={t("authorization.enterNewPassText")}
                   />
                   <div
                     className={css.iconeye}
@@ -89,7 +92,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
               </div>
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="update-password-id2">
-                  {t("signIn.repeatNewPass")}
+                  {t("authorization.repeatNewPass")}
                 </label>
                 <div
                   className={`${css.inputBox} ${
@@ -107,7 +110,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
                     }`}
                     name="repeatNewPassword"
                     type={showRepeatNewPassword ? "text" : "password"}
-                    placeholder={t("signIn.repeatNewPassText")}
+                    placeholder={t("authorization.repeatNewPassText")}
                   />
                   <div
                     className={css.iconeye}
@@ -134,7 +137,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
                 />
               </div>
               <button type="submit" className={css.button}>
-                {t("signIn.send")}
+                {t("authorization.send")}
               </button>
             </div>
           </Form>

@@ -24,10 +24,10 @@ const ForgotPasswordPage = () => {
     setLoader(true);
     try {
       await sendMailForgotPass(values);
-      toast.success("The operation was successful, check your email");
+      toast.success(`${t("authorization.notification.success")}`);
     } catch (error) {
       setLoader(false);
-      toast.error("Something went wrong, try again");
+      toast.error(`${t("authorization.notification.error")}`);
     } finally {
       setLoader(false);
     }
@@ -37,7 +37,10 @@ const ForgotPasswordPage = () => {
 
   return (
     <div className={css.container}>
-      <FormSendEmail title={t("signIn.forgot")} onSubmit={handleSubmit} />
+      <FormSendEmail
+        title={t("authorization.forgot")}
+        onSubmit={handleSubmit}
+      />
       {loader && (
         <Backdrop>
           <Loader />

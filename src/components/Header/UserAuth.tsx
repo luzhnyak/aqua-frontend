@@ -15,7 +15,7 @@ const UserAuth: React.FC = () => {
   return (
     <>
       <Link to="/signin" className={css.signIn}>
-        <p className={css.signInText}>{t("userAuth.login")}</p>
+        <p className={css.signInText}>{t("authorization.login")}</p>
         <IconUser className={css.IconUser} />
       </Link>
       <div className={css.lngBtns}>

@@ -3,6 +3,7 @@ import { deleteWaterThunk } from "../../redux/waterConsumption/operations";
 import css from "./ConfirmDeleteModal.module.css";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   onClose: (value: boolean) => void;
@@ -10,6 +11,8 @@ interface IProps {
 }
 
 const ConfirmDeleteModal: FC<IProps> = ({ onClose, id }) => {
+  const { t } = useTranslation();
+
   const dispatch: AppDispatch = useDispatch();
 
   const handleDelete = () => {
@@ -24,13 +27,13 @@ const ConfirmDeleteModal: FC<IProps> = ({ onClose, id }) => {
 
   return (
     <div>
-      <h4 className={css.title}>Are you sure you want to delete the entry?</h4>
+      <h4 className={css.title}>{t("confirmDeleteModal.title")}</h4>
       <div className={css.buttons}>
         <button className={css.cancelBtn} type="button" onClick={handleClose}>
-          Cancel
+          {t("confirmDeleteModal.cancel")}
         </button>
         <button className={css.logoutBtn} type="button" onClick={handleDelete}>
-          Delete
+          {t("confirmDeleteModal.delete")}
         </button>
       </div>
     </div>
