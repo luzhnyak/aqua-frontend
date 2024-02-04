@@ -72,10 +72,6 @@ export const MonthStatsTable: FC = () => {
     };
 
     disabled();
-
-    // if (popUpOpen) {
-    //   handleCloseClick();
-    // }
   }, [sDate, waterToday, dispatch]);
 
   const findMonthDays = (y: number, m: number) => {
@@ -132,7 +128,7 @@ export const MonthStatsTable: FC = () => {
       setsPopup(true);
     }
 
-    setsDate(date);
+    // setsDate(date);
     setsDay(day);
   };
 
