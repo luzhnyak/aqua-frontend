@@ -1,8 +1,8 @@
 import axios from "axios";
 import { IDdailyEntry, IRegisterUser, IUpdateUser } from "../types";
 
-// axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
-axios.defaults.baseURL = "http://127.0.0.1:3000";
+axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
+//axios.defaults.baseURL = "http://127.0.0.1:3000";
 
 
 export const setToken = (token: string) => {
