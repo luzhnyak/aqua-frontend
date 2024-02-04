@@ -52,13 +52,13 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
           title="Edit the entered amount of water"
           onClose={closeModalEdit}
         >
-          {/* <AddWaterModal
+          <AddWaterModal
             isEditWater={true}
             id={id}
-            previousAmount={amount}
+            previousAmount={amount.toString()}
             previousTime={time}
             onClose={closeModalEdit}
-          /> */}
+          />
         </Modal>
       )}
       {isModalDelete && (

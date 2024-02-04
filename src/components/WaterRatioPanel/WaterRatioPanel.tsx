@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import css from "./WaterRatioPanel.module.css";
 
 import { useSelector } from "react-redux";
@@ -15,7 +15,7 @@ const WaterRatioPanel = () => {
     return 0;
   }, [waterToday]);
   const [isOpen, setAddWaterModalOpen] = useState(false);
-  const [isAddWater, setIsAddWater] = useState(false);
+  // const [isAddWater, setIsAddWater] = useState(false);
 
   const openModal = () => {
     setAddWaterModalOpen(true);
@@ -27,32 +27,36 @@ const WaterRatioPanel = () => {
     document.body.classList.remove("body-scroll-lock");
   };
 
-  const toggleIsAddWaterState = () => {
-    setIsAddWater(!isAddWater);
-  };
+  // const toggleIsAddWaterState = () => {
+  //   setIsAddWater(!isAddWater);
+  // };
 
   useEffect(() => {
     const rangeThumb = document.getElementById("range-thumb");
     const rangeInput = document.getElementById("range-input");
 
     // const thumbPosition = rangeInput.value / rangeInput.max;
+    const thumbPosition = progressValue / 100;
 
-    // const changeThumbPosition = () => {
-    //   const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
-    //   const thumbPositionX = thumbPosition * space;
-    //   rangeThumb.style.left = `${thumbPositionX}px`;
-    // };
+    const changeThumbPosition = () => {
+      if (rangeThumb && rangeInput) {
+        const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
+        const thumbPositionX = thumbPosition * space;
+        rangeThumb.style.left = `${thumbPositionX}px`;
+      }
+    };
 
-    // changeThumbPosition();
+    changeThumbPosition();
 
-    // const updateProgressBarColor = () => {
-    //   const space = rangeInput.offsetWidth - 7;
-    //   const thumbPositionX = thumbPosition * space;
-
-    //   rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
-    // };
-    // updateProgressBarColor();
-  }, [waterToday]);
+    const updateProgressBarColor = () => {
+      if (rangeThumb && rangeInput) {
+        const space = rangeInput.offsetWidth - 7;
+        const thumbPositionX = thumbPosition * space;
+        rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
+      }
+    };
+    updateProgressBarColor();
+  }, [waterToday, progressValue]);
 
   return (
     <div>
@@ -104,10 +108,7 @@ const WaterRatioPanel = () => {
       </div>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>
-          {/* <AddWaterModal
-            isAddWater={toggleIsAddWaterState}
-            onClose={closeModal}
-          /> */}
+          <AddWaterModal isAddWater={true} onClose={closeModal} />
         </Modal>
       )}
     </div>

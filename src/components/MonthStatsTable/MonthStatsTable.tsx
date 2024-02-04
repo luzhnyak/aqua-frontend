@@ -2,7 +2,10 @@ import css from "./MonthStatsTable.module.css";
 import { FC, useEffect, useState } from "react";
 import PopUpDay from "./PopUpDay";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWatersPerMonth } from "../../redux/waterConsumption/selectors";
+import {
+  selectWatersPerMonth,
+  selectWatersToday,
+} from "../../redux/waterConsumption/selectors";
 import { getAllWaterForMonthThunk } from "../../redux/waterConsumption/operations";
 import { selectUser } from "../../redux/auth/selectors";
 import clsx from "clsx";
@@ -11,20 +14,18 @@ import Modal from "../../components/Modal/Modal";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 
-interface IProps {
-  popUpOpen: boolean;
-}
-
-export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
+export const MonthStatsTable: FC = () => {
   const { t } = useTranslation();
-
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector(selectUser);
   const creationDate = user.createdAt ? new Date(user.createdAt) : new Date();
   const currentUserYear = creationDate.getFullYear();
   const currentUserMonth = creationDate.getMonth() + 1;
   const currentUserDay = creationDate.getDate();
+
   const waterPerMonth = useSelector(selectWatersPerMonth);
+  const waterToday = useSelector(selectWatersToday);
+
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState<string | null>(null);
   const [popUp, setsPopup] = useState(false);
@@ -35,14 +36,17 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
   const next = "\u003E";
 
   // for chart
-  const labels: string[] = [];
-  const dataPerDay: string[] = [];
+  const labels: number[] = [];
+  const dataPerDay: number[] = [];
 
   useEffect(() => {
     const getMonthWater = () => {
-      const y = sDate.getFullYear();
-      const m = sDate.getMonth();
-      const chosenMonth = { year: y.toString(), month: m.toString() };
+      const chosenMonth = {
+        year: sDate.getFullYear().toString(),
+        month: sDate.toLocaleString("en-US", {
+          month: "long",
+        }),
+      };
       dispatch(getAllWaterForMonthThunk(chosenMonth));
     };
     getMonthWater();
@@ -69,10 +73,10 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
 
     disabled();
 
-    if (popUpOpen) {
-      handleCloseClick();
-    }
-  }, [popUpOpen, sDate, dispatch]);
+    // if (popUpOpen) {
+    //   handleCloseClick();
+    // }
+  }, [sDate, waterToday, dispatch]);
 
   const findMonthDays = (y: number, m: number) => {
     return new Date(y, m + 1, 0).getDate();
@@ -152,7 +156,7 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
-      labels.push(d.toString());
+      labels.push(d);
       let dayInMonth: number[] = [];
 
       waterPerMonth.map((day) => {
@@ -208,7 +212,7 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
       const inactive = allDays.filter((day) => day.day < currentUserDay);
       inactive.map((day) => (day.disabled = true));
     }
-    allDays.map((day) => dataPerDay.push(day.value.toString()));
+    allDays.map((day) => dataPerDay.push(day.value));
     return allDays;
   };
   const openModal = () => {
@@ -277,16 +281,16 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
                   </button>
                   <p className={css.percent}> {item.value}%</p>
 
-                  {/* {popUp && sDay === item.day.toString() && (
+                  {popUp && sDay === item.day.toString() && (
                     <PopUpDay
-                      dayId={item?.id}
+                      // dayId={item?.id}
                       handleCloseClick={handleCloseClick}
                       sDate={sDate}
-                      waterRate={item.norm}
-                      dailyEntries={item.dailyEntry.toString()}
-                      progress={item.value.toString()}
+                      waterRate={Number(item.norm)}
+                      dailyEntries={Number(item.dailyEntry)}
+                      progress={item.value}
                     />
-                  )} */}
+                  )}
                 </div>
               ) : (
                 <div className={css["day-cell"]}>
@@ -301,8 +305,8 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
         })}
       </div>
       {isOpen && (
-        <Modal title="" onClose={closeModal}>
-          {/* <WaterMonthChart label={labels} monthlyData={dataPerDay} /> */}
+        <Modal title="Monthly statistic" onClose={closeModal}>
+          <WaterMonthChart label={labels} monthlyData={dataPerDay} />
         </Modal>
       )}
     </div>

@@ -60,7 +60,10 @@ export const updateWaterNorma = async (newWaterRate: string) => {
 
 //==========================WaterData
 
-export const addWater = async (newWater: IDdailyEntry) => {
+export const addWater = async (newWater: {
+  date: string;
+  water: IDdailyEntry;
+}) => {
   const { data } = await axios.post("/water", newWater);
   return data;
 };
@@ -70,8 +73,8 @@ export const deleteWaterById = async (dayId: string, entryId: string) => {
   return data;
 };
 
-export const getAllWaterForToday = async () => {
-  const { data } = await axios.get(`/water`);
+export const getAllWaterForToday = async (date: string) => {
+  const { data } = await axios.get(`/water/${date}`);
   return data;
 };
 

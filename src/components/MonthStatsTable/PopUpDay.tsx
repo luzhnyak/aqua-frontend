@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import css from "./MonthStatsTable.module.css";
 import clsx from "clsx";
 import { ReactComponent as IconClose } from "../../images/icons/x-mark-outline.svg";
@@ -7,9 +7,9 @@ import AnimatedComponent from "../../components/AnimatedComponent/AnimatedCompon
 interface IProps {
   sDate: Date;
   handleCloseClick: () => void;
-  dailyEntries: string;
-  progress: string;
-  waterRate: string;
+  dailyEntries: number;
+  progress: number;
+  waterRate: number;
 }
 
 const PopUpDay: FC<IProps> = ({
@@ -19,6 +19,32 @@ const PopUpDay: FC<IProps> = ({
   progress,
   waterRate,
 }) => {
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === "Escape") {
+        handleCloseClick();
+      }
+    };
+
+    const handleClose = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        handleCloseClick();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClose);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.addEventListener("mousedown", handleClose);
+    };
+  }, [handleCloseClick]);
+
   const day = Number(
     sDate.toLocaleDateString("en-US", {
       day: "numeric",
@@ -29,7 +55,7 @@ const PopUpDay: FC<IProps> = ({
 
   return (
     <AnimatedComponent
-      css={clsx(css.popUp, {
+      css={clsx({
         [css.left]: numberForX.includes(day),
         [css.right]: !numberForX.includes(day),
         [css.secondRow]: day > 5,
@@ -40,28 +66,33 @@ const PopUpDay: FC<IProps> = ({
         [css.seventhRow]: day > 30,
       })}
     >
-      <div className={css["popup-header"]}>
-        <p className={css["popup-date"]}>
-          {`${sDate.toLocaleDateString("en-US", {
-            day: "numeric",
-          })},  
+      <div ref={modalRef} className={css.popUp}>
+        <div className={css["popup-header"]}>
+          <p className={css["popup-date"]}>
+            {`${sDate.toLocaleDateString("en-US", {
+              day: "numeric",
+            })},  
            ${sDate.toLocaleDateString("en-US", {
              month: "long",
            })}`}
+          </p>
+          <IconClose
+            className={css["popup-close"]}
+            onClick={handleCloseClick}
+          />
+        </div>
+        <p>
+          Daily norma: <span className={css.info}>{waterRate} L</span>
         </p>
-        <IconClose className={css["popup-close"]} onClick={handleCloseClick} />
+        <p>
+          Fulfillment of the daily norm:{" "}
+          <span className={css.info}>{progress}%</span>
+        </p>
+        <p>
+          How many servings of water:{" "}
+          <span className={css.info}>{dailyEntries}</span>
+        </p>
       </div>
-      <p>
-        Daily norma: <span className={css.info}>{waterRate} L</span>
-      </p>
-      <p>
-        Fulfillment of the daily norm:{" "}
-        <span className={css.info}>{progress}%</span>
-      </p>
-      <p>
-        How many servings of water:{" "}
-        <span className={css.info}>{dailyEntries}</span>
-      </p>
     </AnimatedComponent>
   );
 };

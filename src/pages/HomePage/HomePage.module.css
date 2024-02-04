@@ -1,11 +1,15 @@
 /* Container */
 
-@media only screen and (min-width: 320px) {
+.container {
+  margin: 0 auto;
+  padding: 0px 20px;
+}
+
+@media only screen and (max-width: 767px) {
   .container {
     margin: 0 auto;
     max-width: 320px;
     padding: 0px 20px;
-    height: 100vh;
   }
 }
 
@@ -29,21 +33,21 @@
 
 @media only screen and (min-width: 320px) {
   .background {
-    background: url('../../images/mobile-background-element-home-screen.svg')
+    background: url("../../images/mobile-background-element-home-screen.svg")
       left 50% top -15% / 320px 1328px no-repeat;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .background {
-    background: url('../../images/tablet-background-element-home-screen.svg')
+    background: url("../../images/tablet-background-element-home-screen.svg")
       left 40% top -5% / 768px 1280px no-repeat;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .background {
-    background: url('../../images/desktop-background-element-main-page.svg ')
+    background: url("../../images/desktop-background-element-main-page.svg ")
       left 50% top 15%/ 1404px 582px no-repeat;
   }
 }
@@ -52,7 +56,7 @@
 
 .firstSection {
   padding: 24px 0 0px 0;
-  background: url('../../images/mobile-bottle-home-screen.svg') left 50% top 45%/
+  background: url("../../images/mobile-bottle-home-screen.svg") left 50% top 45%/
     280px 208px no-repeat;
 }
 
@@ -60,7 +64,7 @@
   .firstSection {
     max-width: 768px;
     padding: 40px 0 0px 0;
-    background: url('../../images/tablet-bottle-home-screen.svg') left 50% top
+    background: url("../../images/tablet-bottle-home-screen.svg") left 50% top
       30% / 518px 386px no-repeat;
   }
 }
@@ -69,7 +73,7 @@
   .firstSection {
     padding: 52px 0 0 0;
     min-width: 650px;
-    background: url('../../images/desktop-bottle-home-screen.svg') right top 15% /
+    background: url("../../images/desktop-bottle-home-screen.svg") right top 15% /
       738px 548px no-repeat;
   }
 }

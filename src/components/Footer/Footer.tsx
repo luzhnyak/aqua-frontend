@@ -1,17 +1,20 @@
 import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
-import css from "./Fotter.module.css";
+import css from "./Footer.module.css";
 import { ReactComponent as Iconlogo } from "../../images/logo.svg";
+import TeamMembers from "./TeamMembers";
 
 const Footer = () => {
   const [isOpen, setTeamModalOpen] = useState(false);
 
   const openModal = () => {
     setTeamModalOpen(true);
+    document.body.classList.add("body-scroll-lock");
   };
 
   const closeModal = () => {
     setTeamModalOpen(false);
+    document.body.classList.remove("body-scroll-lock");
   };
 
   return (
@@ -32,7 +35,7 @@ const Footer = () => {
       </div>
       {isOpen && (
         <Modal title="Our team" onClose={closeModal}>
-          test
+          <TeamMembers />
         </Modal>
       )}
     </footer>

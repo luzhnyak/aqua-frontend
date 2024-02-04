@@ -19,21 +19,21 @@ import { selectWatersToday } from "../../redux/waterConsumption/selectors";
 import { AppDispatch } from "../../redux/store";
 
 interface IProps {
-  isAddWater: boolean;
-  isEditWater: boolean;
+  isAddWater?: boolean;
+  isEditWater?: boolean;
   onClose: () => void;
-  id: string;
-  previousAmount: string;
-  previousTime: string;
+  id?: string;
+  previousAmount?: string;
+  previousTime?: string;
 }
 
 const AddWaterModal: FC<IProps> = ({
-  isAddWater,
-  isEditWater,
+  isAddWater = false,
+  isEditWater = false,
   onClose,
-  id,
-  previousAmount,
-  previousTime,
+  id = "",
+  previousAmount = "",
+  previousTime = "",
 }) => {
   const waterToday = useSelector(selectWatersToday);
 
