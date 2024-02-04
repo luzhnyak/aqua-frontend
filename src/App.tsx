@@ -41,7 +41,12 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          {/* <Route index element={<Navigate to="welcome" />}></Route> */}
+          <Route
+            index
+            element={
+              <RestrictedRoute component={<WelcomePage />} redirectTo="/home" />
+            }
+          ></Route>
           <Route
             path="home"
             element={
