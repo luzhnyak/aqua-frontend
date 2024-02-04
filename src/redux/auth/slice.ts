@@ -30,7 +30,7 @@ export interface IAuthInitialState {
 
 const authInitialState: IAuthInitialState = {
   token: null,
-  refreshToken:null,
+  refreshToken: null,
   user: {
     name: null,
     email: null,
@@ -56,11 +56,11 @@ const handleRejected = (
   state.isRefreshing = false;
   state.error = action.payload;
 
-  const errorCode = action.payload?.errorCode;
-  if (errorCode === 401) {
-    state.isLoggedIn = false;
-    state.token = null;
-  }
+  // const errorCode = action.payload?.errorCode;
+  // if (errorCode === 401) {
+  //   state.isLoggedIn = false;
+  //   state.token = null;
+  // }
 };
 
 const authSlice = createSlice({
@@ -71,7 +71,6 @@ const authSlice = createSlice({
     setToken(state: IAuthInitialState, action) {
       return (state = { ...state, token: action.payload });
     },
-  
   },
 
   extraReducers: (builder) =>
@@ -84,7 +83,7 @@ const authSlice = createSlice({
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
-        state.refreshToken=action.payload.refreshToken
+        state.refreshToken = action.payload.refreshToken;
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
@@ -111,7 +110,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
       })
-     
+
       .addMatcher(
         isAnyOf(
           signUpThunk.pending,
@@ -121,7 +120,7 @@ const authSlice = createSlice({
           updateAvatarThunk.pending,
           updateUserInfoThunk.pending,
           updateWaterNormaThunk.pending,
-          refreshTokensThunk.pending,
+          refreshTokensThunk.pending
         ),
         handlePending
       )
@@ -140,5 +139,5 @@ const authSlice = createSlice({
       ),
 });
 
-export const { setToken} = authSlice.actions;
+export const { setToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

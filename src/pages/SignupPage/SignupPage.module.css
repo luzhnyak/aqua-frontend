@@ -7,10 +7,9 @@
     margin: 0 auto;
     max-width: 320px;
     padding: 24px 20px 0px 20px;
-    height: 100vh;
-    background: url('../../images/mobile-background-element-sign-in.svg') left
+    background: url("../../images/mobile-background-element-sign-in.svg") left
         0% top -20% / 320px 844px no-repeat,
-      url('../../images/mobile-bottle-sign-in.svg') center bottom 5% / 280px
+      url("../../images/mobile-bottle-sign-in.svg") center bottom 5% / 280px
         210px no-repeat;
   }
 }
@@ -19,7 +18,7 @@
   .MainContainer {
     max-width: 768px;
     padding: 40px 32px 156px 32px;
-    background: url('../../images/tablet-bottle-sign-in.svg') left 0% top -50% /
+    background: url("../../images/tablet-bottle-sign-in.svg") left 0% top -50% /
       768px 680px no-repeat;
   }
 }
@@ -28,9 +27,9 @@
   .MainContainer {
     max-width: 1440px;
     padding: 148px 198px 232px 198px;
-    background: url('../../images/desktop-background-element-main-page.svg ')
+    background: url("../../images/desktop-background-element-main-page.svg ")
         left 20% top 0% / 1404px 582px no-repeat,
-      url('../../images/desktop-bottle-sign-in.svg') left 0% top 10% / 916px
+      url("../../images/desktop-bottle-sign-in.svg") left 0% top 10% / 916px
         680px no-repeat;
   }
 }

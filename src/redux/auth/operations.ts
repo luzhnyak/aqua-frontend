@@ -16,7 +16,6 @@ import { RootState } from "../store";
 import { IRegisterUser, IUpdateUser } from "../../types";
 import { handleApiError } from "../../services/handleApiError";
 
-
 export const signUpThunk = createAsyncThunk(
   "auth/register",
   async (formData: IRegisterUser, thunkApi) => {
@@ -57,29 +56,24 @@ export const logoutThunk = createAsyncThunk(
 );
 
 export const refreshTokensThunk = createAsyncThunk(
-  'auth/refreshTokens',
- async (_, thunkApi) => {
-   try {
-     const currentState:any = thunkApi.getState() as RootState;
-     const oldRefreshToken = currentState.auth.refreshToken
-     
-     if (oldRefreshToken !== null) {
-       const response = await refreshTokensApi(oldRefreshToken)
-       const { token} = response
+  "auth/refreshTokens",
+  async (_, thunkApi) => {
+    try {
+      const currentState: any = thunkApi.getState() as RootState;
+      const oldRefreshToken = currentState.auth.refreshToken;
 
-      setToken(token);
-    return response
-    }
-  
-   } catch (error) {
-     const errorObj = handleApiError(error);
+      if (oldRefreshToken !== null) {
+        const response = await refreshTokensApi(oldRefreshToken);
+        // const { token } = response;
+
+        // setToken(token);
+        return response;
+      }
+    } catch (error) {
+      const errorObj = handleApiError(error);
       return thunkApi.rejectWithValue(errorObj);
-    
-   }
-   
-  },
-
-  
+    }
+  }
 );
 
 export const refreshCurrentUserThunk = createAsyncThunk(
