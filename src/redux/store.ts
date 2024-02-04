@@ -10,15 +10,19 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/slice";
 import { waterReducer } from "./waterConsumption/slice";
+import { logoutThunk, refreshTokensThunk } from "./auth/operations";
+import axios from "axios";
+
+
+
 
 const authConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token","refreshToken"],
 };
 
 const rootReducer = combineReducers({
@@ -35,6 +39,10 @@ const ignoredPersistenceActions = [
   REGISTER,
 ];
 
+
+
+
+
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
@@ -42,8 +50,40 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: ignoredPersistenceActions,
       },
-    }),
+    })
 });
+
+
+axios.interceptors.response.use(
+  function (response): any {
+    return response;
+  },
+  async function (error) {
+
+    if (error.response.status === 401) {
+     
+      try {
+        const isRefreshTokenFail = await store.dispatch(refreshTokensThunk());
+       
+        if (isRefreshTokenFail.type === 'auth/refreshTokens/rejected') {
+          console.error('Refresh token Error');  
+          store.dispatch(logoutThunk());
+          return
+        }
+ 
+        const newToken = store.getState().auth.token;
+        error.config.headers.Authorization = `Bearer ${newToken}`;
+
+        return axios(error.config);
+      } catch (refreshError) {
+        console.error('Refresh token Error', refreshError);  
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 
 export const persistor = persistStore(store);
 

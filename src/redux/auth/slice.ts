@@ -8,11 +8,13 @@ import {
   updateAvatarThunk,
   updateUserInfoThunk,
   updateWaterNormaThunk,
+  refreshTokensThunk,
 } from "./operations";
 import { IError } from "../../services/handleApiError";
 
 export interface IAuthInitialState {
   token: string | null;
+  refreshToken: string | null;
   user: {
     name: string | null;
     email: string | null;
@@ -28,6 +30,7 @@ export interface IAuthInitialState {
 
 const authInitialState: IAuthInitialState = {
   token: null,
+  refreshToken:null,
   user: {
     name: null,
     email: null,
@@ -68,6 +71,7 @@ const authSlice = createSlice({
     setToken(state: IAuthInitialState, action) {
       return (state = { ...state, token: action.payload });
     },
+  
   },
 
   extraReducers: (builder) =>
@@ -80,6 +84,7 @@ const authSlice = createSlice({
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
+        state.refreshToken=action.payload.refreshToken
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
@@ -102,6 +107,11 @@ const authSlice = createSlice({
       .addCase(updateWaterNormaThunk.fulfilled, (state, action) => {
         state.user.waterRate = action.payload;
       })
+      .addCase(refreshTokensThunk.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
+      })
+     
       .addMatcher(
         isAnyOf(
           signUpThunk.pending,
@@ -110,7 +120,8 @@ const authSlice = createSlice({
           refreshCurrentUserThunk.pending,
           updateAvatarThunk.pending,
           updateUserInfoThunk.pending,
-          updateWaterNormaThunk.pending
+          updateWaterNormaThunk.pending,
+          refreshTokensThunk.pending,
         ),
         handlePending
       )
@@ -122,11 +133,12 @@ const authSlice = createSlice({
           refreshCurrentUserThunk.rejected,
           updateAvatarThunk.rejected,
           updateUserInfoThunk.rejected,
-          updateWaterNormaThunk.rejected
+          updateWaterNormaThunk.rejected,
+          refreshTokensThunk.rejected
         ),
         handleRejected
       ),
 });
 
-export const { setToken } = authSlice.actions;
+export const { setToken} = authSlice.actions;
 export const authReducer = authSlice.reducer;
