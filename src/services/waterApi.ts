@@ -1,7 +1,9 @@
 import axios from "axios";
 import { IDdailyEntry, IRegisterUser, IUpdateUser } from "../types";
 
-axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
+// axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
+axios.defaults.baseURL = "http://127.0.0.1:3000";
+
 
 export const setToken = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -31,6 +33,11 @@ export const requestUserLogout = async () => {
 
 export const refreshCurrentUser = async () => {
   const { data } = await axios.get("/users/current");
+  return data;
+};
+
+export const refreshTokensApi = async (oldRefreshToken:string) => {
+  const { data } = await axios.post("/users/refresh",{refreshToken:oldRefreshToken});
   return data;
 };
 
