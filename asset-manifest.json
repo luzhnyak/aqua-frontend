@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/aqua-frontend/static/css/main.8e464ae3.css",
-    "main.js": "/aqua-frontend/static/js/main.25ad5c63.js",
+    "main.css": "/aqua-frontend/static/css/main.45266edf.css",
+    "main.js": "/aqua-frontend/static/js/main.3ffcf8dd.js",
     "static/css/680.84712717.chunk.css": "/aqua-frontend/static/css/680.84712717.chunk.css",
     "static/js/680.5258fee9.chunk.js": "/aqua-frontend/static/js/680.5258fee9.chunk.js",
     "static/css/122.3515c187.chunk.css": "/aqua-frontend/static/css/122.3515c187.chunk.css",
@@ -27,6 +27,7 @@
     "static/media/HalynaLastivka.jpg": "/aqua-frontend/static/media/HalynaLastivka.ea45200b6255239bca2c.jpg",
     "static/media/OlehLuzhniak.jpg": "/aqua-frontend/static/media/OlehLuzhniak.bf85730395481da2a909.jpg",
     "static/media/KaterynaBachkalo.jpg": "/aqua-frontend/static/media/KaterynaBachkalo.9ff3f99a52d5f44cb9b1.jpg",
+    "static/media/AnnaBoichuk.jpg": "/aqua-frontend/static/media/AnnaBoichuk.f091915684dc5f28d327.jpg",
     "static/media/IrynaShevchenko.jpg": "/aqua-frontend/static/media/IrynaShevchenko.5eb4e23cb28a9229a909.jpg",
     "static/media/tablet-background-main-page.svg": "/aqua-frontend/static/media/tablet-background-main-page.d1aeec6e3aa9c4adee3c.svg",
     "static/media/tablet-bottle-sign-in.svg": "/aqua-frontend/static/media/tablet-bottle-sign-in.07d009d11255ee833b61.svg",
@@ -70,8 +71,8 @@
     "static/media/radio-button.svg": "/aqua-frontend/static/media/radio-button.c19e6c6e8679819727a7.svg",
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
-    "main.8e464ae3.css.map": "/aqua-frontend/static/css/main.8e464ae3.css.map",
-    "main.25ad5c63.js.map": "/aqua-frontend/static/js/main.25ad5c63.js.map",
+    "main.45266edf.css.map": "/aqua-frontend/static/css/main.45266edf.css.map",
+    "main.3ffcf8dd.js.map": "/aqua-frontend/static/js/main.3ffcf8dd.js.map",
     "680.84712717.chunk.css.map": "/aqua-frontend/static/css/680.84712717.chunk.css.map",
     "680.5258fee9.chunk.js.map": "/aqua-frontend/static/js/680.5258fee9.chunk.js.map",
     "122.3515c187.chunk.css.map": "/aqua-frontend/static/css/122.3515c187.chunk.css.map",
@@ -91,7 +92,7 @@
     "80.5be8741c.chunk.js.map": "/aqua-frontend/static/js/80.5be8741c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e464ae3.css",
-    "static/js/main.25ad5c63.js"
+    "static/css/main.45266edf.css",
+    "static/js/main.3ffcf8dd.js"
   ]
 }
