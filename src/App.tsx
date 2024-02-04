@@ -8,7 +8,7 @@ import { refreshCurrentUserThunk } from "./redux/auth/operations";
 // import ResendVerifyEmailPage from "./pages/ResendVerifyEmailPage/ResendVerifyEmailPage";
 
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
-// import { AuthRoute } from "./pages/AuthRoute";
+import { AuthRoute } from "./pages/AuthRoute";
 import { PrivateRoute } from "./pages/PrivateRoute";
 import { RestrictedRoute } from "./pages/RestrictedRoute";
 
@@ -70,15 +70,7 @@ const App = () => {
             }
           ></Route>
 
-          {/* <Route
-            path="auth"
-            element={
-              <AuthRoute
-                component={<RedirectVerifyPage />}
-                redirectTo="/home"
-              />
-            }
-          /> */}
+          <Route path="auth" element={<AuthRoute redirectTo="/home" />} />
 
           <Route path="verify/:token" element={<RedirectVerifyPage />} />
 

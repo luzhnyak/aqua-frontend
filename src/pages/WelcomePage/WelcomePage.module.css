@@ -35,7 +35,7 @@
   .container {
     max-width: 768px;
     padding: 0px 32px;
-    height: 100vh;
+    min-height: calc(100vh - 134px);
   }
 }
 
