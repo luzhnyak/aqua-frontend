@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/aqua-frontend/static/css/main.02f49693.css",
+    "main.css": "/aqua-frontend/static/css/main.20e9ca90.css",
     "main.js": "/aqua-frontend/static/js/main.26711616.js",
     "static/css/680.84712717.chunk.css": "/aqua-frontend/static/css/680.84712717.chunk.css",
     "static/js/680.1ffb9dbd.chunk.js": "/aqua-frontend/static/js/680.1ffb9dbd.chunk.js",
@@ -46,7 +46,7 @@
     "static/media/cog-6-tooth.svg": "/aqua-frontend/static/media/cog-6-tooth.3aead709128a55e3ad784955960f8481.svg",
     "static/media/wrench-screwdriver.svg": "/aqua-frontend/static/media/wrench-screwdriver.1ef47b6378ba99b1bec33eba937a8039.svg",
     "static/media/calendar-days.svg": "/aqua-frontend/static/media/calendar-days.566bea3a06cbe5f7ac704cdc07c7c3bf.svg",
-    "static/media/cursor-active.svg": "/aqua-frontend/static/media/cursor-active.ff830cdc1b602653ae9a.svg",
+    "static/media/cursor-active.svg": "/aqua-frontend/static/media/cursor-active.76c2e0cca6fc3af520b0.svg",
     "static/media/github.svg": "/aqua-frontend/static/media/github.b81146114bfabed6bffefb11d1d7f25d.svg",
     "static/media/google-icon.svg": "/aqua-frontend/static/media/google-icon.17675d09a4cae94c6a9a17e1b164b180.svg",
     "static/media/user.svg": "/aqua-frontend/static/media/user.7e9142ea9fe6914dec8884aeca1aee4e.svg",
@@ -61,16 +61,16 @@
     "static/media/arrow-right-on-rectangle.svg": "/aqua-frontend/static/media/arrow-right-on-rectangle.02cb487a75ecb89135ef1a7de29c8136.svg",
     "static/media/minus-small.svg": "/aqua-frontend/static/media/minus-small.362797cb0f525040c721bd52cc198fd8.svg",
     "static/media/linkedin.svg": "/aqua-frontend/static/media/linkedin.b5db985d0d658e7fd21c0847f27d5172.svg",
-    "static/media/cursor.svg": "/aqua-frontend/static/media/cursor.ad1e0695e27d4fc6ddb4.svg",
+    "static/media/cursor.svg": "/aqua-frontend/static/media/cursor.173e24bac2d6932e1b07.svg",
     "static/media/getFetch.cjs": "/aqua-frontend/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/arrow-up-tray.svg": "/aqua-frontend/static/media/arrow-up-tray.fdd4bf11950e940aa129af38c71ace9b.svg",
-    "static/media/cursor-hover.svg": "/aqua-frontend/static/media/cursor-hover.fa752141f1d5e0fb3b0b.svg",
+    "static/media/cursor-hover.svg": "/aqua-frontend/static/media/cursor-hover.270fd3da564b7d20c63a.svg",
     "static/media/x-mark-outline.svg": "/aqua-frontend/static/media/x-mark-outline.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/x-mark.svg": "/aqua-frontend/static/media/x-mark.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/radio-button.svg": "/aqua-frontend/static/media/radio-button.c19e6c6e8679819727a7.svg",
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
-    "main.02f49693.css.map": "/aqua-frontend/static/css/main.02f49693.css.map",
+    "main.20e9ca90.css.map": "/aqua-frontend/static/css/main.20e9ca90.css.map",
     "main.26711616.js.map": "/aqua-frontend/static/js/main.26711616.js.map",
     "680.84712717.chunk.css.map": "/aqua-frontend/static/css/680.84712717.chunk.css.map",
     "680.1ffb9dbd.chunk.js.map": "/aqua-frontend/static/js/680.1ffb9dbd.chunk.js.map",
@@ -91,7 +91,7 @@
     "80.5be8741c.chunk.js.map": "/aqua-frontend/static/js/80.5be8741c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.02f49693.css",
+    "static/css/main.20e9ca90.css",
     "static/js/main.26711616.js"
   ]
 }
