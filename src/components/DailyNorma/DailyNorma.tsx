@@ -4,8 +4,11 @@ import DailyNormaModal from "./DailyNormaModal";
 import css from "./DailyNorma.module.css";
 import { useSelector } from "react-redux";
 import { selectWaterRate } from "../../redux/auth/selectors";
+import { useTranslation } from "react-i18next";
 
 const DailyNorma = () => {
+  const { t } = useTranslation();
+
   const [visible, setVisible] = useState(false);
 
   const waterRateMG = useSelector(selectWaterRate);
@@ -21,13 +24,15 @@ const DailyNorma = () => {
 
   return (
     <div className={css.dailyNormaBlock}>
-      <h3 className={css.normaTitle}>My daily norma</h3>
+      <h3 className={css.normaTitle}>{t("dailyNorma.normaTitle")}</h3>
 
       <div className={css.secondLineBlock}>
-        <p className={css.normaLiters}>{waterRate} L</p>
+        <p className={css.normaLiters}>
+          {waterRate} {t("dailyNorma.l")}
+        </p>
 
         {visible && (
-          <Modal title="My daily norma" onClose={toggleModal}>
+          <Modal title={t("dailyNorma.normaTitle")} onClose={toggleModal}>
             {/* <DailyNormaModal
               setVisible={setVisible}
               onWaterAmountSave={handleWaterAmountSave}
@@ -35,7 +40,7 @@ const DailyNorma = () => {
           </Modal>
         )}
         <button className={css.editButton} type="button" onClick={toggleModal}>
-          Edit
+          {t("dailyNorma.edit")}
         </button>
       </div>
     </div>

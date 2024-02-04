@@ -3,6 +3,7 @@ import css from "./Modal.module.css";
 import closeIcon from "../../images/icons/x-mark.svg";
 import { createPortal } from "react-dom";
 import AnimatedComponent from "../../components/AnimatedComponent/AnimatedComponent";
+import { useTranslation } from "react-i18next";
 
 const modalRoot: Element | null = document.querySelector("#root-modal");
 
@@ -13,6 +14,8 @@ interface IProps {
 }
 
 const Modal: FC<IProps> = ({ title, children, onClose }) => {
+  const { t } = useTranslation();
+
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -45,7 +48,9 @@ const Modal: FC<IProps> = ({ title, children, onClose }) => {
         <div
           ref={modalRef}
           className={`${css.modal} ${
-            title === "Setting" ? css.settingModal : css.modal
+            title === `${t("userLogoModal.setting")}`
+              ? css.settingModal
+              : css.modal
           }`}
           onClick={(event) => event.stopPropagation()}
         >
@@ -63,7 +68,9 @@ const Modal: FC<IProps> = ({ title, children, onClose }) => {
       <div
         ref={modalRef}
         className={`${css.modal} ${
-          title === "Setting" ? css.settingModal : css.modal
+          title === `${t("userLogoModal.setting")}`
+            ? css.settingModal
+            : css.modal
         }`}
         onClick={(event) => event.stopPropagation()}
       >

@@ -12,12 +12,15 @@ import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/Loader";
 import Backdrop from "../../components/Backdrop/Backdrop";
 import { updateUserInfo } from "../../services/waterApi";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   onClose: () => void;
 }
 
 const FormUser: FC<IProps> = ({ onClose }) => {
+  const { t } = useTranslation();
+
   const user = useSelector(selectUser);
   const { name, email, gender } = user;
 
@@ -146,7 +149,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
                 <div className={css.formName}>
                   <label className={css.title} htmlFor="name">
-                    Your name
+                    {t("formUser.name")}
                   </label>
                   <Field
                     id="name"
@@ -155,7 +158,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
                     }`}
                     name="name"
                     type="text"
-                    placeholder="Enter your name"
+                    placeholder={t("formUser.nameText")}
                   />
                   <ErrorMessage
                     name="name"
@@ -166,7 +169,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
                 <div className={css.formEmail}>
                   <label className={css.title} htmlFor="email">
-                    E-mail
+                    {t("formUser.email")}
                   </label>
                   <Field
                     id="email"
@@ -187,10 +190,12 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
               <div className={css.wrapPassword}>
                 <div className={css.formPassword}>
-                  <h4 className={css.titlePassword}>Password</h4>
+                  <h4 className={css.titlePassword}>
+                    {t("formUser.passwordText")}
+                  </h4>
 
                   <label className={css.subTitle} htmlFor="password">
-                    Outdated password:
+                    {t("formUser.outdatedPassword")}:
                   </label>
                   <div className={css.subform}>
                     <Field
@@ -202,7 +207,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
                       }`}
                       name="password"
                       type={showOutdatedPassword ? "text" : "password"}
-                      placeholder="Password"
+                      placeholder={t("formUser.passwordText")}
                     />
                     <div
                       onClick={() =>
@@ -225,7 +230,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
                 <div className={css.formPassword}>
                   <label className={css.subTitle} htmlFor="newPassword">
-                    New Password:
+                    {t("formUser.newPassword")}:
                   </label>
                   <div className={css.subform}>
                     <Field
@@ -237,7 +242,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
                       }`}
                       name="newPassword"
                       type={showNewPassword ? "text" : "password"}
-                      placeholder="Password"
+                      placeholder={t("formUser.passwordText")}
                     />
                     <div onClick={() => setShowNewPassword(!showNewPassword)}>
                       {showNewPassword ? (
@@ -256,7 +261,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
                 <div className={css.formPassword}>
                   <label className={css.subTitle} htmlFor="repeatPassword">
-                    Repeat new password:
+                    {t("formUser.repeatPassword")}:
                   </label>
                   <div className={css.subform}>
                     <Field
@@ -268,7 +273,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
                       }`}
                       name="repeatPassword"
                       type={showRepeatPassword ? "text" : "password"}
-                      placeholder="Password"
+                      placeholder={t("formUser.passwordText")}
                     />
                     <div
                       onClick={() => setShowRepeatPassword(!showRepeatPassword)}
@@ -290,7 +295,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
             </div>
 
             <button className={css.button} type="submit">
-              Save
+              {t("formUser.save")}
             </button>
           </Form>
         )}

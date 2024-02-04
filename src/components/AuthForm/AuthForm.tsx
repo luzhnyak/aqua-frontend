@@ -7,6 +7,7 @@ import { ReactComponent as ClosedEyeIcon } from "../../images/icons/eye.svg";
 import { ReactComponent as GoogleIcon } from "../../images/icons/google-icon.svg";
 import css from "./AuthForm.module.css";
 import { FormikHelpers } from "formik";
+import { useTranslation } from "react-i18next";
 
 export type SubmitValues = {
   repeatPassword?: string | undefined;
@@ -23,13 +24,15 @@ interface IProps {
 }
 
 const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
+  const { t } = useTranslation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showRepPassword, setShowRepPassword] = useState(false);
 
   const initialValues: SubmitValues = {
     email: "",
     password: "",
-    ...(formTitle === "Sign Up" && { repeatPassword: "" }),
+    ...(formTitle === `${t("signIn.register")}` && { repeatPassword: "" }),
   };
 
   const validationSchema = Yup.object({
@@ -38,7 +41,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
       .required("Password is required.")
       .min(8, "Password must be at least 8 characters.")
       .max(64, "Password must be less than 64 characters."),
-    ...(formTitle === "Sign Up" && {
+    ...(formTitle === `${t("signIn.register")}` && {
       repeatPassword: Yup.string()
         .oneOf([Yup.ref("password"), undefined], "Passwords must match")
         .required("Repeat password is required."),
@@ -57,7 +60,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
           <div className={css.formControl}>
             <div className={css.stack}>
               <label className={css.formLabel} htmlFor="unique-id1">
-                Enter your email
+                {t("signIn.email")}
               </label>
               <Field
                 id="unique-id1"
@@ -66,7 +69,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
                 } ${errors.email && touched.email ? css.errorInput : ""}`}
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder={t("signIn.emailText")}
               />
               <ErrorMessage
                 name="email"
@@ -77,7 +80,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
 
             <div className={css.stack}>
               <label className={css.formLabel} htmlFor="unique-id2">
-                Enter your password
+                {t("signIn.password")}
               </label>
               <div
                 className={`${css.inputBox} ${
@@ -91,7 +94,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
                   }`}
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Password"
+                  placeholder={t("signIn.passwordText")}
                 />
                 <div
                   className={css.iconeye}
@@ -112,10 +115,10 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
               />
             </div>
 
-            {formTitle === "Sign Up" && (
+            {formTitle === `${t("signIn.register")}` && (
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="unique-id3">
-                  Repeat your password
+                  {t("signIn.repeat")}
                 </label>
                 <div
                   className={`${css.inputBoxRep} ${
@@ -133,7 +136,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
                     }`}
                     name="repeatPassword"
                     type={showRepPassword ? "text" : "password"}
-                    placeholder="Repeat password"
+                    placeholder={t("signIn.repeatText")}
                   />
                   <div
                     className={css.iconeye}
@@ -156,32 +159,34 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
             )}
 
             <button className={css.button} type="submit">
-              {formTitle === "Sign In" ? "Sign In" : "Sign Up"}
+              {formTitle === `${t("signIn.login")}`
+                ? `${t("signIn.login")}`
+                : `${t("signIn.register")}`}
             </button>
 
-            {formTitle === "Sign In" && (
+            {formTitle === `${t("signIn.login")}` && (
               <a
                 href="https://aqua-backend-ieu7.onrender.com/auth/google"
                 className={css.googleLogin}
               >
                 <GoogleIcon className={css.googleIcon} />
-                <p className={css.googleText}>Enter with Google</p>
+                <p className={css.googleText}>{t("signIn.enterWithGoogle")}</p>
               </a>
             )}
 
             <div className={css.wraplink}>
-              {formTitle === "Sign In" ? (
+              {formTitle === `${t("signIn.login")}` ? (
                 <>
                   <Link to="/signup" className={css.signup}>
-                    <p className={css.signupText}>Sign up</p>
+                    <p className={css.signupText}>{t("signIn.register")}</p>
                   </Link>
                   <Link to="/forgot-password" className={css.forgotPassword}>
-                    <p className={css.signupText}>Forgot password?</p>
+                    <p className={css.signupText}>{t("signIn.forgot")}?</p>
                   </Link>
                 </>
               ) : (
                 <Link to="/signin" className={css.signin}>
-                  <p className={css.signinText}>Sign in</p>
+                  <p className={css.signinText}>{t("signIn.login")}</p>
                 </Link>
               )}
             </div>

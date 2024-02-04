@@ -7,12 +7,15 @@ import { ReactComponent as IconUploadPhoto } from "../../images/icons/arrow-up-t
 import FormUser from "./FormUser";
 import { updateAvatarThunk } from "../../redux/auth/operations";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   onClose: () => void;
 }
 
 const SettingModal: FC<IProps> = ({ onClose }) => {
+  const { t } = useTranslation();
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [file, setFile] = useState<File | null>();
@@ -42,7 +45,7 @@ const SettingModal: FC<IProps> = ({ onClose }) => {
 
   return (
     <div>
-      <h4 className={css.title}>Your photo</h4>
+      <h4 className={css.title}>{t("settingModal.photo")}</h4>
       <div className={css.wrapAvatar}>
         {avatarURL ? (
           <img src={avatarURL} className={css.avatar} alt="userAvatar" />
@@ -66,7 +69,7 @@ const SettingModal: FC<IProps> = ({ onClose }) => {
           />
           <label htmlFor="inputFile" className={css.uploadPhoto}>
             <IconUploadPhoto className={css.iconUploadPhoto} />
-            Upload a photo
+            {t("settingModal.upload")}
           </label>
         </form>
       </div>

@@ -4,6 +4,7 @@ import { ReactComponent as IconLogout } from "../../images/icons/arrow-right-on-
 
 import css from "./Header.module.css";
 import AnimatedComponent from "../../components/AnimatedComponent/AnimatedComponent";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   openUserInfoModal: () => void;
@@ -14,15 +15,17 @@ const UserLogoModal: FC<IProps> = ({
   openUserInfoModal,
   openUserLogoutModal,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <AnimatedComponent css={css.dropDownMenuContent}>
       <button className={css.settingsBtn} onClick={openUserInfoModal}>
         <IconSettings className={css.iconSettings} />
-        Settings
+        {t("userLogoModal.setting")}
       </button>
       <button className={css.logoutBtn} onClick={openUserLogoutModal}>
         <IconLogout className={css.iconLogout} />
-        Logout
+        {t("userLogoModal.logout")}
       </button>
     </AnimatedComponent>
   );
