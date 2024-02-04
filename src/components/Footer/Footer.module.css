@@ -1,19 +1,18 @@
 .footer {
-  margin: 0 auto;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
 }
 
 .content {
-  padding: 0 22px;
+  height: 54px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 4px;
+  justify-content: center;
+  gap: 8px;
 
-  height: 54px;
-  background-color: var(--secondary-color-blue-1);
+  /* background-color: var(--secondary-color-blue-1); */
 }
 
 .footer-text {
@@ -28,10 +27,19 @@
   text-transform: uppercase;
 }
 
-.footer-span {
+.vr {
+  display: inline;
+  height: 12px;
+  border-left: 2px solid var(--primary-color-blue);
+}
+
+.footer-btn {
   display: block;
-  cursor: pointer;
+  padding: 0;
+  border: none;
   color: var(--primary-color-blue);
+  background-color: transparent;
+
   font-family: Roboto;
   font-size: 10px;
   font-style: normal;
@@ -43,23 +51,24 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-span:hover,
-.footer-span:focus {
+.footer-btn:hover,
+.footer-btn:focus {
   color: var(--secondary-color-orange);
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.footer-icon-wrapper {
+
+/* .footer-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-}
+} */
 
-.footerIcon {
+/* .footerIcon {
   width: 16px;
   height: 16px;
-}
+} */
 
 .swiper-container {
   width: 100%;
@@ -69,7 +78,6 @@
   text-align: center;
   font-size: 16px;
 
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,54 +126,42 @@
   gap: 16px;
 }
 
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
   .showOnSmallScreen {
     display: none;
   }
-}
+} */
 
 @media only screen and (min-width: 768px) {
-  .footer {
-    width: 100%;
-  }
-
-  .content {
-    padding: 0 36px;
-  }
-
   .footer-text {
     font-size: 14px;
   }
 
-  .footer-span {
+  .footer-btn {
     font-size: 14px;
   }
 
-  .footerIcon {
+  /* .footerIcon {
     width: 24px;
     height: 24px;
+  } */
+
+  .vr {
+    height: 16px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .footer {
-    width: 100%;
-  }
-
-  .content {
-    padding: 0 112px;
-  }
-
   .footer-text {
     font-size: 14px;
   }
 
-  .footer-span {
+  .footer-btn {
     font-size: 14px;
   }
 
-  .footerIcon {
+  /* .footerIcon {
     width: 24px;
     height: 24px;
-  }
+  } */
 }
