@@ -1,0 +1,18 @@
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 25px;
+    font-weight: 900;
+
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover,
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+    cursor: url("../../images/cursor/cursor-hover.svg"), auto;
+}
+
+.swiper-button-next:active,
+.swiper-button-prev:active {
+    cursor: url("../../images/cursor/cursor-active.svg"), auto;
+}
