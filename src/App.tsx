@@ -86,7 +86,7 @@ const App = () => {
             element={<ResendVerifyEmailPage />}
           />
 
-          {/* <Route path="*" element={<Navigate to="welcome" />} /> */}
+          <Route path="*" element={<Navigate to="welcome" />} />
         </Route>
       </Routes>
     </>

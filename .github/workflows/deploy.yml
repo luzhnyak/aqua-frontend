@@ -13,7 +13,8 @@ jobs:
 
       - name: Install, lint, build 🔧
         run: |
-          npm install          
+          npm install    
+          npm run lint      
           npm run build
 
       - name: Deploy 🚀
