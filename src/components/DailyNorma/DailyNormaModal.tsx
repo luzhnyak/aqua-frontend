@@ -125,7 +125,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
       >
         {({ values, errors, touched, setFieldValue }) => (
           <Form>
-            <h3 className={css.formName}>Calculate your rate:</h3>
+            <h3 className={css.formName}>{t("dailyNormaModal.formName")}:</h3>
             <div className={css.chooseGender}>
               <label className={css.radioLabel}>
                 <Field
@@ -279,7 +279,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                   }));
                 }}
               >
-                {neededWaterAmount} L
+                {neededWaterAmount} {t("dailyNorma.l")}
               </p>
             </div>
 

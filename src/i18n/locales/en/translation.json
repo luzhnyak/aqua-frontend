@@ -25,6 +25,7 @@
     "forField1": "For girl",
     "forField2": "For man",
     "forField3": "For woman",
+    "formName": "Calculate your rate",
     "formulaDescSymbol": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)",
     "questionText1": "Your weight in kilograms",
     "questionText2": "The time of active participation in sports or other activities with a high physical. Load in hours",
