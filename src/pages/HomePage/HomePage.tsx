@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC } from "react";
 import css from "./HomePage.module.css";
 
 import { TodayWaterList } from "../../components/TodayWaterList/TodayWaterList";
@@ -7,12 +7,7 @@ import WaterRatioPanel from "../../components/WaterRatioPanel/WaterRatioPanel";
 import DailyNorma from "../../components/DailyNorma/DailyNorma";
 
 const HomePage: FC = () => {
-  const [isPopUp, setIsPopUp] = useState(false);
-  // const handleClick = (e: KeyboardEvent) => {
-  //   if (e.target.nodeName !== "BUTTON" || e.code === "Escape") {
-  //     setIsPopUp(true);
-  //   } else setIsPopUp(false);
-  // };
+  // const [isPopUp, setIsPopUp] = useState(false);
 
   return (
     <section className={css.background}>
@@ -26,7 +21,7 @@ const HomePage: FC = () => {
         <div className={css.containerProgressWrapper}>
           <div className={css["container-progress"]}>
             <TodayWaterList />
-            <MonthStatsTable popUpOpen={isPopUp} />
+            <MonthStatsTable />
           </div>
         </div>
       </div>

@@ -2,7 +2,10 @@ import css from "./MonthStatsTable.module.css";
 import { FC, useEffect, useState } from "react";
 import PopUpDay from "./PopUpDay";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWatersPerMonth } from "../../redux/waterConsumption/selectors";
+import {
+  selectWatersPerMonth,
+  selectWatersToday,
+} from "../../redux/waterConsumption/selectors";
 import { getAllWaterForMonthThunk } from "../../redux/waterConsumption/operations";
 import { selectUser } from "../../redux/auth/selectors";
 import clsx from "clsx";
@@ -10,18 +13,17 @@ import WaterMonthChart from "../../components/WaterMonthChart/WaterMonthChart";
 import Modal from "../../components/Modal/Modal";
 import { AppDispatch } from "../../redux/store";
 
-interface IProps {
-  popUpOpen: boolean;
-}
-
-export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
+export const MonthStatsTable: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector(selectUser);
   const creationDate = user.createdAt ? new Date(user.createdAt) : new Date();
   const currentUserYear = creationDate.getFullYear();
   const currentUserMonth = creationDate.getMonth() + 1;
   const currentUserDay = creationDate.getDate();
+
   const waterPerMonth = useSelector(selectWatersPerMonth);
+  const waterToday = useSelector(selectWatersToday);
+
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState<string | null>(null);
   const [popUp, setsPopup] = useState(false);
@@ -37,10 +39,8 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
 
   useEffect(() => {
     const getMonthWater = () => {
-      const y = sDate.getFullYear();
-      // const m = sDate.getMonth();
       const chosenMonth = {
-        year: y.toString(),
+        year: sDate.getFullYear().toString(),
         month: sDate.toLocaleString("en-US", {
           month: "long",
         }),
@@ -71,10 +71,10 @@ export const MonthStatsTable: FC<IProps> = ({ popUpOpen }) => {
 
     disabled();
 
-    if (popUpOpen) {
-      handleCloseClick();
-    }
-  }, [popUpOpen, sDate, dispatch]);
+    // if (popUpOpen) {
+    //   handleCloseClick();
+    // }
+  }, [sDate, waterToday, dispatch]);
 
   const findMonthDays = (y: number, m: number) => {
     return new Date(y, m + 1, 0).getDate();

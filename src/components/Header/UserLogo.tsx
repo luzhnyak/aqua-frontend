@@ -23,9 +23,9 @@ const UserLogo = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-  const onCloseMenu = () => {
-    setMenuOpen(false);
-  };
+  // const onCloseMenu = () => {
+  //   setMenuOpen(false);
+  // };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
