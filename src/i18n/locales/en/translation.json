@@ -31,22 +31,61 @@
     "questionText2": "The time of active participation in sports or other activities with a high physical. Load in hours",
     "requiredAmountText": "The required amount of water in liters per day",
     "howMuchText": "Write down how much water you will drink",
-    "save": "Save"
+    "save": "Save",
+    "errors": {
+      "min1": "Min weight amount is 1",
+      "min0": "Min weight amount is 0",
+      "waterAmountReq": "WaterAmount is required.",
+      "minWater0": "Min water amount is 0 L",
+      "maxWater": "Max water amount is 15 L"
+    }
   },
   "monthStatsTable": {
     "title": "Month",
     "btnChart": "See monthly statistic",
-    "en": "en-US"
+    "en": "en-US",
+    "l": "L",
+    "statistic": "Monthly statistic",
+    "text": "Statistic"
   },
-  "userAuth": {
-    "login": "Sign in"
+  "addWaterModal": {
+    "ml": "ml",
+    "headlineEdit": "Correct entered data",
+    "headlines": "Choose a value",
+    "paragraphs": "Amount of water",
+    "recording": "Recording time",
+    "enter": "Enter the value of the water used",
+    "save": "Save"
   },
-  "signIn": {
+  "popUpDay": {
+    "norma": "Daily norma",
+    "fulfillment": "Fulfillment of the daily norm",
+    "servings": "How many servings of water"
+  },
+  "confirmDeleteModal": {
+    "title": "Are you sure you want to delete the entry?",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "todayWaterItem": {
+    "titleAddWaterModal": "Edit the entered amount of water",
+    "titleConfirmDeleteModal": "Delete entry",
+    "ml": "ml"
+  },
+  "todayWaterList": {
+    "title": "Today",
+    "empty": "No notes yet",
+    "add": "Add water"
+  },
+  "waterRatioPanel": {
+    "today": "Today",
+    "title": "Add Water"
+  },
+  "authorization": {
     "login": "Sign in",
     "register": "Sign Up",
     "email": "Enter your email",
     "password": "Enter your password",
-    "error": "Sign in is failed. Please try again.",
     "passwordText": "Password",
     "emailText": "E-mail",
     "forgot": "Forgot password",
@@ -57,7 +96,23 @@
     "enterNewPassText": "Enter new password",
     "repeatNewPass": "Repeat your new password",
     "repeatNewPassText": "Repeat new password",
-    "send": "Send"
+    "send": "Send",
+    "errors": {
+      "signIn": "Sign in is failed. Please try again.",
+      "emailReq": "Email is required.",
+      "passwordReq": "Password is required.",
+      "passwordLeast": "Password must be at least 8 characters.",
+      "passwordLess": "Password must be less than 64 characters.",
+      "passwordMatch": "Passwords must match",
+      "repeatPasswordReq": "Repeat password is required.",
+      "enterLess": "Enter less than 32 characters."
+    },
+    "notification": {
+      "success": "The operation was successful, check your email",
+      "error": "Something went wrong, try again later",
+      "errorReg": "Registration is failed. Please try again.",
+      "successPass": "Password changed successfully"
+    }
   },
   "userLogoModal": {
     "setting": "Setting",
@@ -83,7 +138,18 @@
     "passwordText": "Password",
     "newPassword": "New Password",
     "repeatPassword": "Repeat new password",
-    "save": "Save"
+    "save": "Save",
+    "notification": {
+      "email": "Please enter email",
+      "success": "You successfully change your data",
+      "anotherEmail": "Please enter another email",
+      "differ": "Your passwords are different",
+      "update": "You successfully change your data and password",
+      "wrong": "The wrong password",
+      "newPass": "Enter new password",
+      "repeatPass": "Repeat your password",
+      "currentPass": "Enter your current password"
+    }
   },
   "settingModal": {
     "photo": "Your photo",
@@ -93,5 +159,6 @@
     "title": "Your gender identity",
     "woman": "Woman",
     "man": "Man"
-  }
+  },
+  "resendVerifyEmail": { "title": "Resend verify email" }
 }

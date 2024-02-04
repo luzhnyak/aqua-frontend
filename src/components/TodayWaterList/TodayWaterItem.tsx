@@ -6,6 +6,7 @@ import { FC, useState } from "react";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import Modal from "../../components/Modal/Modal";
 import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   id: string | undefined;
@@ -14,6 +15,8 @@ interface IProps {
 }
 
 const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
+  const { t } = useTranslation();
+
   const [isModalDelete, setIsModalDelete] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);
 
@@ -34,7 +37,9 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
     <li className={css["entry-item"]}>
       <div className={css["entry-info"]}>
         <Glass className={css.glass} />
-        <p className={css.amount}>{amount} ml</p>
+        <p className={css.amount}>
+          {amount} {t("todayWaterItem.ml")}
+        </p>
         <p className={css.time}>{time}</p>
       </div>
       <div className={css.icons}>
@@ -49,7 +54,7 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
 
       {isModalEdit && (
         <Modal
-          title="Edit the entered amount of water"
+          title={t("todayWaterItem.titleAddWaterModal")}
           onClose={closeModalEdit}
         >
           <AddWaterModal
@@ -62,7 +67,10 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
         </Modal>
       )}
       {isModalDelete && (
-        <Modal title="Delete entry" onClose={closeModalDelete}>
+        <Modal
+          title={t("todayWaterItem.titleConfirmDeleteModal")}
+          onClose={closeModalDelete}
+        >
           <ConfirmDeleteModal id={id} onClose={closeModalDelete} />
         </Modal>
       )}

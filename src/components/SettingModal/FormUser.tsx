@@ -30,17 +30,17 @@ const FormUser: FC<IProps> = ({ onClose }) => {
   const [loader, setLoader] = useState(false);
 
   const validationSchema = Yup.object({
-    name: Yup.string().max(32, "Enter no more than 32 characters."),
+    name: Yup.string().max(32, `${t("authorization.errors.enterLess")}`),
     email: Yup.string(),
     password: Yup.string()
-      .min(8, "Password must be at least 8 characters.")
-      .max(64, "Enter no more than 64 characters."),
+      .min(8, `${t("authorization.errors.passwordLeast")}`)
+      .max(64, `${t("authorization.errors.passwordLess")}`),
     newPassword: Yup.string()
-      .min(8, "Password must be at least 8 characters.")
-      .max(64, "Enter no more than 64 characters."),
+      .min(8, `${t("authorization.errors.passwordLeast")}`)
+      .max(64, `${t("authorization.errors.passwordLess")}`),
     repeatPassword: Yup.string()
-      .min(8, "Password must be at least 8 characters.")
-      .max(64, "Enter no more than 64 characters."),
+      .min(8, `${t("authorization.errors.passwordLeast")}`)
+      .max(64, `${t("authorization.errors.passwordLess")}`),
   });
 
   const initialValues = {
@@ -57,14 +57,15 @@ const FormUser: FC<IProps> = ({ onClose }) => {
     const { gender, email, name, password, newPassword, repeatPassword } =
       values;
     if (email === "") {
-      return toast.error("Please enter email");
+      setLoader(false);
+      return toast.error(`${t("formUser.notification.email")}`);
     }
 
     if (password === "" && newPassword === "" && repeatPassword === "") {
       try {
         if (email !== "") {
           await updateUserInfo({ gender, email, name });
-          toast.success("You successfully change your data");
+          toast.success(`${t("formUser.notification.success")}`);
 
           setLoader(false);
           resetForm({
@@ -75,11 +76,11 @@ const FormUser: FC<IProps> = ({ onClose }) => {
         }
       } catch (error) {
         setLoader(false);
-        return toast.error("Please enter another email");
+        return toast.error(`${t("formUser.notification.anotherEmail")}`);
       }
     } else if (password !== "" && newPassword !== "" && repeatPassword !== "") {
       if (newPassword !== repeatPassword) {
-        return toast.error("Your passwords are different");
+        return toast.error(`${t("formUser.notification.differ")}`);
       }
 
       setLoader(true);
@@ -93,7 +94,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
           newPassword,
         });
 
-        toast.success("You successfully change your data and password");
+        toast.success(`${t("formUser.notification.update")}`);
 
         setLoader(false);
 
@@ -105,11 +106,11 @@ const FormUser: FC<IProps> = ({ onClose }) => {
       } catch (error: any) {
         setLoader(false);
         if (error.response && error.response.status === 409) {
-          toast.error("Please enter another email");
+          toast.error(`${t("formUser.notification.anotherEmail")}`);
           setLoader(false);
         }
         if (error.response && error.response.status === 400) {
-          toast.error("The wrong password");
+          toast.error(`${t("formUser.notification.wrong")}`);
           setLoader(false);
         }
       }
@@ -120,16 +121,16 @@ const FormUser: FC<IProps> = ({ onClose }) => {
         newPassword === "" &&
         (repeatPassword !== "" || repeatPassword === "")
       ) {
-        return toast.error("Enter new password");
+        return toast.error(`${t("formUser.notification.newPass")}`);
       }
 
       if (password !== "" && newPassword !== "" && repeatPassword === "") {
-        return toast.error("Repeat your password");
+        return toast.error(`${t("formUser.notification.repeatPass")}`);
       }
 
       if (password === "" && newPassword !== "" && repeatPassword !== "") {
         setLoader(false);
-        return toast.error("Enter your current password");
+        return toast.error(`${t("formUser.notification.currentPass")}`);
       }
     }
   };

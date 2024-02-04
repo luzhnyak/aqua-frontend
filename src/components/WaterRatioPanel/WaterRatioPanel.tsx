@@ -5,8 +5,11 @@ import { useSelector } from "react-redux";
 import { selectWatersToday } from "../../redux/waterConsumption/selectors";
 import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
 import Modal from "../../components/Modal/Modal";
+import { useTranslation } from "react-i18next";
 
 const WaterRatioPanel = () => {
+  const { t } = useTranslation();
+
   const waterToday = useSelector(selectWatersToday) || 0;
   const progressValue = useMemo(() => {
     if (waterToday) {
@@ -60,7 +63,7 @@ const WaterRatioPanel = () => {
 
   return (
     <div>
-      <h2 className={css.today}>Today</h2>
+      <h2 className={css.today}>{t("waterRatioPanel.today")}</h2>
       <div className={css.mainContainer}>
         <div className={css.panel}>
           <div className={css.range}>
@@ -103,11 +106,13 @@ const WaterRatioPanel = () => {
             width="24"
             height="24"
           />
-          <span className={css.addButtonText}>Add Water</span>
+          <span className={css.addButtonText}>
+            {t("waterRatioPanel.title")}
+          </span>
         </button>
       </div>
       {isOpen && (
-        <Modal title="Add Water" onClose={closeModal}>
+        <Modal title={t("waterRatioPanel.title")} onClose={closeModal}>
           <AddWaterModal isAddWater={true} onClose={closeModal} />
         </Modal>
       )}

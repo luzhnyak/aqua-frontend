@@ -28,7 +28,7 @@ const SignupPage = () => {
       setRedirect(true);
     } catch (error) {
       setLoader(false);
-      toast.error("Registration is failed. Please try again.");
+      toast.error(`${t("authorization.notification.errorReg")}`);
     } finally {
       setLoader(false);
     }
@@ -42,7 +42,10 @@ const SignupPage = () => {
     <section className={css.background}>
       <div className={css.MainContainer}>
         <div className={css.mainstr}>
-          <AuthForm formTitle={t("signIn.register")} onSubmit={signUpHandler} />
+          <AuthForm
+            formTitle={t("authorization.register")}
+            onSubmit={signUpHandler}
+          />
           {loader && (
             <Backdrop>
               <Loader />
