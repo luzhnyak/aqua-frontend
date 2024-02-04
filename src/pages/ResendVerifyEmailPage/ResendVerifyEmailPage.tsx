@@ -38,8 +38,7 @@ const ResendVerifyEmailPage = () => {
 
   return (
     <section>
-      <div className={css.MainContainer}>
-        <div className={css.mainstr}>
+      <div className={css.container}>
           <FormSendEmail
             title={"Resend verify email"}
             onSubmit={handleSubmit}
@@ -49,7 +48,6 @@ const ResendVerifyEmailPage = () => {
               <Loader />
             </Backdrop>
           )}
-        </div>
       </div>
     </section>
   );
