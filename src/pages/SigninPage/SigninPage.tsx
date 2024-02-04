@@ -7,8 +7,11 @@ import { loginThunk } from "../../redux/auth/operations";
 import AuthForm, { SubmitValues } from "../../components/AuthForm/AuthForm";
 import css from "./SigninPage.module.css";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 const SignInPage = () => {
+  const { t } = useTranslation();
+
   const dispatch: AppDispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
@@ -22,7 +25,7 @@ const SignInPage = () => {
       resetForm();
     } catch (error) {
       setLoader(false);
-      toast.error("Sign in is failed. Please try again.");
+      toast.error(`${t("signIn.error")}`);
     } finally {
       setLoader(false);
     }
@@ -33,7 +36,7 @@ const SignInPage = () => {
       <div className={css.MainContainer}>
         <div className={css.mainstr}>
           <div className={css.hidden}></div>
-          <AuthForm formTitle="Sign In" onSubmit={signInHandler} />
+          <AuthForm formTitle={t("signIn.login")} onSubmit={signInHandler} />
           {loader && (
             <Backdrop>
               <Loader />

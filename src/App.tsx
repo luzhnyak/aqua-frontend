@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "./redux/store";
+import "./i18n/config";
 
 import { refreshCurrentUserThunk } from "./redux/auth/operations";
 // import ResendVerifyEmailPage from "./pages/ResendVerifyEmailPage/ResendVerifyEmailPage";

@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import css from "./RadioButtons.module.css";
 
 import { ErrorMessage, Field } from "formik";
+import { useTranslation } from "react-i18next";
 
 // interface IProps {
 //   values: any | null;
@@ -10,13 +11,15 @@ import { ErrorMessage, Field } from "formik";
 
 // const RadioButtons: FC<IProps> = ({ values, handleOptionChange }) => {
 const RadioButtons: FC = () => {
+  const { t } = useTranslation();
+
   // const onChange = e => {
   //   const { name } = e.target;
   //   console.log('clicked  ==>', name);
   // };
   return (
     <div>
-      <h4 className={css.title}>Your gender identity</h4>
+      <h4 className={css.title}>{t("radioButtons.title")}</h4>
       <div className={css.radioButtons}>
         <label>
           <Field
@@ -26,7 +29,7 @@ const RadioButtons: FC = () => {
             className={css.radiobutton}
           />
 
-          <span className={css.labelName}>Woman</span>
+          <span className={css.labelName}>{t("radioButtons.woman")}</span>
         </label>
         <label>
           <Field
@@ -36,7 +39,7 @@ const RadioButtons: FC = () => {
             className={css.radiobutton}
           />
 
-          <span className={css.labelName}>Man</span>
+          <span className={css.labelName}>{t("radioButtons.man")}</span>
         </label>
         <ErrorMessage name="gender" component="div" />
       </div>

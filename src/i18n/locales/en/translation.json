@@ -1,0 +1,90 @@
+{
+  "welcomePage": {
+    "title": "Water consumption tracker",
+    "subtitle": "Record daily water intake and track",
+    "benefitsTitle": "Tracker Benefits",
+    "benefitsHabit": "Habit drive",
+    "benefitsView": "View statistics",
+    "benefitsPersonal": "Personal rate setting",
+    "tryTrackerBtn": "Try tracker",
+    "whyTitle": "Why drink water",
+    "whyItemSupply": "Supply of nutrients to all organs",
+    "whyItemProviding": "Providing oxygen to the lungs",
+    "whyItemHeart": "Maintaining the work of the heart",
+    "whyItemRelease": "Release of processed substances",
+    "whyItemEnsuring": "Ensuring the stability of the internal environment",
+    "whyItemTemperature": "Maintaining within the normal temperature",
+    "whyItemDisease": "Maintaining an immune system capable of resisting disease"
+  },
+  "dailyNorma": {
+    "normaTitle": "My daily norma",
+    "l": "L",
+    "edit": "Edit"
+  },
+  "dailyNormaModal": {
+    "forField1": "For girl",
+    "forField2": "For man",
+    "forField3": "For woman",
+    "formName": "Calculate your rate",
+    "formulaDescSymbol": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)",
+    "questionText1": "Your weight in kilograms",
+    "questionText2": "The time of active participation in sports or other activities with a high physical. Load in hours",
+    "requiredAmountText": "The required amount of water in liters per day",
+    "howMuchText": "Write down how much water you will drink",
+    "save": "Save"
+  },
+  "monthStatsTable": {
+    "title": "Month",
+    "btnChart": "See monthly statistic",
+    "en": "en-US"
+  },
+  "userAuth": {
+    "login": "Sign in"
+  },
+  "signIn": {
+    "login": "Sign in",
+    "register": "Sign Up",
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "error": "Sign in is failed. Please try again.",
+    "passwordText": "Password",
+    "emailText": "E-mail",
+    "forgot": "Forgot password",
+    "enterWithGoogle": "Enter with Google",
+    "repeat": "Repeat your password",
+    "repeatText": "Repeat password",
+    "enterNewPass": "Enter your new password",
+    "enterNewPassText": "Enter new password",
+    "repeatNewPass": "Repeat your new password",
+    "repeatNewPassText": "Repeat new password",
+    "send": "Send"
+  },
+  "userLogoModal": {
+    "setting": "Setting",
+    "logout": "Logout"
+  },
+  "logOutModal": {
+    "title": "Do you really want to leave?",
+    "logout": "Log out",
+    "cancel": "Cancel"
+  },
+  "formUser": {
+    "name": "Your name",
+    "nameText": "Enter your name",
+    "email": "E-mail",
+    "outdatedPassword": "Outdated password",
+    "passwordText": "Password",
+    "newPassword": "New Password",
+    "repeatPassword": "Repeat new password",
+    "save": "Save"
+  },
+  "settingModal": {
+    "photo": "Your photo",
+    "upload": "Upload a photo"
+  },
+  "radioButtons": {
+    "title": "Your gender identity",
+    "woman": "Woman",
+    "man": "Man"
+  }
+}

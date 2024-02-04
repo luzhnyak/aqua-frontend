@@ -5,12 +5,15 @@ import { logoutThunk } from "../../redux/auth/operations";
 import Backdrop from "../../components/Backdrop/Backdrop";
 import Loader from "../../components/Loader/Loader";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   onClose: (value: boolean) => void;
 }
 
 const UserLogoutModal: FC<IProps> = ({ onClose }) => {
+  const { t } = useTranslation();
+
   const [loader, setLoader] = useState(false);
 
   const dispatch: AppDispatch = useDispatch();
@@ -33,13 +36,13 @@ const UserLogoutModal: FC<IProps> = ({ onClose }) => {
 
   return (
     <div>
-      <h4 className={css.title}>Do you really want to leave?</h4>
+      <h4 className={css.title}>{t("logOutModal.title")}</h4>
       <div className={css.buttons}>
         <button className={css.logoutBtn} type="button" onClick={handleLogout}>
-          Log out
+          {t("logOutModal.logout")}
         </button>
         <button className={css.cancelBtn} type="button" onClick={handleClose}>
-          Cancel
+          {t("logOutModal.cancel")}
         </button>
       </div>
       {loader && (

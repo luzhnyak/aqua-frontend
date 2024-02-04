@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { selectWaterRate } from "../../redux/auth/selectors";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setVisible: (value: boolean) => void;
@@ -13,6 +14,7 @@ interface IProps {
 }
 
 const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
+  const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
 
   const waterRateMG = useSelector(selectWaterRate);
@@ -100,21 +102,19 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
     <div className={css.container}>
       <div className={css.formTitle}>
         <p className={css.forField}>
-          For girl:{" "}
+          {t("dailyNormaModal.forField1")}:{" "}
           <span className={css.formulaField}>V=(M*0,03) + (T*0,4)</span>
         </p>
         <p className={css.forField}>
-          For man:{" "}
+          {t("dailyNormaModal.forField2")}:{" "}
           <span className={css.formulaField}>V=(M*0,04) + (T*0,6)</span>
         </p>
       </div>
 
       <div className={css.formulaDescContainer}>
         <p className={css.formulaDesc}>
-          <span className={css.formulaDescSymbol}>*</span>V is the volume of the
-          water norm in liters per day, M is your body weight, T is the time of
-          active sports, or another type of activity commensurate in terms of
-          loads (in the absence of these, you must set 0)
+          <span className={css.formulaDescSymbol}>*</span>
+          {t("dailyNormaModal.formulaDescSymbol")}
         </p>
       </div>
 
@@ -125,7 +125,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
       >
         {({ values, errors, touched, setFieldValue }) => (
           <Form>
-            <h3 className={css.formName}>Calculate your rate:</h3>
+            <h3 className={css.formName}>{t("dailyNormaModal.formName")}:</h3>
             <div className={css.chooseGender}>
               <label className={css.radioLabel}>
                 <Field
@@ -143,7 +143,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                     }));
                   }}
                 />
-                For woman
+                {t("dailyNormaModal.forField3")}
               </label>
 
               <label className={css.radioLabel}>
@@ -162,14 +162,14 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                     }));
                   }}
                 />
-                For man
+                {t("dailyNormaModal.forField2")}
               </label>
             </div>
 
             <div className={css.questionContainer}>
               <label className={css.questionLabel}>
                 <span className={css.questionText}>
-                  Your weight in kilograms:
+                  {t("dailyNormaModal.questionText1")}:
                 </span>
                 <Field
                   className={`${css.questionInput}
@@ -212,8 +212,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
 
               <label className={css.questionLabel}>
                 <span className={css.questionText}>
-                  The time of active participation in sports or other activities
-                  with a high physical. load in hours:
+                  {t("dailyNormaModal.questionText2")}:
                 </span>
                 <Field
                   className={`${css.questionInput}
@@ -262,7 +261,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
 
             <div className={css.requiredAmountContainer}>
               <p className={css.requiredAmountText}>
-                The required amount of water in liters per day:
+                {t("dailyNormaModal.requiredAmountText")}:
               </p>
               <p
                 id="neededWaterAmount"
@@ -280,13 +279,13 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                   }));
                 }}
               >
-                {neededWaterAmount} L
+                {neededWaterAmount} {t("dailyNorma.l")}
               </p>
             </div>
 
             <label className={css.questionLabel}>
               <span className={css.howMuchText}>
-                Write down how much water you will drink:
+                {t("dailyNormaModal.howMuchText")}:
               </span>
               <Field
                 className={`${css.questionInput}
@@ -315,7 +314,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
             </label>
 
             <button type="submit" className={css.submitButton}>
-              Save
+              {t("dailyNormaModal.save")}
             </button>
           </Form>
         )}

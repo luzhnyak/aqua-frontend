@@ -8,8 +8,9 @@ import { selectUser } from "../../redux/auth/selectors";
 import Modal from "../../components/Modal/Modal";
 import SettingModal from "../../components/SettingModal/SettingModal";
 import UserLogoutModal from "./UserLogoutModal";
+import { useTranslation } from "react-i18next";
 
-const UserLogo = () => {
+const UserLogo: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isOpenUserInfoModal, setOpenUserInfoModal] = useState(false);
   const [isOpenUserLogoutModal, setOpenUserLogoutModal] = useState(false);
@@ -19,13 +20,15 @@ const UserLogo = () => {
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
-
-  // const onCloseMenu = () => {
-  //   setMenuOpen(false);
-  // };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -106,21 +109,41 @@ const UserLogo = () => {
           <UserLogoModal
             openUserInfoModal={openUserInfoModal}
             openUserLogoutModal={openUserLogoutModal}
-            // onClose={onCloseMenu}
           />
         )}
       </div>
 
+      <div className={css.lngBtns}>
+        <button
+          className={`${css.lngBtn} ${
+            i18n.language === "en" ? `${css.active}` : ""
+          }`}
+          type="button"
+          onClick={() => changeLanguage("en")}
+        >
+          en
+        </button>
+        <button
+          className={`${css.lngBtn} ${
+            i18n.language === "ua" ? `${css.active}` : ""
+          }`}
+          type="button"
+          onClick={() => changeLanguage("ua")}
+        >
+          укр
+        </button>
+      </div>
+
       {/* Модальне вікно для settings */}
       {isOpenUserInfoModal && !isOpenUserLogoutModal && (
-        <Modal title="Setting" onClose={closeUserInfoModal}>
+        <Modal title={t("userLogoModal.setting")} onClose={closeUserInfoModal}>
           <SettingModal onClose={closeUserInfoModal} />
         </Modal>
       )}
 
       {/* Модальне вікно для logout */}
       {isOpenUserLogoutModal && !isOpenUserInfoModal && (
-        <Modal title="Logout" onClose={closeUserLogoutModal}>
+        <Modal title={t("userLogoModal.logout")} onClose={closeUserLogoutModal}>
           <UserLogoutModal onClose={closeUserLogoutModal} />
         </Modal>
       )}

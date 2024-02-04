@@ -12,8 +12,10 @@ import clsx from "clsx";
 import WaterMonthChart from "../../components/WaterMonthChart/WaterMonthChart";
 import Modal from "../../components/Modal/Modal";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 export const MonthStatsTable: FC = () => {
+  const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector(selectUser);
   const creationDate = user.createdAt ? new Date(user.createdAt) : new Date();
@@ -226,9 +228,9 @@ export const MonthStatsTable: FC = () => {
       <div className={css["calendar-header"]}>
         <div className={css["title-chart"]}>
           {" "}
-          <h2 className={css.title}>Month</h2>
+          <h2 className={css.title}>{t("monthStatsTable.title")}</h2>
           <button className={css["btn-chart"]} onClick={openModal}>
-            See monthly statistic
+            {t("monthStatsTable.btnChart")}
           </button>
         </div>
         <div className={css.monthPicker}>
@@ -242,7 +244,7 @@ export const MonthStatsTable: FC = () => {
             </button>
           )}
           <h2 className={css["title-month"]}>
-            {`${sDate.toLocaleString("en-US", {
+            {`${sDate.toLocaleString(`${t("monthStatsTable.en")}`, {
               month: "long",
             })}, 
             ${sDate.toLocaleString("en-US", {

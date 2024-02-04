@@ -140,7 +140,6 @@
   position: absolute;
   top: 40px;
   right: 0;
-  width: 118px;
   height: 88px;
 
   display: flex;
@@ -190,4 +189,29 @@
   transition: stroke 0.3s;
   width: 16px;
   height: 16px;
+}
+
+.lngBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary-color-blue);
+  transition: color 0.3s;
+  padding: 0;
+}
+
+.lngBtn:hover {
+  color: var(--secondary-color-orange);
+}
+
+.lngBtn.active {
+  color: var(--secondary-color-orange);
+}
+
+.lngBtns {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  padding: 0;
 }
