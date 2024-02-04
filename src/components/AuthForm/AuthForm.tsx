@@ -164,15 +164,13 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
                 : `${t("signIn.register")}`}
             </button>
 
-            {formTitle === `${t("signIn.login")}` && (
-              <a
-                href="https://aqua-backend-ieu7.onrender.com/auth/google"
-                className={css.googleLogin}
-              >
-                <GoogleIcon className={css.googleIcon} />
-                <p className={css.googleText}>{t("signIn.enterWithGoogle")}</p>
-              </a>
-            )}
+            <a
+              href="https://aqua-backend-ieu7.onrender.com/auth/google"
+              className={css.googleLogin}
+            >
+              <GoogleIcon className={css.googleIcon} />
+              <p className={css.googleText}>{t("signIn.enterWithGoogle")}</p>
+            </a>
 
             <div className={css.wraplink}>
               {formTitle === `${t("signIn.login")}` ? (
