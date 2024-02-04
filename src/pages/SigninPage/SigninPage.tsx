@@ -30,7 +30,7 @@ const SignInPage = () => {
     setLoader(true);
     try {
       const resultAction = await dispatch(loginThunk(values));
-      const result = unwrapResult(resultAction);
+      unwrapResult(resultAction);
       resetForm();
     } catch (error: any) {
       setLoader(false);
