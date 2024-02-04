@@ -32,10 +32,12 @@ export const TodayWaterList = () => {
 
   const openModal = () => {
     setAddWaterModalOpen(true);
+    document.body.classList.add("body-scroll-lock");
   };
 
   const closeModal = () => {
     setAddWaterModalOpen(false);
+    document.body.classList.remove("body-scroll-lock");
   };
   return (
     <div className={css["entries-container"]}>
