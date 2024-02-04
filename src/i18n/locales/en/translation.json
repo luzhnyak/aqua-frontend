@@ -68,6 +68,13 @@
     "logout": "Log out",
     "cancel": "Cancel"
   },
+
+  "verifyModal": {
+    "title": "Your account is not verified. Please check your email or press OK to resend the verification email.",
+    "resend": "Ok",
+    "cancel": "Cancel"
+  },
+
   "formUser": {
     "name": "Your name",
     "nameText": "Enter your name",
