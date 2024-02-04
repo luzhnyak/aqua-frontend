@@ -62,7 +62,7 @@ export const TodayWaterList = () => {
         <span className={css.plus}>+</span> {t("todayWaterList.add")}
       </button>
       {isOpen && (
-        <Modal title="Add Water" onClose={closeModal}>
+        <Modal title={t("waterRatioPanel.title")} onClose={closeModal}>
           <AddWaterModal isAddWater={true} onClose={closeModal} />
         </Modal>
       )}

@@ -21,7 +21,9 @@ const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email().required("Email is required."),
+    email: Yup.string()
+      .email()
+      .required(`${t("authorization.errors.emailReq")}`),
   });
 
   return (

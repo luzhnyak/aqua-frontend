@@ -25,7 +25,7 @@ const SignInPage = () => {
       resetForm();
     } catch (error) {
       setLoader(false);
-      toast.error(`${t("signIn.error")}`);
+      toast.error(`${t("authorization.errors.signIn")}`);
     } finally {
       setLoader(false);
     }
@@ -36,7 +36,10 @@ const SignInPage = () => {
       <div className={css.MainContainer}>
         <div className={css.mainstr}>
           <div className={css.hidden}></div>
-          <AuthForm formTitle={t("signIn.login")} onSubmit={signInHandler} />
+          <AuthForm
+            formTitle={t("authorization.login")}
+            onSubmit={signInHandler}
+          />
           {loader && (
             <Backdrop>
               <Loader />

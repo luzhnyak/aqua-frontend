@@ -38,15 +38,20 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email().required("Email is required."),
+    email: Yup.string()
+      .email()
+      .required(`${t("authorization.errors.emailReq")}`),
     password: Yup.string()
-      .required("Password is required.")
-      .min(8, "Password must be at least 8 characters.")
-      .max(64, "Password must be less than 64 characters."),
+      .required(`${t("authorization.errors.passwordReq")}`)
+      .min(8, `${t("authorization.errors.passwordLeast")}`)
+      .max(64, `${t("authorization.errors.passwordLess")}`),
     ...(formTitle === `${t("authorization.register")}` && {
       repeatPassword: Yup.string()
-        .oneOf([Yup.ref("password"), undefined], "Passwords must match")
-        .required("Repeat password is required."),
+        .oneOf(
+          [Yup.ref("password"), undefined],
+          `${t("authorization.errors.passwordMatch")}`
+        )
+        .required(`${t("authorization.errors.repeatPasswordReq")}`),
     }),
   });
 

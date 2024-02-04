@@ -249,7 +249,7 @@ export const MonthStatsTable: FC = () => {
             {`${sDate.toLocaleString(`${t("monthStatsTable.en")}`, {
               month: "long",
             })}, 
-            ${sDate.toLocaleString("en-US", {
+            ${sDate.toLocaleString(`${t("monthStatsTable.en")}`, {
               year: "numeric",
             })}`}
           </h2>
@@ -307,7 +307,7 @@ export const MonthStatsTable: FC = () => {
         })}
       </div>
       {isOpen && (
-        <Modal title="Monthly statistic" onClose={closeModal}>
+        <Modal title={t("monthStatsTable.statistic")} onClose={closeModal}>
           <WaterMonthChart label={labels} monthlyData={dataPerDay} />
         </Modal>
       )}

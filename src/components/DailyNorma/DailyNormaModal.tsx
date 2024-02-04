@@ -35,12 +35,12 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
   };
 
   const validationSchema = Yup.object({
-    weight: Yup.number().min(1, "Min weight amount is 1"),
-    activityTime: Yup.number().min(0, "Min weight amount is 0"),
+    weight: Yup.number().min(1, `${t("dailyNormaModal.errors.min1")}`),
+    activityTime: Yup.number().min(0, `${t("dailyNormaModal.errors.min0")}`),
     waterAmount: Yup.number()
-      .required("WaterAmount is required.")
-      .min(0, "Min water amount is 0 L")
-      .max(15, "Max water amount is 15 L  "),
+      .required(`${t("dailyNormaModal.errors.waterAmountReq")}`)
+      .min(0, `${t("dailyNormaModal.errors.minWater0")}`)
+      .max(15, `${t("dailyNormaModal.errors.maxWater")}`),
   });
 
   const [neededWaterAmount, setNeededWaterAmount] = useState(2.0);

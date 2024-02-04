@@ -28,12 +28,15 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
 
   const validationSchema = Yup.object({
     newPassword: Yup.string()
-      .required("Password is required.")
-      .min(7, "Password must be at least 8 characters.")
-      .max(55, "Password must be less than 55 characters."),
+      .required(`${t("authorization.errors.passwordReq")}`)
+      .min(8, `${t("authorization.errors.passwordLeast")}`)
+      .max(64, `${t("authorization.errors.passwordLess")}`),
     repeatNewPassword: Yup.string()
-      .oneOf([Yup.ref("newPassword")], "Passwords must match")
-      .required("Repeat password is required."),
+      .oneOf(
+        [Yup.ref("newPassword")],
+        `${t("authorization.errors.passwordMatch")}`
+      )
+      .required(`${t("authorization.errors.repeatPasswordReq")}`),
   });
 
   return (

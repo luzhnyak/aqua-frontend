@@ -49,7 +49,7 @@ const PopUpDay: FC<IProps> = ({
   }, [handleCloseClick]);
 
   const day = Number(
-    sDate.toLocaleDateString("en-US", {
+    sDate.toLocaleDateString(`${t("monthStatsTable.en")}`, {
       day: "numeric",
     })
   );
@@ -72,10 +72,10 @@ const PopUpDay: FC<IProps> = ({
       <div ref={modalRef} className={css.popUp}>
         <div className={css["popup-header"]}>
           <p className={css["popup-date"]}>
-            {`${sDate.toLocaleDateString("en-US", {
+            {`${sDate.toLocaleDateString(`${t("monthStatsTable.en")}`, {
               day: "numeric",
             })},  
-           ${sDate.toLocaleDateString("en-US", {
+           ${sDate.toLocaleDateString(`${t("monthStatsTable.en")}`, {
              month: "long",
            })}`}
           </p>
@@ -85,7 +85,10 @@ const PopUpDay: FC<IProps> = ({
           />
         </div>
         <p>
-          {t("popUpDay.norma")}: <span className={css.info}>{waterRate} L</span>
+          {t("popUpDay.norma")}:{" "}
+          <span className={css.info}>
+            {waterRate} {t("monthStatsTable.l")}
+          </span>
         </p>
         <p>
           {t("popUpDay.fulfillment")}:{" "}

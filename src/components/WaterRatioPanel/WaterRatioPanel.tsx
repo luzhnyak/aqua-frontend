@@ -63,7 +63,7 @@ const WaterRatioPanel = () => {
 
   return (
     <div>
-      <h2 className={css.today}>Today</h2>
+      <h2 className={css.today}>{t("waterRatioPanel.today")}</h2>
       <div className={css.mainContainer}>
         <div className={css.panel}>
           <div className={css.range}>
