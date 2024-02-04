@@ -11,8 +11,11 @@ import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
 import { getAllWaterForTodayThunk } from "../../redux/waterConsumption/operations";
 import { AppDispatch } from "../../redux/store";
 import { IDdailyEntry } from "../../types";
+import { useTranslation } from "react-i18next";
 
 export const TodayWaterList = () => {
+  const { t } = useTranslation();
+
   const waterToday = useSelector(selectWatersToday);
   const entries: IDdailyEntry[] = [];
   if (waterToday !== null) {
@@ -37,8 +40,10 @@ export const TodayWaterList = () => {
   return (
     <div className={css["entries-container"]}>
       <div className={css.entries}>
-        <h2 className={css.title}>Today</h2>
-        {entries.length === 0 && <p className={css.empty}>No notes yet</p>}
+        <h2 className={css.title}>{t("todayWaterList.title")}</h2>
+        {entries.length === 0 && (
+          <p className={css.empty}>{t("todayWaterList.empty")}</p>
+        )}
         <ul className={css["list-entry"]}>
           {entries.length !== 0 &&
             entries.map((entry) => (
@@ -52,7 +57,7 @@ export const TodayWaterList = () => {
         </ul>
       </div>
       <button className={css["btn-add"]} onClick={openModal}>
-        <span className={css.plus}>+</span> Add water
+        <span className={css.plus}>+</span> {t("todayWaterList.add")}
       </button>
       {isOpen && (
         <Modal title="Add Water" onClose={closeModal}>

@@ -3,6 +3,7 @@ import css from "./MonthStatsTable.module.css";
 import clsx from "clsx";
 import { ReactComponent as IconClose } from "../../images/icons/x-mark-outline.svg";
 import AnimatedComponent from "../../components/AnimatedComponent/AnimatedComponent";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   sDate: Date;
@@ -20,6 +21,8 @@ const PopUpDay: FC<IProps> = ({
   waterRate,
 }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -82,14 +85,14 @@ const PopUpDay: FC<IProps> = ({
           />
         </div>
         <p>
-          Daily norma: <span className={css.info}>{waterRate} L</span>
+          {t("popUpDay.norma")}: <span className={css.info}>{waterRate} L</span>
         </p>
         <p>
-          Fulfillment of the daily norm:{" "}
+          {t("popUpDay.fulfillment")}:{" "}
           <span className={css.info}>{progress}%</span>
         </p>
         <p>
-          How many servings of water:{" "}
+          {t("popUpDay.servings")}:{" "}
           <span className={css.info}>{dailyEntries}</span>
         </p>
       </div>

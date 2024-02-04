@@ -49,7 +49,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
             <div className={css.formControl}>
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="update-password-id1">
-                  {t("signIn.enterNewPass")}
+                  {t("authorization.enterNewPass")}
                 </label>
                 <div
                   className={`${css.inputBox} ${
@@ -67,7 +67,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
                     }`}
                     name="newPassword"
                     type={showNewPassword ? "text" : "password"}
-                    placeholder={t("signIn.enterNewPassText")}
+                    placeholder={t("authorization.enterNewPassText")}
                   />
                   <div
                     className={css.iconeye}
@@ -89,7 +89,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
               </div>
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="update-password-id2">
-                  {t("signIn.repeatNewPass")}
+                  {t("authorization.repeatNewPass")}
                 </label>
                 <div
                   className={`${css.inputBox} ${
@@ -107,7 +107,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
                     }`}
                     name="repeatNewPassword"
                     type={showRepeatNewPassword ? "text" : "password"}
-                    placeholder={t("signIn.repeatNewPassText")}
+                    placeholder={t("authorization.repeatNewPassText")}
                   />
                   <div
                     className={css.iconeye}
@@ -134,7 +134,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
                 />
               </div>
               <button type="submit" className={css.button}>
-                {t("signIn.send")}
+                {t("authorization.send")}
               </button>
             </div>
           </Form>

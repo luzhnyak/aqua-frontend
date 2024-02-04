@@ -33,11 +33,33 @@
     "howMuchText": "Запишіть, скільки води ви будете пити",
     "save": "Зберегти"
   },
-
-  "userAuth": {
-    "login": "Логін"
+  "addWaterModal": {
+    "ml": "мл",
+    "headlineEdit": "Відкоригуйте ввдені дані",
+    "headlines": "Виберіть значення",
+    "paragraphs": "Кількість води",
+    "recording": "Час запису",
+    "enter": "Введіть об'єм випитої води",
+    "save": "Зберегти"
   },
-  "signIn": {
+  "popUpDay": {
+    "norma": "Денна норма",
+    "fulfillment": "Виконання денної норми",
+    "servings": "Скільки порцій води"
+  },
+  "confirmDeleteModal": {
+    "title": "Ви впевнені, що хочете видалити запис?",
+    "cancel": "Відмінити",
+    "delete": "Видалити"
+  },
+  "todayWaterItem": {
+    "titleAddWaterModal": "Редагувати введену кількість води",
+    "titleConfirmDeleteModal": "Видалити запис"
+  },
+  "waterRatioPanel": {
+    "title": "Додати воду"
+  },
+  "authorization": {
     "login": "Логін",
     "register": "Реєстрація",
     "email": "Введіть свій емейл",

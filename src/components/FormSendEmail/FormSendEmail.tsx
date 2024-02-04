@@ -37,7 +37,7 @@ const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
             <div className={css.formControl}>
               <div className={css.stack}>
                 <label htmlFor="forgot-pass-id1" className={css.formLabel}>
-                  {t("signIn.email")}
+                  {t("authorization.email")}
                 </label>
                 <Field
                   id="forgot-pass-id1"
@@ -46,7 +46,7 @@ const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
                   } ${errors.email && touched.email ? css.errorInput : ""}`}
                   name="email"
                   type="email"
-                  placeholder={t("signIn.emailText")}
+                  placeholder={t("authorization.emailText")}
                 />
                 <ErrorMessage
                   name="email"
@@ -55,10 +55,10 @@ const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
                 />
               </div>
               <button type="submit" className={css.button}>
-                {t("signIn.send")}
+                {t("authorization.send")}
               </button>
               <Link to="/signin" className={css.signin}>
-                <p>{t("signIn.login")}</p>
+                <p>{t("authorization.login")}</p>
               </Link>
             </div>
           </Form>

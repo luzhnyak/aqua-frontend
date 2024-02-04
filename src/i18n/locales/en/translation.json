@@ -38,10 +38,38 @@
     "btnChart": "See monthly statistic",
     "en": "en-US"
   },
-  "userAuth": {
-    "login": "Sign in"
+  "addWaterModal": {
+    "ml": "ml",
+    "headlineEdit": "Correct entered data",
+    "headlines": "Choose a value",
+    "paragraphs": "Amount of water",
+    "recording": "Recording time",
+    "enter": "Enter the value of the water used",
+    "save": "Save"
   },
-  "signIn": {
+  "popUpDay": {
+    "norma": "Daily norma",
+    "fulfillment": "Fulfillment of the daily norm",
+    "servings": "How many servings of water"
+  },
+  "confirmDeleteModal": {
+    "title": "Are you sure you want to delete the entry?",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "todayWaterItem": {
+    "titleAddWaterModal": "Edit the entered amount of water",
+    "titleConfirmDeleteModal": "Delete entry"
+  },
+  "todayWaterList": {
+    "title": "Today",
+    "empty": "No notes yet",
+    "add": "Add water"
+  },
+  "waterRatioPanel": {
+    "title": "Add Water"
+  },
+  "authorization": {
     "login": "Sign in",
     "register": "Sign Up",
     "email": "Enter your email",

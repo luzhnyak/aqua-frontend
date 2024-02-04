@@ -17,6 +17,7 @@ import { addWaterThunk } from "../../redux/waterConsumption/operations";
 import { updateWaterByIdThunk } from "../../redux/waterConsumption/operations";
 import { selectWatersToday } from "../../redux/waterConsumption/selectors";
 import { AppDispatch } from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isAddWater?: boolean;
@@ -36,6 +37,8 @@ const AddWaterModal: FC<IProps> = ({
   previousTime = "",
 }) => {
   const waterToday = useSelector(selectWatersToday);
+
+  const { t } = useTranslation();
 
   const getPreviousEntry = () => {
     if (
@@ -158,15 +161,21 @@ const AddWaterModal: FC<IProps> = ({
         <div className={css.editContentDiv}>
           <div className={css.previousGlassDiv}>
             <Glass className={css.glass} />
-            <span className={css.editNumber}>{previousAmount} ml</span>
+            <span className={css.editNumber}>
+              {previousAmount} {t("addWaterModal.ml")}
+            </span>
             <span className={css.editTime}>{previousTime}</span>
           </div>
-          <h2 className={css.headlineEdit}>Correct entered data:</h2>
+          <h2 className={css.headlineEdit}>
+            {t("addWaterModal.headlineEdit")}:
+          </h2>
         </div>
       )}
       <div>
-        {isAddWater && <h2 className={css.headlines}>Choose a value:</h2>}
-        <p className={css.paragraphs}>Amount of water:</p>
+        {isAddWater && (
+          <h2 className={css.headlines}>{t("addWaterModal.headlines")}:</h2>
+        )}
+        <p className={css.paragraphs}>{t("addWaterModal.paragraphs")}:</p>
         <div className={css.counterLayout}>
           <button
             type="button"
@@ -184,7 +193,10 @@ const AddWaterModal: FC<IProps> = ({
               readOnly
               onBlur={handleBlur}
             />
-            <span>{finalValue}ml</span>
+            <span>
+              {finalValue}
+              {t("addWaterModal.ml")}
+            </span>
           </div>
           <button
             type="button"
@@ -197,7 +209,7 @@ const AddWaterModal: FC<IProps> = ({
       </div>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <p className={css.paragraphs}>Recording time:</p>
+        <p className={css.paragraphs}>{t("addWaterModal.recording")}:</p>
         <select
           className={css.inputStyle}
           name="recordingTime"
@@ -213,7 +225,7 @@ const AddWaterModal: FC<IProps> = ({
             </option>
           ))}
         </select>
-        <h2 className={css.headlines}>Enter the value of the water used:</h2>
+        <h2 className={css.headlines}>{t("addWaterModal.enter")}:</h2>
         <input
           className={css.inputStyle}
           min="0"
@@ -226,9 +238,11 @@ const AddWaterModal: FC<IProps> = ({
           onChange={handleChange}
         />
         <div className={css.saveAreaLayout}>
-          <span className={css.finalValue}>{finalValue} ml</span>
+          <span className={css.finalValue}>
+            {finalValue} {t("addWaterModal.ml")}
+          </span>
           <button type="submit" className={css.saveButton}>
-            Save
+            {t("addWaterModal.save")}
           </button>
         </div>
       </form>
