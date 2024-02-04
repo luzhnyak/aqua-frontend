@@ -70,47 +70,38 @@
   height: 16px;
 } */
 
-.swiper-container {
-  width: 100%;
+.swipper-container {
+  width: 280px;
 }
 
 .swiper-slide {
   text-align: center;
-  font-size: 16px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .swiper-slide img {
   display: block;
-  width: 200px;
-  height: 200px;
+  margin-bottom: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
 }
 
-.swipper-container {
-  width: 410px;
-  display: flex;
-  justify-content: flex-start;
-  gap: 55px;
-  margin: 0 auto;
-}
 
 .swipper-info-name {
   font-size: 20px;
   font-weight: 500;
   line-height: 1.11;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   text-transform: uppercase;
 }
 
 .swipper-info-role {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.11;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .swipper-info-container {
@@ -124,7 +115,13 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+  margin-top: 14px;
 }
+
+.swiper-info-task {
+  margin-bottom: 3px;
+}
+
 
 /* @media only screen and (max-width: 767px) {
   .showOnSmallScreen {
@@ -149,6 +146,23 @@
   .vr {
     height: 16px;
   }
+
+  .swipper-container {
+    width: 630px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .swiper-slide img {
+    margin: 0;
+    width: 200px;
+    height: 200px;
+
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -164,4 +178,12 @@
     width: 24px;
     height: 24px;
   } */
+
+  .swipper-container {
+    width: 540px;
+  }
+
+  .swiper-slide {
+    gap: 40px;
+  }
 }
