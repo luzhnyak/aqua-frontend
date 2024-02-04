@@ -11,9 +11,9 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { authReducer } from "./auth/slice";
+import { authReducer, resetToken } from "./auth/slice";
 import { waterReducer } from "./waterConsumption/slice";
-import { logoutThunk, refreshTokensThunk } from "./auth/operations";
+import { refreshTokensThunk } from "./auth/operations";
 import axios from "axios";
 
 
@@ -64,12 +64,19 @@ axios.interceptors.response.use(
      
       try {
         const isRefreshTokenFail = await store.dispatch(refreshTokensThunk());
-       
-        if (isRefreshTokenFail.type === 'auth/refreshTokens/rejected') {
-          console.error('Refresh token Error');  
-          store.dispatch(logoutThunk());
+        console.log(isRefreshTokenFail)
+        
+        if (isRefreshTokenFail.payload.errorCode === 500) {
+          store.dispatch(resetToken(store.getState()))
           return
         }
+
+        if (isRefreshTokenFail.type === 'auth/refreshTokens/rejected') {
+          console.error('Refresh token Error');  
+          return
+        }
+
+        
  
         const newToken = store.getState().auth.token;
         error.config.headers.Authorization = `Bearer ${newToken}`;
