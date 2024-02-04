@@ -12,7 +12,7 @@
   justify-content: center;
   gap: 8px;
 
-  /* background-color: var(--secondary-color-blue-1); */
+  background-color: transparent;
 }
 
 .footer-text {
