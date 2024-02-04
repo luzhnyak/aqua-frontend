@@ -20,10 +20,28 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-style: normal;
+  cursor: url("./images/cursor/cursor.svg"), auto;
+}
+
+button,
+a {
+  cursor: url("./images/cursor/cursor.svg"), auto;
+}
+
+button:hover,
+button:focus,
+a:hover,
+a:focus {
+  cursor: url("./images/cursor/cursor-hover.svg"), auto;
+}
+
+button:active,
+a:active {
+  cursor: url("./images/cursor/cursor-active.svg"), auto;
 }
 
 h1,
@@ -40,10 +58,6 @@ ol {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-button {
-  cursor: pointer;
 }
 
 img {

@@ -13,10 +13,10 @@ export const SharedLayout = () => {
     <>
       <Header />
       <ToastContainer
-        position="top-center"
-        autoClose={2000}
+        position="top-right"
+        autoClose={3000}
         hideProgressBar={true}
-        theme="colored"
+        // theme="colored"
       />
       <Suspense fallback={<Loader />}>
         <Outlet />

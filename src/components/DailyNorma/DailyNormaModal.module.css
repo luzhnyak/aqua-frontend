@@ -19,7 +19,7 @@
 }
 
 .formulaField {
-  color: var(--Primery-Color-Blue, #407BFF);
+  color: var(--Primery-Color-Blue, #407bff);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
@@ -29,7 +29,7 @@
   max-width: 256px;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #D7E3FF;
+  border: 1px solid #d7e3ff;
 
   margin-bottom: 24px;
 }
@@ -47,14 +47,14 @@
 }
 
 .formulaDesc {
-  color: #8F8F8F;
+  color: #8f8f8f;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
 }
 
 .formulaDescSymbol {
-  color: var(--Primery-Color-Blue, #407BFF);
+  color: var(--Primery-Color-Blue, #407bff);
   font-size: 12px;
 
   font-weight: 400;
@@ -74,7 +74,7 @@
   margin-bottom: 16px;
 }
 
-.radioLabel{
+.radioLabel {
   display: flex;
   align-items: center;
 }
@@ -85,13 +85,11 @@
   width: 14px;
   height: 14px;
 
-
   cursor: pointer;
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"%3E%3Ccircle cx="7" cy="7" r="6.5" fill="white" stroke="%23407BFF"%3E%3C/circle%3E%3C/svg%3E');
 
   background-position: center;
   background-repeat: no-repeat;
-
 }
 
 .formRadioInput:checked {
@@ -128,9 +126,9 @@
   padding: 12px 10px;
   margin-bottom: 16px;
   border-radius: 6px;
-  border: 1px solid #D7E3FF;
+  border: 1px solid #d7e3ff;
 
-  color: var(--Primery-Color-Blue, #407BFF);
+  color: var(--Primery-Color-Blue, #407bff);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
@@ -167,7 +165,7 @@
 }
 
 .requiredAmountValue {
-  color: var(--Primery-Color-Blue, #407BFF);
+  color: var(--Primery-Color-Blue, #407bff);
   font-size: 18px;
   font-weight: 700;
   line-height: 1.33;
@@ -175,12 +173,10 @@
 
 .requiredAmountValue:hover,
 .requiredAmountValue:focus {
-  cursor: url('../../images/icons/hover-cursor.svg'), auto;
 }
 
 .requiredAmountValue:active {
   background: var(--Primery-Color-Blue, #407bff);
-  cursor: url('../../images/icons/focus-cursor.svg'), auto;
 }
 
 .howMuchText {
@@ -188,7 +184,6 @@
   font-weight: 500;
   line-height: 1.11;
 }
-
 
 .submitButton {
   display: block;
@@ -198,10 +193,10 @@
   padding: 8px 30px;
   border: none;
   border-radius: 10px;
-  background: var(--Primery-Color-Blue, #407BFF);
+  background: var(--Primery-Color-Blue, #407bff);
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
-  color: var(--Primery-Color-White, #FFF);
+  color: var(--Primery-Color-White, #fff);
   text-align: center;
   font-size: 16px;
   font-weight: 500;
@@ -218,7 +213,6 @@
 }
 
 .errormessage {
-
   color: var(--secondary-color-red);
   font-size: 14px;
 }
@@ -227,7 +221,6 @@
   border: 2px solid var(--secondary-color-red);
 }
 
-
 .errorInput {
   color: var(--secondary-color-red);
 }
@@ -235,5 +228,3 @@
 .errorInput::placeholder {
   color: var(--secondary-color-red);
 }
-
-

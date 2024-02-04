@@ -176,12 +176,10 @@
 
 .saveButton:hover,
 .saveButton:focus {
-  cursor: url('../../images/icons/hover-cursor.svg'), auto;
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 }
 
 .saveButton:active {
-  cursor: url('../../images/icons/focus-cursor.svg'), auto;
   box-shadow: none;
 }
 

@@ -228,12 +228,10 @@
   .tryTrackerBtn:hover,
   .tryTrackerBtn:focus {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-    cursor: url("../../images/icons/hover-cursor.svg"), auto;
   }
 
   .tryTrackerBtn:active {
     background: var(--Primery-Color-Blue, #407bff);
-    cursor: url("../../images/icons/focus-cursor.svg"), auto;
   }
 }
 

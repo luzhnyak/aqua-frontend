@@ -128,12 +128,10 @@
 
 .button:hover {
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-  cursor: url('../../images/icons/hover-cursor.svg'), auto;
 }
 
 .button:active {
   box-shadow: none;
-  cursor: url('../../images/icons/focus-cursor.svg'), auto;
 }
 
 @media only screen and (min-width: 768px) {
