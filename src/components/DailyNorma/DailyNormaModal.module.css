@@ -171,10 +171,6 @@
   line-height: 1.33;
 }
 
-.requiredAmountValue:hover,
-.requiredAmountValue:focus {
-}
-
 .requiredAmountValue:active {
   background: var(--Primery-Color-Blue, #407bff);
 }

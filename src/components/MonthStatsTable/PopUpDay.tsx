@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import css from "./MonthStatsTable.module.css";
 import clsx from "clsx";
 import { ReactComponent as IconClose } from "../../images/icons/x-mark-outline.svg";

@@ -1,6 +1,8 @@
 .footer {
-  max-width: 320px;
   margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .content {
@@ -36,7 +38,6 @@
   font-weight: 700;
   line-height: normal;
 
-
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -49,18 +50,16 @@
 }
 
 .footer-icon-wrapper {
-
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px
+  gap: 4px;
 }
 
 .footerIcon {
   width: 16px;
   height: 16px;
 }
-
 
 .swiper-container {
   width: 100%;
@@ -110,7 +109,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
 .swipper-icon-container {
@@ -128,7 +126,7 @@
 
 @media only screen and (min-width: 768px) {
   .footer {
-    max-width: 768px;
+    width: 100%;
   }
 
   .content {
@@ -151,7 +149,7 @@
 
 @media only screen and (min-width: 1440px) {
   .footer {
-    max-width: 1440px;
+    width: 100%;
   }
 
   .content {
