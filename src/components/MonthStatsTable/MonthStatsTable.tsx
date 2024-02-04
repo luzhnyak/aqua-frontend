@@ -217,10 +217,12 @@ export const MonthStatsTable: FC = () => {
   };
   const openModal = () => {
     setMonthChartModal(true);
+    document.body.classList.add("body-scroll-lock");
   };
 
   const closeModal = () => {
     setMonthChartModal(false);
+    document.body.classList.remove("body-scroll-lock");
   };
 
   return (

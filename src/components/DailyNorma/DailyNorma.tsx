@@ -16,6 +16,11 @@ const DailyNorma = () => {
 
   const toggleModal: () => void = () => {
     setVisible(!visible);
+    if (!visible) {
+      document.body.classList.add("body-scroll-lock");
+    } else {
+      document.body.classList.remove("body-scroll-lock");
+    }
   };
 
   const handleWaterAmountSave = (amount: number) => {
