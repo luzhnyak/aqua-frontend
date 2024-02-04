@@ -64,9 +64,9 @@ export const refreshTokensThunk = createAsyncThunk(
 
       if (oldRefreshToken !== null) {
         const response = await refreshTokensApi(oldRefreshToken);
-        // const { token } = response;
+        const { token } = response;
 
-        // setToken(token);
+        setToken(token);
         return response;
       }
     } catch (error) {
@@ -101,8 +101,9 @@ export const refreshCurrentUserThunk = createAsyncThunk(
         //   errorMessage: "Unable to fetch user",
         //   errorCode: 401,
         // };
+
         // return thunkApi.rejectWithValue(errorObj);
-        return false;
+        return;
       }
       return true;
     },
