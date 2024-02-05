@@ -9,27 +9,34 @@ import { signUpThunk } from "../../redux/auth/operations";
 import css from "./SigninPage.module.css";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import {
+  selectAuthError,
+  selectIsRefreshing,
+} from "../../redux/auth/selectors";
+import { IError } from "../../services/handleApiError";
 
 const SignupPage = () => {
   const { t } = useTranslation();
 
   const dispatch: AppDispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  const signUpHandler = (values: any, { resetForm }: any) => {
+  const loader = useSelector(selectIsRefreshing);
+  const error: IError | null = useSelector(selectAuthError);
+
+  const signUpHandler = async (values: any, { resetForm }: any) => {
     const { repeatPassword, ...newObject } = values;
-    setLoader(true);
-    try {
-      dispatch(signUpThunk(newObject));
-      resetForm();
-      setRedirect(true);
-    } catch (error) {
-      setLoader(false);
+
+    await dispatch(signUpThunk(newObject));
+
+    if (error) {
       toast.error(`${t("authorization.notification.errorReg")}`);
-    } finally {
-      setLoader(false);
+      return;
     }
+
+    resetForm();
+    setRedirect(true);
   };
 
   if (redirect) {

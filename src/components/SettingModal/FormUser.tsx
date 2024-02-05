@@ -38,39 +38,13 @@ const FormUser: FC<IProps> = ({ onClose }) => {
   const loader = useSelector(selectIsRefreshing);
   const error: IError | null = useSelector(selectAuthError);
 
-  // const isValueRequired = (value:string, referenceValue:string) => {
-  //   return (
-  //     !(referenceValue && referenceValue.trim().length > 0) ||
-  //     (value && value.trim().length > 0)
-  //   );
-  // };
-
-  // function outdatedPasswordIsRequired(value: any) {
-  //   const password = this.parent.password;
-  //   return isValueRequired(value, password);
-  // }
-
-  // function newPasswordIsRequired(value: any) {
-  //   const passwordOutdated = this.parent.passwordOutdated;
-  //   return isValueRequired(value, passwordOutdated);
-  // }
-
-  // function passwordRepeatIsRequired(value: any) {
-  //   const password = this.parent.password;
-  //   return isValueRequired(value, password);
-  // }
-
   const validationSchema = Yup.object({
     name: Yup.string().max(32, `${t("authorization.errors.enterLess")}`),
     email: Yup.string(),
     password: Yup.string()
       .min(8, `${t("authorization.errors.passwordLeast")}`)
       .max(64, `${t("authorization.errors.passwordLess")}`),
-    // .test({
-    //   name: "passwordOutdated",
-    //   test: outdatedPasswordIsRequired,
-    //   message: "Outdated password is required",
-    // }),
+
     newPassword: Yup.string()
       .min(8, `${t("authorization.errors.passwordLeast")}`)
       .max(64, `${t("authorization.errors.passwordLess")}`),

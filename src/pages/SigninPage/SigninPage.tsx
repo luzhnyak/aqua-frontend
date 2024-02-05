@@ -9,14 +9,21 @@ import VerifyModal from "../../components/AuthForm/VerifyModal";
 import css from "./SigninPage.module.css";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
-import { unwrapResult } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import {
+  selectAuthError,
+  selectIsRefreshing,
+} from "../../redux/auth/selectors";
+import { IError } from "../../services/handleApiError";
 
 const SignInPage = () => {
   const { t } = useTranslation();
 
   const dispatch: AppDispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
   const [showVerifyModal, setShowVerifyModal] = useState(false);
+
+  const loader = useSelector(selectIsRefreshing);
+  const error: IError | null = useSelector(selectAuthError);
 
   const closeVerifyModal = () => {
     setShowVerifyModal(false);
@@ -26,22 +33,17 @@ const SignInPage = () => {
     values: SubmitValues,
     { resetForm }: { resetForm: () => void }
   ) => {
-    setLoader(true);
-    try {
-      const resultAction = await dispatch(loginThunk(values));
-      unwrapResult(resultAction);
-      resetForm();
-    } catch (error: any) {
-      setLoader(false);
+    await dispatch(loginThunk(values));
 
+    if (error) {
       if (error.errorCode === 403) {
         setShowVerifyModal(true);
       } else {
         toast.error(`${t("authorization.errors.signIn")}`);
       }
-    } finally {
-      setLoader(false);
     }
+
+    resetForm();
   };
 
   return (
