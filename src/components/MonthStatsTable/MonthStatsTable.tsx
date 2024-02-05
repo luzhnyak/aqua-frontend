@@ -155,7 +155,7 @@ export const MonthStatsTable: FC = () => {
         return day;
       });
 
-      const percent = waterPerMonth.map((day) => day.progress);
+const percent = waterPerMonth.map((day) => Number(parseInt(day.progress)));
       const dailyNorm = waterPerMonth.map((day) => day.waterRate);
       const entries = waterPerMonth.map((day) => day.dailyEntries);
 
