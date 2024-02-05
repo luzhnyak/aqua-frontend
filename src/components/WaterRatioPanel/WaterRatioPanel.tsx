@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 const WaterRatioPanel = () => {
   const { t } = useTranslation();
 
- const waterToday = useSelector(selectWatersToday) || 0;
+  const waterToday = useSelector(selectWatersToday) || 0;
   const progressValue = useMemo(() => {
     if (waterToday) {
       const value = Number(parseInt(waterToday?.progress));
@@ -35,8 +35,8 @@ const WaterRatioPanel = () => {
     const rangeThumb = document.getElementById("range-thumb");
     const rangeInput = document.getElementById("range-input");
     const rangeValue = document.getElementById("range-number");
-    const fifty = document.getElementById("range-thumb");
-    const hundred = document.getElementById("range-input");
+    // const fifty = document.getElementById("range-thumb");
+    // const hundred = document.getElementById("range-input");
 
     const thumbPosition = progressValue / 100;
 
@@ -60,7 +60,6 @@ const WaterRatioPanel = () => {
     };
 
     updateProgressBarColor();
-
   }, [waterToday, progressValue]);
 
   useEffect(() => {
@@ -90,7 +89,6 @@ const WaterRatioPanel = () => {
     quickCount();
   }, [previousValue, progressValue]);
 
-
   return (
     <div>
       <h2 className={css.today}>{t("waterRatioPanel.today")}</h2>
@@ -102,7 +100,6 @@ const WaterRatioPanel = () => {
                 <div className={css.rangeSliderLine} id="range-line"></div>
               </div>
 
-           
               <div className={css.rangeValue} id="range-number">
                 <span className={css.rangeValueNumber}>{previousValue}%</span>
               </div>
@@ -122,15 +119,15 @@ const WaterRatioPanel = () => {
           </div>
 
           <div className={css.decorativeLines}>
-          <span></span>
+            <span></span>
             {progressValue < 40 && <span className={css.line}></span>}
             {progressValue < 90 && <span className={css.line}></span>}
           </div>
 
           <div className={css.percentages}>
-          <span className={css.number1}></span>
-          {progressValue < 40 && <span className={css.number2}>50%</span>}
-          {progressValue < 90 && <span className={css.number3}>100%</span>}
+            <span className={css.number1}></span>
+            {progressValue < 40 && <span className={css.number2}>50%</span>}
+            {progressValue < 90 && <span className={css.number3}>100%</span>}
           </div>
         </div>
         <button type="button" className={css.addButton} onClick={openModal}>
