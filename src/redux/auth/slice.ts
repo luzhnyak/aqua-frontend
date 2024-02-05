@@ -89,8 +89,6 @@ const authSlice = createSlice({
         state.refreshToken = action.payload.refreshToken;
         state.user = action.payload.user;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
-        state.error = null;
       })
       .addCase(logoutThunk.fulfilled, () => {
         return authInitialState;
@@ -98,7 +96,6 @@ const authSlice = createSlice({
       .addCase(refreshCurrentUserThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
       })
       .addCase(updateAvatarThunk.fulfilled, (state, action) => {
         state.user.avatarURL = action.payload;
@@ -139,6 +136,22 @@ const authSlice = createSlice({
           refreshTokensThunk.rejected
         ),
         handleRejected
+      )
+      .addMatcher(
+        isAnyOf(
+          signUpThunk.fulfilled,
+          loginThunk.fulfilled,
+          logoutThunk.fulfilled,
+          refreshCurrentUserThunk.fulfilled,
+          updateAvatarThunk.fulfilled,
+          updateUserInfoThunk.fulfilled,
+          updateWaterNormaThunk.fulfilled,
+          refreshTokensThunk.fulfilled
+        ),
+        (state) => {
+          state.isRefreshing = false;
+          state.error = null;
+        }
       ),
 });
 
