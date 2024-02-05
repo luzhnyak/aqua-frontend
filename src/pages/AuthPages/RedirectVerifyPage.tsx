@@ -2,7 +2,7 @@ import Loader from "../../components/Loader/Loader";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { sendVerify } from "../../services/waterApi";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import { toast } from "react-toastify";
 
 const RedirectVerifyPage = () => {

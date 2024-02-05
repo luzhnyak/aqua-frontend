@@ -6,7 +6,7 @@ import Loader from "../../components/Loader/Loader";
 
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { signUpThunk } from "../../redux/auth/operations";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";

@@ -1,5 +1,5 @@
 import FormSendEmail from "../../components/FormSendEmail/FormSendEmail";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import { resendVerifyToken } from "../../services/waterApi";
 import { toast } from "react-toastify";
 
