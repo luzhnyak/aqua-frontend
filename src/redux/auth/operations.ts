@@ -103,7 +103,7 @@ export const refreshCurrentUserThunk = createAsyncThunk(
         // };
 
         // return thunkApi.rejectWithValue(errorObj);
-        return;
+        return false;
       }
       return true;
     },
@@ -128,6 +128,7 @@ export const updateUserInfoThunk = createAsyncThunk(
   async (formData: IUpdateUser, thunkApi) => {
     try {
       const response = await updateUserInfo(formData);
+
       return response;
     } catch (error) {
       const errorObj = handleApiError(error);

@@ -10,8 +10,10 @@ import { selectUser } from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/Loader";
-import { updateUserInfo } from "../../services/waterApi";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { updateUserInfoThunk } from "../../redux/auth/operations";
 
 interface IProps {
   onClose: () => void;
@@ -21,6 +23,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
   const { t } = useTranslation();
 
   const user = useSelector(selectUser);
+  const dispatch: AppDispatch = useDispatch();
   const { name, email, gender } = user;
 
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
@@ -63,7 +66,8 @@ const FormUser: FC<IProps> = ({ onClose }) => {
     if (password === "" && newPassword === "" && repeatPassword === "") {
       try {
         if (email !== "") {
-          await updateUserInfo({ gender, email, name });
+          await dispatch(updateUserInfoThunk({ gender, email, name }));
+
           toast.success(`${t("formUser.notification.success")}`);
 
           setLoader(false);
@@ -85,13 +89,15 @@ const FormUser: FC<IProps> = ({ onClose }) => {
       setLoader(true);
 
       try {
-        await updateUserInfo({
-          gender,
-          email,
-          name,
-          password,
-          newPassword,
-        });
+        await dispatch(
+          updateUserInfoThunk({
+            gender,
+            email,
+            name,
+            password,
+            newPassword,
+          })
+        );
 
         toast.success(`${t("formUser.notification.update")}`);
 

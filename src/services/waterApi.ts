@@ -55,6 +55,7 @@ export const updateUserAvatar = async (newAvatar: Blob) => {
 
 export const updateUserInfo = async (formData: IUpdateUser) => {
   const { data } = await axios.put("/users/update-user", formData);
+
   return data.user;
 };
 

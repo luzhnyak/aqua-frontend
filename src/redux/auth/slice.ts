@@ -72,8 +72,8 @@ const authSlice = createSlice({
       return (state = { ...state, token: action.payload });
     },
     resetToken(state: IAuthInitialState, action) {
-      return (state = { ...state, token:null,isLoggedIn: false});
-    }
+      return (state = { ...state, token: null, isLoggedIn: false });
+    },
   },
 
   extraReducers: (builder) =>
@@ -142,5 +142,5 @@ const authSlice = createSlice({
       ),
 });
 
-export const { setToken ,resetToken} = authSlice.actions;
+export const { setToken, resetToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;

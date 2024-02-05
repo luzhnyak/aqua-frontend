@@ -8,7 +8,6 @@ import Modal from "../../components/Modal/Modal";
 import { useTranslation } from "react-i18next";
 import Drops from "./DropsAnimation";
 
-
 const WaterRatioPanel = () => {
   const { t } = useTranslation();
 
@@ -23,7 +22,6 @@ const WaterRatioPanel = () => {
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [previousValue, setValue] = useState(progressValue || 0);
 
-
   const openModal = () => {
     setAddWaterModalOpen(true);
     document.body.classList.add("body-scroll-lock");
@@ -35,21 +33,18 @@ const WaterRatioPanel = () => {
   };
 
   useEffect(() => {
- const rangeThumb = document.getElementById("range-thumb");
+    const rangeThumb = document.getElementById("range-thumb");
     const rangeInput = document.getElementById("range-input");
     const rangeValue = document.getElementById("range-number");
 
-
     const changeThumbPosition = () => {
-     
       if (rangeThumb && rangeInput && rangeValue) {
-            const thumbPosition = progressValue / 100;
+        const thumbPosition = progressValue / 100;
 
         const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
         const thumbPositionX = thumbPosition * space;
         rangeThumb.style.left = `${thumbPositionX}px`;
         rangeValue.style.left = `${thumbPositionX - 3}px`;
-
       }
     };
 
@@ -57,7 +52,7 @@ const WaterRatioPanel = () => {
 
     const updateProgressBarColor = () => {
       if (rangeThumb && rangeInput) {
-            const thumbPosition = progressValue / 100;
+        const thumbPosition = progressValue / 100;
 
         const space = rangeInput.offsetWidth - 7;
         const thumbPositionX = thumbPosition * space;
@@ -100,7 +95,6 @@ const WaterRatioPanel = () => {
       <h2 className={css.today}>{t("waterRatioPanel.today")}</h2>
       <div className={css.mainContainer}>
         <div className={css.panel}>
-          
           <div className={css.range}>
             <div className={css.rangeContent}>
               <div className={css.rangeSlider}>
@@ -123,11 +117,10 @@ const WaterRatioPanel = () => {
               />
 
               <div className={css.rangeThumb} id="range-thumb">
-        {progressValue === 100 || progressValue >= 50 && <Drops/>}
+                {(progressValue === 100 || progressValue >= 50) && <Drops />}
               </div>
             </div>
           </div>
-
 
           <div className={css.decorativeLines}>
             {progressValue > 10 && <span className={css.line}></span>}
@@ -136,11 +129,12 @@ const WaterRatioPanel = () => {
           </div>
 
           <div className={css.percentages}>
-            {progressValue >=10 && <span className={css.number1}>0%</span>}
+            {progressValue >= 10 && <span className={css.number1}>0%</span>}
 
-          {progressValue < 40 && progressValue > 11 && <span className={css.number2}>50%</span>}
-          {progressValue < 90 && <span className={css.number3}>100%</span>}
-
+            {progressValue < 40 && progressValue > 11 && (
+              <span className={css.number2}>50%</span>
+            )}
+            {progressValue < 90 && <span className={css.number3}>100%</span>}
           </div>
         </div>
         <button type="button" className={css.addButton} onClick={openModal}>
