@@ -36,7 +36,7 @@
       "min1": "Min weight amount is 1",
       "min0": "Min weight amount is 0",
       "waterAmountReq": "WaterAmount is required.",
-      "minWater0": "Min water amount is 0 L",
+      "minWater0": "Min water amount is 0.1 L",
       "maxWater": "Max water amount is 15 L"
     }
   },

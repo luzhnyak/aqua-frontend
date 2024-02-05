@@ -40,7 +40,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
     activityTime: Yup.number().min(0, `${t("dailyNormaModal.errors.min0")}`),
     waterAmount: Yup.number()
       .required(`${t("dailyNormaModal.errors.waterAmountReq")}`)
-      .min(0, `${t("dailyNormaModal.errors.minWater0")}`)
+      .min(0.1, `${t("dailyNormaModal.errors.minWater0")}`)
       .max(15, `${t("dailyNormaModal.errors.maxWater")}`),
   });
 
