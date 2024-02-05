@@ -10,7 +10,6 @@
 }
 .entries-container{
     display: flex;
-    
     flex-direction: column;
     justify-content: space-between;
 }
@@ -19,6 +18,12 @@ color: var(--Primery-Color-Blue, #407BFF);
 font-size: 18px;
 font-weight: 400;
 line-height: 24px;
+margin-bottom: 152px;
+}
+@media only screen and (min-width: 768px) {
+.empty{
+    margin-bottom: 156px;
+}
 }
 .entries{
     max-height: 275px;

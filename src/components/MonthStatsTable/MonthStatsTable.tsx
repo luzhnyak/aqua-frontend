@@ -20,7 +20,7 @@ export const MonthStatsTable: FC = () => {
   const user = useSelector(selectUser);
   const creationDate = user.createdAt ? new Date(user.createdAt) : new Date();
   const currentUserYear = creationDate.getFullYear();
-  const currentUserMonth = creationDate.getMonth() + 1;
+  const currentUserMonth = creationDate.getMonth();
   const currentUserDay = creationDate.getDate();
 
   const waterPerMonth = useSelector(selectWatersPerMonth);
@@ -69,32 +69,19 @@ export const MonthStatsTable: FC = () => {
       if (month === currentMonth && year === currentYear) {
         setsDisabledYear(true);
       }
+      if (month === currentUserMonth+1 && year === currentUserYear) {
+        setsDisabledForUser(true);
+      }
     };
 
     disabled();
-  }, [sDate, waterToday, dispatch]);
+  }, [sDate, waterToday, dispatch, currentUserMonth, currentUserYear]);
 
   const findMonthDays = (y: number, m: number) => {
     return new Date(y, m + 1, 0).getDate();
   };
 
   const changeToPrevMonth = () => {
-    const month =
-      Number(
-        sDate.toLocaleString("en-US", {
-          month: "numeric",
-        })
-      ) - 1;
-    const year = Number(
-      sDate.toLocaleString("en-US", {
-        year: "numeric",
-      })
-    );
-
-    if (month === currentUserMonth && year === currentUserYear) {
-      setsDisabledForUser(true);
-    }
-
     setsDate((pDate) => {
       const pMonth = pDate.getMonth() - 1;
       const pYear = pDate.getFullYear();
@@ -111,6 +98,8 @@ export const MonthStatsTable: FC = () => {
       const nYear = pDate.getFullYear();
       return new Date(nYear, nMonth);
     });
+
+    console.log(currentUserMonth);
     setsPopup(false);
     setsDisabledForUser(false);
   };
@@ -128,7 +117,6 @@ export const MonthStatsTable: FC = () => {
       setsPopup(true);
     }
 
-    // setsDate(date);
     setsDay(day);
   };
 
@@ -204,7 +192,7 @@ export const MonthStatsTable: FC = () => {
       }
     }
 
-    if (m + 1 === currentUserMonth && y === currentUserYear) {
+    if (m  === currentUserMonth && y === currentUserYear) {
       const inactive = allDays.filter((day) => day.day < currentUserDay);
       inactive.map((day) => (day.disabled = true));
     }
