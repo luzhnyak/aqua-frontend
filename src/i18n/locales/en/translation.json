@@ -160,5 +160,69 @@
     "woman": "Woman",
     "man": "Man"
   },
-  "resendVerifyEmail": { "title": "Resend verify email" }
+  "resendVerifyEmail": { "title": "Resend verify email" },
+  "team": {
+    "title": "Our team",
+    "leaderName": "Oleh Luzhniak",
+    "leader": "Team leader",
+    "leaderTask1": "Server deployment",
+    "leaderTask2": "Project structure",
+    "leaderTask3": "Technical guidance",
+    "leaderTask4": "Routing",
+    "leaderTask5": "TypeScript implementation",
+    "leaderTask6": "Google authorisation",
+
+    "scrumName": "Iryna Shevchenko",
+    "scrum": "Scrum master",
+    "scrumTask1": "Water ratio panel",
+    "scrumTask2": "Today list modal",
+    "scrumTask3": "Add water modal",
+
+    "frontNameAnna": "Anna Boichuk",
+    "front": "Frontend developer",
+    "frontAnnaTask1": "Today water list",
+    "frontAnnaTask2": "Month stats table",
+    "frontAnnaTask3": "Days general stats",
+    "frontAnnaTask4": "Water month chart",
+
+    "frontNameAnnaM": "Anna Matsarska",
+    "frontAnnaMTask1": "Redux",
+    "frontAnnaMTask2": "Footer",
+    "frontAnnaMTask3": "Team Members Modal",
+
+    "backNameIhor": "Ihor Khorenko",
+    "back": "Backend developer",
+    "backIhorTask1": "Water controllers",
+    "backIhorTask2": "Today controller",
+    "backIhorTask3": "Month controller",
+    "backIhorTask4": "Water API Endpoints",
+    "backIhorTask5": "Datebase structuring",
+
+    "frontNameHalyna": "Halyna Lastivka",
+    "frontHalynaTask1": "Signin Page",
+    "frontHalynaTask2": "SignUp Page",
+
+    "frontNameVik": "Viktoriia Lytvyn",
+    "frontVikTask1": "Daily norma",
+    "frontVikTask2": "Daily norma modal",
+    "frontVikTask3": "Welcome page",
+
+    "backNameDan": "Daniil Chernov",
+    "backDanTask1": "Auth API",
+    "backDanTask2": "User API",
+    "backDanTask3": "WaterRate API",
+    "backDanTask4": "Refresh token",
+
+    "fullName": "Andrii Zaiats",
+    "fullstack": "Fullstack developer",
+    "fullTask1": "Swagger documentation",
+    "fullTask2": "Forgot password page",
+    "fullTask3": "Update password page",
+    "fullTask4": "Routing",
+
+    "frontNameKate": "Kateryna Bachkalo",
+    "frontKateTask1": "Header",
+    "frontKateTask2": "User settings modal",
+    "frontKateTask3": "Bilingual support"
+  }
 }

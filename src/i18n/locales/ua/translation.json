@@ -162,5 +162,69 @@
   },
   "resendVerifyEmail": {
     "title": "Повторно надіслати електронний лист для підтвердження"
+  },
+  "team": {
+    "title": "Наша команда",
+    "leaderName": "Олег Лужняк",
+    "leader": "Керівник команди",
+    "leaderTask1": "Розгортання сервера",
+    "leaderTask2": "Структура проекту",
+    "leaderTask3": "Технічне керівництво",
+    "leaderTask4": "Маршрутизація",
+    "leaderTask5": "Реалізація TypeScript",
+    "leaderTask6": "Авторизація Google",
+
+    "scrumName": "Ірина Шевченко",
+    "scrum": "Майстер скраму",
+    "scrumTask1": "Панель співвідношення води",
+    "scrumTask2": "Модальне вікно списку на сьогодні",
+    "scrumTask3": "Модальне вікно додавання води",
+
+    "frontNameAnna": "Анна Бойчук",
+    "front": "Розробник front-end",
+    "frontAnnaTask1": "Список води на сьогодні",
+    "frontAnnaTask2": "Таблиця статистики за місяць",
+    "frontAnnaTask3": "Загальна статистика днів",
+    "frontAnnaTask4": "Діаграма споживання води на місяць",
+
+    "frontNameAnnaM": "Анна Мацарська",
+    "frontAnnaMTask1": "Redux",
+    "frontAnnaMTask2": "Footer",
+    "frontAnnaMTask3": "Модальне вікно членів команди",
+
+    "backNameIhor": "Ігор Хоренко",
+    "back": "Розробник back-end",
+    "backIhorTask1": "Контролери води",
+    "backIhorTask2": "Контролер на сьогодні",
+    "backIhorTask3": "Контролер місяця",
+    "backIhorTask4": "API Endpoints для води",
+    "backIhorTask5": "Структурування бази даних",
+
+    "frontNameHalyna": "Галина Ластівка",
+    "frontHalynaTask1": "Сторінка логіну",
+    "frontHalynaTask2": "Сторінка реєстрації",
+
+    "frontNameVik": "Вікторія Литвин",
+    "frontVikTask1": "Денна норма",
+    "frontVikTask2": "Модальне вікно денної норми",
+    "frontVikTask3": "Вітальна сторінка",
+
+    "backNameDan": "Даніїл Чернов",
+    "backDanTask1": "Ауторизаційна API",
+    "backDanTask2": "API користувача",
+    "backDanTask3": "WaterRate API",
+    "backDanTask4": "Оновлення токену",
+
+    "fullName": "Андрій Заяць",
+    "fullstack": "Розробник Fullstack",
+    "fullTask1": "Документація Swagger",
+    "fullTask2": "Сторінка забутого пароля",
+    "fullTask3": "Сторінка оновлення пароля",
+    "fullTask4": "Маршрутизація",
+
+    "frontNameKate": "Катерина Бачкало",
+    "frontKateTask1": "Header",
+    "frontKateTask2": "Модальне вікно налаштування користувача",
+    "frontKateTask3": "Двомовна підтримка"
   }
 }

@@ -16,8 +16,11 @@ import HalynaLastivka from "../../images/members/HalynaLastivka.jpg";
 import ViktoriaLytvyn from "../../images/members/ViktoriaLytvyn.jpg";
 import AnnaBoichuk from "../../images/members/AnnaBoichuk.jpg";
 import user from "../../images/members/user.jpg";
+import { useTranslation } from "react-i18next";
 
 const TeamMembers = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Swiper
@@ -30,20 +33,28 @@ const TeamMembers = () => {
             <img src={OlehLuzhniak} alt="Oleh Luzhniak" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Oleh Luzhniak</p>
-                <p className={css["swipper-info-role"]}>Team leader</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.leaderName")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.leader")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Server deployment</li>
-                  <li className={css["swiper-info-task"]}>Project structure</li>
                   <li className={css["swiper-info-task"]}>
-                    Technical guidance
-                  </li>
-                  <li className={css["swiper-info-task"]}>Routing</li>
-                  <li className={css["swiper-info-task"]}>
-                    TypeScript implementation
+                    {t("team.leaderTask1")}
                   </li>
                   <li className={css["swiper-info-task"]}>
-                    Google authorisation
+                    {t("team.leaderTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.leaderTask3")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.leaderTask4")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.leaderTask5")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.leaderTask6")}
                   </li>
                 </ul>
               </div>
@@ -73,12 +84,20 @@ const TeamMembers = () => {
             <img src={IrynaShevchenko} alt="Iryna Shevchenko" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Iryna Shevchenko</p>
-                <p className={css["swipper-info-role"]}>Scrum master</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.scrumName")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.scrum")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Water ratio panel</li>
-                  <li className={css["swiper-info-task"]}>Today list modal</li>
-                  <li className={css["swiper-info-task"]}>Add water modal</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.scrumTask1")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.scrumTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.scrumTask3")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -107,15 +126,23 @@ const TeamMembers = () => {
             <img src={AnnaBoichuk} alt="Anna Boichuk" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Anna Boichuk</p>
-                <p className={css["swipper-info-role"]}>Frontend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.frontNameAnna")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.front")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Today water list</li>
-                  <li className={css["swiper-info-task"]}>Month stats table</li>
                   <li className={css["swiper-info-task"]}>
-                    Days general stats
+                    {t("team.frontAnnaTask1")}
                   </li>
-                  <li className={css["swiper-info-task"]}>Water month chart</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontAnnaTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontAnnaTask3")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontAnnaTask4")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -144,13 +171,19 @@ const TeamMembers = () => {
             <img src={AnnaMatsarska} alt="Anna Matsarska" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Anna Matsarska</p>
-                <p className={css["swipper-info-role"]}>Frontend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.frontNameAnnaM")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.front")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Redux</li>
-                  <li className={css["swiper-info-task"]}>Footer</li>
                   <li className={css["swiper-info-task"]}>
-                    Team Members Modal
+                    {t("team.frontAnnaMTask1")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontAnnaMTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontAnnaMTask3")}
                   </li>
                 </ul>
               </div>
@@ -180,17 +213,25 @@ const TeamMembers = () => {
             <img src={user} alt="Ihor Khorenko" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Ihor Khorenko</p>
-                <p className={css["swipper-info-role"]}>Backend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.backNameIhor")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.back")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Water controllers</li>
-                  <li className={css["swiper-info-task"]}>Today controller</li>
-                  <li className={css["swiper-info-task"]}>Month controller</li>
                   <li className={css["swiper-info-task"]}>
-                    Water API Endpoints
+                    {t("team.backIhorTask1")}
                   </li>
                   <li className={css["swiper-info-task"]}>
-                    Datebase structuring
+                    {t("team.backIhorTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backIhorTask3")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backIhorTask4")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backIhorTask5")}
                   </li>
                 </ul>
               </div>
@@ -220,11 +261,17 @@ const TeamMembers = () => {
             <img src={HalynaLastivka} alt="Halyna Lastivka" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Halyna Lastivka</p>
-                <p className={css["swipper-info-role"]}>Frontend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.frontNameHalyna")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.front")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Signin Page</li>
-                  <li className={css["swiper-info-task"]}>SignUp Page</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontHalynaTask1")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontHalynaTask2")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -253,12 +300,20 @@ const TeamMembers = () => {
             <img src={ViktoriaLytvyn} alt="Viktoriia Lytvyn" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Viktoriia Lytvyn</p>
-                <p className={css["swipper-info-role"]}>Frontend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.frontNameVik")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.front")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Daily norma</li>
-                  <li className={css["swiper-info-task"]}>Daily norma modal</li>
-                  <li className={css["swiper-info-task"]}>Welcome page</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontVikTask1")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontVikTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontVikTask3")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -287,13 +342,23 @@ const TeamMembers = () => {
             <img src={user} alt="Daniil Chernov" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Daniil Chernov</p>
-                <p className={css["swipper-info-role"]}>Backend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.backNameDan")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.back")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Auth API</li>
-                  <li className={css["swiper-info-task"]}>User API</li>
-                  <li className={css["swiper-info-task"]}>WaterRate API</li>
-                  <li className={css["swiper-info-task"]}>Refresh token</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backDanTask1")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backDanTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backDanTask3")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.backDanTask4")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -322,19 +387,23 @@ const TeamMembers = () => {
             <img src={user} alt="Andrii Zaiats" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Andrii Zaiats</p>
-                <p className={css["swipper-info-role"]}>Fullstack developer</p>
+                <p className={css["swipper-info-name"]}>{t("team.fullName")}</p>
+                <p className={css["swipper-info-role"]}>
+                  {t("team.fullstack")}
+                </p>
                 <ul>
                   <li className={css["swiper-info-task"]}>
-                    Swagger documentation
+                    {t("team.fullTask1")}
                   </li>
                   <li className={css["swiper-info-task"]}>
-                    Forgot password page
+                    {t("team.fullTask2")}
                   </li>
                   <li className={css["swiper-info-task"]}>
-                    Update password page
+                    {t("team.fullTask3")}
                   </li>
-                  <li className={css["swiper-info-task"]}>Routing</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.fullTask4")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -363,14 +432,20 @@ const TeamMembers = () => {
             <img src={KaterynaBachkalo} alt="Kateryna Bachkalo" />
             <div className={css["swipper-info-container"]}>
               <div>
-                <p className={css["swipper-info-name"]}>Kateryna Bachkalo</p>
-                <p className={css["swipper-info-role"]}>Frontend developer</p>
+                <p className={css["swipper-info-name"]}>
+                  {t("team.frontNameKate")}
+                </p>
+                <p className={css["swipper-info-role"]}>{t("team.front")}</p>
                 <ul>
-                  <li className={css["swiper-info-task"]}>Header</li>
                   <li className={css["swiper-info-task"]}>
-                    User settings modal
+                    {t("team.frontKateTask1")}
                   </li>
-                  <li className={css["swiper-info-task"]}>Bilingual support</li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontKateTask2")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontKateTask3")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>

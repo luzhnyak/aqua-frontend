@@ -2,10 +2,12 @@ import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import css from "./Footer.module.css";
 import TeamMembers from "./TeamMembers";
+import { useTranslation } from "react-i18next";
 import "./style.css";
 
 const Footer = () => {
   const [isOpen, setTeamModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openModal = () => {
     setTeamModalOpen(true);
@@ -29,7 +31,7 @@ const Footer = () => {
         </button>
       </div>
       {isOpen && (
-        <Modal title="Our team" onClose={closeModal}>
+        <Modal title={t("team.title")} onClose={closeModal}>
           <TeamMembers />
         </Modal>
       )}
