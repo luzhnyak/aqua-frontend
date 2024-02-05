@@ -15,6 +15,10 @@ import {
 import { RootState } from "../store";
 import { IRegisterUser, IUpdateUser } from "../../types";
 import { handleApiError } from "../../services/handleApiError";
+import {
+  AsyncThunkConfig,
+  GetThunkAPI,
+} from "@reduxjs/toolkit/dist/createAsyncThunk";
 
 export const signUpThunk = createAsyncThunk(
   "auth/register",
@@ -76,9 +80,13 @@ export const refreshTokensThunk = createAsyncThunk(
   }
 );
 
+type CustomThunkAPI = GetThunkAPI<AsyncThunkConfig> & {
+  rejectWithValue: (errorObj: any) => void;
+};
+
 export const refreshCurrentUserThunk = createAsyncThunk(
   "auth/refresh",
-  async (_, thunkApi) => {
+  async (_, thunkApi: CustomThunkAPI) => {
     const state = thunkApi.getState() as RootState;
     const token = state.auth.token;
 
@@ -93,16 +101,16 @@ export const refreshCurrentUserThunk = createAsyncThunk(
   },
 
   {
-    condition: (_, thunkApi) => {
+    condition: (_, thunkApi: CustomThunkAPI) => {
       const state = thunkApi.getState() as RootState;
       const token = state.auth.token;
       if (!token) {
-        // const errorObj = {
-        //   errorMessage: "Unable to fetch user",
-        //   errorCode: 401,
-        // };
+        const errorObj = {
+          errorMessage: "Unable to fetch user",
+          errorCode: 401,
+        };
 
-        // return thunkApi.rejectWithValue(errorObj);
+        thunkApi.rejectWithValue(errorObj);
         return false;
       }
       return true;
