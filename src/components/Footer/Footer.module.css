@@ -128,7 +128,7 @@
   .swiper-slide {
     display: flex;
     justify-content: center;
-    gap: 60px;
+    gap: 40px;
   }
 
   .swiper-slide img {
@@ -158,6 +158,6 @@
   }
 
   .swiper-slide {
-    gap: 40px;
+    gap: 20px;
   }
 }
