@@ -15,7 +15,7 @@ export const SharedLayout = () => {
       <Header />
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={5000}
         hideProgressBar={true}
         // theme="colored"
       />

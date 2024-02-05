@@ -32,10 +32,14 @@ const SignupPage = () => {
 
     resetForm();
     setRedirect(true);
+
+    toast.success(
+      `Registration is successful. Check your email to activate your account!`
+    );
   };
 
   useEffect(() => {
-    if (error) {
+    if (error?.errorCode === 400) {
       toast.error(`${t("authorization.notification.errorReg")}`);
       return;
     }

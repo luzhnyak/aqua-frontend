@@ -110,6 +110,10 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
       })
+      .addCase(refreshTokensThunk.rejected, (state) => {
+        state.token = null;
+        state.refreshToken = null;
+      })
 
       .addMatcher(
         isAnyOf(
@@ -119,8 +123,7 @@ const authSlice = createSlice({
           refreshCurrentUserThunk.pending,
           updateAvatarThunk.pending,
           updateUserInfoThunk.pending,
-          updateWaterNormaThunk.pending,
-          refreshTokensThunk.pending
+          updateWaterNormaThunk.pending
         ),
         handlePending
       )
@@ -132,8 +135,7 @@ const authSlice = createSlice({
           refreshCurrentUserThunk.rejected,
           updateAvatarThunk.rejected,
           updateUserInfoThunk.rejected,
-          updateWaterNormaThunk.rejected,
-          refreshTokensThunk.rejected
+          updateWaterNormaThunk.rejected
         ),
         handleRejected
       )
