@@ -9,32 +9,36 @@
 }
 
 .modal {
-  position: absolute;
-  min-width: 280px;
-  min-height: 100px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 32px 24px;
   background-color: var(--primary-color-white);
   border-radius: 8px;
-
+  position: relative;
+  padding: 32px 24px;
   @media only screen and (max-width: 767px) {
     padding: 32px 12px;
   }
 }
 
+.container {
+  min-width: 280px;
+  min-height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+}
+
 @media only screen and (min-width: 768px) {
-  .modal {
+  .container {
     width: 704px;
-    position: absolute;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .modal {
+  .container {
     width: 592px;
-    transform: translate(-50%, -50%);
   }
 }
 

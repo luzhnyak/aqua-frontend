@@ -36,7 +36,7 @@ const SettingModal: FC<IProps> = ({ onClose }) => {
   useEffect(() => {
     if (file) {
       dispatch(updateAvatarThunk(file));
-      // Скидання значень інпуту
+
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }

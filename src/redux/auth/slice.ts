@@ -55,12 +55,6 @@ const handleRejected = (
 ) => {
   state.isRefreshing = false;
   state.error = action.payload;
-
-  // const errorCode = action.payload?.errorCode;
-  // if (errorCode === 401) {
-  //   state.isLoggedIn = false;
-  //   state.token = null;
-  // }
 };
 
 const authSlice = createSlice({
@@ -114,7 +108,6 @@ const authSlice = createSlice({
         state.token = null;
         state.refreshToken = null;
       })
-
       .addMatcher(
         isAnyOf(
           signUpThunk.pending,
