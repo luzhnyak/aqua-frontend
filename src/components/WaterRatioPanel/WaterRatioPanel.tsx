@@ -12,7 +12,7 @@ import Drops from "./DropsAnimation";
 const WaterRatioPanel = () => {
   const { t } = useTranslation();
 
- const waterToday = useSelector(selectWatersToday) || 0;
+  const waterToday = useSelector(selectWatersToday) || 0;
   const progressValue = useMemo(() => {
     if (waterToday) {
       const value = Number(parseInt(waterToday?.progress));
@@ -66,9 +66,6 @@ const WaterRatioPanel = () => {
     };
 
     updateProgressBarColor();
-
-  
-
   }, [waterToday, progressValue]);
 
   useEffect(() => {
@@ -98,7 +95,6 @@ const WaterRatioPanel = () => {
     quickCount();
   }, [previousValue, progressValue]);
 
-
   return (
     <div>
       <h2 className={css.today}>{t("waterRatioPanel.today")}</h2>
@@ -111,7 +107,6 @@ const WaterRatioPanel = () => {
                 <div className={css.rangeSliderLine} id="range-line"></div>
               </div>
 
-           
               <div className={css.rangeValue} id="range-number">
                 <span className={css.rangeValueNumber}>{previousValue}%</span>
               </div>
@@ -136,7 +131,6 @@ const WaterRatioPanel = () => {
 
           <div className={css.decorativeLines}>
             {progressValue > 10 && <span className={css.line}></span>}
-
             {progressValue < 40 && <span className={css.line}></span>}
             {progressValue < 90 && <span className={css.line}></span>}
           </div>
@@ -146,6 +140,7 @@ const WaterRatioPanel = () => {
 
           {progressValue < 40 && progressValue > 11 && <span className={css.number2}>50%</span>}
           {progressValue < 90 && <span className={css.number3}>100%</span>}
+
           </div>
         </div>
         <button type="button" className={css.addButton} onClick={openModal}>
