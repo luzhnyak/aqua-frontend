@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -30,14 +30,16 @@ const SignupPage = () => {
 
     await dispatch(signUpThunk(newObject));
 
+    resetForm();
+    setRedirect(true);
+  };
+
+  useEffect(() => {
     if (error) {
       toast.error(`${t("authorization.notification.errorReg")}`);
       return;
     }
-
-    resetForm();
-    setRedirect(true);
-  };
+  }, [error, t]);
 
   if (redirect) {
     return <Navigate to="/signin" />;

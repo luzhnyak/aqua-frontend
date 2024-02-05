@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import css from "./FormUser.module.css";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
@@ -71,12 +71,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
     if (password === "" && newPassword === "" && repeatPassword === "") {
       if (email !== "") {
-        await dispatch(updateUserInfoThunk({ gender, email, name }));
-
-        if (error && error.errorCode === 409) {
-          toast.error(`${t("formUser.notification.anotherEmail")}`);
-          return;
-        }
+        await dispatch(updateUserInfoThunk({ gender, email, name })).unwrap();
 
         resetForm({
           password,
@@ -100,16 +95,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
           password,
           newPassword,
         })
-      );
-
-      if (error && error.errorCode === 409) {
-        toast.error(`${t("formUser.notification.anotherEmail")}`);
-        return;
-      }
-      if (error && error.errorCode === 400) {
-        toast.error(`${t("formUser.notification.wrong")}`);
-        return;
-      }
+      ).unwrap();
 
       resetForm({
         password,
@@ -137,6 +123,17 @@ const FormUser: FC<IProps> = ({ onClose }) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (error && error.errorCode === 409) {
+      toast.error(`${t("formUser.notification.anotherEmail")}`);
+      return;
+    }
+    if (error && error.errorCode === 400) {
+      toast.error(`${t("formUser.notification.wrong")}`);
+      return;
+    }
+  }, [error, t]);
 
   return (
     <div>

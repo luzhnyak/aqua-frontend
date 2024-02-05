@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
@@ -35,6 +35,10 @@ const SignInPage = () => {
   ) => {
     await dispatch(loginThunk(values));
 
+    resetForm();
+  };
+
+  useEffect(() => {
     if (error) {
       if (error.errorCode === 403) {
         setShowVerifyModal(true);
@@ -42,9 +46,7 @@ const SignInPage = () => {
         toast.error(`${t("authorization.errors.signIn")}`);
       }
     }
-
-    resetForm();
-  };
+  }, [error, t]);
 
   return (
     <section>
