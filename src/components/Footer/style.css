@@ -5,6 +5,11 @@
 
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+    cursor: url("../../images/cursor/cursor.svg"), auto;
+}
+
 .swiper-button-next:hover,
 .swiper-button-prev:hover,
 .swiper-button-next:focus,
