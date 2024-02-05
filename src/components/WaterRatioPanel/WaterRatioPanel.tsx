@@ -122,15 +122,15 @@ const WaterRatioPanel = () => {
           </div>
 
           <div className={css.decorativeLines}>
-            <div  className={css.line}></div>
-            {/* <div className={css.line}></div> */}
-            <div className={css.line}></div>
+          <span className={css.line}></span>
+          <span className={css.line}></span>
+          <span className={css.line}></span>
           </div>
 
           <div className={css.percentages}>
-            <span className={css.number1} id='fifty'>0%</span>
-            {/* <span className={css.number2} id='fifty'>50%</span> */}
-            <span className={css.number3} id='oneHundred'>100%</span>
+          <span className={css.number1}></span>
+          {progressValue < 40 && <span className={css.number2}>50%</span>}
+          {progressValue < 90 && <span className={css.number3}>100%</span>}
           </div>
         </div>
         <button type="button" className={css.addButton} onClick={openModal}>
