@@ -6,7 +6,11 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { ReactComponent as OpenEyeIcon } from "../../images/icons/eye-slash.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../images/icons/eye.svg";
 import RadioButtons from "./RadioButtons";
-import { selectUser } from "../../redux/auth/selectors";
+import {
+  selectAuthError,
+  selectIsRefreshing,
+  selectUser,
+} from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/Loader";
@@ -14,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { updateUserInfoThunk } from "../../redux/auth/operations";
+import { IError } from "../../services/handleApiError";
 
 interface IProps {
   onClose: () => void;
@@ -29,7 +34,9 @@ const FormUser: FC<IProps> = ({ onClose }) => {
   const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-  const [loader, setLoader] = useState(false);
+
+  const loader = useSelector(selectIsRefreshing);
+  const error: IError | null = useSelector(selectAuthError);
 
   const validationSchema = Yup.object({
     name: Yup.string().max(32, `${t("authorization.errors.enterLess")}`),
@@ -37,6 +44,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
     password: Yup.string()
       .min(8, `${t("authorization.errors.passwordLeast")}`)
       .max(64, `${t("authorization.errors.passwordLess")}`),
+
     newPassword: Yup.string()
       .min(8, `${t("authorization.errors.passwordLeast")}`)
       .max(64, `${t("authorization.errors.passwordLess")}`),
@@ -55,72 +63,63 @@ const FormUser: FC<IProps> = ({ onClose }) => {
   };
 
   const onSubmit = async (values: any, { resetForm }: any) => {
-    setLoader(true);
     const { gender, email, name, password, newPassword, repeatPassword } =
       values;
     if (email === "") {
-      setLoader(false);
       return toast.error(`${t("formUser.notification.email")}`);
     }
 
     if (password === "" && newPassword === "" && repeatPassword === "") {
-      try {
-        if (email !== "") {
-          await dispatch(updateUserInfoThunk({ gender, email, name }));
+      if (email !== "") {
+        await dispatch(updateUserInfoThunk({ gender, email, name }));
 
-          toast.success(`${t("formUser.notification.success")}`);
-
-          setLoader(false);
-          resetForm({
-            password,
-            newPassword,
-          });
-          onClose();
+        if (error && error.errorCode === 409) {
+          toast.error(`${t("formUser.notification.anotherEmail")}`);
+          return;
         }
-      } catch (error) {
-        setLoader(false);
-        return toast.error(`${t("formUser.notification.anotherEmail")}`);
+
+        resetForm({
+          password,
+          newPassword,
+        });
+
+        onClose();
+
+        toast.success(`${t("formUser.notification.success")}`);
       }
     } else if (password !== "" && newPassword !== "" && repeatPassword !== "") {
       if (newPassword !== repeatPassword) {
         return toast.error(`${t("formUser.notification.differ")}`);
       }
 
-      setLoader(true);
-
-      try {
-        await dispatch(
-          updateUserInfoThunk({
-            gender,
-            email,
-            name,
-            password,
-            newPassword,
-          })
-        );
-
-        toast.success(`${t("formUser.notification.update")}`);
-
-        setLoader(false);
-
-        resetForm({
+      await dispatch(
+        updateUserInfoThunk({
+          gender,
+          email,
+          name,
           password,
           newPassword,
-        });
-        onClose();
-      } catch (error: any) {
-        setLoader(false);
-        if (error.response && error.response.status === 409) {
-          toast.error(`${t("formUser.notification.anotherEmail")}`);
-          setLoader(false);
-        }
-        if (error.response && error.response.status === 400) {
-          toast.error(`${t("formUser.notification.wrong")}`);
-          setLoader(false);
-        }
+        })
+      );
+
+      if (error && error.errorCode === 409) {
+        toast.error(`${t("formUser.notification.anotherEmail")}`);
+        return;
       }
+      if (error && error.errorCode === 400) {
+        toast.error(`${t("formUser.notification.wrong")}`);
+        return;
+      }
+
+      resetForm({
+        password,
+        newPassword,
+      });
+
+      onClose();
+
+      toast.success(`${t("formUser.notification.update")}`);
     } else {
-      setLoader(false);
       if (
         password !== "" &&
         newPassword === "" &&
@@ -134,7 +133,6 @@ const FormUser: FC<IProps> = ({ onClose }) => {
       }
 
       if (password === "" && newPassword !== "" && repeatPassword !== "") {
-        setLoader(false);
         return toast.error(`${t("formUser.notification.currentPass")}`);
       }
     }
