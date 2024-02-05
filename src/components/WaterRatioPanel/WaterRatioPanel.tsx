@@ -122,9 +122,9 @@ const WaterRatioPanel = () => {
           </div>
 
           <div className={css.decorativeLines}>
-          <span className={css.line}></span>
-          <span className={css.line}></span>
-          <span className={css.line}></span>
+          <span></span>
+            {progressValue < 40 && <span className={css.line}></span>}
+            {progressValue < 90 && <span className={css.line}></span>}
           </div>
 
           <div className={css.percentages}>
