@@ -308,3 +308,30 @@
     font-size: 17px;
   }
 }
+
+/* Movable value */
+
+.rangeValue {
+  width: 22px;
+  height: 22px;
+  background: var(--secondary-color-blue-3);
+  color: var(--primary-color-white);
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 16px;
+  position: absolute;
+  margin: 0 auto;
+  top: 20px;
+  left: -2px;
+
+  border-radius: 2rem 2rem 2rem 0.25rem;
+  transform: rotate(132deg);
+  display: grid;
+  place-items: center;
+
+  transition: all 0.7s ease;
+}
+
+.rangeValueNumber {
+  transform: rotate(228deg);
+}
