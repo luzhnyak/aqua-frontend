@@ -30,23 +30,23 @@
   overflow: auto;
 }
 
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
   .container {
     width: 704px;
   }
-}
+} */
 
-@media only screen and (min-width: 1440px) {
+/* @media only screen and (min-width: 1440px) {
   .container {
     width: 592px;
   }
-}
+} */
 
-@media only screen and (min-width: 1440px) {
+/* @media only screen and (min-width: 1440px) {
   .settingModal {
     width: 1008px;
   }
-}
+} */
 
 .btnClose {
   position: absolute;
