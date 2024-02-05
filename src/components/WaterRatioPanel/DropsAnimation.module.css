@@ -1,0 +1,249 @@
+/* Rain */
+
+.rain {
+  position: absolute;
+  top: 5px;
+  left: -3px;
+}
+
+@keyframes raindrop1Animation {
+  0% {
+    transform: translateY(-10px) translateX(-10px);
+    opacity: 0;
+    scale: 1;
+  }
+
+  5% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 1;
+    scale: 1;
+  }
+
+  100% {
+    transform: translateY(-10px) translateX(-10px);
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+.raindrop1 {
+  position: absolute;
+  fill: var(--primary-color-blue);
+  opacity: 0;
+
+  top: -25px;
+  left: -15px;
+  width: 20px;
+  height: 20px;
+  animation-name: raindrop1Animation;
+  animation-duration: 700ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes raindrop2Animation {
+  0% {
+    transform: rotate(45deg) translateY(0px);
+    opacity: 0;
+    scale: 1;
+  }
+
+  5% {
+    transform: rotate(45deg) translateY(0px);
+    opacity: 1;
+    scale: 1;
+  }
+
+  100% {
+    transform: rotate(60deg) translateY(-15px);
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+.raindrop2 {
+  position: absolute;
+  opacity: 0;
+
+  top: -35px;
+  left: 3px;
+  fill: var(--primary-color-blue);
+
+  width: 20px;
+  height: 20px;
+
+  animation-name: raindrop2Animation;
+  animation-duration: 800ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes raindrop3Animation {
+  0% {
+    transform: rotate(-90deg) translateY(0px) translateY(0px);
+    opacity: 0;
+    scale: 1;
+  }
+
+  5% {
+    transform: rotate(-90deg) translateY(0px) translateY(0px);
+    opacity: 1;
+    scale: 1;
+  }
+
+  100% {
+    transform: rotate(-90deg) translateY(-15px) translateX(-15px);
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+.raindrop3 {
+  position: absolute;
+  opacity: 0;
+
+  top: 10px;
+  left: -10px;
+  transform: rotate(-90deg);
+  fill: var(--primary-color-blue);
+
+  width: 10px;
+  height: 12px;
+
+  animation-name: raindrop3Animation;
+  animation-duration: 700ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes raindrop4Animation {
+  0% {
+    transform: rotate(-180deg) translateY(0) translateX(0);
+    opacity: 1;
+    scale: 1;
+  }
+
+  5% {
+    transform: rotate(-180deg) translateY(0) translateX(0);
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    transform: rotate(-180deg) translateY(-25px) translateX(-25px);
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+
+.raindrop4 {
+  position: absolute;
+  opacity: 0;
+
+  top: 10px;
+  left: 15px;
+  transform: rotate(-180deg);
+  fill: var(--primary-color-blue);
+
+  width: 10px;
+  height: 12px;
+
+  animation-name: raindrop4Animation;
+  animation-duration: 800ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes raindrop5Animation {
+  0% {
+    transform: rotate(120deg) translateY(0) translateX(0);
+    opacity: 0;
+    scale: 1;
+  }
+
+  5% {
+    transform: rotate(120deg) translateY(0) translateX(0);
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    transform: rotate(120deg) translateY(-15px) translateX(-13px);
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+
+.raindrop5 {
+  position: absolute;
+  opacity: 0;
+
+  top: -20px;
+  left: 33px;
+  transform: rotate(120deg);
+  fill: var(--primary-color-blue);
+
+  width: 15px;
+  height: 17px;
+
+  animation-name: raindrop5Animation;
+  animation-duration: 900ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes circle1Animation {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+    scale: 0.9;
+  }
+
+  5% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+    scale: 0.9;
+  }
+
+  100% {
+    transform: translateY(-100px) translateX(0px);
+    opacity: 0;
+    scale: 1.1;
+  }
+}
+.circle1 {
+  position: absolute;
+  opacity: 0;
+
+  top: -35px;
+  left: 0px;
+  fill: #4056ff;
+
+  width: 10px;
+  height: 10px;
+
+  animation-name: circle1Animation;
+  animation-duration: 5000ms;
+  animation-timing-function: ease-out;
+}
+
+.circle2 {
+  position: absolute;
+  opacity: 0;
+
+  top: -25px;
+  left: -20px;
+  fill: #4056ff;
+  width: 10px;
+  height: 10px;
+
+  animation-name: circle1Animation;
+  animation-duration: 5000ms;
+  animation-timing-function: ease-out;
+}
+
+.circle3 {
+  position: absolute;
+  opacity: 0;
+
+  top: -15px;
+  left: 30px;
+  fill: #4056ff;
+
+  width: 10px;
+  height: 10px;
+
+  animation-name: circle1Animation;
+  animation-duration: 5000ms;
+  animation-timing-function: ease-out;
+}

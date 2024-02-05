@@ -6,6 +6,8 @@ import { selectWatersToday } from "../../redux/waterConsumption/selectors";
 import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
 import Modal from "../../components/Modal/Modal";
 import { useTranslation } from "react-i18next";
+import Drops from "./DropsAnimation";
+
 
 const WaterRatioPanel = () => {
   const { t } = useTranslation();
@@ -21,6 +23,7 @@ const WaterRatioPanel = () => {
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [previousValue, setValue] = useState(progressValue || 0);
 
+
   const openModal = () => {
     setAddWaterModalOpen(true);
     document.body.classList.add("body-scroll-lock");
@@ -32,20 +35,21 @@ const WaterRatioPanel = () => {
   };
 
   useEffect(() => {
-    const rangeThumb = document.getElementById("range-thumb");
+ const rangeThumb = document.getElementById("range-thumb");
     const rangeInput = document.getElementById("range-input");
     const rangeValue = document.getElementById("range-number");
-    // const fifty = document.getElementById("range-thumb");
-    // const hundred = document.getElementById("range-input");
 
-    const thumbPosition = progressValue / 100;
 
     const changeThumbPosition = () => {
+     
       if (rangeThumb && rangeInput && rangeValue) {
+            const thumbPosition = progressValue / 100;
+
         const space = rangeInput.offsetWidth - rangeThumb.offsetWidth;
         const thumbPositionX = thumbPosition * space;
         rangeThumb.style.left = `${thumbPositionX}px`;
         rangeValue.style.left = `${thumbPositionX - 3}px`;
+
       }
     };
 
@@ -53,6 +57,8 @@ const WaterRatioPanel = () => {
 
     const updateProgressBarColor = () => {
       if (rangeThumb && rangeInput) {
+            const thumbPosition = progressValue / 100;
+
         const space = rangeInput.offsetWidth - 7;
         const thumbPositionX = thumbPosition * space;
         rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
@@ -94,6 +100,7 @@ const WaterRatioPanel = () => {
       <h2 className={css.today}>{t("waterRatioPanel.today")}</h2>
       <div className={css.mainContainer}>
         <div className={css.panel}>
+          
           <div className={css.range}>
             <div className={css.rangeContent}>
               <div className={css.rangeSlider}>
@@ -114,20 +121,26 @@ const WaterRatioPanel = () => {
                 step="1"
                 readOnly
               />
-              <div className={css.rangeThumb} id="range-thumb"></div>
+
+              <div className={css.rangeThumb} id="range-thumb">
+        {progressValue === 100 || progressValue >= 50 && <Drops/>}
+              </div>
             </div>
           </div>
 
+
           <div className={css.decorativeLines}>
-            <span></span>
+            {progressValue > 10 && <span className={css.line}></span>}
             {progressValue < 40 && <span className={css.line}></span>}
             {progressValue < 90 && <span className={css.line}></span>}
           </div>
 
           <div className={css.percentages}>
-            <span className={css.number1}></span>
-            {progressValue < 40 && <span className={css.number2}>50%</span>}
-            {progressValue < 90 && <span className={css.number3}>100%</span>}
+            {progressValue >=10 && <span className={css.number1}>0%</span>}
+
+          {progressValue < 40 && progressValue > 11 && <span className={css.number2}>50%</span>}
+          {progressValue < 90 && <span className={css.number3}>100%</span>}
+
           </div>
         </div>
         <button type="button" className={css.addButton} onClick={openModal}>

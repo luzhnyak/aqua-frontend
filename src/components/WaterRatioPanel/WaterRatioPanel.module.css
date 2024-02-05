@@ -108,16 +108,19 @@
   .number1 {
     position: absolute;
     left: -3%;
+    transition: all 0.7s ease;
   }
 
   .number2 {
     position: absolute;
     left: 47%;
+    transition: all 0.7s ease;
   }
 
   .number3 {
     position: absolute;
     right: -3%;
+    transition: all 0.7s ease;
   }
 
   .active {
