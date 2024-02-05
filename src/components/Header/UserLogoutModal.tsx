@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import css from "./UserLogout.module.css";
 import { useDispatch } from "react-redux";
 import { logoutThunk } from "../../redux/auth/operations";
-import Backdrop from "../../components/Backdrop/Backdrop";
 import Loader from "../../components/Loader/Loader";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
@@ -45,11 +44,7 @@ const UserLogoutModal: FC<IProps> = ({ onClose }) => {
           {t("logOutModal.cancel")}
         </button>
       </div>
-      {loader && (
-        <Backdrop>
-          <Loader />
-        </Backdrop>
-      )}
+      {loader && <Loader />}
     </div>
   );
 };

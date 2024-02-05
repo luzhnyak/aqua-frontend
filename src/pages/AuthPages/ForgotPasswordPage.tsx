@@ -1,5 +1,5 @@
 import { sendMailForgotPass } from "../../services/waterApi";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import FormSendEmail from "../../components/FormSendEmail/FormSendEmail";
 import { toast } from "react-toastify";
 import { useState } from "react";

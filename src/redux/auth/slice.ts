@@ -89,8 +89,6 @@ const authSlice = createSlice({
         state.refreshToken = action.payload.refreshToken;
         state.user = action.payload.user;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
-        state.error = null;
       })
       .addCase(logoutThunk.fulfilled, () => {
         return authInitialState;
@@ -98,7 +96,6 @@ const authSlice = createSlice({
       .addCase(refreshCurrentUserThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
       })
       .addCase(updateAvatarThunk.fulfilled, (state, action) => {
         state.user.avatarURL = action.payload;
@@ -113,6 +110,10 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
       })
+      .addCase(refreshTokensThunk.rejected, (state) => {
+        state.token = null;
+        state.refreshToken = null;
+      })
 
       .addMatcher(
         isAnyOf(
@@ -122,8 +123,7 @@ const authSlice = createSlice({
           refreshCurrentUserThunk.pending,
           updateAvatarThunk.pending,
           updateUserInfoThunk.pending,
-          updateWaterNormaThunk.pending,
-          refreshTokensThunk.pending
+          updateWaterNormaThunk.pending
         ),
         handlePending
       )
@@ -135,10 +135,25 @@ const authSlice = createSlice({
           refreshCurrentUserThunk.rejected,
           updateAvatarThunk.rejected,
           updateUserInfoThunk.rejected,
-          updateWaterNormaThunk.rejected,
-          refreshTokensThunk.rejected
+          updateWaterNormaThunk.rejected
         ),
         handleRejected
+      )
+      .addMatcher(
+        isAnyOf(
+          signUpThunk.fulfilled,
+          loginThunk.fulfilled,
+          logoutThunk.fulfilled,
+          refreshCurrentUserThunk.fulfilled,
+          updateAvatarThunk.fulfilled,
+          updateUserInfoThunk.fulfilled,
+          updateWaterNormaThunk.fulfilled,
+          refreshTokensThunk.fulfilled
+        ),
+        (state) => {
+          state.isRefreshing = false;
+          state.error = null;
+        }
       ),
 });
 

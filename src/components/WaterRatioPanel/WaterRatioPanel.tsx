@@ -117,7 +117,8 @@ const WaterRatioPanel = () => {
               />
 
               <div className={css.rangeThumb} id="range-thumb">
-                {(progressValue === 100 || progressValue >= 50) && <Drops />}
+                {progressValue === 100 && <Drops />}
+                {progressValue >= 50 && <Drops />}
               </div>
             </div>
           </div>

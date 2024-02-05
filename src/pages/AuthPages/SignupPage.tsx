@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -6,7 +6,7 @@ import Loader from "../../components/Loader/Loader";
 
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { signUpThunk } from "../../redux/auth/operations";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -30,14 +30,20 @@ const SignupPage = () => {
 
     await dispatch(signUpThunk(newObject));
 
-    if (error) {
+    resetForm();
+    setRedirect(true);
+
+    toast.success(
+      `Registration is successful. Check your email to activate your account!`
+    );
+  };
+
+  useEffect(() => {
+    if (error?.errorCode === 400) {
       toast.error(`${t("authorization.notification.errorReg")}`);
       return;
     }
-
-    resetForm();
-    setRedirect(true);
-  };
+  }, [error, t]);
 
   if (redirect) {
     return <Navigate to="/signin" />;

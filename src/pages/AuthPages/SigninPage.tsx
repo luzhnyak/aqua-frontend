@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
@@ -6,7 +6,7 @@ import { loginThunk } from "../../redux/auth/operations";
 import AuthForm, { SubmitValues } from "../../components/AuthForm/AuthForm";
 import Modal from "../../components/Modal/Modal";
 import VerifyModal from "../../components/AuthForm/VerifyModal";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -35,6 +35,10 @@ const SignInPage = () => {
   ) => {
     await dispatch(loginThunk(values));
 
+    resetForm();
+  };
+
+  useEffect(() => {
     if (error) {
       if (error.errorCode === 403) {
         setShowVerifyModal(true);
@@ -42,9 +46,7 @@ const SignInPage = () => {
         toast.error(`${t("authorization.errors.signIn")}`);
       }
     }
-
-    resetForm();
-  };
+  }, [error, t]);
 
   return (
     <section>

@@ -5,7 +5,6 @@ import { AppDispatch } from "./redux/store";
 import "./i18n/config";
 
 import { refreshCurrentUserThunk } from "./redux/auth/operations";
-// import ResendVerifyEmailPage from "./pages/ResendVerifyEmailPage/ResendVerifyEmailPage";
 
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 import { AuthRoute } from "./pages/AuthRoute";
@@ -14,20 +13,20 @@ import { RestrictedRoute } from "./pages/RestrictedRoute";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
-const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
-const SignupPage = lazy(() => import("./pages/SigninPage/SignupPage"));
-// const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
+const SigninPage = lazy(() => import("./pages/AuthPages/SigninPage"));
+const SignupPage = lazy(() => import("./pages/AuthPages/SignupPage"));
+
 const RedirectVerifyPage = lazy(
-  () => import("./pages/SigninPage/RedirectVerifyPage")
+  () => import("./pages/AuthPages/RedirectVerifyPage")
 );
 const ForgotPasswordPage = lazy(
-  () => import("./pages/SigninPage/ForgotPasswordPage")
+  () => import("./pages/AuthPages/ForgotPasswordPage")
 );
 const UpdatetPasswordPage = lazy(
-  () => import("./pages/SigninPage/UpdatePasswordPage")
+  () => import("./pages/AuthPages/UpdatePasswordPage")
 );
 const ResendVerifyEmailPage = lazy(
-  () => import("./pages/SigninPage/ResendVerifyEmailPage")
+  () => import("./pages/AuthPages/ResendVerifyEmailPage")
 );
 
 const App = () => {

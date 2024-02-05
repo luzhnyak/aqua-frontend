@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { sendUpdatePass } from "../../services/waterApi";
-import css from "./SigninPage.module.css";
+import css from "./AuthPage.module.css";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
 import { useState } from "react";
