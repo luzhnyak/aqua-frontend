@@ -46,9 +46,9 @@ export const TodayWaterList = () => {
         {entries.length === 0 && (
           <p className={css.empty}>{t("todayWaterList.empty")}</p>
         )}
-        <ul className={css["list-entry"]}>
-          {entries.length !== 0 &&
-            entries.map((entry) => (
+        {entries.length !== 0 &&<ul className={css["list-entry"]}>
+          
+{            entries.map((entry) => (
               <TodayWaterItem
                 id={entry._id}
                 key={entry._id}
@@ -56,7 +56,7 @@ export const TodayWaterList = () => {
                 time={entry.time}
               />
             ))}
-        </ul>
+        </ul>}
       </div>
       <button className={css["btn-add"]} onClick={openModal}>
         <span className={css.plus}>+</span> {t("todayWaterList.add")}
