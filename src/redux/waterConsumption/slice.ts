@@ -44,28 +44,18 @@ const waterSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(addWaterThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
         state.today = action.payload;
       })
       .addCase(deleteWaterThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
         state.today = action.payload;
       })
       .addCase(getAllWaterForTodayThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
         state.today = action.payload;
       })
       .addCase(updateWaterByIdThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
         state.today = action.payload;
       })
       .addCase(getAllWaterForMonthThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
         state.itemsPerMonth = action.payload;
       })
       .addMatcher(
@@ -87,6 +77,19 @@ const waterSlice = createSlice({
           getAllWaterForMonthThunk.rejected
         ),
         handleRejected
+      )
+      .addMatcher(
+        isAnyOf(
+          addWaterThunk.fulfilled,
+          deleteWaterThunk.fulfilled,
+          getAllWaterForTodayThunk.fulfilled,
+          updateWaterByIdThunk.fulfilled,
+          getAllWaterForMonthThunk.fulfilled
+        ),
+        (state) => {
+          state.isLoading = false;
+          state.error = null;
+        }
       ),
 });
 
