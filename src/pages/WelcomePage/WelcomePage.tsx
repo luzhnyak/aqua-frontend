@@ -56,7 +56,6 @@ const WelcomePage = () => {
             </p>
           </Link>
         </div>
-
         <div className={css.whyBlock}>
           <h3 className={css.whyTitle}>{t("welcomePage.whyTitle")}</h3>
           <ul className={css.whyList}>

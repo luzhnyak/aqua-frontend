@@ -1,10 +1,10 @@
-import { sendMailForgotPass } from "../../services/waterApi";
-import css from "./ForgotPasswordPage.module.css";
 import FormSendEmail from "../../components/FormSendEmail/FormSendEmail";
+import css from "./SigninPage.module.css";
+import { resendVerifyToken } from "../../services/waterApi";
 import { toast } from "react-toastify";
-import { useState } from "react";
+
 import Loader from "../../components/Loader/Loader";
-import Backdrop from "../../components/Backdrop/Backdrop";
+import { useState } from "react";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
 
@@ -12,7 +12,7 @@ interface Values {
   email: string;
 }
 
-const ForgotPasswordPage = () => {
+const ResendVerifyEmailPage = () => {
   const { t } = useTranslation();
 
   const [loader, setLoader] = useState(false);
@@ -23,8 +23,12 @@ const ForgotPasswordPage = () => {
   ) => {
     setLoader(true);
     try {
-      await sendMailForgotPass(values);
+      await resendVerifyToken(values);
       toast.success(`${t("authorization.notification.success")}`);
+
+      setTimeout(() => {
+        return window.location.replace("/aqua-frontend/signin");
+      }, 3000);
     } catch (error) {
       setLoader(false);
       toast.error(`${t("authorization.notification.error")}`);
@@ -36,18 +40,16 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className={css.container}>
-      <FormSendEmail
-        title={t("authorization.forgot")}
-        onSubmit={handleSubmit}
-      />
-      {loader && (
-        <Backdrop>
-          <Loader />
-        </Backdrop>
-      )}
-    </div>
+    <section>
+      <div className={css.container}>
+        <FormSendEmail
+          title={t("resendVerifyEmail.title")}
+          onSubmit={handleSubmit}
+        />
+        {loader && <Loader />}
+      </div>
+    </section>
   );
 };
 
-export default ForgotPasswordPage;
+export default ResendVerifyEmailPage;

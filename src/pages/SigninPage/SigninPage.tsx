@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
-import Backdrop from "../../components/Backdrop/Backdrop";
 import { loginThunk } from "../../redux/auth/operations";
 import AuthForm, { SubmitValues } from "../../components/AuthForm/AuthForm";
 import Modal from "../../components/Modal/Modal";
@@ -47,7 +46,7 @@ const SignInPage = () => {
 
   return (
     <section>
-      <div className={css.MainContainer}>
+      <div className={css.container}>
         <div className={css.mainstr}>
           <div className={css.hidden}></div>
 
@@ -61,11 +60,7 @@ const SignInPage = () => {
             </Modal>
           )}
 
-          {loader && (
-            <Backdrop>
-              <Loader />
-            </Backdrop>
-          )}
+          {loader && <Loader />}
         </div>
       </div>
     </section>

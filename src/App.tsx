@@ -15,19 +15,19 @@ import { RestrictedRoute } from "./pages/RestrictedRoute";
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
-const SignupPage = lazy(() => import("./pages/SignupPage/SignupPage"));
+const SignupPage = lazy(() => import("./pages/SigninPage/SignupPage"));
 // const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 const RedirectVerifyPage = lazy(
-  () => import("./pages/RedirectVerifyPage/RedirectVerifyPage")
+  () => import("./pages/SigninPage/RedirectVerifyPage")
 );
 const ForgotPasswordPage = lazy(
-  () => import("./pages/ForgotPasswordPage/ForgotPasswordPage")
+  () => import("./pages/SigninPage/ForgotPasswordPage")
 );
 const UpdatetPasswordPage = lazy(
-  () => import("./pages/UpdatePasswordPage/UpdatePasswordPage")
+  () => import("./pages/SigninPage/UpdatePasswordPage")
 );
 const ResendVerifyEmailPage = lazy(
-  () => import("./pages/ResendVerifyEmailPage/ResendVerifyEmailPage")
+  () => import("./pages/SigninPage/ResendVerifyEmailPage")
 );
 
 const App = () => {
@@ -41,12 +41,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route
-            index
-            element={
-              <RestrictedRoute component={<WelcomePage />} redirectTo="/home" />
-            }
-          ></Route>
+          <Route index element={<Navigate to="/welcome" />}></Route>
           <Route
             path="home"
             element={

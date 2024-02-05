@@ -2,9 +2,8 @@ import Loader from "../../components/Loader/Loader";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { sendVerify } from "../../services/waterApi";
-import css from "./RedirectVerifyPage.module.css";
+import css from "./SigninPage.module.css";
 import { toast } from "react-toastify";
-import Backdrop from "../../components/Backdrop/Backdrop";
 
 const RedirectVerifyPage = () => {
   const { token } = useParams();
@@ -31,9 +30,7 @@ const RedirectVerifyPage = () => {
     <section>
       <div className={css.MainContainer}>
         <div className={css.mainstr}>
-          <Backdrop>
-            <Loader />
-          </Backdrop>
+          <Loader />
         </div>
       </div>
     </section>

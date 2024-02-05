@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import { sendUpdatePass } from "../../services/waterApi";
-import css from "./UpdatePasswordPage.module.css";
+import css from "./SigninPage.module.css";
 import { toast } from "react-toastify";
-import Backdrop from "../../components/Backdrop/Backdrop";
 import Loader from "../../components/Loader/Loader";
 import { useState } from "react";
 import UpdatetPassword from "../../components/UpdatePassword/UpdatePassword";
@@ -51,11 +50,7 @@ const UpdatetPasswordPage = () => {
   return (
     <div className={css.container}>
       <UpdatetPassword onSubmit={handleSubmit} />
-      {loader && (
-        <Backdrop>
-          <Loader />
-        </Backdrop>
-      )}
+      {loader && <Loader />}
     </div>
   );
 };

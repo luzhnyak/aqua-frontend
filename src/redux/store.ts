@@ -16,13 +16,10 @@ import { waterReducer } from "./waterConsumption/slice";
 import { refreshTokensThunk } from "./auth/operations";
 import axios from "axios";
 
-
-
-
 const authConfig = {
   key: "auth",
   storage,
-  whitelist: ["token","refreshToken"],
+  whitelist: ["token", "refreshToken"],
 };
 
 const rootReducer = combineReducers({
@@ -39,10 +36,6 @@ const ignoredPersistenceActions = [
   REGISTER,
 ];
 
-
-
-
-
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
@@ -50,47 +43,41 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: ignoredPersistenceActions,
       },
-    })
+    }),
 });
-
 
 axios.interceptors.response.use(
   function (response): any {
     return response;
   },
   async function (error) {
-
     if (error.response.status === 401) {
-     
       try {
         const isRefreshTokenFail = await store.dispatch(refreshTokensThunk());
-        console.log(isRefreshTokenFail)
-        
+        // console.log(isRefreshTokenFail);
+
         if (isRefreshTokenFail.payload.errorCode === 500) {
-          store.dispatch(resetToken(store.getState()))
-          return
+          store.dispatch(resetToken(store.getState()));
+          return;
         }
 
-        if (isRefreshTokenFail.type === 'auth/refreshTokens/rejected') {
-          console.error('Refresh token Error');  
-          return
+        if (isRefreshTokenFail.type === "auth/refreshTokens/rejected") {
+          // console.error("Refresh token Error");
+          return;
         }
 
-        
- 
         const newToken = store.getState().auth.token;
         error.config.headers.Authorization = `Bearer ${newToken}`;
 
         return axios(error.config);
       } catch (refreshError) {
-        console.error('Refresh token Error', refreshError);  
+        // console.error("Refresh token Error", refreshError);
       }
     }
 
     return Promise.reject(error);
   }
 );
-
 
 export const persistor = persistStore(store);
 

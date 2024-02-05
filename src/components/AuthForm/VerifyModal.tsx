@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import css from "./VerifyModal.module.css";
-import Backdrop from "../../components/Backdrop/Backdrop";
 import Loader from "../../components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -42,11 +41,7 @@ const VerifyModal: FC<IProps> = ({ onClose }) => {
           {t("verifyModal.cancel")}
         </button>
       </div>
-      {loader && (
-        <Backdrop>
-          <Loader />
-        </Backdrop>
-      )}
+      {loader && <Loader />}
     </div>
   );
 };

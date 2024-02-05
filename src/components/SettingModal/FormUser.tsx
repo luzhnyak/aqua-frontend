@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import css from "./FormUser.module.css";
 import * as Yup from "yup";
 import { useSelector } from "react-redux";
@@ -10,7 +10,6 @@ import { selectUser } from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/Loader";
-import Backdrop from "../../components/Backdrop/Backdrop";
 import { updateUserInfo } from "../../services/waterApi";
 import { useTranslation } from "react-i18next";
 
@@ -301,11 +300,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
           </Form>
         )}
       </Formik>
-      {loader && (
-        <Backdrop>
-          <Loader />
-        </Backdrop>
-      )}
+      {loader && <Loader />}
     </div>
   );
 };

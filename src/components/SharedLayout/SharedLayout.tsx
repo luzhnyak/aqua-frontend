@@ -8,7 +8,6 @@ import Footer from "../../components/Footer/Footer";
 
 import css from "./SharedLayout.module.css";
 import "react-toastify/dist/ReactToastify.css";
-import Backdrop from "../../components/Backdrop/Backdrop";
 
 export const SharedLayout = () => {
   return (
@@ -23,9 +22,7 @@ export const SharedLayout = () => {
       <Suspense
         fallback={
           <div className={css.container}>
-            <Backdrop>
-              <Loader />
-            </Backdrop>
+            <Loader />
           </div>
         }
       >
