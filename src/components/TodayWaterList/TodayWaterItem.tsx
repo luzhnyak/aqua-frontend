@@ -22,15 +22,19 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
 
   const openModalDelete = () => {
     setIsModalDelete(true);
+    document.body.classList.add("body-scroll-lock");
   };
   const closeModalDelete = () => {
     setIsModalDelete(false);
+    document.body.classList.remove("body-scroll-lock");
   };
   const openModalEdit = () => {
     setIsModalEdit(true);
+    document.body.classList.add("body-scroll-lock");
   };
   const closeModalEdit = () => {
     setIsModalEdit(false);
+    document.body.classList.remove("body-scroll-lock");
   };
 
   return (
