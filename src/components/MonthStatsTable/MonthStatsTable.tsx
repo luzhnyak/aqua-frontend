@@ -40,7 +40,7 @@ export const MonthStatsTable: FC = () => {
   const dataPerDay: number[] = [];
 
   useEffect(() => {
-    if (!waterToday) return
+    if (!waterToday) return;
     const getMonthWater = () => {
       const chosenMonth = {
         year: sDate.getFullYear().toString(),
@@ -70,7 +70,7 @@ export const MonthStatsTable: FC = () => {
       if (month === currentMonth && year === currentYear) {
         setsDisabledYear(true);
       }
-      if (month === currentUserMonth+1 && year === currentUserYear) {
+      if (month === currentUserMonth + 1 && year === currentUserYear) {
         setsDisabledForUser(true);
       }
     };
@@ -156,7 +156,9 @@ export const MonthStatsTable: FC = () => {
         return day;
       });
 
-const percent = waterPerMonth.map((day) => Number(parseInt(day.progress)));
+      const percent = waterPerMonth.map((day) =>
+        Number(parseInt(day.progress))
+      );
       const dailyNorm = waterPerMonth.map((day) => day.waterRate);
       const entries = waterPerMonth.map((day) => day.dailyEntries);
 
@@ -193,7 +195,7 @@ const percent = waterPerMonth.map((day) => Number(parseInt(day.progress)));
       }
     }
 
-    if (m  === currentUserMonth && y === currentUserYear) {
+    if (m === currentUserMonth && y === currentUserYear) {
       const inactive = allDays.filter((day) => day.day < currentUserDay);
       inactive.map((day) => (day.disabled = true));
     }
@@ -214,7 +216,6 @@ const percent = waterPerMonth.map((day) => Number(parseInt(day.progress)));
     <div className={css["calendar-container"]}>
       <div className={css["calendar-header"]}>
         <div className={css["title-chart"]}>
-          {" "}
           <h2 className={css.title}>{t("monthStatsTable.title")}</h2>
           <button className={css["btn-chart"]} onClick={openModal}>
             {t("monthStatsTable.btnChart")}

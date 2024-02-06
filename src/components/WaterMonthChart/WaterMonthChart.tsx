@@ -1,3 +1,5 @@
+import css from "./WaterMonthChart.module.css";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -56,7 +58,11 @@ const WaterMonthChart: FC<IProps> = ({ monthlyData, label }) => {
     ],
   };
 
-  return <Line options={options} data={data} />;
+  return (
+    <div className={css.canvas}>
+      <Line options={options} data={data} />
+    </div>
+  );
 };
 
 export default WaterMonthChart;

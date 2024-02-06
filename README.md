@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+**Read in English: [TRACKER OF WATER](README.en.md).**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### ТРЕКЕР СПОЖИВАННЯ ВОДИ
 
-## Available Scripts
+![Main page screenshot]("./src/images/Main_page.png)
 
-In the project directory, you can run:
+## Про проєкт:
 
-### `npm start`
+Трекер споживання води: Покращуй свій досвід гідратації!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Трекер споживання води - це проєкт спеціального додатку, розроблений, щоб спростити та покращити щоденну процедуру споживання води. Додаток розроблений з ціллю легкого відстежування кількості випитої води та встановлення персоналізованих цілей, щоб піклуватись про своє здоров'я. Трекер споживання води має зручний та адаптивний інтерфейс, що полегшує відслідковувати рівень випитої води без зайвих зусиль.
+Змініть свої щоденні звички - завантажте трекер вже зараз!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Проєкт додатку дає змогу користувачу зареєстувати власний профіль, також за допомогою Google авторизації.
+Вже зареєстрований користувач має можливість:
 
-### `npm test`
+- налаштувати свій профіль, а саме додати та/або змінити персональні дані та фотографію;
+- за допомогою вбудованої формули обчислити денну норму споживання води, або встановити її на власний розсуд;
+- редагувати денну норму споживання води;
+- додатавати/редагувати/видаляти кількість випитої води за день;
+- відслідковувати прогрес за графіком у відсотках кількість випитої води за день та за місяць.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Цей проєкт написаний на TypeScript у поєднанні з React JS для фронтенду та Node.js для бекенду, комбінуючи ці технології для ефективної та надійної розробки. Також, проєкт додатку доступний англійською та українською мовами для глобального та інклюзивного використання.
 
-### `npm run build`
+## Технології, які використовувались
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Front-end**
+`TypeScript` `React` `ReduxToolkit` `ReduxPersist` `Axios` `HTML/CSS` `Formik`
+`React Spring` `Swiper` `Clsx` `Chart.js` `i18next`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Back-end**
+`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Команда розробників, які працювали над проєктом:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Олег Лужняк** - Team leader. Відповідальний за: розгортання проекту, розгортання серверу, структуру проекту, технічне супроводження, налаштування маршрутизації, реалізацію Google авторизації та написання на TypeScript.
+2. **Ірина Шевченко** - Scrum master. Відповідальна за: панель прогресу спожитої води, модальне вікно додавання та редагування випитої води, реалізацію анімації завантажувача.
+3. **Анна Бойчук** - Front-end розробник. Відповідальна за: список води спожитої за день, таблицю статистики за місяць, загальну щоденну статистику та діаграму споживання води на місяць.
+4. **Анна Мацарська** - Front-end розробник. Відповідальна за: підключення API, налаштування управління станом за допомогою redux та redux-persist, Footer із модальним вікном членів нашої команди.
+5. **Ігор Хоренко** - Back-end розробник. Відповідальний за: API Endpoints для води, структурування бази даних, написання контролерів для всього обсягу випитої води, води спожитої окремо за день та за місяць.
+6. **Галина Ластівка** - Front-end розробник. Відповідальна за: написання сторінок реєстрації та логінізації.
+7. **Вікторія Литвин** - Front-end розробник. Відповідальна за: модальне вікно встановлення та редагування денної норми води та вітальну сторінку.
+8. **Даніїл Чернов** - Back-end розробник. Відповідальний за: API Endpoints для авторизації користувача та денної норми споживача, Swagger та оновлення токена.
+9. **Андрій Заяць** - Full-stack розробник. Відповідальний за: документацію Swagger, сторінку забутого пароля, сторінку оновлення пароля та маршрутизацію.
+10. **Катерина Бачкало** - Front-end розробник. Відповідальна за: Header, модальне вікно налаштування даних користувача та двомовну підтримку.
