@@ -92,7 +92,9 @@ const UserLogo: React.FC = () => {
           >
             <p className={css.userNameText}>{name ? name : ""}</p>
             {avatarURL ? (
-              <img src={avatarURL} className={css.avatar} alt="userAvatar" />
+              <div className={css.cover}>
+                <img src={avatarURL} className={css.avatar} alt="userAvatar" />
+              </div>
             ) : (
               <div className={css.noAvatar}>
                 <span>
