@@ -40,7 +40,7 @@ const FormUser: FC<IProps> = ({ onClose }) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().max(32, `${t("authorization.errors.enterLess")}`),
-    email: Yup.string(),
+    email: Yup.string().email(`${t("authorization.errors.validEmail")}`),
     password: Yup.string()
       .min(8, `${t("authorization.errors.passwordLeast")}`)
       .max(64, `${t("authorization.errors.passwordLess")}`),

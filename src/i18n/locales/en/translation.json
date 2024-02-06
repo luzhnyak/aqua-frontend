@@ -105,14 +105,17 @@
       "passwordLess": "Password must be less than 64 characters.",
       "passwordMatch": "Passwords must match",
       "repeatPasswordReq": "Repeat password is required.",
-      "enterLess": "Enter less than 32 characters."
+      "enterLess": "Enter less than 32 characters.",
+      "validEmail": "Email must be a valid email"
     },
     "notification": {
       "success": "The operation was successful, check your email",
       "error": "Something went wrong, try again later",
       "errorReg": "Registration is failed. Please try again.",
       "successPass": "Password changed successfully",
-      "successReg": "Registration is successful. Check your email to activate your account!"
+      "successReg": "Registration is successful. Check your email to activate your account!",
+      "auth": "Authorization was failed. Please try again.",
+      "server": "Server error"
     }
   },
   "userLogoModal": {
