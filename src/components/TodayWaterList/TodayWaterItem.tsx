@@ -74,6 +74,7 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
         <Modal
           title={t("todayWaterItem.titleConfirmDeleteModal")}
           onClose={closeModalDelete}
+          confirm
         >
           <ConfirmDeleteModal id={id} onClose={closeModalDelete} />
         </Modal>

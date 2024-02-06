@@ -143,7 +143,11 @@ const UserLogo: React.FC = () => {
 
       {/* Модальне вікно для logout */}
       {isOpenUserLogoutModal && !isOpenUserInfoModal && (
-        <Modal title={t("userLogoModal.logout")} onClose={closeUserLogoutModal}>
+        <Modal
+          title={t("userLogoModal.logout")}
+          onClose={closeUserLogoutModal}
+          confirm
+        >
           <UserLogoutModal onClose={closeUserLogoutModal} />
         </Modal>
       )}

@@ -11,9 +11,10 @@ interface IProps {
   title: string;
   onClose: (value: boolean) => void;
   children: ReactNode;
+  confirm?: boolean;
 }
 
-const Modal: FC<IProps> = ({ title, children, onClose }) => {
+const Modal: FC<IProps> = ({ title, children, onClose, confirm = false }) => {
   const { t } = useTranslation();
 
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -48,11 +49,7 @@ const Modal: FC<IProps> = ({ title, children, onClose }) => {
         <div className={css.container}>
           <div
             ref={modalRef}
-            className={`${css.modal} ${
-              title === `${t("userLogoModal.setting")}`
-                ? css.settingModal
-                : css.modal
-            }`}
+            className={confirm ? `${css.modal} ${css.p24}` : `${css.modal}`}
             onClick={(event) => event.stopPropagation()}
           >
             {title && <h3 className={css.title}>{title}</h3>}
