@@ -7,7 +7,7 @@ const WelcomePage = () => {
   const { t } = useTranslation();
 
   return (
-    <section className={css.background}>
+    <section className={css.section}>
       <div className={css.container}>
         <div className={css.benefitsBlock}>
           <h1 className={css.title}>{t("welcomePage.title")}</h1>

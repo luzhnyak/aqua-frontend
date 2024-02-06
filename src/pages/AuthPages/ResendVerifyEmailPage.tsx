@@ -40,13 +40,15 @@ const ResendVerifyEmailPage = () => {
   };
 
   return (
-    <section>
+    <section className={css.section}>
       <div className={css.container}>
-        <FormSendEmail
-          title={t("resendVerifyEmail.title")}
-          onSubmit={handleSubmit}
-        />
-        {loader && <Loader />}
+        <div className={css.mainstr}>
+          <FormSendEmail
+            title={t("resendVerifyEmail.title")}
+            onSubmit={handleSubmit}
+          />
+          {loader && <Loader />}
+        </div>
       </div>
     </section>
   );

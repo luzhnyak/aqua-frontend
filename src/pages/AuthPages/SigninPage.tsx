@@ -49,7 +49,7 @@ const SignInPage = () => {
   }, [error, t]);
 
   return (
-    <section>
+    <section className={css.section}>
       <div className={css.container}>
         <div className={css.mainstr}>
           <div className={css.hidden}></div>

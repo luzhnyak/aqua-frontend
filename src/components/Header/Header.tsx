@@ -10,7 +10,7 @@ const Header = () => {
   const autorized = useSelector(selectIsLoggedIn);
 
   return (
-    <header>
+    <header className={css.header}>
       <div className={css.container}>
         <nav className={css.nav}>
           <Logo />

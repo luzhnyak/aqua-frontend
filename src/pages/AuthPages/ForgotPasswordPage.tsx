@@ -36,13 +36,17 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className={css.container}>
-      <FormSendEmail
-        title={t("authorization.forgot")}
-        onSubmit={handleSubmit}
-      />
-      {loader && <Loader />}
-    </div>
+    <section className={css.section}>
+      <div className={css.container}>
+        <div className={css.container}>
+          <FormSendEmail
+            title={t("authorization.forgot")}
+            onSubmit={handleSubmit}
+          />
+          {loader && <Loader />}
+        </div>
+      </div>
+    </section>
   );
 };
 
