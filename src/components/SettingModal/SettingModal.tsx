@@ -48,7 +48,9 @@ const SettingModal: FC<IProps> = ({ onClose }) => {
       <h4 className={css.title}>{t("settingModal.photo")}</h4>
       <div className={css.wrapAvatar}>
         {avatarURL ? (
-          <img src={avatarURL} className={css.avatar} alt="userAvatar" />
+          <div className={css.cover}>
+            <img src={avatarURL} className={css.avatar} alt="userAvatar" />
+          </div>
         ) : (
           <div className={css.noAvatar}>
             <span className={css.letter}>

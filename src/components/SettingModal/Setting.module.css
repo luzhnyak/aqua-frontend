@@ -7,10 +7,17 @@
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  display: block;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  border-color: var(--secondary-color-blue-1);
+  object-fit: cover;
+}
+
+.cover {
+  display: block;
+  height: 80px;
+  width: 80px;
 }
 
 .noAvatar {
