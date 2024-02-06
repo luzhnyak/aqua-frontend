@@ -97,6 +97,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
     dispatch(updateWaterNormaThunk((waterAmount * 1000).toString()));
     dispatch(getAllWaterForTodayThunk());
 
+    document.body.classList.remove("body-scroll-lock");
     setVisible(false);
   };
 
