@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import css from "./UserLogout.module.css";
 import { useDispatch } from "react-redux";
 import { logoutThunk } from "../../redux/auth/operations";
+import { clearWater } from "../../redux/waterConsumption/slice";
 import Loader from "../../components/Loader/Loader";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,7 @@ const UserLogoutModal: FC<IProps> = ({ onClose }) => {
     try {
       setLoader(true);
       dispatch(logoutThunk());
+      dispatch(clearWater());
       onClose(false);
     } catch (error) {
       console.error(error);
