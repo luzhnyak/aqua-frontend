@@ -1,6 +1,5 @@
 .layout {
   position: relative;
-  padding-bottom: 50px;
   min-height: 100vh;
 }
 
@@ -14,7 +13,6 @@
     max-width: 320px;
     padding: 0px 20px;
     height: 100vh;
-   
   }
 }
 
@@ -22,7 +20,6 @@
   .container {
     max-width: 768px;
     padding: 40px 32px 156px 32px;
-
   }
 }
 @media screen and (min-width: 1440px) {

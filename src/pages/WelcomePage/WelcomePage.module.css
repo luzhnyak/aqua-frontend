@@ -1,11 +1,14 @@
-/* Background */
-
-/* @media only screen and (min-width: 320px) {
-  .background {
-  }
-} */
 .section {
   padding-top: 80px;
+  padding-bottom: 54px;
+}
+
+@media only screen and (max-width: 767px) {
+  .section {
+    background: url("../../images/mobile-background-main-page.svg") center
+      center no-repeat;
+    background-size: cover;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -23,14 +26,6 @@
 }
 
 /* Container */
-
-@media only screen and (max-width: 767px) {
-  .container {
-    padding-bottom: 24px;
-    background: url("../../images/mobile-background-main-page.svg") center
-      bottom / cover no-repeat;
-  }
-}
 
 @media only screen and (min-width: 320px) {
   .container {

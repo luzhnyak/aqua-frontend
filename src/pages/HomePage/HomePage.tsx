@@ -11,17 +11,18 @@ const HomePage: FC = () => {
 
   return (
     <section className={css.section}>
-      {/* <div className={css.container} onClick={handleClick}> */}
-      <div className={css.container}>
-        <div className={css.firstSection}>
-          <DailyNorma />
-          <WaterRatioPanel />
-        </div>
+      <div className={css.background}>
+        <div className={css.container}>
+          <div className={css.firstSection}>
+            <DailyNorma />
+            <WaterRatioPanel />
+          </div>
 
-        <div className={css.containerProgressWrapper}>
-          <div className={css["container-progress"]}>
-            <TodayWaterList />
-            <MonthStatsTable />
+          <div className={css.containerProgressWrapper}>
+            <div className={css["container-progress"]}>
+              <TodayWaterList />
+              <MonthStatsTable />
+            </div>
           </div>
         </div>
       </div>

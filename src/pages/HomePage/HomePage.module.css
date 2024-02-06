@@ -2,6 +2,7 @@
 
 .section {
   padding-top: 80px;
+  padding-bottom: 54px;
 }
 
 .container {
@@ -38,21 +39,24 @@
 @media only screen and (min-width: 320px) {
   .background {
     background: url("../../images/mobile-background-element-home-screen.svg")
-      left 50% top -15% / 320px 1328px no-repeat;
+      no-repeat;
+    background-size: cover;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .background {
     background: url("../../images/tablet-background-element-home-screen.svg")
-      left 40% top -5% / 768px 1280px no-repeat;
+      no-repeat;
+    background-size: cover;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .background {
     background: url("../../images/desktop-background-element-main-page.svg ")
-      left 50% top 15%/ 1404px 582px no-repeat;
+      no-repeat;
+    background-size: cover;
   }
 }
 
