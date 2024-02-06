@@ -69,3 +69,15 @@
 .input {
   display: none;
 }
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: calc(704px - 2 * 24px);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    width: calc(1008px - 2 * 24px);
+  }
+}
