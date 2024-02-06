@@ -121,7 +121,7 @@ const UserLogo: React.FC = () => {
           type="button"
           onClick={() => changeLanguage("en")}
         >
-          en
+          EN
         </button>
         <button
           className={`${css.lngBtn} ${
@@ -130,7 +130,7 @@ const UserLogo: React.FC = () => {
           type="button"
           onClick={() => changeLanguage("ua")}
         >
-          укр
+          UA
         </button>
       </div>
 
