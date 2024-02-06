@@ -176,8 +176,8 @@
     "scrumName": "Iryna Shevchenko",
     "scrum": "Scrum master",
     "scrumTask1": "Water ratio panel",
-    "scrumTask2": "Today list modal",
-    "scrumTask3": "Add water modal",
+    "scrumTask2": "Add water and Edit water modals",
+    "scrumTask3": "Animated loader",
 
     "frontNameAnna": "Anna Boichuk",
     "front": "Frontend developer",
