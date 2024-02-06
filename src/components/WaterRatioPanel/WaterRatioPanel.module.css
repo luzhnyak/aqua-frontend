@@ -169,6 +169,11 @@
   }
 }
 
+input:hover,
+input:focus {
+  cursor: url("../../images/cursor/cursor.svg"), auto;
+}
+
 @media only screen and (min-width: 768px) {
   .mainContainer {
     position: relative;
