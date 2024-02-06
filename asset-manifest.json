@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/aqua-frontend/static/css/main.421d4d24.css",
-    "main.js": "/aqua-frontend/static/js/main.67062bfb.js",
+    "main.css": "/aqua-frontend/static/css/main.517af3ae.css",
+    "main.js": "/aqua-frontend/static/js/main.153b9820.js",
     "static/css/640.7efd8afa.chunk.css": "/aqua-frontend/static/css/640.7efd8afa.chunk.css",
     "static/js/640.75c202d2.chunk.js": "/aqua-frontend/static/js/640.75c202d2.chunk.js",
     "static/css/122.c5dbd78b.chunk.css": "/aqua-frontend/static/css/122.c5dbd78b.chunk.css",
@@ -73,8 +73,8 @@
     "static/media/radio-button.svg": "/aqua-frontend/static/media/radio-button.c19e6c6e8679819727a7.svg",
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
-    "main.421d4d24.css.map": "/aqua-frontend/static/css/main.421d4d24.css.map",
-    "main.67062bfb.js.map": "/aqua-frontend/static/js/main.67062bfb.js.map",
+    "main.517af3ae.css.map": "/aqua-frontend/static/css/main.517af3ae.css.map",
+    "main.153b9820.js.map": "/aqua-frontend/static/js/main.153b9820.js.map",
     "640.7efd8afa.chunk.css.map": "/aqua-frontend/static/css/640.7efd8afa.chunk.css.map",
     "640.75c202d2.chunk.js.map": "/aqua-frontend/static/js/640.75c202d2.chunk.js.map",
     "122.c5dbd78b.chunk.css.map": "/aqua-frontend/static/css/122.c5dbd78b.chunk.css.map",
@@ -94,7 +94,7 @@
     "80.46f04dea.chunk.js.map": "/aqua-frontend/static/js/80.46f04dea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.421d4d24.css",
-    "static/js/main.67062bfb.js"
+    "static/css/main.517af3ae.css",
+    "static/js/main.153b9820.js"
   ]
 }
