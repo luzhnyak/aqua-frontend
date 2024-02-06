@@ -40,6 +40,7 @@ export const MonthStatsTable: FC = () => {
   const dataPerDay: number[] = [];
 
   useEffect(() => {
+    if (!waterToday) return
     const getMonthWater = () => {
       const chosenMonth = {
         year: sDate.getFullYear().toString(),
