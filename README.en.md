@@ -5,9 +5,9 @@
 
 ![Main page screenshot](./src/images/Main_page.png)
 
-## about the project:
+## About the project:
 
-TRACKER OF WATER: Take Care of Yourself and Your Health!"!
+TRACKER OF WATER: Take Care of Yourself and Your Health!
 
 The Water Tracker is a project of a special application designed to simplify and improve the daily water consumption routine. The application is designed to easily track the amount of water you drink and set personalized goals to take care of your health. The water consumption tracker has a user-friendly and responsive interface that makes it easy to track your water intake without any extra effort.
 Change your daily habits - download the tracker now!
@@ -15,11 +15,11 @@ Change your daily habits - download the tracker now!
 The application project allows users to register their own profile, also using Google authorization.
 An already registered user has the opportunity to:
 
-- customize your profile, including adding and/or changing personal data and a photo;
+- customize your profile, including adding and/or changing personal data and photo;
 - use the built-in formula to calculate the daily water consumption rate, or set it at your own discretion;
 - edit the daily water consumption rate;;
 - add/edit/delete the amount of water you drink per day;
-- track progress according to the schedule in percentage of water drunk per day and per month.
+- track progress according to the chart in percentage of water drunk per day and per month.
 
 This project is written in TypeScript in combination with React JS for the frontend and Node.js for the backend, combining these technologies for efficient and reliable development. Also, the application project is available in English and Ukrainian languages for global and inclusive use.
 
@@ -30,7 +30,7 @@ This project is written in TypeScript in combination with React JS for the front
 `React Spring` `Swiper` `Clsx` `Chart.js` `i18next`
 
 **Back-end**<br />
-`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary`
+`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary` `Joi` `Nodemailer`
 
 ## The team of developers who worked on the project:
 
