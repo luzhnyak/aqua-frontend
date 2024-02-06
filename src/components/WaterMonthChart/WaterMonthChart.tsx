@@ -4,10 +4,8 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Filler,
-  Legend,
 } from "chart.js";
 import { FC } from "react";
 import { Line } from "react-chartjs-2";
@@ -17,10 +15,9 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
+
   Tooltip,
-  Filler,
-  Legend
+  Filler
 );
 
 export const options = {
