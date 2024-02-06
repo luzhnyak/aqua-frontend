@@ -100,7 +100,6 @@ export const MonthStatsTable: FC = () => {
       return new Date(nYear, nMonth);
     });
 
-    console.log(currentUserMonth);
     setsPopup(false);
     setsDisabledForUser(false);
   };

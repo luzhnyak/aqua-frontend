@@ -4,19 +4,9 @@ import css from "./RadioButtons.module.css";
 import { ErrorMessage, Field } from "formik";
 import { useTranslation } from "react-i18next";
 
-// interface IProps {
-//   values: any | null;
-//   handleOptionChange: any | null;
-// }
-
-// const RadioButtons: FC<IProps> = ({ values, handleOptionChange }) => {
 const RadioButtons: FC = () => {
   const { t } = useTranslation();
 
-  // const onChange = e => {
-  //   const { name } = e.target;
-  //   console.log('clicked  ==>', name);
-  // };
   return (
     <div>
       <h4 className={css.title}>{t("radioButtons.title")}</h4>

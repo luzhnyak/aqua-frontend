@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -36,11 +36,16 @@ const SignupPage = () => {
     toast.success(`${t("authorization.notification.successReg")}`);
   };
 
+  const isMounted = useRef(false);
+
   useEffect(() => {
-    if (error?.errorCode === 400) {
-      toast.error(`${t("authorization.notification.errorReg")}`);
-      return;
+    if (isMounted.current) {
+      if (error?.errorCode === 400) {
+        toast.error(`${t("authorization.notification.errorReg")}`);
+      }
     }
+
+    isMounted.current = true;
   }, [error, t]);
 
   if (redirect) {

@@ -81,17 +81,13 @@ export const refreshTokensThunk = createAsyncThunk(
 );
 
 type CustomThunkAPI = GetThunkAPI<AsyncThunkConfig> & {
-  rejectWithValue: (errorObj: any) => void;
+  rejectWithValue: (error: Error) => void;
 };
 
 export const refreshCurrentUserThunk = createAsyncThunk(
   "auth/refresh",
   async (_, thunkApi: CustomThunkAPI) => {
-    const state = thunkApi.getState() as RootState;
-    const token = state.auth.token;
-
     try {
-      token && setToken(token);
       const response = await refreshCurrentUser();
       return response;
     } catch (error) {
@@ -108,6 +104,7 @@ export const refreshCurrentUserThunk = createAsyncThunk(
         const errorObj = {
           errorMessage: "Unable to fetch user",
           errorCode: 401,
+          data: {},
         };
 
         thunkApi.rejectWithValue(errorObj);

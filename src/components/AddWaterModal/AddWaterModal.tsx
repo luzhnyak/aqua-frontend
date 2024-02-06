@@ -214,7 +214,6 @@ const AddWaterModal: FC<IProps> = ({
           name="recordingTime"
           value={time}
           onChange={(event) => {
-            console.log(event.target.value);
             setTime(event.target.value);
           }}
         >

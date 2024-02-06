@@ -31,7 +31,8 @@ export const requestUserLogout = async () => {
 };
 
 export const refreshCurrentUser = async () => {
-  const { data } = await axios.get("/users/current");
+  const { data } = await axios("/users/current");
+
   return data;
 };
 

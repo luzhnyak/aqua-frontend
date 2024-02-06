@@ -1,7 +1,6 @@
 .dailyNormaBlock {
   display: inline-flex;
   padding: 8px 20px;
-  /* width: 164px; */
   height: 74px;
   flex-direction: column;
   align-items: flex-start;

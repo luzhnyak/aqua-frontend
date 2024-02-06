@@ -107,6 +107,7 @@ const authSlice = createSlice({
       .addCase(refreshTokensThunk.rejected, (state) => {
         state.token = null;
         state.refreshToken = null;
+        state.error = null;
       })
       .addMatcher(
         isAnyOf(

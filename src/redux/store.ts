@@ -54,16 +54,10 @@ axios.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const isRefreshTokenFail = await store.dispatch(refreshTokensThunk());
-        // console.log(isRefreshTokenFail);
 
         if (isRefreshTokenFail.payload.errorCode === 500) {
           store.dispatch(resetToken(store.getState()));
-          return;
-        }
-
-        if (isRefreshTokenFail.type === "auth/refreshTokens/rejected") {
-          // console.error("Refresh token Error");
-          return;
+          return axios(error.config);
         }
 
         const newToken = store.getState().auth.token;
@@ -71,7 +65,7 @@ axios.interceptors.response.use(
 
         return axios(error.config);
       } catch (refreshError) {
-        // console.error("Refresh token Error", refreshError);
+        return refreshError;
       }
     }
 
