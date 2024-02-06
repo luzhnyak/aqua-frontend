@@ -1,5 +1,5 @@
 .backdrop {
-  background-color: var(--backdrop-color-loader);
+  background-color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,20 +11,66 @@
   align-items: center;
 }
 
-.loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  animation: spin 2s linear infinite;
+.circles {
+  position: relative;
+  animation: animateBg 1s linear infinite;
 }
 
-@keyframes spin {
+@keyframes animateBg {
   0% {
-    transform: rotate(0deg);
+    filter: hue-rotate(360deg);
   }
   100% {
-    transform: rotate(360deg);
+    filter: hue-rotate(320deg);
+  }
+}
+
+.circles span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: rotate(calc(var(--n) * 360deg / 16)) translateY(40px);
+}
+
+@media only screen and (min-width: 768px) {
+  .circles span {
+    transform: rotate(calc(var(--n) * 360deg / 16)) translateY(60px);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .circles span {
+    transform: rotate(calc(var(--n) * 360deg / 16)) translateY(80px);
+  }
+}
+
+.circles span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 2rem 2rem 0.25rem 2rem;
+  background-color: var(--primary-color-blue);
+  box-shadow: 0 0 20px var(--primary-color-blue),
+    0 0 40px var(--primary-color-blue), 0 0 60px var(--primary-color-blue),
+    0 0 80px var(--primary-color-blue), 0 0 100px var(--primary-color-blue),
+    0 0 120px var(--primary-color-blue);
+  animation: animate 2s linear infinite;
+  animation-delay: calc(-2s + 0.1s * var(--n));
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }

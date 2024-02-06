@@ -136,7 +136,6 @@
     display: inline-flex;
     width: 280px;
     height: 36px;
-    padding: 6px 76px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -157,7 +156,6 @@
 
   .addButtonText {
     display: block;
-    width: 94px;
     color: #fff;
     text-align: center;
     font-size: 16px;
@@ -244,7 +242,6 @@
     left: 52%;
     width: 336px;
     height: 44px;
-    padding: 10px 104px;
   }
 
   .addButtonText {
@@ -292,7 +289,7 @@
 
   .number3 {
     position: absolute;
-    right: -5%;
+    right: -1%;
   }
 
   /* Button */
@@ -300,11 +297,6 @@
     top: -35%;
     left: 414px;
     width: 178px;
-    display: inline-flex;
-    padding: 10px 30px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
   }
 
   .addButtonText {

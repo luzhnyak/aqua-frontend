@@ -17,7 +17,6 @@ export const SharedLayout = () => {
         position="top-right"
         autoClose={5000}
         hideProgressBar={true}
-        // theme="colored"
       />
       <Suspense
         fallback={
