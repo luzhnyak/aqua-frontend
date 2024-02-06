@@ -44,6 +44,22 @@ a:active {
   cursor: url("./images/cursor/cursor-active.svg"), auto;
 }
 
+input {
+  cursor: url("./images/cursor/cursor.svg"), auto;
+}
+
+select,
+label,
+input[type="radio"] {
+  cursor: url("./images/cursor/cursor-hover.svg"), auto;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  cursor: text;
+}
+
 h1,
 h2,
 h3,
