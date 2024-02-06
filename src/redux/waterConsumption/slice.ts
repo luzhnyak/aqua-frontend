@@ -39,7 +39,7 @@ const waterSlice = createSlice({
   name: "water",
   initialState: waterInitialState,
   reducers: {
-    // redusers
+    clearWater: () => waterInitialState,
   },
   extraReducers: (builder) =>
     builder
@@ -93,4 +93,5 @@ const waterSlice = createSlice({
       ),
 });
 
+export const { clearWater } = waterSlice.actions;
 export const waterReducer = waterSlice.reducer;
