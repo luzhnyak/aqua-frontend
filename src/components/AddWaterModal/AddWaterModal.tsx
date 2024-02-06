@@ -158,20 +158,22 @@ const AddWaterModal: FC<IProps> = ({
   return (
     <>
       {isEditWater && (
-        <div className={css.editContentDiv}>
-          <div className={css.previousGlassDiv}>
-            <Glass className={css.glass} />
-            <span className={css.editNumber}>
-              {previousAmount} {t("addWaterModal.ml")}
-            </span>
-            <span className={css.editTime}>{previousTime}</span>
+        <div className={css.container}>
+          <div className={css.editContentDiv}>
+            <div className={css.previousGlassDiv}>
+              <Glass className={css.glass} />
+              <span className={css.editNumber}>
+                {previousAmount} {t("addWaterModal.ml")}
+              </span>
+              <span className={css.editTime}>{previousTime}</span>
+            </div>
+            <h2 className={css.headlineEdit}>
+              {t("addWaterModal.headlineEdit")}:
+            </h2>
           </div>
-          <h2 className={css.headlineEdit}>
-            {t("addWaterModal.headlineEdit")}:
-          </h2>
         </div>
       )}
-      <div>
+      <div className={css.container}>
         {isAddWater && (
           <h2 className={css.headlines}>{t("addWaterModal.headlines")}:</h2>
         )}

@@ -232,9 +232,26 @@
   line-height: 24px;
   margin-right: 16px;
 }
+
 .editTime {
   color: #2f2f2f;
   font-size: 12px;
   font-weight: 400;
   line-height: 24px;
+}
+
+.container {
+  width: calc(280px - 2 * 12px);
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: calc(704px - 2 * 24px);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    width: calc(592px - 2 * 24px);
+  }
 }

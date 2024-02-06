@@ -26,7 +26,7 @@ const ConfirmDeleteModal: FC<IProps> = ({ onClose, id }) => {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <h4 className={css.title}>{t("confirmDeleteModal.title")}</h4>
       <div className={css.buttons}>
         <button className={css.cancelBtn} type="button" onClick={handleClose}>

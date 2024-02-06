@@ -44,7 +44,7 @@ const SettingModal: FC<IProps> = ({ onClose }) => {
   }, [file, dispatch]);
 
   return (
-    <div>
+    <div className={css.container}>
       <h4 className={css.title}>{t("settingModal.photo")}</h4>
       <div className={css.wrapAvatar}>
         {avatarURL ? (

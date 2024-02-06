@@ -36,7 +36,7 @@ const UserLogoutModal: FC<IProps> = ({ onClose }) => {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <h4 className={css.title}>{t("logOutModal.title")}</h4>
       <div className={css.buttons}>
         <button className={css.logoutBtn} type="button" onClick={handleLogout}>
