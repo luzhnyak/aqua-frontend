@@ -186,9 +186,10 @@
     "frontAnnaTask4": "Water month chart",
 
     "frontNameAnnaM": "Anna Matsarska",
-    "frontAnnaMTask1": "Redux",
-    "frontAnnaMTask2": "Footer",
-    "frontAnnaMTask3": "Team Members Modal",
+    "frontAnnaMTask1": "API connection",
+    "frontAnnaMTask2": "Redux",
+    "frontAnnaMTask3": "Footer",
+    "frontAnnaMTask4": "Team Members Modal",
 
     "backNameIhor": "Ihor Khorenko",
     "back": "Backend developer",
@@ -219,6 +220,8 @@
     "fullTask2": "Forgot password page",
     "fullTask3": "Update password page",
     "fullTask4": "Routing",
+    "fullTask5": "Animation",
+    "fullTask6": "Verification email",
 
     "frontNameKate": "Kateryna Bachkalo",
     "frontKateTask1": "Header",
