@@ -1,5 +1,9 @@
 /* Container */
 
+.section {
+  padding-top: 80px;
+}
+
 .container {
   margin: 0 auto;
   padding: 0px 20px;

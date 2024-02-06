@@ -27,8 +27,8 @@ const RedirectVerifyPage = () => {
   };
 
   return (
-    <section>
-      <div className={css.MainContainer}>
+    <section className={css.section}>
+      <div className={css.container}>
         <div className={css.mainstr}>
           <Loader />
         </div>

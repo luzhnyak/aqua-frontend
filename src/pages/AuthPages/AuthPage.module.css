@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.section {
+  padding-top: 80px;
+}
+
 @media only screen and (min-width: 320px) {
   .container {
     margin: 0 auto;

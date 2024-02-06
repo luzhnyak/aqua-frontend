@@ -50,7 +50,7 @@ const SignupPage = () => {
   }
 
   return (
-    <section>
+    <section className={css.section}>
       <div className={css.container}>
         <div className={css.mainstr}>
           <AuthForm

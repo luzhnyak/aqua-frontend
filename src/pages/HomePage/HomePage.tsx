@@ -10,7 +10,7 @@ const HomePage: FC = () => {
   // const [isPopUp, setIsPopUp] = useState(false);
 
   return (
-    <section className={css.background}>
+    <section className={css.section}>
       {/* <div className={css.container} onClick={handleClick}> */}
       <div className={css.container}>
         <div className={css.firstSection}>

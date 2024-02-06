@@ -48,10 +48,14 @@ const UpdatetPasswordPage = () => {
   };
 
   return (
-    <div className={css.container}>
-      <UpdatetPassword onSubmit={handleSubmit} />
-      {loader && <Loader />}
-    </div>
+    <section className={css.section}>
+      <div className={css.container}>
+        <div className={css.mainstr}>
+          <UpdatetPassword onSubmit={handleSubmit} />
+          {loader && <Loader />}
+        </div>
+      </div>
+    </section>
   );
 };
 
