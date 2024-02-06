@@ -134,6 +134,11 @@
   line-height: 1.25;
 }
 
+.questionInput:hover,
+.questionInput:focus {
+  border-color: var(--secondary-color-orange);
+}
+
 .requiredAmountContainer {
   max-width: 256px;
   display: flex;
