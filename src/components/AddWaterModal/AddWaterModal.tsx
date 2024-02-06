@@ -231,7 +231,7 @@ const AddWaterModal: FC<IProps> = ({
           type="number"
           name="waterValue"
           value={
-            Number.parseInt(waterVolume.toString()) <= 10000 ? waterVolume : ""
+            Number.parseInt(waterVolume.toString()) <= 99999 ? waterVolume : ""
           }
           onBlur={handleBlur}
           onChange={handleChange}
