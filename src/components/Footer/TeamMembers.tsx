@@ -415,14 +415,14 @@ const TeamMembers = () => {
                 >
                   <GithubIcon width={24} height={24} />
                 </a>
-                {/* <a
-                  href="https://www.linkedin.com/in/luzhnyak/"
+                <a
+                  href="https://www.linkedin.com/in/andrii-zaiats/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="github icon"
                 >
                   <LinkedInIcon width={24} height={24} />
-                </a> */}
+                </a>
               </div>
             </div>
           </div>
