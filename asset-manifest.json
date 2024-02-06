@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.79737694.css",
-    "main.js": "/aqua-frontend/static/js/main.ce37dd7a.js",
+    "main.js": "/aqua-frontend/static/js/main.8a9d81db.js",
     "static/css/984.15205ef4.chunk.css": "/aqua-frontend/static/css/984.15205ef4.chunk.css",
-    "static/js/984.bf2e1f38.chunk.js": "/aqua-frontend/static/js/984.bf2e1f38.chunk.js",
+    "static/js/984.003fa4a9.chunk.js": "/aqua-frontend/static/js/984.003fa4a9.chunk.js",
     "static/css/122.c5dbd78b.chunk.css": "/aqua-frontend/static/css/122.c5dbd78b.chunk.css",
     "static/js/122.0e1023bf.chunk.js": "/aqua-frontend/static/js/122.0e1023bf.chunk.js",
     "static/css/912.73d6aaf2.chunk.css": "/aqua-frontend/static/css/912.73d6aaf2.chunk.css",
@@ -18,7 +18,7 @@
     "static/js/584.e84f8344.chunk.js": "/aqua-frontend/static/js/584.e84f8344.chunk.js",
     "static/css/548.f01671ce.chunk.css": "/aqua-frontend/static/css/548.f01671ce.chunk.css",
     "static/js/548.077e1618.chunk.js": "/aqua-frontend/static/js/548.077e1618.chunk.js",
-    "static/js/80.5be8741c.chunk.js": "/aqua-frontend/static/js/80.5be8741c.chunk.js",
+    "static/js/80.46f04dea.chunk.js": "/aqua-frontend/static/js/80.46f04dea.chunk.js",
     "static/media/Roboto-Medium.ttf": "/aqua-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/aqua-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/ViktoriaLytvyn.jpg": "/aqua-frontend/static/media/ViktoriaLytvyn.6326bd53c8efd7c72d19.jpg",
@@ -74,9 +74,9 @@
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
     "main.79737694.css.map": "/aqua-frontend/static/css/main.79737694.css.map",
-    "main.ce37dd7a.js.map": "/aqua-frontend/static/js/main.ce37dd7a.js.map",
+    "main.8a9d81db.js.map": "/aqua-frontend/static/js/main.8a9d81db.js.map",
     "984.15205ef4.chunk.css.map": "/aqua-frontend/static/css/984.15205ef4.chunk.css.map",
-    "984.bf2e1f38.chunk.js.map": "/aqua-frontend/static/js/984.bf2e1f38.chunk.js.map",
+    "984.003fa4a9.chunk.js.map": "/aqua-frontend/static/js/984.003fa4a9.chunk.js.map",
     "122.c5dbd78b.chunk.css.map": "/aqua-frontend/static/css/122.c5dbd78b.chunk.css.map",
     "122.0e1023bf.chunk.js.map": "/aqua-frontend/static/js/122.0e1023bf.chunk.js.map",
     "912.73d6aaf2.chunk.css.map": "/aqua-frontend/static/css/912.73d6aaf2.chunk.css.map",
@@ -91,10 +91,10 @@
     "584.e84f8344.chunk.js.map": "/aqua-frontend/static/js/584.e84f8344.chunk.js.map",
     "548.f01671ce.chunk.css.map": "/aqua-frontend/static/css/548.f01671ce.chunk.css.map",
     "548.077e1618.chunk.js.map": "/aqua-frontend/static/js/548.077e1618.chunk.js.map",
-    "80.5be8741c.chunk.js.map": "/aqua-frontend/static/js/80.5be8741c.chunk.js.map"
+    "80.46f04dea.chunk.js.map": "/aqua-frontend/static/js/80.46f04dea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.79737694.css",
-    "static/js/main.ce37dd7a.js"
+    "static/js/main.8a9d81db.js"
   ]
 }
