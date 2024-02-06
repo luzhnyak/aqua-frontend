@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.f3613807.css",
-    "main.js": "/aqua-frontend/static/js/main.11037fd1.js",
+    "main.js": "/aqua-frontend/static/js/main.d6a6016e.js",
     "static/css/984.3998caf4.chunk.css": "/aqua-frontend/static/css/984.3998caf4.chunk.css",
     "static/js/984.c33ee578.chunk.js": "/aqua-frontend/static/js/984.c33ee578.chunk.js",
     "static/css/122.977aae83.chunk.css": "/aqua-frontend/static/css/122.977aae83.chunk.css",
@@ -74,7 +74,7 @@
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
     "main.f3613807.css.map": "/aqua-frontend/static/css/main.f3613807.css.map",
-    "main.11037fd1.js.map": "/aqua-frontend/static/js/main.11037fd1.js.map",
+    "main.d6a6016e.js.map": "/aqua-frontend/static/js/main.d6a6016e.js.map",
     "984.3998caf4.chunk.css.map": "/aqua-frontend/static/css/984.3998caf4.chunk.css.map",
     "984.c33ee578.chunk.js.map": "/aqua-frontend/static/js/984.c33ee578.chunk.js.map",
     "122.977aae83.chunk.css.map": "/aqua-frontend/static/css/122.977aae83.chunk.css.map",
@@ -95,6 +95,6 @@
   },
   "entrypoints": [
     "static/css/main.f3613807.css",
-    "static/js/main.11037fd1.js"
+    "static/js/main.d6a6016e.js"
   ]
 }
