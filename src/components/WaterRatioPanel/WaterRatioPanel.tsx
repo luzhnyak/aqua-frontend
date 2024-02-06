@@ -54,7 +54,7 @@ const WaterRatioPanel = () => {
       if (rangeThumb && rangeInput) {
         const thumbPosition = progressValue / 100;
 
-        const space = rangeInput.offsetWidth - 7;
+        const space = rangeInput.offsetWidth;
         const thumbPositionX = thumbPosition * space;
         rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
       }
