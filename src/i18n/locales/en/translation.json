@@ -111,7 +111,8 @@
       "success": "The operation was successful, check your email",
       "error": "Something went wrong, try again later",
       "errorReg": "Registration is failed. Please try again.",
-      "successPass": "Password changed successfully"
+      "successPass": "Password changed successfully",
+      "successReg": "Registration is successful. Check your email to activate your account!"
     }
   },
   "userLogoModal": {

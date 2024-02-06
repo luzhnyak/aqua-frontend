@@ -33,9 +33,7 @@ const SignupPage = () => {
     resetForm();
     setRedirect(true);
 
-    toast.success(
-      `Registration is successful. Check your email to activate your account!`
-    );
+    toast.success(`${t("authorization.notification.successReg")}`);
   };
 
   useEffect(() => {
