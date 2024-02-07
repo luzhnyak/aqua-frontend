@@ -7,7 +7,6 @@ import * as Yup from "yup";
 import { selectUser, selectWaterRate } from "../../redux/auth/selectors";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
-import { getAllWaterForTodayThunk } from "../../redux/waterConsumption/operations";
 
 interface IProps {
   setVisible: (value: boolean) => void;
@@ -96,7 +95,6 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
     onWaterAmountSave(parseFloat(waterAmount) * 1000);
 
     dispatch(updateWaterNormaThunk((waterAmount * 1000).toString()));
-    dispatch(getAllWaterForTodayThunk());
 
     document.body.classList.remove("body-scroll-lock");
     setVisible(false);

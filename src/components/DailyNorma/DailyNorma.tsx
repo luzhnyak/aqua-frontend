@@ -5,10 +5,15 @@ import css from "./DailyNorma.module.css";
 import { useSelector } from "react-redux";
 import { selectWaterRate } from "../../redux/auth/selectors";
 import { useTranslation } from "react-i18next";
+import { useIsomorphicLayoutEffect } from "@react-spring/web";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { getAllWaterForTodayThunk } from "../../redux/waterConsumption/operations";
 
 const DailyNorma = () => {
   const { t } = useTranslation();
 
+  const dispatch: AppDispatch = useDispatch();
   const [visible, setVisible] = useState(false);
 
   const waterRateMG = useSelector(selectWaterRate);
@@ -22,6 +27,14 @@ const DailyNorma = () => {
       document.body.classList.remove("body-scroll-lock");
     }
   };
+
+  useIsomorphicLayoutEffect(() => {
+    console.log("waterRateMG", waterRateMG);
+
+    if (waterRateMG) {
+      dispatch(getAllWaterForTodayThunk());
+    }
+  }, [waterRateMG, dispatch]);
 
   const handleWaterAmountSave = (amount: number) => {
     waterRate = amount;
