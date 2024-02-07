@@ -194,7 +194,7 @@ const AddWaterModal: FC<IProps> = ({
             onBlur={handleBlur}
           />
           <span>
-            {finalValue}
+            {finalValue > 0 ? finalValue : 0 }
             {t("addWaterModal.ml")}
           </span>
         </div>
@@ -231,14 +231,14 @@ const AddWaterModal: FC<IProps> = ({
           type="number"
           name="waterValue"
           value={
-            Number.parseInt(waterVolume.toString()) <= 99999 ? waterVolume : ""
+           Number.parseInt(waterVolume.toString()) <= 99999 ? waterVolume : ""
           }
           onBlur={handleBlur}
           onChange={handleChange}
         />
         <div className={css.saveAreaLayout}>
           <span className={css.finalValue}>
-            {finalValue} {t("addWaterModal.ml")}
+            {finalValue > 0 ? finalValue : 0 } {t("addWaterModal.ml")}
           </span>
           <button type="submit" className={css.saveButton}>
             {t("addWaterModal.save")}
