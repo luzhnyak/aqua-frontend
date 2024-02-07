@@ -63,7 +63,11 @@ const authSlice = createSlice({
 
   reducers: {
     setToken(state: IAuthInitialState, action) {
-      return (state = { ...state, token: action.payload });
+      return (state = {
+        ...state,
+        token: action.payload.token,
+        refreshToken: action.payload.refreshToken,
+      });
     },
     resetToken(state: IAuthInitialState, action) {
       return (state = { ...state, token: null, isLoggedIn: false });

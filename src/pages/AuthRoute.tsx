@@ -12,8 +12,9 @@ export const AuthRoute: FC<IProps> = ({ redirectTo = "/" }) => {
   const [searchParams] = useSearchParams();
 
   const token = searchParams.get("token");
+  const refreshToken = searchParams.get("refreshToken");
 
-  dispatch(setToken(token));
+  dispatch(setToken({ token, refreshToken }));
 
   return <Navigate to={redirectTo} />;
 };
