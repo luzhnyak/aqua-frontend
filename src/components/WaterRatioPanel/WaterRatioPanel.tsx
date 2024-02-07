@@ -12,13 +12,17 @@ const WaterRatioPanel = () => {
   const { t } = useTranslation();
 
   const waterToday = useSelector(selectWatersToday) || 0;
-  const progressValue = useMemo(() => {
+    const [progressValue, setProgressValue] = useState(0);
+
+ useEffect(() => {
     if (waterToday) {
       const value = Number(parseInt(waterToday?.progress));
-      return value > 100 ? 100 : value;
+      return setProgressValue(value > 100 ? 100 : value);
     }
-    return 0;
-  }, [waterToday]);
+    return setProgressValue(0);
+ }, [waterToday]);
+  
+  
   const [isOpen, setAddWaterModalOpen] = useState(false);
   const [previousValue, setValue] = useState(progressValue || 0);
 
@@ -54,7 +58,7 @@ const WaterRatioPanel = () => {
       if (rangeThumb && rangeInput) {
         const thumbPosition = progressValue / 100;
 
-        const space = rangeInput.offsetWidth;
+        const space = rangeInput.offsetWidth - 7;
         const thumbPositionX = thumbPosition * space;
         rangeInput.style.background = `linear-gradient(to right, var(--secondary-color-blue-3) 0%, var(--secondary-color-blue-3) ${thumbPositionX}px, var(--secondary-color-blue-2) ${thumbPositionX}px, var(--secondary-color-blue-2) 100%)`;
       }
