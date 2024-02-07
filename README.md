@@ -31,7 +31,7 @@
 `React Spring` `Swiper` `Clsx` `Chart.js` `i18next`
 
 **Back-end**<br />
-`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary` `Joi` `Nodemailer`
+`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary` `Joi` `Nodemailer` `MongoDB` `Google OAuth`
 
 ## Команда розробників, які працювали над проєктом:
 
