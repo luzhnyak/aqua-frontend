@@ -87,7 +87,10 @@ type CustomThunkAPI = GetThunkAPI<AsyncThunkConfig> & {
 export const refreshCurrentUserThunk = createAsyncThunk(
   "auth/refresh",
   async (_, thunkApi: CustomThunkAPI) => {
+    const state = thunkApi.getState() as RootState;
+    const token = state.auth.token;
     try {
+      token && setToken(token);
       const response = await refreshCurrentUser();
       return response;
     } catch (error) {
