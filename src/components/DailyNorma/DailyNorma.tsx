@@ -29,8 +29,6 @@ const DailyNorma = () => {
   };
 
   useIsomorphicLayoutEffect(() => {
-    console.log("waterRateMG", waterRateMG);
-
     if (waterRateMG) {
       dispatch(getAllWaterForTodayThunk());
     }
