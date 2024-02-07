@@ -132,6 +132,12 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+  outline: none;
+}
+
+.questionInput:hover,
+.questionInput:focus {
+  border-color: var(--secondary-color-orange);
 }
 
 .requiredAmountContainer {
@@ -197,6 +203,11 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
+}
+
+.submitButton:hover,
+.submitButton:focus {
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 }
 
 @media screen and (min-width: 768px) {

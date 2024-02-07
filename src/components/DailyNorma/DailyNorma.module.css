@@ -55,3 +55,17 @@
   background: transparent;
   border: none;
 }
+
+.editButton:hover,
+.editButton:focus {
+  color: var(--secondary-color-orange);
+}
+
+/* input {
+  outline: none;
+} */
+
+.editButton:hover,
+.editButton:focus {
+  color: var(--secondary-color-orange);
+}

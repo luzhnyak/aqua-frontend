@@ -66,6 +66,12 @@
   height: 24px;
   border: none;
   background-color: transparent;
+  scale: 1;
+}
+
+.btnClose:hover,
+.btnClose:hover {
+  scale: 1.1;
 }
 
 .title {

@@ -32,6 +32,8 @@ a {
   cursor: url("./images/cursor/cursor.svg"), auto;
 }
 
+input:hover,
+input:focus,
 button:hover,
 button:focus,
 a:hover,
@@ -39,6 +41,7 @@ a:focus {
   cursor: url("./images/cursor/cursor-hover.svg"), auto;
 }
 
+input:active,
 button:active,
 a:active {
   cursor: url("./images/cursor/cursor-active.svg"), auto;
