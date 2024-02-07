@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import css from "./WaterRatioPanel.module.css";
 
 import { useSelector } from "react-redux";
