@@ -15,7 +15,10 @@ import AnnaMatsarska from "../../images/members/AnnaMatsarska.jpg";
 import HalynaLastivka from "../../images/members/HalynaLastivka.jpg";
 import ViktoriaLytvyn from "../../images/members/ViktoriaLytvyn.jpg";
 import AnnaBoichuk from "../../images/members/AnnaBoichuk.jpg";
+import AndriiZayats from "../../images/members/AndriiZayats.jpg";
+import ChernovDan from "../../images/members/ChernovDan.jpg";
 import user from "../../images/members/user.jpg";
+
 import { useTranslation } from "react-i18next";
 
 const TeamMembers = () => {
@@ -185,6 +188,9 @@ const TeamMembers = () => {
                   <li className={css["swiper-info-task"]}>
                     {t("team.frontAnnaMTask3")}
                   </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.frontAnnaMTask4")}
+                  </li>
                 </ul>
               </div>
               <div className={css["swipper-icon-container"]}>
@@ -339,7 +345,7 @@ const TeamMembers = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={css["swiper-slide"]}>
-            <img src={user} alt="Daniil Chernov" />
+            <img src={ChernovDan} alt="Daniil Chernov" />
             <div className={css["swipper-info-container"]}>
               <div>
                 <p className={css["swipper-info-name"]}>
@@ -384,7 +390,7 @@ const TeamMembers = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={css["swiper-slide"]}>
-            <img src={user} alt="Andrii Zaiats" />
+            <img src={AndriiZayats} alt="Andrii Zaiats" />
             <div className={css["swipper-info-container"]}>
               <div>
                 <p className={css["swipper-info-name"]}>{t("team.fullName")}</p>
@@ -403,6 +409,12 @@ const TeamMembers = () => {
                   </li>
                   <li className={css["swiper-info-task"]}>
                     {t("team.fullTask4")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.fullTask5")}
+                  </li>
+                  <li className={css["swiper-info-task"]}>
+                    {t("team.fullTask6")}
                   </li>
                 </ul>
               </div>

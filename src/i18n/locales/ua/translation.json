@@ -192,9 +192,10 @@
     "frontAnnaTask4": "Діаграма споживання води на місяць",
 
     "frontNameAnnaM": "Анна Мацарська",
-    "frontAnnaMTask1": "Redux",
-    "frontAnnaMTask2": "Footer",
-    "frontAnnaMTask3": "Модальне вікно членів команди",
+    "frontAnnaMTask1": "Підключення API",
+    "frontAnnaMTask2": "Redux",
+    "frontAnnaMTask3": "Footer",
+    "frontAnnaMTask4": "Модальне вікно членів команди",
 
     "backNameIhor": "Ігор Хоренко",
     "back": "Розробник back-end",
@@ -225,6 +226,8 @@
     "fullTask2": "Сторінка забутого пароля",
     "fullTask3": "Сторінка оновлення пароля",
     "fullTask4": "Маршрутизація",
+    "fullTask5": "Анімація",
+    "fullTask6": "Лист верифікації",
 
     "frontNameKate": "Катерина Бачкало",
     "frontKateTask1": "Header",
