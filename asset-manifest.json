@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/aqua-frontend/static/css/main.f07c7b9e.css",
-    "main.js": "/aqua-frontend/static/js/main.206ce370.js",
-    "static/css/640.d99ea67a.chunk.css": "/aqua-frontend/static/css/640.d99ea67a.chunk.css",
-    "static/js/640.10103f73.chunk.js": "/aqua-frontend/static/js/640.10103f73.chunk.js",
+    "main.js": "/aqua-frontend/static/js/main.b0d65873.js",
+    "static/css/876.496449eb.chunk.css": "/aqua-frontend/static/css/876.496449eb.chunk.css",
+    "static/js/876.14e3c76c.chunk.js": "/aqua-frontend/static/js/876.14e3c76c.chunk.js",
     "static/css/122.c5dbd78b.chunk.css": "/aqua-frontend/static/css/122.c5dbd78b.chunk.css",
     "static/js/122.0e1023bf.chunk.js": "/aqua-frontend/static/js/122.0e1023bf.chunk.js",
     "static/css/912.73d6aaf2.chunk.css": "/aqua-frontend/static/css/912.73d6aaf2.chunk.css",
@@ -61,6 +61,7 @@
     "static/media/progressbar-plus.svg": "/aqua-frontend/static/media/progressbar-plus.c6e2021a484b91614488ed9278eda557.svg",
     "static/media/presentation-chart-bar.svg": "/aqua-frontend/static/media/presentation-chart-bar.8cfec11a5c739ea320477bba603d1a57.svg",
     "static/media/arrow-right-on-rectangle.svg": "/aqua-frontend/static/media/arrow-right-on-rectangle.02cb487a75ecb89135ef1a7de29c8136.svg",
+    "static/media/chart.svg": "/aqua-frontend/static/media/chart.27fc9545df96eade6a1c75e2f0994d09.svg",
     "static/media/minus-small.svg": "/aqua-frontend/static/media/minus-small.362797cb0f525040c721bd52cc198fd8.svg",
     "static/media/linkedin.svg": "/aqua-frontend/static/media/linkedin.b5db985d0d658e7fd21c0847f27d5172.svg",
     "static/media/cursor.svg": "/aqua-frontend/static/media/cursor.173e24bac2d6932e1b07.svg",
@@ -74,9 +75,9 @@
     "static/media/plus-small.svg": "/aqua-frontend/static/media/plus-small.312ebb4e7dbfbaf5b8513085d7c8c91d.svg",
     "static/media/radio-button-circle.svg": "/aqua-frontend/static/media/radio-button-circle.11e70c9353f6e8ac88b0.svg",
     "main.f07c7b9e.css.map": "/aqua-frontend/static/css/main.f07c7b9e.css.map",
-    "main.206ce370.js.map": "/aqua-frontend/static/js/main.206ce370.js.map",
-    "640.d99ea67a.chunk.css.map": "/aqua-frontend/static/css/640.d99ea67a.chunk.css.map",
-    "640.10103f73.chunk.js.map": "/aqua-frontend/static/js/640.10103f73.chunk.js.map",
+    "main.b0d65873.js.map": "/aqua-frontend/static/js/main.b0d65873.js.map",
+    "876.496449eb.chunk.css.map": "/aqua-frontend/static/css/876.496449eb.chunk.css.map",
+    "876.14e3c76c.chunk.js.map": "/aqua-frontend/static/js/876.14e3c76c.chunk.js.map",
     "122.c5dbd78b.chunk.css.map": "/aqua-frontend/static/css/122.c5dbd78b.chunk.css.map",
     "122.0e1023bf.chunk.js.map": "/aqua-frontend/static/js/122.0e1023bf.chunk.js.map",
     "912.73d6aaf2.chunk.css.map": "/aqua-frontend/static/css/912.73d6aaf2.chunk.css.map",
@@ -95,6 +96,6 @@
   },
   "entrypoints": [
     "static/css/main.f07c7b9e.css",
-    "static/js/main.206ce370.js"
+    "static/js/main.b0d65873.js"
   ]
 }
