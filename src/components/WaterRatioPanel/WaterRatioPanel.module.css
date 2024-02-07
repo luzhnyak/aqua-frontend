@@ -67,10 +67,6 @@
     height: 14px;
   }
 
-  .rangeInput::-webkit-slider-thumb:hover {
-    cursor: pointer;
-  }
-
   .rangeThumb {
     width: 14px;
     height: 14px;
@@ -167,11 +163,6 @@
     fill: #fff;
     stroke: #fff;
   }
-}
-
-input:hover,
-input:focus {
-  cursor: url("../../images/cursor/cursor.svg"), auto;
 }
 
 @media only screen and (min-width: 768px) {
