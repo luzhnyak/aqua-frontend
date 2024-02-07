@@ -53,6 +53,9 @@ axios.interceptors.response.use(
   async function (error) {
     if (error.response.status === 401) {
       try {
+        const refreshToken = store.getState().auth.refreshToken;
+        if (!refreshToken) return;
+
         const isRefreshTokenFail = await store.dispatch(refreshTokensThunk());
 
         if (isRefreshTokenFail.payload.errorCode === 500) {
