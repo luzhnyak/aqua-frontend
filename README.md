@@ -1,4 +1,5 @@
-**Read in English: [Tracker of water](README.en.md).**
+**Read in English: [Tracker of water](README.en.md).**<br />
+
 **Link to** [BACKEND](https://github.com/luzhnyak/aqua-backend)
 
 # ТРЕКЕР СПОЖИВАННЯ ВОДИ
@@ -30,7 +31,7 @@
 `React Spring` `Swiper` `Clsx` `Chart.js` `i18next`
 
 **Back-end**<br />
-`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary`
+`Node.js` `Express` `Mongoose` `Swagger` `Cloudinary` `Joi` `Nodemailer`
 
 ## Команда розробників, які працювали над проєктом:
 
