@@ -132,6 +132,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+  outline: none;
 }
 
 .questionInput:hover,
