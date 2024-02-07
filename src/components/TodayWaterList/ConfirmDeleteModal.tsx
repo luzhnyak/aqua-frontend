@@ -19,6 +19,7 @@ const ConfirmDeleteModal: FC<IProps> = ({ onClose, id }) => {
     if (id) {
       dispatch(deleteWaterThunk(id));
     }
+    document.body.classList.remove("body-scroll-lock");
   };
 
   const handleClose = () => {
