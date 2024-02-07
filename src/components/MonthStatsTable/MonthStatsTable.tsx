@@ -14,6 +14,8 @@ import Modal from "../../components/Modal/Modal";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 
+import { ReactComponent as IconChart } from "../../images/icons/chart.svg";
+
 export const MonthStatsTable: FC = () => {
   const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
@@ -216,8 +218,12 @@ export const MonthStatsTable: FC = () => {
       <div className={css["calendar-header"]}>
         <div className={css["title-chart"]}>
           <h2 className={css.title}>{t("monthStatsTable.title")}</h2>
-          <button className={css["btn-chart"]} onClick={openModal}>
-            {t("monthStatsTable.btnChart")}
+          <button
+            className={css["btn-chart"]}
+            onClick={openModal}
+            title={t("monthStatsTable.btnChart")}
+          >
+            <IconChart />
           </button>
         </div>
         <div className={css.monthPicker}>

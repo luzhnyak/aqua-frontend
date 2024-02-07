@@ -283,6 +283,7 @@
   border: none;
   background: none;
   color: var(--Primery-Color-Blue, #407bff);
+  fill: var(--Primery-Color-Blue, #407bff);
   text-align: center;
   font-size: 8px;
   font-weight: 400;
@@ -307,5 +308,5 @@
 
 .btn-chart:hover {
   color: #ff9d43;
-  /* box-shadow: 0px 4px 14px 0px #ff9e4358; */
+  fill: #ff9d43;
 }

@@ -3,3 +3,15 @@
     width: 280px;
   }
 }
+
+@media only screen and (min-width: 678px) {
+  .canvas {
+    width: 640px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .canvas {
+    width: 1000px;
+  }
+}
