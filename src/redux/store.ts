@@ -57,7 +57,13 @@ axios.interceptors.response.use(
 
         if (isRefreshTokenFail.payload.errorCode === 500) {
           store.dispatch(resetToken(store.getState()));
-          return axios(error.config);
+          return;
+        }
+
+        if (isRefreshTokenFail.type === "auth/refreshTokens/rejected") {
+          // console.error("Refresh token Error");
+
+          return;
         }
 
         const newToken = store.getState().auth.token;
