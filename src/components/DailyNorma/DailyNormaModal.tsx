@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateWaterNormaThunk } from "../../redux/auth/operations";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { selectWaterRate } from "../../redux/auth/selectors";
+import { selectUser, selectWaterRate } from "../../redux/auth/selectors";
 import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 import { getAllWaterForTodayThunk } from "../../redux/waterConsumption/operations";
@@ -19,17 +19,18 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
   const dispatch: AppDispatch = useDispatch();
 
   const waterRateMG = useSelector(selectWaterRate);
+  const user = useSelector(selectUser);
   let waterRate = (waterRateMG && waterRateMG / 1000) || 2.0;
 
   const [userData, setUserData] = useState({
-    gender: "female",
+    gender: user.gender || "female",
     weight: "",
     activityTime: "",
     waterAmount: "",
   });
 
   const initialValues = {
-    gender: "female",
+    gender: user.gender || "female",
     weight: "",
     activityTime: "",
     waterAmount: waterRate.toString(),
