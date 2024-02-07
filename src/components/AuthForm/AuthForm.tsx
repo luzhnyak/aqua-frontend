@@ -39,7 +39,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email()
+      .email(`${t("authorization.errors.validEmail")}`)
       .required(`${t("authorization.errors.emailReq")}`),
     password: Yup.string()
       .required(`${t("authorization.errors.passwordReq")}`)
