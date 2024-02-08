@@ -2,7 +2,7 @@
   "name": "aqua-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://luzhnyak.github.io/aqua-frontend/",
+  "homepage": "https://water-tracker.pp.ua",
   "dependencies": {
     "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.1.0",
