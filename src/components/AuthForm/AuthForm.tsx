@@ -172,7 +172,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
             </button>
 
             <a
-              href="https://aqua-backend-ieu7.onrender.com/auth/google"
+              href="https://luzhnyak-aws.pp.ua:82/auth/google"
               className={css.googleLogin}
             >
               <GoogleIcon className={css.googleIcon} />
