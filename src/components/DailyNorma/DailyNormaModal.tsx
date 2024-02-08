@@ -180,6 +180,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                   }
                 `}
                   type="number"
+                  max="300"
                   name="weight"
                   value={values.weight}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -229,6 +230,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                   }
                 `}
                   type="number"
+                  max="24"
                   name="activityTime"
                   value={values.activityTime}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
