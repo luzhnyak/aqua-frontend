@@ -38,7 +38,7 @@ const ForgotPasswordPage = () => {
   return (
     <section className={css.section}>
       <div className={css.container}>
-        <div className={css.container}>
+        <div className={css.mainstr}>
           <FormSendEmail
             title={t("authorization.forgot")}
             onSubmit={handleSubmit}

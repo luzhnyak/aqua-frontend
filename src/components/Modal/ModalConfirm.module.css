@@ -9,16 +9,12 @@
 .logoutBtn {
   display: block;
   border-radius: 10px;
-  cursor: pointer;
-
   background: var(--secondary-color-red);
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: transparent;
   padding: 8px 30px;
-
   width: 232px;
   height: 36px;
-
   color: var(--primary-color-white);
   font-size: 16px;
   font-weight: 500;
@@ -26,25 +22,20 @@
 }
 
 .logoutBtn:hover {
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  box-shadow: 0px 4px 14px 0px #7f232397;
 }
-
-.logoutBtn:active {
-  box-shadow: none;
+.logoutBtn:focus {
+  box-shadow: 0px 4px 14px 0px #7f232397;
 }
 
 .cancelBtn {
   display: block;
   border-radius: 10px;
-  cursor: pointer;
-
   background: var(--secondary-color-blue-2);
   border: transparent;
   padding: 8px 30px;
-
   width: 232px;
   height: 36px;
-
   color: var(--primary-color-blue);
   font-size: 16px;
   font-weight: 500;
@@ -54,14 +45,14 @@
 .cancelBtn:hover {
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 }
-.cancelBtn:active {
-  box-shadow: none;
+
+.cancelBtn:focus {
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.34);
 }
 
 @media only screen and (min-width: 768px) {
   .logoutBtn {
     font-size: 18px;
-
     display: inline;
     width: 160px;
     height: 44px;
@@ -70,7 +61,6 @@
 
   .cancelBtn {
     font-size: 18px;
-
     display: inline;
     width: 160px;
     height: 44px;
@@ -82,6 +72,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  align-items: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -94,6 +85,12 @@
 @media only screen and (min-width: 1440px) {
   .buttons {
     justify-content: flex-start;
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  .container {
+    width: calc(280px - 2 * 24px);
   }
 }
 

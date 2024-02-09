@@ -4,15 +4,6 @@
   opacity: 0;
 }
 
-/* Desktop and > */
-@media screen and (min-width: 1440px) {
-  .mainstr {
-    display: grid;
-    grid-template-columns: 742px 384px 90px;
-    justify-content: flex-end;
-  }
-}
-
 .form {
   width: 100%;
 }

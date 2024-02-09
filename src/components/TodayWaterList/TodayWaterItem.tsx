@@ -1,12 +1,19 @@
+import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+
 import css from "./TodayWaterItem.module.css";
+
+import { AppDispatch } from "../../redux/store";
+import { deleteWaterThunk } from "../../redux/waterConsumption/operations";
+
 import { ReactComponent as EditTool } from "../../images/icons/pencil-square.svg";
 import { ReactComponent as Trash } from "../../images/icons/trash.svg";
 import { ReactComponent as Glass } from "../../images/icons/glass.svg";
-import { FC, useState } from "react";
-import ConfirmDeleteModal from "./ConfirmDeleteModal";
+
 import Modal from "../../components/Modal/Modal";
 import AddWaterModal from "../../components/AddWaterModal/AddWaterModal";
-import { useTranslation } from "react-i18next";
+import ModalConfirm from "../Modal/ModalConfirm";
 
 interface IProps {
   id: string | undefined;
@@ -20,21 +27,28 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
   const [isModalDelete, setIsModalDelete] = useState(false);
   const [isModalEdit, setIsModalEdit] = useState(false);
 
-  const openModalDelete = () => {
-    setIsModalDelete(true);
-    document.body.classList.add("body-scroll-lock");
-  };
-  const closeModalDelete = () => {
-    setIsModalDelete(false);
-    document.body.classList.remove("body-scroll-lock");
-  };
+  const dispatch: AppDispatch = useDispatch();
+
   const openModalEdit = () => {
     setIsModalEdit(true);
-    document.body.classList.add("body-scroll-lock");
   };
+
   const closeModalEdit = () => {
     setIsModalEdit(false);
-    document.body.classList.remove("body-scroll-lock");
+  };
+
+  const openModalDelete = () => {
+    setIsModalDelete(true);
+  };
+
+  const handleDelete = () => {
+    if (id) {
+      dispatch(deleteWaterThunk(id));
+    }
+  };
+
+  const handleCloseModalDelete = () => {
+    setIsModalDelete(false);
   };
 
   return (
@@ -51,7 +65,6 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
           <EditTool className={css.edit} />
         </button>
         <button className={css.delete} onClick={openModalDelete}>
-          {" "}
           <Trash className={css.delete} />
         </button>
       </div>
@@ -71,6 +84,17 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
         </Modal>
       )}
       {isModalDelete && (
+        <ModalConfirm
+          title={t("todayWaterItem.titleConfirmDeleteModal")}
+          text={t("confirmDeleteModal.title")}
+          buttonTextOk={t("confirmDeleteModal.delete")}
+          buttonTextCancel={t("confirmDeleteModal.cancel")}
+          onOk={handleDelete}
+          onClose={handleCloseModalDelete}
+        />
+        // <ConfirmDeleteModal id={id} onClose={closeModalDelete} />
+      )}
+      {/* {isModalDelete && (
         <Modal
           title={t("todayWaterItem.titleConfirmDeleteModal")}
           onClose={closeModalDelete}
@@ -78,7 +102,7 @@ const TodayWaterItem: FC<IProps> = ({ id, amount, time }) => {
         >
           <ConfirmDeleteModal id={id} onClose={closeModalDelete} />
         </Modal>
-      )}
+      )} */}
     </li>
   );
 };

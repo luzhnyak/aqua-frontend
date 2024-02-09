@@ -1,20 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import Loader from "../../components/Loader/Loader";
-import { loginThunk } from "../../redux/auth/operations";
-import AuthForm, { SubmitValues } from "../../components/AuthForm/AuthForm";
-import Modal from "../../components/Modal/Modal";
-import VerifyModal from "../../components/AuthForm/VerifyModal";
-import css from "./AuthPage.module.css";
-import { AppDispatch } from "../../redux/store";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import css from "./AuthPage.module.css";
+
+import { loginThunk } from "../../redux/auth/operations";
+import { AppDispatch } from "../../redux/store";
 import {
   selectAuthError,
   selectIsRefreshing,
 } from "../../redux/auth/selectors";
 import { IError } from "../../services/handleApiError";
+
+import Loader from "../../components/Loader/Loader";
+import AuthForm, { SubmitValues } from "../../components/AuthForm/AuthForm";
+import ModalConfirm from "../../components/Modal/ModalConfirm";
 
 const SignInPage = () => {
   const { t } = useTranslation();
@@ -24,10 +27,7 @@ const SignInPage = () => {
 
   const loader = useSelector(selectIsRefreshing);
   const error: IError | null = useSelector(selectAuthError);
-
-  const closeVerifyModal = () => {
-    setShowVerifyModal(false);
-  };
+  const isMounted = useRef(false);
 
   const signInHandler = async (
     values: SubmitValues,
@@ -37,8 +37,6 @@ const SignInPage = () => {
 
     resetForm();
   };
-
-  const isMounted = useRef(false);
 
   useEffect(() => {
     if (error && isMounted.current) {
@@ -52,6 +50,17 @@ const SignInPage = () => {
     isMounted.current = true;
   }, [error, t]);
 
+  const navigate = useNavigate();
+
+  const handleResend = async () => {
+    setShowVerifyModal(false);
+    navigate("/resend-verify-email");
+  };
+
+  const handleCloseVerifyModal = () => {
+    setShowVerifyModal(false);
+  };
+
   return (
     <section className={css.section}>
       <div className={css.container}>
@@ -63,9 +72,14 @@ const SignInPage = () => {
             onSubmit={signInHandler}
           />
           {showVerifyModal && (
-            <Modal title="Verify" onClose={closeVerifyModal}>
-              <VerifyModal onClose={closeVerifyModal} />
-            </Modal>
+            <ModalConfirm
+              title="Verify"
+              text={t("verifyModal.title")}
+              buttonTextOk={t("verifyModal.resend")}
+              buttonTextCancel={t("verifyModal.cancel")}
+              onOk={handleResend}
+              onClose={handleCloseVerifyModal}
+            />
           )}
 
           {loader && <Loader />}

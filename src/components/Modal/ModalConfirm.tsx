@@ -20,7 +20,7 @@ const ModalConfirm: FC<IProps> = ({
   buttonTextCancel,
 }) => {
   return (
-    <Modal title={title} onClose={onClose}>
+    <Modal title={title} onClose={onClose} confirm>
       <div className={css.container}>
         <h4 className={css.title}>{text}</h4>
         <div className={css.buttons}>
