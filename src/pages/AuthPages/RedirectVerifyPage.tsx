@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 import { sendVerify } from "../../services/waterApi";
 import css from "./AuthPage.module.css";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const RedirectVerifyPage = () => {
   const { token } = useParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (token) {
@@ -19,7 +21,7 @@ const RedirectVerifyPage = () => {
       await sendVerify(token);
       return window.location.replace("/aqua-frontend/signin");
     } catch (error) {
-      toast.error("Something went wrong, try again");
+      toast.error(`${t("authorization.notification.error")}`);
       setTimeout(() => {
         return window.location.replace("/aqua-frontend/resend-verify-email");
       }, 3000);
