@@ -36,8 +36,12 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
   };
 
   const validationSchema = Yup.object({
-    weight: Yup.number().min(1, `${t("dailyNormaModal.errors.min1")}`),
-    activityTime: Yup.number().min(0, `${t("dailyNormaModal.errors.min0")}`),
+    weight: Yup.number()
+      .min(1, `${t("dailyNormaModal.errors.min1")}`)
+      .max(300),
+    activityTime: Yup.number()
+      .min(0, `${t("dailyNormaModal.errors.min0")}`)
+      .max(24),
     waterAmount: Yup.number()
       .required(`${t("dailyNormaModal.errors.waterAmountReq")}`)
       .min(0.1, `${t("dailyNormaModal.errors.minWater0")}`)
@@ -179,7 +183,8 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                     errors.weight && touched.weight ? css.errorInput : ""
                   }
                 `}
-                  type="text"
+                  type="number"
+                  max="300"
                   name="weight"
                   value={values.weight}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -228,7 +233,8 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                       : ""
                   }
                 `}
-                  type="text"
+                  type="number"
+                  max="24"
                   name="activityTime"
                   value={values.activityTime}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -301,7 +307,7 @@ const DailyNormaModal: FC<IProps> = ({ setVisible, onWaterAmountSave }) => {
                     : ""
                 }
                 `}
-                type="text"
+                type="number"
                 name="waterAmount"
                 value={values.waterAmount}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import * as Yup from "yup";
 import { ReactComponent as OpenEyeIcon } from "../../images/icons/eye-slash.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../images/icons/eye.svg";
-import css from "./UpdatePasswordComponent.module.css";
+import css from "./UpdatePassword.module.css";
 import { useTranslation } from "react-i18next";
 
 interface Values {
@@ -40,7 +40,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
   });
 
   return (
-    <div className={css.mainstr}>
+    <>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -143,7 +143,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
           </Form>
         )}
       </Formik>
-    </div>
+    </>
   );
 };
 

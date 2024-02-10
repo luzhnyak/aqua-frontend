@@ -37,9 +37,11 @@ const Modal: FC<IProps> = ({ title, children, onClose, confirm = false }) => {
 
     window.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousedown", handleClose);
+    document.body.classList.add("body-scroll-lock");
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleClose);
+      document.body.classList.remove("body-scroll-lock");
     };
   }, [onClose]);
 

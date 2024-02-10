@@ -19,14 +19,15 @@ import { ReactComponent as IconChart } from "../../images/icons/chart.svg";
 export const MonthStatsTable: FC = () => {
   const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
+
   const user = useSelector(selectUser);
+  const waterPerMonth = useSelector(selectWatersPerMonth);
+  const waterToday = useSelector(selectWatersToday);
+
   const creationDate = user.createdAt ? new Date(user.createdAt) : new Date();
   const currentUserYear = creationDate.getFullYear();
   const currentUserMonth = creationDate.getMonth();
   const currentUserDay = creationDate.getDate();
-
-  const waterPerMonth = useSelector(selectWatersPerMonth);
-  const waterToday = useSelector(selectWatersToday);
 
   const [sDate, setsDate] = useState(new Date());
   const [sDay, setsDay] = useState<string | null>(null);
@@ -34,6 +35,7 @@ export const MonthStatsTable: FC = () => {
   const [disabledYear, setsDisabledYear] = useState(false);
   const [disabledForUser, setsDisabledForUser] = useState(false);
   const [isOpen, setMonthChartModal] = useState(false);
+
   const previous = "\u003C";
   const next = "\u003E";
 
@@ -43,6 +45,7 @@ export const MonthStatsTable: FC = () => {
 
   useEffect(() => {
     if (!waterToday) return;
+
     const getMonthWater = () => {
       const chosenMonth = {
         year: sDate.getFullYear().toString(),
@@ -50,8 +53,10 @@ export const MonthStatsTable: FC = () => {
           month: "long",
         }),
       };
+
       dispatch(getAllWaterForMonthThunk(chosenMonth));
     };
+
     getMonthWater();
 
     const disabled = () => {
@@ -61,6 +66,7 @@ export const MonthStatsTable: FC = () => {
           month: "numeric",
         })
       );
+
       const year = Number(
         sDate.toLocaleString("en-US", {
           year: "numeric",
@@ -126,72 +132,57 @@ export const MonthStatsTable: FC = () => {
     setsPopup(false);
   };
 
+  const parseDayFromDate = (date: string) => {
+    const dateForMonth = new Date(date);
+
+    return Number(
+      dateForMonth.toLocaleString("en-US", {
+        day: "numeric",
+      })
+    );
+  };
+
   const showCalendar = () => {
     const y = sDate.getFullYear();
     const m = sDate.getMonth();
     const mDays = findMonthDays(y, m);
+
     const allDays = [];
 
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
-    // Show actual days
-    let progress = 0;
-    let waterNorm = 0;
-    let dailyEntries = null;
 
     for (let d = 1; d <= mDays; d += 1) {
       const date = new Date(y, m, d);
+
       labels.push(d);
-      let dayInMonth: number[] = [];
 
-      waterPerMonth.map((day) => {
-        const dateFormonth = new Date(day.date);
-        dayInMonth.push(
-          Number(
-            dateFormonth.toLocaleString("en-US", {
-              day: "numeric",
-            })
-          )
-        );
-        return day;
-      });
-
-      const percent = waterPerMonth.map((day) =>
-        Number(parseInt(day.progress))
+      const waterDay = waterPerMonth.find(
+        (day) => parseDayFromDate(day.date) === d
       );
-      const dailyNorm = waterPerMonth.map((day) => day.waterRate);
-      const entries = waterPerMonth.map((day) => day.dailyEntries);
 
-      for (let i = 0; i < dayInMonth.length; i += 1) {
-        if (d === dayInMonth[i]) {
-          progress = Math.round(Number(percent[i]));
-          waterNorm = dailyNorm[i];
-          dailyEntries = entries[i];
-        }
-      }
-
-      if (m === currentMonth) {
-        if (d <= currentDay) {
-          allDays.push({
-            day: d,
-            date: date,
-            value: progress,
-            disabled: false,
-            norm: waterNorm,
-            dailyEntry: dailyEntries,
-          });
-        } else {
-          allDays.push({ day: d, date: date, value: 0, disabled: true });
-        }
+      if (waterDay) {
+        allDays.push({
+          day: d,
+          date: new Date(waterDay.date),
+          value: Number.parseInt(waterDay.progress),
+          disabled: false,
+          norm: waterDay.waterRate,
+          dailyEntry: waterDay.dailyEntries,
+        });
       } else {
         allDays.push({
           day: d,
           date: date,
-          value: progress,
-          disabled: false,
-          norm: waterNorm,
-          dailyEntry: dailyEntries,
+          value: 0,
+          disabled:
+            (d >= currentDay && m === currentMonth) ||
+            (d < currentDay && m !== currentMonth)
+              ? true
+              : false,
+          norm: 0,
+          dailyEntry: 0,
         });
       }
     }
@@ -200,7 +191,9 @@ export const MonthStatsTable: FC = () => {
       const inactive = allDays.filter((day) => day.day < currentUserDay);
       inactive.map((day) => (day.disabled = true));
     }
+
     allDays.map((day) => dataPerDay.push(day.value));
+
     return allDays;
   };
   const openModal = () => {
@@ -278,7 +271,7 @@ export const MonthStatsTable: FC = () => {
                     <PopUpDay
                       // dayId={item?.id}
                       handleCloseClick={handleCloseClick}
-                      sDate={sDate}
+                      sDate={item.date}
                       waterRate={Number(item.norm)}
                       dailyEntries={Number(item.dailyEntry)}
                       progress={item.value}

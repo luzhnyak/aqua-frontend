@@ -27,7 +27,7 @@ const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
   });
 
   return (
-    <div className={css.mainstr}>
+    <>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -59,14 +59,16 @@ const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
               <button type="submit" className={css.button}>
                 {t("authorization.send")}
               </button>
-              <Link to="/signin" className={css.signin}>
-                <p>{t("authorization.login")}</p>
-              </Link>
+              <div className={css.wraplink}>
+                <Link to="/signin" className={css.signin}>
+                  <p>{t("authorization.login")}</p>
+                </Link>
+              </div>
             </div>
           </Form>
         )}
       </Formik>
-    </div>
+    </>
   );
 };
 

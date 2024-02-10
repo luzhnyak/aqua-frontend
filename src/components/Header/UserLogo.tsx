@@ -1,21 +1,32 @@
 import { useEffect, useRef, useState } from "react";
-
-import css from "./Header.module.css";
-import { ReactComponent as IconChevron } from "../../images/icons/chevron-double-up.svg";
-import UserLogoModal from "./UserLogoModal";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
-import Modal from "../../components/Modal/Modal";
-import SettingModal from "../../components/SettingModal/SettingModal";
-import UserLogoutModal from "./UserLogoutModal";
+import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
+import css from "./Header.module.css";
+
+import { selectIsRefreshing, selectUser } from "../../redux/auth/selectors";
+import { AppDispatch } from "../../redux/store";
+import { logoutThunk } from "../../redux/auth/operations";
+import { clearWater } from "../../redux/waterConsumption/slice";
+
+import { ReactComponent as IconChevron } from "../../images/icons/chevron-double-up.svg";
+
+import Modal from "../../components/Modal/Modal";
+import SettingModal from "../../components/SettingModal/SettingModal";
+import ModalConfirm from "../Modal/ModalConfirm";
+import Loader from "../Loader/Loader";
+import UserLogoModal from "./UserLogoModal";
+
 const UserLogo: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isOpenUserInfoModal, setOpenUserInfoModal] = useState(false);
   const [isOpenUserLogoutModal, setOpenUserLogoutModal] = useState(false);
 
   const user = useSelector(selectUser);
+  const loader = useSelector(selectIsRefreshing);
+
   const { name, email, avatarURL } = user;
 
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -62,6 +73,12 @@ const UserLogo: React.FC = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMenuOpen, setMenuOpen]);
+
+  const handleLogout = async () => {
+    dispatch(logoutThunk());
+    dispatch(clearWater());
+    setOpenUserLogoutModal(true);
+  };
 
   const closeUserInfoModal = () => {
     setOpenUserInfoModal(false);
@@ -114,7 +131,6 @@ const UserLogo: React.FC = () => {
           />
         )}
       </div>
-
       <div className={css.lngBtns}>
         <button
           className={`${css.lngBtn} ${
@@ -135,24 +151,24 @@ const UserLogo: React.FC = () => {
           UA
         </button>
       </div>
-
       {/* Модальне вікно для settings */}
       {isOpenUserInfoModal && !isOpenUserLogoutModal && (
         <Modal title={t("userLogoModal.setting")} onClose={closeUserInfoModal}>
           <SettingModal onClose={closeUserInfoModal} />
         </Modal>
       )}
-
       {/* Модальне вікно для logout */}
       {isOpenUserLogoutModal && !isOpenUserInfoModal && (
-        <Modal
+        <ModalConfirm
           title={t("userLogoModal.logout")}
+          text={t("logOutModal.title")}
+          buttonTextOk={t("logOutModal.logout")}
+          buttonTextCancel={t("logOutModal.cancel")}
+          onOk={handleLogout}
           onClose={closeUserLogoutModal}
-          confirm
-        >
-          <UserLogoutModal onClose={closeUserLogoutModal} />
-        </Modal>
+        />
       )}
+      {loader && <Loader />}
     </>
   );
 };

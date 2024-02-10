@@ -97,6 +97,7 @@
 }
 
 .questionLabel {
+  position: relative;
   width: 256px;
   display: flex;
   flex-direction: column;
@@ -220,12 +221,15 @@
 }
 
 .errormessage {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
   color: var(--secondary-color-red);
   font-size: 14px;
 }
 
 .errorBorder {
-  border: 2px solid var(--secondary-color-red);
+  border: 1px solid var(--secondary-color-red);
 }
 
 .errorInput {
