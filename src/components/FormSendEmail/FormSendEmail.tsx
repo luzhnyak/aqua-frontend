@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 interface Values {
   email: string;
+  language: string;
 }
 
 interface IProps {
@@ -14,10 +15,11 @@ interface IProps {
 }
 
 const FormSendEmail: React.FC<IProps> = ({ title, onSubmit }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const initialValues = {
     email: "",
+    language: i18n.language,
   };
 
   const validationSchema = Yup.object({

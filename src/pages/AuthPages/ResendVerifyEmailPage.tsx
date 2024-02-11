@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 
 interface Values {
   email: string;
+  language: string;
 }
 
 const ResendVerifyEmailPage = () => {

@@ -13,6 +13,7 @@ export type SubmitValues = {
   repeatPassword?: string | undefined;
   email: string;
   password: string;
+  language: string;
 };
 
 interface IProps {
@@ -24,7 +25,7 @@ interface IProps {
 }
 
 const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showRepPassword, setShowRepPassword] = useState(false);
@@ -35,6 +36,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
     ...(formTitle === `${t("authorization.register")}` && {
       repeatPassword: "",
     }),
+    language: i18n.language,
   };
 
   const validationSchema = Yup.object({

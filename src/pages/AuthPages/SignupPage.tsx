@@ -17,7 +17,7 @@ import {
 import { IError } from "../../services/handleApiError";
 
 const SignupPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const dispatch: AppDispatch = useDispatch();
   const [redirect, setRedirect] = useState(false);
@@ -25,10 +25,17 @@ const SignupPage = () => {
   const loader = useSelector(selectIsRefreshing);
   const error: IError | null = useSelector(selectAuthError);
 
+  const [language, setLanguage] = useState(i18n.language);
+
   const signUpHandler = async (values: any, { resetForm }: any) => {
     const { repeatPassword, ...newObject } = values;
 
-    await dispatch(signUpThunk(newObject));
+    const newObjectWithLang = {
+      ...newObject,
+      language,
+    };
+
+    await dispatch(signUpThunk(newObjectWithLang));
 
     resetForm();
     setRedirect(true);

@@ -3,7 +3,7 @@ import { IDdailyEntry, IRegisterUser, IUpdateUser } from "../types";
 
 axios.defaults.baseURL = "https://luzhnyak-aws.pp.ua:82";
 // axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
-// axios.defaults.baseURL = "http://127.0.0.1:3000";
+// axios.defaults.baseURL = "http://127.0.0.1:4001";
 
 export const setToken = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -129,7 +129,10 @@ export const sendUpdatePass = async (
 
 //========================= Resend verify email
 
-export const resendVerifyToken = async (body: { email: string }) => {
+export const resendVerifyToken = async (body: {
+  email: string;
+  language: string;
+}) => {
   const { data } = await axios.post(`/users/verify`, body);
   return data;
 };

@@ -79,6 +79,7 @@
     "email": "Введіть свій імейл",
     "password": "Введіть свій пароль",
     "passwordText": "Пароль",
+    "updatePass": "Оновити пароль",
     "emailText": "Імейл",
     "forgot": "Забули пароль",
     "enterWithGoogle": "Зайти з Google",
