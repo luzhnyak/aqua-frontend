@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import {
   selectAuthError,
   selectIsRefreshing,
-  // selectLocatization,
 } from "../../redux/auth/selectors";
 import { IError } from "../../services/handleApiError";
 

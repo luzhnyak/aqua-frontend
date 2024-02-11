@@ -18,6 +18,7 @@ export interface IUpdateUser {
 export interface IRegisterUser {
   email: string;
   password: string;
+  language: string;
 }
 
 export interface IDdailyEntry {

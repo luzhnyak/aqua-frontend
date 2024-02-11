@@ -48,7 +48,7 @@ const UpdatetPassword: React.FC<IProps> = ({ onSubmit }) => {
       >
         {({ errors, touched }) => (
           <Form className={css.form}>
-            <h1 className={css.formTitle}>Update password</h1>
+            <h1 className={css.formTitle}>{t("authorization.updatePass")}</h1>
             <div className={css.formControl}>
               <div className={css.stack}>
                 <label className={css.formLabel} htmlFor="update-password-id1">

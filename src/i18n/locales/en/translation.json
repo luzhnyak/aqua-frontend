@@ -87,6 +87,7 @@
     "email": "Enter your email",
     "password": "Enter your password",
     "passwordText": "Password",
+    "updatePass": "Update password",
     "emailText": "E-mail",
     "forgot": "Forgot password",
     "enterWithGoogle": "Enter with Google",
