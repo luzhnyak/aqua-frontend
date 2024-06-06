@@ -1,11 +1,12 @@
 import axios from "axios";
 import { IDdailyEntry, IRegisterUser, IUpdateUser } from "../types";
 
-axios.defaults.baseURL = "https://luzhnyak-aws.pp.ua:82";
+axios.defaults.baseURL = "https://aqua-be.vercel.app";
+// axios.defaults.baseURL = "https://luzhnyak-aws.pp.ua:82";
 // axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
 // axios.defaults.baseURL = "http://127.0.0.1:4001";
 
-export const setToken = (token: string) => {
+https: export const setToken = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
