@@ -6,7 +6,7 @@ axios.defaults.baseURL = "https://aqua-be.vercel.app";
 // axios.defaults.baseURL = "https://aqua-backend-ieu7.onrender.com";
 // axios.defaults.baseURL = "http://127.0.0.1:4001";
 
-https: export const setToken = (token: string) => {
+export const setToken = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
