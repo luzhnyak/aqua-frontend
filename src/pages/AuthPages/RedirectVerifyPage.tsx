@@ -12,21 +12,22 @@ const RedirectVerifyPage = () => {
 
   useEffect(() => {
     if (token) {
+      const getRequest = async (token: string) => {
+        try {
+          await sendVerify(token);
+          return window.location.replace("/aqua-frontend/signin");
+        } catch (error) {
+          toast.error(`${t("authorization.notification.error")}`);
+          setTimeout(() => {
+            return window.location.replace(
+              "/aqua-frontend/resend-verify-email"
+            );
+          }, 3000);
+        }
+      };
       getRequest(token);
     }
-  }, [token]);
-
-  const getRequest = async (token: string) => {
-    try {
-      await sendVerify(token);
-      return window.location.replace("/aqua-frontend/signin");
-    } catch (error) {
-      toast.error(`${t("authorization.notification.error")}`);
-      setTimeout(() => {
-        return window.location.replace("/aqua-frontend/resend-verify-email");
-      }, 3000);
-    }
-  };
+  }, [token, t]);
 
   return (
     <section className={css.section}>

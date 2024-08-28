@@ -25,7 +25,7 @@ const SignupPage = () => {
   const loader = useSelector(selectIsRefreshing);
   const error: IError | null = useSelector(selectAuthError);
 
-  const [language, setLanguage] = useState(i18n.language);
+  const [language] = useState(i18n.language);
 
   const signUpHandler = async (values: any, { resetForm }: any) => {
     const { repeatPassword, ...newObject } = values;

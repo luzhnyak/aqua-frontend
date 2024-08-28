@@ -174,7 +174,7 @@ const AuthForm: FC<IProps> = ({ formTitle, onSubmit }) => {
             </button>
 
             <a
-              href="https://luzhnyak-aws.pp.ua:82/auth/google"
+              href={`${process.env.REACT_APP_API_URL}/auth/google`}
               className={css.googleLogin}
             >
               <GoogleIcon className={css.googleIcon} />
