@@ -171,7 +171,6 @@
     gap: 12px;
     flex-direction: row;
     height: 50px;
-    justify-items: center;
   }
 
   .panel {
